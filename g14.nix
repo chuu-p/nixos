@@ -137,6 +137,7 @@
     #  wget
     keepassxc
     chromium
+    vivaldi
   ];
 
   # programs.git = {
