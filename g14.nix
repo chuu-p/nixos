@@ -137,7 +137,7 @@
     #  wget
     keepassxc
     chromium
-    vivaldi
+    floorp
   ];
 
   # programs.git = {
