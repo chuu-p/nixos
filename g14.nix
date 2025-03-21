@@ -1,13 +1,29 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [];
-    
+  config,
+  pkgs,
+  ...
+}:
+# let
+#   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+# in
+{
+  imports = [
+    # (import "${home-manager}/nixos")
+  ];
+
+  # home-manager.users.my_username = {
+  /*
+  The home.stateVersion option does not have a default and must be set
+  */
+  # home.stateVersion = "18.09";
+  /*
+  Here goes the rest of your home-manager config, e.g. home.packages = [ pkgs.foo ];
+  */
+  # };
+
   # boot.kernelParams = [ "nomodeset" ];
 
   # Bootloader.
@@ -84,9 +100,9 @@
   users.users.chuu = {
     isNormalUser = true;
     description = "chuu";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -100,10 +116,29 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    git 
+    git
     alejandra
-  #  wget
+    #  wget
   ];
+
+  # programs.git = {
+  #   enable = true;
+  #   userName  = "chuu-p";
+  #   userEmail = "chuu801@pm.me";
+  #aliases = {
+  #  c = "commit";
+  #  co = "checkout";
+  #  s = "status";
+  #};
+  # };
+
+  programs.bash.shellAliases = {
+    l = "ls -alh";
+    ll = "ls -l";
+    ls = "ls --color=tty";
+    kubectl = "sudo k3s kubectl";
+    g = "git";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -114,6 +149,11 @@
   # };
 
   # List services that you want to enable:
+
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+  };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -131,5 +171,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }
