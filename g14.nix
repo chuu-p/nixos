@@ -119,6 +119,7 @@
     git
     alejandra
     #  wget
+    keepassxc
   ];
 
   # programs.git = {
