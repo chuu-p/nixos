@@ -120,6 +120,7 @@
     alejandra
     #  wget
     keepassxc
+    chromium
   ];
 
   # programs.git = {
