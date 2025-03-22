@@ -91,6 +91,8 @@
     mpv
     discord
     obsidian
+    alacritty
+    fish
   ];
 
   programs.git = {

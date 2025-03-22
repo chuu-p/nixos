@@ -23,8 +23,9 @@
   - [ ] runcat
   - [ ] sysmon
   - [ ] tiling shell
-- [ ] obsidian
+- [X] obsidian
 - [ ] syncthing
+  - [ ] declarative config
 - [ ] borgbackup
   - [ ] automatic weekly backups with cleanup (have max. 4 backups at a time)
 
