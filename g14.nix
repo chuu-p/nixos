@@ -137,7 +137,8 @@
     #  wget
     keepassxc
     chromium
-    floorp
+    vscodium
+    neofetch
   ];
 
   # programs.git = {
