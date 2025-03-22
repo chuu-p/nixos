@@ -93,6 +93,8 @@
     obsidian
     alacritty
     fish
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
   ];
 
   programs.git = {
