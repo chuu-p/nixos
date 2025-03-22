@@ -38,12 +38,20 @@
     enable = true;
     displayManager.gdm = {
       enable = true;
-      wayland = false;
+      wayland = true;
     };
     desktopManager.gnome = {
       enable = true;
       extraGSettingsOverridePackages = [pkgs.mutter];
       extraGSettingsOverrides = ''
+        [org.gnome.settings-daemon.plugins.media-keys]
+        custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+
+        [org.gnome.settings-daemon.plugins.media-keys.custom-keybindings.custom0]
+        binding='<Super>t'
+        command='alacritty'
+        name='Open terminal'
+
         [org.gnome.mutter]
         experimental-features=['scale-monitor-framebuffer']
       '';
