@@ -71,7 +71,7 @@
   users.users.chuu = {
     isNormalUser = true;
     description = "chuu";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "syncthing"];
     packages = with pkgs; [
     ];
   };
