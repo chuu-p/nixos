@@ -89,6 +89,7 @@
     vscodium
     neofetch
     mpv
+    discord
   ];
 
   programs.git = {
