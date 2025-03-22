@@ -95,6 +95,7 @@
     fish
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
+    gnome.gnome-tweaks
   ];
 
   programs.git = {
