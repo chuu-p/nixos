@@ -94,7 +94,6 @@
     alejandra
     keepassxc
     chromium
-    vscodium
     neofetch
     mpv
     discord
@@ -104,6 +103,19 @@
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     gnome.gnome-tweaks
+    (vscode-with-extensions.override {
+      vscode = vscodium;
+      vscodeExtensions = with vscode-extensions; [
+        jnoortheen.nix-ide
+        rust-lang.rust-analyzer
+        foam.foam-vscode
+        # unthrottled.doki-theme
+
+        ms-python.python
+      ];
+    })
+
+    gnomeExtensions.unite
   ];
 
   programs.git = {
