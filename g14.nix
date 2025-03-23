@@ -116,6 +116,7 @@ in {
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     gnome.gnome-tweaks
+    signal-desktop
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions; [
