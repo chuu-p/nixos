@@ -42,7 +42,7 @@
     };
     desktopManager.gnome = {
       enable = true;
-      extraGSettingsOverridePackages = [pkgs.mutter];
+      extraGSettingsOverridePackages = with pkgs; [gnome.gnome-settings-daemon mutter];
       extraGSettingsOverrides = ''
         [org.gnome.settings-daemon.plugins.media-keys]
         custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
