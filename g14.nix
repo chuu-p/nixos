@@ -2,8 +2,21 @@
   config,
   pkgs,
   ...
-}: {
-  imports = [];
+}: let
+  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz;
+in {
+  imports = [
+    (import "${home-manager}/nixos")
+  ];
+
+  home-manager.users.chuu = {pkgs, ...}: {
+    home.packages = with pkgs; [];
+    programs.bash.enable = true;
+
+    # The state version is required and should stay at the version you
+    # originally installed.
+    home.stateVersion = "24.11";
+  };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
