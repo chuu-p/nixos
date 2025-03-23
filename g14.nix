@@ -115,8 +115,12 @@
       ];
     })
 
+    gnomeExtensions.tiling-shell
     gnomeExtensions.unite
   ];
+
+  # TODO dconf
+  # (no title bars) https://askubuntu.com/a/1465451
 
   programs.git = {
     enable = true;
@@ -139,6 +143,8 @@
     kubectl = "sudo k3s kubectl";
     g = "git";
   };
+
+  services.logind.lidSwitchExternalPower = "ignore";
 
   services.syncthing = {
     enable = true;
