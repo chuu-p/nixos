@@ -128,6 +128,7 @@
         rust-lang.rust-analyzer
         foam.foam-vscode
         # unthrottled.doki-theme
+        bierner.emojisense
 
         ms-python.python
       ];
