@@ -105,15 +105,23 @@
     signal-desktop
     (vscode-with-extensions.override {
       vscode = vscodium;
-      vscodeExtensions = with vscode-extensions; [
-        jnoortheen.nix-ide
-        rust-lang.rust-analyzer
-        foam.foam-vscode
-        # unthrottled.doki-theme
-        bierner.emojisense
+      vscodeExtensions = with vscode-extensions;
+        [
+          jnoortheen.nix-ide
+          rust-lang.rust-analyzer
+          foam.foam-vscode
+          bierner.emojisense
 
-        ms-python.python
-      ];
+          ms-python.python
+        ]
+        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          {
+            name = "doki-theme";
+            publisher = "unthrottled";
+            version = "88.1.15";
+            sha256 = "ys3D84zg7mGGTG5Ey65gqgujbUJBsg27MC3qUnbluoM=";
+          }
+        ];
     })
 
     gnomeExtensions.tiling-shell
