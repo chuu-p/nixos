@@ -2,21 +2,25 @@
   config,
   pkgs,
   ...
-}: let
-  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz;
-in {
+}:
+# let
+#   home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz;
+# in
+{
   imports = [
-    (import "${home-manager}/nixos")
+    # (import "${home-manager}/nixos")
   ];
 
-  home-manager.users.chuu = {pkgs, ...}: {
-    home.packages = with pkgs; [];
-    programs.bash.enable = true;
+  hardware.nvidia.dynamicBoost.enable = false;
 
-    # The state version is required and should stay at the version you
-    # originally installed.
-    home.stateVersion = "24.11";
-  };
+  # home-manager.users.chuu = {pkgs, ...}: {
+  #   home.packages = with pkgs; [];
+  #   programs.bash.enable = true;
+
+  #   # The state version is required and should stay at the version you
+  #   # originally installed.
+  #   home.stateVersion = "24.11";
+  # };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -55,7 +59,7 @@ in {
     };
     desktopManager.gnome = {
       enable = true;
-      extraGSettingsOverridePackages = with pkgs; [gnome.gnome-settings-daemon mutter];
+      extraGSettingsOverridePackages = with pkgs; [gnome-settings-daemon mutter];
       extraGSettingsOverrides = ''
         [org.gnome.settings-daemon.plugins.media-keys]
         custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
@@ -80,7 +84,7 @@ in {
 
   services.printing.enable = true;
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -115,7 +119,7 @@ in {
     fish
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
-    gnome.gnome-tweaks
+    gnome-tweaks
     signal-desktop
     (vscode-with-extensions.override {
       vscode = vscodium;
@@ -165,17 +169,15 @@ in {
     openDefaultPorts = true;
   };
 
-  # system.autoUpgrade = {
-  #   enable = true;
-  #   flake = inputs.self.outPath;
-  #   flags = [
-  #     "--update-input"
-  #     "nixpkgs"
-  #     "-L" # print build logs
-  #   ];
-  #   dates = "09:00";
-  #   randomizedDelaySec = "45min";
-  # };
+  system.autoUpgrade = {
+    enable = true;
+    randomizedDelaySec = "30min"; # Adds a random delay to prevent simultaneous updates
+    dates = "daily"; # or "weekly", "monthly", etc.
+    flags = ["--impure" "--flake" "/etc/nixos"];
+    allowReboot = true; # Allow the system to reboot if necessary
+    # email = "your-email@example.com"; # Uncomment to receive email notifications
+    # emailOnFailure = true;
+  };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
