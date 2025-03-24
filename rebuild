@@ -14,7 +14,6 @@ set -e
 
 # Edit your config
 # $EDITOR ~/git/nixos/chuu-thinkpad.nix
-vim ~/git/nixos/flake.nix
 vim ~/git/nixos/g14.nix
 
 # cd to your config dir
@@ -37,7 +36,7 @@ git diff -U0 '*.nix'
 echo "NixOS Rebuilding..."
 
 # Rebuild, output simplified errors, log trackebacks
-sudo nixos-rebuild switch --impure --flake /etc/nixos &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)
+sudo nixos-rebuild switch &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)
 
 # Get current generation metadata
 current=$(nixos-rebuild list-generations | grep current)
