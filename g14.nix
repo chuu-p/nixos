@@ -89,6 +89,7 @@
     git
     rustc
     cargo
+    clang
     alejandra
     keepassxc
     chromium
