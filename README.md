@@ -1,0 +1,3 @@
+# my nixos config
+
+:sparkles:
