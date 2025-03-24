@@ -2,21 +2,11 @@
   config,
   pkgs,
   ...
-}: let
-  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz;
-in {
+}: {
   imports = [
-    (import "${home-manager}/nixos")
   ];
 
-  home-manager.users.chuu = {pkgs, ...}: {
-    home.packages = with pkgs; [];
-    programs.bash.enable = true;
-
-    # The state version is required and should stay at the version you
-    # originally installed.
-    home.stateVersion = "24.11";
-  };
+  hardware.nvidia.dynamicBoost.enable = false;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -40,13 +30,6 @@ in {
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-
   services.xserver = {
     enable = true;
     displayManager.gdm = {
@@ -55,7 +38,7 @@ in {
     };
     desktopManager.gnome = {
       enable = true;
-      extraGSettingsOverridePackages = with pkgs; [gnome.gnome-settings-daemon mutter];
+      extraGSettingsOverridePackages = with pkgs; [gnome-settings-daemon mutter];
       extraGSettingsOverrides = ''
         [org.gnome.settings-daemon.plugins.media-keys]
         custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
@@ -80,7 +63,7 @@ in {
 
   services.printing.enable = true;
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -104,6 +87,8 @@ in {
   environment.systemPackages = with pkgs; [
     vim
     git
+    rustc
+    cargo
     alejandra
     keepassxc
     chromium
@@ -115,7 +100,7 @@ in {
     fish
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
-    gnome.gnome-tweaks
+    gnome-tweaks
     signal-desktop
     (vscode-with-extensions.override {
       vscode = vscodium;
@@ -133,9 +118,6 @@ in {
     gnomeExtensions.tiling-shell
     gnomeExtensions.unite
   ];
-
-  # TODO dconf
-  # (no title bars) https://askubuntu.com/a/1465451
 
   programs.git = {
     enable = true;
@@ -161,22 +143,34 @@ in {
 
   services.logind.lidSwitchExternalPower = "ignore";
 
+  # FIXME
+  # systemd.services.syncthing-permissions = {
+  #   description = "Set permissions for /var/lib/syncthing";
+  #   # before = ["syncthing.service"];
+  #   after = ["syncthing.service"];
+  #   # after = ["local-fs.target"];
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     ExecStart = "/run/wrappers/bin/sudo chmod g+rwx /var/lib/syncthing";
+  #     RemainAfterExit = true;
+  #   };
+  #   wantedBy = ["multi-user.target"]; # Ensure it runs during boot
+  # };
+
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
   };
 
-  # system.autoUpgrade = {
-  #   enable = true;
-  #   flake = inputs.self.outPath;
-  #   flags = [
-  #     "--update-input"
-  #     "nixpkgs"
-  #     "-L" # print build logs
-  #   ];
-  #   dates = "09:00";
-  #   randomizedDelaySec = "45min";
-  # };
+  system.autoUpgrade = {
+    enable = true;
+    randomizedDelaySec = "30min"; # Adds a random delay to prevent simultaneous updates
+    dates = "daily"; # or "weekly", "monthly", etc.
+    flags = ["--impure" "--flake" "/etc/nixos"];
+    allowReboot = true; # Allow the system to reboot if necessary
+    # email = "your-email@example.com"; # Uncomment to receive email notifications
+    # emailOnFailure = true;
+  };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
