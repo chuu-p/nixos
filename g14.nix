@@ -111,7 +111,6 @@
           rust-lang.rust-analyzer
           foam.foam-vscode
           bierner.emojisense
-
           ms-python.python
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
