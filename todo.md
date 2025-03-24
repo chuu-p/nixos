@@ -32,11 +32,6 @@
 ## personal
 
 - [ ] chromium
-
-oboonakemofpalcgghocfoadofidjkkk # keepassxc-browser
-cjpalhdlnbpafiamejdnhcphjbkeiagm # uBlock Origin
-eimadpbcbfnmbkopoojfekhnkhdbieeh # Dark Reader
-
 - [ ] mullvad vpn
 - [ ] mpv 
 - [ ] ffmpeg
@@ -57,8 +52,3 @@ eimadpbcbfnmbkopoojfekhnkhdbieeh # Dark Reader
 - [ ] q/cloud - seafile
 - [ ] q/git - forgejo
 - [ ] q/ssh - ssh something?
-- [ ] q/media - jellyfin
-- [ ] q/k3s - dashboard
-- [ ] q/wireguard - vpn
-
-wake on lan?
