@@ -90,6 +90,7 @@
     rustc
     cargo
     clang
+    wasm-bindgen-cli
     alejandra
     keepassxc
     chromium

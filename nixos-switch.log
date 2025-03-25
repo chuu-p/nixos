@@ -1,32 +1,45 @@
 building the system configuration...
-warning: found empty hash, assuming 'sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='
-these 20 derivations will be built:
-  /nix/store/msz1dxsbj5rh4c0974ir3702lfbb0xyn-unthrottled-doki-theme.zip.drv
-  /nix/store/kl60cm8x8czfamnnwf0bkr75xcmccxzl-vscode-extension-unthrottled-doki-theme-88.1.15.drv
-  /nix/store/05xx6lxy4pnk8814myq9a1yhg9p7b4xg-vscode-extensions-json.drv
-  /nix/store/x12vp8dhmp7n83gik6bgg2cixjgcmjhd-vscode-extensions.drv
-  /nix/store/25c4c3dz9mj5dq5cy2370577l45p231b-vscodium-with-extensions-1.98.2.25072.drv
-  /nix/store/83qgias0dvkj9ka7609q8jfac4bjdrll-system-path.drv
-  /nix/store/cyyz7zjml9kdfv08yb50zd5pjl59n17h-X-Restart-Triggers-polkit.drv
-  /nix/store/0blknl3wb6x0icq8knl5z5jh2vl4afzx-unit-polkit.service.drv
-  /nix/store/6q42zsm4b1rybjrfqzv725lhjx0r9h8s-dbus-1.drv
-  /nix/store/nnqk2jwcxs0qis7b2bkv1sww011lxqwk-X-Restart-Triggers-dbus.drv
-  /nix/store/7j7lfzkw360qxbva9gmqcg9lx25xmdny-unit-dbus.service.drv
-  /nix/store/2jvfbf4s48a4c4lqnj5pwn9ckzq6kghm-user-units.drv
-  /nix/store/9iv92nslcn69bwdjqavw2fm8ym84y6rw-unit-accounts-daemon.service.drv
-  /nix/store/grk9cxwg32l50b7kksm0m9dff4p4vx17-unit-dbus.service.drv
-  /nix/store/7w9qpy1lc4189gvkchzrrd7wjyydgld2-system-units.drv
-  /nix/store/ck21g0c41rssiq9vh1cfd5cm9c37fk5z-etc-pam-environment.drv
-  /nix/store/ywznm1834isc6f97fcjpjp894hc0l38w-set-environment.drv
-  /nix/store/pj170ph5ps86pqq14i3dh1p6y6d53ymv-etc-profile.drv
-  /nix/store/h3k6z9iwvmjkl8kvniyfh40nm0bw44bf-etc.drv
-  /nix/store/harw4k3cybkl5s2nd5lbda1an440g22k-nixos-system-g14-25.05.20250322.1e5b653.drv
-building '/nix/store/msz1dxsbj5rh4c0974ir3702lfbb0xyn-unthrottled-doki-theme.zip.drv'...
-error: hash mismatch in fixed-output derivation '/nix/store/msz1dxsbj5rh4c0974ir3702lfbb0xyn-unthrottled-doki-theme.zip.drv':
-         specified: sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
-            got:    sha256-ys3D84zg7mGGTG5Ey65gqgujbUJBsg27MC3qUnbluoM=
-error: 1 dependencies of derivation '/nix/store/kl60cm8x8czfamnnwf0bkr75xcmccxzl-vscode-extension-unthrottled-doki-theme-88.1.15.drv' failed to build
-error: 1 dependencies of derivation '/nix/store/x12vp8dhmp7n83gik6bgg2cixjgcmjhd-vscode-extensions.drv' failed to build
-error: 1 dependencies of derivation '/nix/store/25c4c3dz9mj5dq5cy2370577l45p231b-vscodium-with-extensions-1.98.2.25072.drv' failed to build
-error: 1 dependencies of derivation '/nix/store/83qgias0dvkj9ka7609q8jfac4bjdrll-system-path.drv' failed to build
-error: 1 dependencies of derivation '/nix/store/harw4k3cybkl5s2nd5lbda1an440g22k-nixos-system-g14-25.05.20250322.1e5b653.drv' failed to build
+these 15 derivations will be built:
+  /nix/store/gxiny8xhkp33ibsxarf16vpxagb21z7x-system-path.drv
+  /nix/store/09mcw7whkl1211c130c88hgc1yqnc36j-set-environment.drv
+  /nix/store/10vf7xpfxkn3i1k8dqwgvskd74ypj2fh-etc-pam-environment.drv
+  /nix/store/3ddxlvip2v7fgin53nmhqm7krnc9iziw-dbus-1.drv
+  /nix/store/rkbs6x4h12fz2464pn39f0n7q20p31b5-X-Restart-Triggers-dbus.drv
+  /nix/store/dmni47117rb9qsp1v6sdslqdgvcisx1s-unit-dbus.service.drv
+  /nix/store/pc6sbdal3sr57jha6qpy62hsr87vjah7-X-Restart-Triggers-polkit.drv
+  /nix/store/nsnx1hmqlfx7l0qh31919wy170x1pg72-unit-polkit.service.drv
+  /nix/store/p3d8gzf66rcyp682ajz5firfdpw6jyci-unit-accounts-daemon.service.drv
+  /nix/store/9b735s04mp0i8kzbilcg5a2mxayxm1wf-system-units.drv
+  /nix/store/nwghvr0y2gmviqf3hb4d35md4wwdxzwq-unit-dbus.service.drv
+  /nix/store/alq7g6sz4z5w4bpiz0wbl824rzrk9d9b-user-units.drv
+  /nix/store/kb72lx4bzl209qfisfsfizj0anp55ssc-etc-profile.drv
+  /nix/store/cfkwckinn9wcibzaffk4h11af6bwii29-etc.drv
+  /nix/store/lh2n35wfj4zr2wczkd9imjcgl2l99b33-nixos-system-g14-25.05.20250322.1e5b653.drv
+this path will be fetched (4.42 MiB download, 19.93 MiB unpacked):
+  /nix/store/sr763j7qz94a6v0vm9jdnp1l6vn4f9az-wasm-bindgen-cli-0.2.100
+copying path '/nix/store/sr763j7qz94a6v0vm9jdnp1l6vn4f9az-wasm-bindgen-cli-0.2.100' from 'https://cache.nixos.org'...
+building '/nix/store/gxiny8xhkp33ibsxarf16vpxagb21z7x-system-path.drv'...
+building '/nix/store/pc6sbdal3sr57jha6qpy62hsr87vjah7-X-Restart-Triggers-polkit.drv'...
+building '/nix/store/3ddxlvip2v7fgin53nmhqm7krnc9iziw-dbus-1.drv'...
+building '/nix/store/10vf7xpfxkn3i1k8dqwgvskd74ypj2fh-etc-pam-environment.drv'...
+building '/nix/store/09mcw7whkl1211c130c88hgc1yqnc36j-set-environment.drv'...
+building '/nix/store/p3d8gzf66rcyp682ajz5firfdpw6jyci-unit-accounts-daemon.service.drv'...
+building '/nix/store/rkbs6x4h12fz2464pn39f0n7q20p31b5-X-Restart-Triggers-dbus.drv'...
+building '/nix/store/kb72lx4bzl209qfisfsfizj0anp55ssc-etc-profile.drv'...
+building '/nix/store/nsnx1hmqlfx7l0qh31919wy170x1pg72-unit-polkit.service.drv'...
+building '/nix/store/dmni47117rb9qsp1v6sdslqdgvcisx1s-unit-dbus.service.drv'...
+building '/nix/store/nwghvr0y2gmviqf3hb4d35md4wwdxzwq-unit-dbus.service.drv'...
+building '/nix/store/9b735s04mp0i8kzbilcg5a2mxayxm1wf-system-units.drv'...
+building '/nix/store/alq7g6sz4z5w4bpiz0wbl824rzrk9d9b-user-units.drv'...
+building '/nix/store/cfkwckinn9wcibzaffk4h11af6bwii29-etc.drv'...
+building '/nix/store/lh2n35wfj4zr2wczkd9imjcgl2l99b33-nixos-system-g14-25.05.20250322.1e5b653.drv'...
+stopping the following units: accounts-daemon.service
+activating the configuration...
+setting up /etc...
+reloading user units for chuu...
+restarting sysinit-reactivation.target
+reloading the following units: dbus.service
+restarting the following units: polkit.service
+starting the following units: accounts-daemon.service
+the following new units were started: NetworkManager-dispatcher.service
+Done. The new configuration is /nix/store/r922n35v9ignnz93fspzhnczjs5j76v1-nixos-system-g14-25.05.20250322.1e5b653

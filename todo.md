@@ -3,26 +3,30 @@
 ## dev
 
 - [X] nixos rebuild script
-- [ ] unattended system upgrades
+- [X] unattended system upgrades
 - [ ] hibernate
 - [X] bluetooth
 - [X] fractional scaling
 - [ ] tmux
 - [ ] alacritty
+  - [X] install
+  - [ ] make default terminal emulator
+  - [ ] open in console in file browser opens alacritty
 - [ ] python
   - [ ] yt-dlp
-- [ ] rust
+- [X] rust, cargo
 - [ ] pnpm
-- [ ] vscodium
-  - [ ] extensions
+- [X] vscodium
+  - [X] extensions
 - [ ] git
+  - [X] install
   - [ ] alias
   - [ ] config
 - [ ] android-studio
 - [ ] gnome-extensions
   - [ ] runcat
   - [ ] sysmon
-  - [ ] tiling shell
+  - [X] tiling shell
 - [X] obsidian
 - [ ] syncthing
   - [ ] declarative config
