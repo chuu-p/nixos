@@ -91,6 +91,9 @@
     cargo
     clang
     wasm-bindgen-cli
+    wayland
+    wayland-protocols
+    libxkbcommon
     alejandra
     keepassxc
     chromium
@@ -113,6 +116,7 @@
           foam.foam-vscode
           bierner.emojisense
           ms-python.python
+          tamasfe.even-better-toml
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
