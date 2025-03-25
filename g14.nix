@@ -107,6 +107,9 @@
     noto-fonts-cjk-serif
     gnome-tweaks
     signal-desktop
+    tmux
+    pnpm
+    just
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
