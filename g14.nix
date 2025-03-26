@@ -86,6 +86,8 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.config.allowBroken = true;
+
   environment.systemPackages = with pkgs; [
     vim
     git
@@ -94,6 +96,7 @@
     rustfmt
     cargo
     clang
+    hyper
     wasm-bindgen-cli
     wayland
     wayland-protocols
