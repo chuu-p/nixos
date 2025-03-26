@@ -114,6 +114,7 @@
     protobuf
     sqlite
     sqlite.dev
+    pkg-config
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
