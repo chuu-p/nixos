@@ -120,6 +120,7 @@
           bierner.emojisense
           ms-python.python
           tamasfe.even-better-toml
+          zxh404.vscode-proto3
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
