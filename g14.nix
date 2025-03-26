@@ -114,6 +114,7 @@
     protobuf
     sqlite
     pkg-config
+    diesel-cli
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
