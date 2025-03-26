@@ -50,3 +50,6 @@ popd
 
 # Notify all OK!
 echo "NixOS Rebuilt OK!"
+
+# FIXME Fix synchting permissions!!!
+sudo chmod g+rwx /var/lib/syncthing

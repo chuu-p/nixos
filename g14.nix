@@ -112,6 +112,7 @@
     just
     nodejs
     protobuf
+    sqlite
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
