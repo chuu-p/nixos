@@ -93,6 +93,7 @@
     rust-analyzer
     rustfmt
     cargo
+    clippy
     clang
     wasm-bindgen-cli
     wayland
