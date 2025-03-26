@@ -88,6 +88,7 @@
     vim
     git
     rustc
+    rustfmt
     cargo
     clang
     wasm-bindgen-cli
