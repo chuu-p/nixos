@@ -90,6 +90,7 @@
     vim
     git
     rustc
+    rust-analyzer
     rustfmt
     cargo
     clang
