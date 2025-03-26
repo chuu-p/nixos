@@ -110,6 +110,7 @@
     tmux
     pnpm
     just
+    nodejs
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
