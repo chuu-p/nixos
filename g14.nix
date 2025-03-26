@@ -131,6 +131,7 @@
           ms-python.python
           tamasfe.even-better-toml
           zxh404.vscode-proto3
+          bradlc.vscode-tailwindcss
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
