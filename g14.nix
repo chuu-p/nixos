@@ -116,6 +116,7 @@
     pkg-config
     diesel-cli
     helix
+    jetbrains.rust-rover
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
