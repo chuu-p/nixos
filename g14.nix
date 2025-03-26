@@ -86,8 +86,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.config.allowBroken = true;
-
   environment.systemPackages = with pkgs; [
     vim
     git
@@ -96,7 +94,6 @@
     rustfmt
     cargo
     clang
-    hyper
     wasm-bindgen-cli
     wayland
     wayland-protocols
@@ -124,6 +121,8 @@
     diesel-cli
     helix
     jetbrains.rust-rover
+    ranger
+    appimage-run
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
