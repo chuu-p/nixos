@@ -182,6 +182,19 @@
     user = "chuu";
     dataDir = "/home/chuu/Documents"; # Default folder for new synced folders
     configDir = "/home/chuu/Documents/.config/syncthing";
+
+    settings = {
+      devices = {
+        "op9pro" = {id = "LIENWDQ-YAQSMOR-QNZADLD-SLWPLD4-HIJ7EBF-AFSNPYJ-CGTBID3-HRGGMAL";};
+      };
+      folders = {
+        "notes" = {
+          # Name of folder in Syncthing, also the folder ID
+          path = "/home/chuu/sync/notes"; # Which folder to add to Syncthing
+          devices = ["op9pro"]; # Which devices to share the folder with
+        };
+      };
+    };
   };
 
   system.autoUpgrade = {
