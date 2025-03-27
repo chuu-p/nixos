@@ -192,6 +192,10 @@
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
+    group = "chuu";
+    user = "chuu";
+    dataDir = "/home/chuu/Documents"; # Default folder for new synced folders
+    configDir = "/home/chuu/Documents/.config/syncthing";
   };
 
   system.autoUpgrade = {
