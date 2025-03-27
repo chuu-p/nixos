@@ -76,9 +76,12 @@
     isNormalUser = true;
     description = "chuu";
     extraGroups = ["networkmanager" "wheel" "syncthing"];
+    shell = pkgs.fish;
     packages = with pkgs; [
     ];
   };
+
+  programs.fish.enable = true;
 
   programs.nix-ld.enable = true;
 
