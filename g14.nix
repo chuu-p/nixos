@@ -147,7 +147,7 @@
         ];
     })
 
-    gnomeExtensions.tiling-shell
+    # gnomeExtensions.tiling-shell
     gnomeExtensions.unite
   ];
 
@@ -175,24 +175,10 @@
 
   services.logind.lidSwitchExternalPower = "ignore";
 
-  # FIXME
-  # systemd.services.syncthing-permissions = {
-  #   description = "Set permissions for /var/lib/syncthing";
-  #   # before = ["syncthing.service"];
-  #   after = ["syncthing.service"];
-  #   # after = ["local-fs.target"];
-  #   serviceConfig = {
-  #     Type = "oneshot";
-  #     ExecStart = "/run/wrappers/bin/sudo chmod g+rwx /var/lib/syncthing";
-  #     RemainAfterExit = true;
-  #   };
-  #   wantedBy = ["multi-user.target"]; # Ensure it runs during boot
-  # };
-
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
-    group = "chuu";
+    group = "users";
     user = "chuu";
     dataDir = "/home/chuu/Documents"; # Default folder for new synced folders
     configDir = "/home/chuu/Documents/.config/syncthing";
