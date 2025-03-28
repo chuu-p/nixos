@@ -172,22 +172,11 @@
         ];
     })
 
-    # gnomeExtensions.tiling-shell
     gnomeExtensions.unite
   ];
 
   programs.git = {
     enable = true;
-    # extraConfig = {
-    #   alias = {
-    #     st = "status";
-    #     co = "checkout";
-    #     br = "branch";
-    #     ci = "commit";
-    #     lol = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
-    #     last = "log -1 HEAD --stat";
-    #   };
-    # };
   };
 
   programs.bash.shellAliases = {
@@ -195,7 +184,11 @@
     ll = "ls -l";
     ls = "ls --color=tty";
     kubectl = "sudo k3s kubectl";
+    sudo = "sudo ";
+    prettier = "npx prettier --write";
     g = "git";
+    cg = "cargo";
+    j = "just";
   };
 
   services.logind.lidSwitchExternalPower = "ignore";
