@@ -122,6 +122,7 @@
     alejandra
     neofetch
     alacritty
+    kitty
     fish
     gnome-tweaks
     tmux

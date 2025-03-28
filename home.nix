@@ -69,29 +69,39 @@
   #   ];
   # };
 
-  # TODO
-  # programs.helix = {
-  #   enable = true;
-  #   settings = {
-  #     theme = "autumn_night_transparent";
-  #     editor.cursor-shape = {
-  #       normal = "block";
-  #       insert = "bar";
-  #       select = "underline";
-  #     };
-  #   };
-  #   languages.language = [{
-  #     name = "nix";
-  #     auto-format = true;
-  #     formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
-  #   }];
-  #   themes = {
-  #     autumn_night_transparent = {
-  #       "inherits" = "autumn_night";
-  #       "ui.background" = { };
-  #     };
-  #   };
-  # };
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "base16_transparent";
+      # editor.cursor-shape = {
+      #   normal = "block";
+      #   insert = "bar";
+      #   select = "underline";
+      # };
+    };
+
+    # TODO
+    # https://yazi-rs.github.io/docs/tips/#helix-with-zellij
+    # keys.normal = {
+    #   ctrl.y = ":sh zellij run -n Yazi -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh open";
+    # };
+
+    # ~/.config/helix/config.toml
+    # [keys.normal]
+    # C-y = ":sh zellij run -n Yazi -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh open"
+
+    # languages.language = [{
+    #   name = "nix";
+    #   auto-format = true;
+    #   formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+    # }];
+    # themes = {
+    #   autumn_night_transparent = {
+    #     "inherits" = "autumn_night";
+    #     "ui.background" = { };
+    #   };
+    # };
+  };
 
   # TODO
   # programs.dconf.settings = {
