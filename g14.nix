@@ -186,6 +186,9 @@
   programs.git = {
     enable = true;
     config = {
+      init = {
+        defautBranch = "macho";
+      };
       alias = {
         a = "add";
         b = "branch";
