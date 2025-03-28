@@ -179,17 +179,17 @@
     enable = true;
   };
 
-  programs.bash.shellAliases = {
-    l = "ls -alh";
-    ll = "ls -l";
-    ls = "ls --color=tty";
-    kubectl = "sudo k3s kubectl";
-    sudo = "sudo ";
-    prettier = "npx prettier --write";
-    g = "git";
-    cg = "cargo";
-    j = "just";
-  };
+  # programs.fish.shellAliases = {
+  #   l = "ls -alh";
+  #   ll = "ls -l";
+  #   ls = "ls --color=tty";
+  #   kubectl = "sudo k3s kubectl";
+  #   sudo = "sudo ";
+  #   prettier = "npx prettier --write";
+  #   g = "git";
+  #   cg = "cargo";
+  #   j = "just";
+  # };
 
   services.logind.lidSwitchExternalPower = "ignore";
 

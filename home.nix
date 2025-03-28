@@ -7,16 +7,15 @@
   home.homeDirectory = "/home/chuu"; # Replace with your home directory
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
-  # Example: Install a package
   home.packages = with pkgs; [
-    neovim
-    git
-    # Add more packages here
+    kitty
   ];
 
   home.sessionVariables = {
     EDITOR = "hx";
   };
+
+  programs.fish.enable = true;
 
   programs.git = {
     enable = true;
@@ -48,6 +47,12 @@
         sw = "switch";
       };
     };
+  };
+
+  programs.kitty = {
+    enable = true;
+    # theme = "Miku Theme";
+    extraConfig = builtins.readFile ./miku_theme.conf;
   };
 
   # programs.dconf.settings = {
