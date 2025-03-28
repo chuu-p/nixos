@@ -90,43 +90,65 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    # Editors/IDEs
     vim
+    helix
+    obsidian
+
+    # Version Control
     git
+
+    # Rust Development
     rustc
     rust-analyzer
     rustfmt
     cargo
     clippy
+    diesel-cli
+
+    # C/C++ Development
     clang
+    protobuf
+
+    # Web Development
     wasm-bindgen-cli
+    nodejs
+    pnpm
+
+    # System/Utilities
     wayland
     wayland-protocols
     libxkbcommon
     alejandra
-    keepassxc
-    chromium
     neofetch
-    mpv
-    discord
-    obsidian
     alacritty
     fish
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
     gnome-tweaks
-    signal-desktop
     tmux
-    pnpm
     just
-    nodejs
-    protobuf
     sqlite
     pkg-config
-    diesel-cli
-    helix
-    jetbrains.rust-rover
     ranger
     appimage-run
+    home-manager
+
+    # Multimedia
+    mpv
+
+    # Communication
+    discord
+    signal-desktop
+
+    # Security
+    keepassxc
+
+    # Browsers
+    chromium
+
+    # Fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
