@@ -129,6 +129,8 @@
     sqlite
     pkg-config
     ranger
+    zellij
+    yazi
     appimage-run
     home-manager
 

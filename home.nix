@@ -51,10 +51,49 @@
 
   programs.kitty = {
     enable = true;
-    # theme = "Miku Theme";
-    extraConfig = builtins.readFile ./miku_theme.conf;
+    extraConfig = builtins.readFile ./kitty/miku_theme.conf;
   };
 
+  # xdg.desktopEntries."kitty" = {
+  #   name = "Kitty Terminal";
+  #   description = "Fast, feature-rich, GPU based terminal emulator";
+  #   exec = "${pkgs.kitty}/bin/kitty";
+  #   icon = "utilities-terminal"; # You can change this icon
+  #   terminal = false;
+  #   categories = ["TerminalEmulator"];
+  # };
+
+  # dconf.settings = {
+  #   "/org/gnome/desktop/wm/keybindings/custom-list" = [
+  #     "<Super>t ['${pkgs.kitty}/bin/kitty']"
+  #   ];
+  # };
+
+  # TODO
+  # programs.helix = {
+  #   enable = true;
+  #   settings = {
+  #     theme = "autumn_night_transparent";
+  #     editor.cursor-shape = {
+  #       normal = "block";
+  #       insert = "bar";
+  #       select = "underline";
+  #     };
+  #   };
+  #   languages.language = [{
+  #     name = "nix";
+  #     auto-format = true;
+  #     formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+  #   }];
+  #   themes = {
+  #     autumn_night_transparent = {
+  #       "inherits" = "autumn_night";
+  #       "ui.background" = { };
+  #     };
+  #   };
+  # };
+
+  # TODO
   # programs.dconf.settings = {
   #   "org/gnome/settings-daemon/plugins/media-keys" = {
   #     custom-keybindings = [
