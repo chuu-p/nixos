@@ -179,10 +179,39 @@
     gnomeExtensions.unite
   ];
 
+  # programs.git = {
+  #   enable = true;
+  # };
+
   programs.git = {
     enable = true;
+    config = {
+      alias = {
+        a = "add";
+        b = "branch";
+        c = "commit";
+        cfg = "config";
+        chp = "cherry-pick";
+        co = "checkout";
+        d = "diff";
+        f = "fetch";
+        graph = "log --graph";
+        i = "init --template=";
+        l = "log";
+        last = "log -1";
+        m = "merge";
+        pl = "pull";
+        ps = "push";
+        r = "reset";
+        rb = "rebase";
+        re = "remote";
+        rm = "remote";
+        s = "status";
+        wd = "diff --word-diff=color";
+        sw = "switch";
+      };
+    };
   };
-
   # programs.fish.shellAliases = {
   #   l = "ls -alh";
   #   ll = "ls -l";
