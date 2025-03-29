@@ -20,6 +20,16 @@
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
     '';
+    functions = {
+      y = ''
+        set tmp (mktemp -t "yazi-cwd.XXXXXX")
+        yazi $argv --cwd-file="$tmp"
+        if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+          builtin cd -- "$cwd"
+        end
+        rm -f -- "$tmp"
+      '';
+    };
   };
 
   programs.git = {
@@ -78,7 +88,8 @@
     enable = true;
     settings = {
       theme = "term16_transparent";
-      editor.lsp.display-inline-hints = true;
+      editor.lsp.display-messages = true;
+      editor.lsp.display-inlay-hints = true;
     };
     # languages.language = [{
     #   name = "nix";
