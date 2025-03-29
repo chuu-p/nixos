@@ -135,6 +135,7 @@
     appimage-run
     home-manager
     mullvad-vpn
+    xsel
 
     # Multimedia
     mpv
