@@ -34,6 +34,7 @@
                 g = "git";
                 cg = "cargo";
                 j = "just";
+                zj = "zellij";
               };
             };
             imports = [
