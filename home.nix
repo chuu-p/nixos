@@ -109,21 +109,6 @@
       #   select = "underline";
       # };
     };
-    languages.language = [
-      {
-        name = "rust";
-        auto-format = true;
-        config.inlayHints = {
-          includeInlayEnumMemberValueHints = true;
-          includeInlayFunctionLikeReturnTypeHints = true;
-          includeInlayFunctionParameterTypeHints = true;
-          includeInlayParameterNameHints = "all"; # 'none' | 'literals' | 'all';
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true;
-          includeInlayPropertyDeclarationTypeHints = true;
-          includeInlayVariableTypeHints = true;
-        };
-      }
-    ];
     # languages.language = [{
     #   name = "nix";
     #   auto-format = true;
