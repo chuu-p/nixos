@@ -76,27 +76,9 @@
 
   programs.helix = {
     enable = true;
-    defaultEditor = true;
-
     settings = {
       theme = "term16_transparent";
-      editor = {
-        auto-save = {
-          focus-lost = true;
-          after-delay.enable = true;
-          after-delay.timeout = 3000;
-        };
-        line-number = "relative";
-        lsp.display-messages = true;
-        lsp.display-inlay-hints = true;
-        cursorline = true;
-        bufferline = "always";
-        color-modes = true;
-        soft-wrap = {
-          enable = true;
-          max-wrap = 25;
-        };
-      };
+      editor.lsp.display-inline-hints = true;
     };
     # languages.language = [{
     #   name = "nix";
