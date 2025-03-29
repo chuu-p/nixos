@@ -30,6 +30,16 @@
         rm -f -- "$tmp"
       '';
     };
+    plugins = [
+      {
+        name = "done";
+        src = pkgs.fishPlugins.done.src;
+      }
+      {
+        name = "hydro";
+        src = pkgs.fishPlugins.hydro.src;
+      }
+    ];
   };
 
   programs.git = {
@@ -87,7 +97,8 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "base16_transparent";
+      theme = "term16_dark";
+      # globally enable inlay-hints for all languages
       editor.lsp.display-messages = true;
       editor.lsp.display-inlay-hints = true;
     };
