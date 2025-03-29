@@ -87,7 +87,7 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "term16_transparent";
+      theme = "base16_transparent";
       editor.lsp.display-messages = true;
       editor.lsp.display-inlay-hints = true;
     };
