@@ -106,6 +106,8 @@
     cargo
     clippy
     diesel-cli
+    koto
+    koto-ls
 
     # C/C++ Development
     clang
