@@ -94,6 +94,7 @@
     vim
     helix
     obsidian
+    jetbrains.rust-rover
 
     # Version Control
     git
