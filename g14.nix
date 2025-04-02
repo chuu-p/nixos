@@ -128,6 +128,7 @@
     neofetch
     alacritty
     kitty
+    rio
     fish
     gnome-tweaks
     tmux
