@@ -213,6 +213,7 @@
         rm = "remote";
         s = "status";
         wd = "diff --word-diff=color";
+        dni = "diff --no-index";
         sw = "switch";
       };
       core = {
