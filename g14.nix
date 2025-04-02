@@ -117,6 +117,7 @@
     wasm-bindgen-cli
     nodejs
     pnpm
+    nodePackages.live-server
 
     # System/Utilities
     wayland
