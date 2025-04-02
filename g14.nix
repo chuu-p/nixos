@@ -198,6 +198,7 @@
         cfg = "config";
         chp = "cherry-pick";
         co = "checkout";
+        cl = "clone";
         d = "diff";
         f = "fetch";
         graph = "log --graph";
