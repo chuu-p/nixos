@@ -225,6 +225,7 @@
       delta = {
         navigate = "true";
         dark = "true";
+        line-numbers = "true";
       };
       merge = {
         conflictstyle = "zdiff3";
