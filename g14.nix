@@ -185,10 +185,6 @@
     gnomeExtensions.unite
   ];
 
-  # programs.git = {
-  #   enable = true;
-  # };
-
   programs.git = {
     enable = true;
     config = {
@@ -219,19 +215,21 @@
         wd = "diff --word-diff=color";
         sw = "switch";
       };
+      core = {
+        pager = "delta";
+      };
+      interactive = {
+        diffFilter = "delta --color-only";
+      };
+      delta = {
+        navigate = "true";
+        dark = "true";
+      };
+      merge = {
+        conflictstyle = "zdiff3";
+      };
     };
   };
-  # programs.fish.shellAliases = {
-  #   l = "ls -alh";
-  #   ll = "ls -l";
-  #   ls = "ls --color=tty";
-  #   kubectl = "sudo k3s kubectl";
-  #   sudo = "sudo ";
-  #   prettier = "npx prettier --write";
-  #   g = "git";
-  #   cg = "cargo";
-  #   j = "just";
-  # };
 
   services.logind.lidSwitchExternalPower = "ignore";
 
