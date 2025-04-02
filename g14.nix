@@ -98,6 +98,7 @@
 
     # Version Control
     git
+    delta
 
     # Rust Development
     rustc
