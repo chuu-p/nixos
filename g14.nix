@@ -229,6 +229,9 @@
         navigate = "true";
         dark = "true";
         line-numbers = "true";
+        options = {
+          syntax-theme = "ansi"; # Replace with your chosen theme
+        };
       };
       merge = {
         conflictstyle = "zdiff3";

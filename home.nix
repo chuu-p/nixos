@@ -88,6 +88,21 @@
     };
   };
 
+  # programs.yazi.enable = true;
+
+  # programs.yazi.flavors = {
+  #   catppuccin-mocha = pkgs.fetchFromGitHub {
+  #     owner = "yazi-rs";
+  #     repo = "flavors";
+  #     rev = "main";
+  #     sha256 = "nhIhCMBqr4VSzesplQRF6Ik55b3Ljae0dN+TYbzQb5s=";
+  #   };
+  # };
+
+  # programs.yazi.settings = {
+  #   theme = "catppuccin-mocha";
+  # };
+
   # xdg.desktopEntries."kitty" = {
   #   name = "Kitty Terminal";
   #   description = "Fast, feature-rich, GPU based terminal emulator";
