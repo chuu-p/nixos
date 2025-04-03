@@ -76,7 +76,16 @@
 
   programs.kitty = {
     enable = true;
-    extraConfig = builtins.readFile ./kitty/miku_theme.conf;
+    extraConfig = builtins.readFile ./themes/miku.conf;
+  };
+
+  home.file.".config/zellij/themes/miku.kdl".source = ./themes/miku.kdl;
+
+  programs.zellij = {
+    enable = true;
+    settings = {
+      theme = "miku";
+    };
   };
 
   # xdg.desktopEntries."kitty" = {
