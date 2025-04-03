@@ -99,6 +99,7 @@
     # Version Control
     git
     delta
+    gh
 
     # Rust Development
     rustc
