@@ -79,12 +79,12 @@
     extraConfig = builtins.readFile ./themes/miku.conf;
   };
 
-  home.file.".config/zellij/themes/miku.kdl".source = ./themes/miku.kdl;
+  # home.file.".config/zellij/themes/miku.kdl".source = ./themes/miku.kdl;
 
   programs.zellij = {
     enable = true;
     settings = {
-      theme = "miku";
+      theme = "ayu_dark";
     };
   };
 
