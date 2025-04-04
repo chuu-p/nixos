@@ -9,6 +9,9 @@
 
   hardware.nvidia.dynamicBoost.enable = false;
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -47,6 +50,8 @@
   };
 
   console.keyMap = "de";
+
+  services.blueman.enable = true;
 
   services.printing.enable = true;
 
