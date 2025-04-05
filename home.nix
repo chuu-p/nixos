@@ -149,4 +149,10 @@
   # };
 
   # programs.dconf.enable = true;
+
+  # gtk = {
+  #   enable = true;
+  #   theme.name = "Adwaita-dark"; # Or any dark theme you prefer
+  #   theme.package = pkgs.gnome-themes-extra;
+  # };
 }

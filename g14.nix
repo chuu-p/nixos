@@ -49,6 +49,21 @@
     };
   };
 
+  # services.redshift = {
+  #   enable = true;
+  #   brightness = {
+  #     # Note the string values below.
+  #     day = "1";
+  #     night = "1";
+  #   };
+  #   temperature = {
+  #     day = 5500;
+  #     night = 3700;
+  #   };
+  #   latitude = 49.0;
+  #   longitude = 8.4;
+  # };
+
   console.keyMap = "de";
 
   services.blueman.enable = true;
@@ -136,6 +151,7 @@
 
     # Multimedia
     mpv
+    pavucontrol
 
     # Communication
     discord

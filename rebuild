@@ -15,7 +15,7 @@ set -e
 # Edit your config
 # $EDITOR ~/git/nixos/chuu-thinkpad.nix
 # vim ~/git/nixos/flake.nix
-vim ~/git/nixos/g14.nix
+$EDITOR ~/git/nixos/g14.nix
 
 # cd to your config dir
 pushd ~/git/nixos/
