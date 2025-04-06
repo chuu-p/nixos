@@ -49,24 +49,28 @@
     };
   };
 
-  # services.redshift = {
-  #   enable = true;
-  #   brightness = {
-  #     # Note the string values below.
-  #     day = "1";
-  #     night = "1";
-  #   };
-  #   temperature = {
-  #     day = 5500;
-  #     night = 3700;
-  #   };
-  #   latitude = 49.0;
-  #   longitude = 8.4;
-  # };
+  services.redshift = {
+    enable = true;
+
+    temperature = {
+      day = 5700;
+      night = 3500;
+    };
+
+    latitude = "50.9";
+    longitude = "6.9";
+
+    brightness = {
+      day = "1";
+      night = "0.8";
+    };
+  };
 
   console.keyMap = "de";
 
   services.blueman.enable = true;
+
+  services.picom.enable = true;
 
   services.printing.enable = true;
 

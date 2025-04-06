@@ -126,11 +126,13 @@
       editor.lsp.display-messages = true;
       editor.lsp.display-inlay-hints = true;
     };
-    # languages.language = [{
-    #   name = "nix";
-    #   auto-format = true;
-    #   formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
-    # }];
+    languages.language = [
+      {
+        name = "nix";
+        auto-format = true;
+        formatter.command = "${pkgs.alejandra}/bin/alejandra";
+      }
+    ];
   };
 
   # TODO
