@@ -152,6 +152,8 @@
     home-manager
     mullvad-vpn
     xsel
+    brightnessctl
+    cryptsetup
 
     # Multimedia
     mpv
