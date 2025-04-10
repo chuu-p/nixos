@@ -14,6 +14,7 @@
   home.sessionVariables = {
     EDITOR = "hx";
   };
+  home.sessionPath = ["${config.home.homeDirectory}/git/nixos/PATH"];
 
   programs.fish = {
     enable = true;
