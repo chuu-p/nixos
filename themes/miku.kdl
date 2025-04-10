@@ -1,0 +1,64 @@
+themes {
+    miku {
+        text_unselected {
+            base 187 187 187
+            background 41 48 48
+            emphasis_0 255 22 180
+            emphasis_1 128 203 196
+            emphasis_2 255 215 64
+            emphasis_3 100 181 246
+        }
+        text_selected {
+            base 187 187 187
+            background 49 57 57
+            emphasis_0 255 22 180
+            emphasis_1 128 203 196
+            emphasis_2 255 215 64
+            emphasis_3 100 181 246
+        }
+        ribbon_selected {
+            base 41 48 48
+            background 206 147 216
+            emphasis_0 255 22 180
+            emphasis_1 100 181 246
+            emphasis_2 77 182 172
+            emphasis_3 255 255 255
+        }
+        ribbon_unselected {
+            base 41 48 48
+            background 49 57 57
+            emphasis_0 255 22 180
+            emphasis_1 187 187 187
+            emphasis_2 100 181 246
+            emphasis_3 77 182 172
+        }
+        table_title {
+            base 206 147 216
+            background 0 0 0
+            emphasis_0 255 22 180
+            emphasis_1 128 203 196
+            emphasis_2 255 215 64
+            emphasis_3 100 181 246
+        }
+        cursor {
+            base 77 182 172
+        }
+        exit_code_success {
+            base 128 203 196
+            background 0 0 0
+            emphasis_0 255 215 64
+            emphasis_1 41 48 48
+            emphasis_2 255 22 180
+            emphasis_3 100 181 246
+        }
+        exit_code_error {
+            base 255 22 180
+            background 0 0 0
+            emphasis_0 206 147 216
+            emphasis_1 0 0 0
+            emphasis_2 0 0 0
+            emphasis_3 0 0 0
+        }
+    }
+}
+
