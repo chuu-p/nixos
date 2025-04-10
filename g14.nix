@@ -63,10 +63,10 @@
     latitude = "50.9";
     longitude = "6.9";
 
-    brightness = {
-      day = "1";
-      night = "0.5";
-    };
+    # brightness = {
+    #   day = "1";
+    #   night = "0.5";
+    # };
   };
 
   console.keyMap = "de";
