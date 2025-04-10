@@ -38,7 +38,10 @@
     enable = true;
     layout = "de";
     videoDrivers = ["nvidia"];
-    displayManager.lightdm.enable = true;
+    displayManager.lightdm = {
+      enable = true;
+      greeters.slick.enable = true;
+    };
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
