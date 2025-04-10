@@ -148,6 +148,8 @@
     ];
   };
 
+  services.dunst.enable = true;
+
   # TODO
   # programs.dconf.settings = {
   #   "org/gnome/settings-daemon/plugins/media-keys" = {

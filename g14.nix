@@ -57,7 +57,7 @@
 
     temperature = {
       day = 5700;
-      night = 3500;
+      night = 3000;
     };
 
     latitude = "50.9";
@@ -65,7 +65,7 @@
 
     brightness = {
       day = "1";
-      night = "0.8";
+      night = "0.1";
     };
   };
 
