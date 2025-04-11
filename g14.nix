@@ -158,6 +158,7 @@
     xsel
     brightnessctl
     cryptsetup
+    xorg.xev
 
     # Multimedia
     mpv
