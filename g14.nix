@@ -164,6 +164,7 @@
     mpv
     pavucontrol
     transmission_4-qt
+    mkvtoolnix-cli
 
     # Communication
     discord
