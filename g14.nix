@@ -163,6 +163,7 @@
     # Multimedia
     mpv
     pavucontrol
+    transmission_4
 
     # Communication
     discord
