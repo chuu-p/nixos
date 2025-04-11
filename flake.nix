@@ -18,7 +18,6 @@
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
-        ./hyper/flake.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.backupFileExtension = "hm-backup";
