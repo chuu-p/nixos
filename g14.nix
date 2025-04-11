@@ -110,6 +110,7 @@
     helix
     obsidian
     jetbrains.rust-rover
+    python314
 
     # Version Control
     git
