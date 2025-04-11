@@ -104,6 +104,11 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  fonts.packages = with pkgs; [
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+  ];
+
   environment.systemPackages = with pkgs; [
     # Editors/IDEs
     vim
@@ -176,10 +181,6 @@
 
     # Browsers
     chromium
-
-    # Fonts
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
 
     (vscode-with-extensions.override {
       vscode = vscodium;
