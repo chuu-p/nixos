@@ -38,6 +38,7 @@
     enable = true;
     layout = "de";
     videoDrivers = ["nvidia"];
+    xkbOptions = "caps:super";
     displayManager.lightdm = {
       enable = true;
       greeters.slick.enable = true;
