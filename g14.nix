@@ -165,12 +165,15 @@
     brightnessctl
     cryptsetup
     xorg.xev
+    libnotify
 
     # Multimedia
     mpv
     pavucontrol
     transmission_4-qt
     mkvtoolnix-cli
+    pulseaudio
+    playerctl
 
     # Communication
     discord
@@ -260,7 +263,19 @@
     };
   };
 
-  services.logind.lidSwitchExternalPower = "ignore";
+  services.logind = {
+    lidSwitch = "suspend-then-hibernate";
+    lidSwitchExternalPower = "ignore";
+
+    extraConfig = ''
+      # don’t shutdown when power button is short-pressed
+      HandlePowerKey=ignore
+    '';
+  };
+
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=30min
+  '';
 
   services.syncthing = {
     enable = true;
