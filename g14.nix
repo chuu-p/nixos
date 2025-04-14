@@ -169,6 +169,8 @@
     libnotify
     unzip
     calibre
+    flameshot
+    tty-clock
 
     # Multimedia
     mpv
