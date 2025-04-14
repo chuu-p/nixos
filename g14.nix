@@ -108,6 +108,7 @@
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
   ];
+  # fonts.fontDir = ["/home/chuu/.local/share/fonts"];
 
   environment.systemPackages = with pkgs; [
     # Editors/IDEs
@@ -166,6 +167,8 @@
     cryptsetup
     xorg.xev
     libnotify
+    unzip
+    calibre
 
     # Multimedia
     mpv
