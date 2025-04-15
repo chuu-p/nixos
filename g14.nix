@@ -179,6 +179,7 @@
     mkvtoolnix-cli
     pulseaudio
     playerctl
+    inkscape
 
     # Communication
     discord
