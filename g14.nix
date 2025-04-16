@@ -172,6 +172,7 @@
     flameshot
     tty-clock
     typst
+    pandoc
 
     # Multimedia
     mpv
