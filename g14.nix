@@ -208,6 +208,7 @@
           tamasfe.even-better-toml
           zxh404.vscode-proto3
           bradlc.vscode-tailwindcss
+          tomoki1207.pdf
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
