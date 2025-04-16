@@ -103,7 +103,8 @@
 
   programs.kitty = {
     enable = true;
-    extraConfig = builtins.readFile ./themes/miku.conf;
+    # extraConfig = builtins.readFile ./themes/miku.conf;
+    extraConfig = builtins.readFile ./themes/ene.conf;
   };
 
   # home.file.".config/zellij/themes/miku.kdl".source = ./themes/miku.kdl;
