@@ -171,6 +171,7 @@
     calibre
     flameshot
     tty-clock
+    typst
 
     # Multimedia
     mpv
