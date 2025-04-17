@@ -1,0 +1,82 @@
+mod: {
+  "${mod}+t" = "exec kitty";
+  "${mod}+Return" = "exec kitty";
+  "${mod}+Shift+Return" = "exec kitty yazi";
+
+  "${mod}+Shift+q" = "kill";
+  "${mod}+Shift+d" = "exec i3-dmenu-desktop";
+  "${mod}+d" = "exec dmenu_run";
+
+  # TODO "${mod}+l" = "exec xautolock -locknow";
+
+  "${mod}+Left" = "focus left";
+  "${mod}+Down" = "focus down";
+  "${mod}+Up" = "focus up";
+  "${mod}+Right" = "focus right";
+  "${mod}+Shift+f" = "[urgent=latest] focus";
+
+  "${mod}+Shift+Left" = "move left";
+  "${mod}+Shift+Down" = "move down";
+  "${mod}+Shift+Up" = "move up";
+  "${mod}+Shift+Right" = "move right";
+
+  "${mod}+h" = "split h";
+  "${mod}+v" = "split v";
+  "${mod}+f" = "fullscreen toggle";
+
+  "${mod}+s" = "layout stacking";
+  "${mod}+w" = "layout tabbed";
+  "${mod}+e" = "layout toggle split";
+
+  # TODO "floating modifier $mod"
+
+  "${mod}+Shift+space" = "floating toggle";
+  # "${mod}+Shift+a" = "mode_toggle";
+
+  "${mod}+a" = "focus parent";
+  "${mod}+Shift+a" = "focus child";
+
+  "${mod}+Shift+c" = "reload";
+  "${mod}+Shift+r" = "restart";
+
+  "Print" = "exec flameshot launcher";
+
+  "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +10%";
+  "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -10%";
+  # TODO mute mic button
+
+  "XF86MonBrightnessUp" = "exec brightnessctl set +10%";
+  "XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
+
+  # TODO FIXME XF86PowerOff
+  "XF86Launch1" = "exec systemctl suspend-then-hibernate";
+  "Mod1+XF86Launch1" = "exec systemctl hibernate";
+  "Shift+XF86Launch1" = "exec systemctl poweroff";
+  "Control+XF86Launch1" = "exec systemctl reboot";
+
+  "${mod}+1" = "workspace 1";
+  "${mod}+2" = "workspace 2";
+  "${mod}+3" = "workspace 3";
+  "${mod}+4" = "workspace 4";
+  "${mod}+5" = "workspace 5";
+  "${mod}+6" = "workspace 6";
+  "${mod}+7" = "workspace 7";
+  "${mod}+8" = "workspace 8";
+  "${mod}+9" = "workspace 9";
+  "${mod}+0" = "workspace 10";
+  "${mod}+Shift+1" = "move container to workspace 1";
+  "${mod}+Shift+2" = "move container to workspace 2";
+  "${mod}+Shift+3" = "move container to workspace 3";
+  "${mod}+Shift+4" = "move container to workspace 4";
+  "${mod}+Shift+5" = "move container to workspace 5";
+  "${mod}+Shift+6" = "move container to workspace 6";
+  "${mod}+Shift+7" = "move container to workspace 7";
+  "${mod}+Shift+8" = "move container to workspace 8";
+  "${mod}+Shift+9" = "move container to workspace 9";
+  "${mod}+Shift+0" = "move container to workspace 10";
+
+  # TODO
+  # - [ ] modes
+  # - [ ] bar
+  # - [ ] initialization
+}
