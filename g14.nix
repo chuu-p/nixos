@@ -112,8 +112,10 @@
   nixpkgs.config.allowUnfree = true;
 
   fonts.packages = with pkgs; [
+    noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
+    noto-fonts-emoji
   ];
   # fonts.fontDir = ["/home/chuu/.local/share/fonts"];
 
@@ -177,7 +179,7 @@
     tty-clock
     typst
     pandoc
-    polybar
+    nerd-fonts.noto
 
     # Multimedia
     mpv

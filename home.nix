@@ -136,10 +136,15 @@
         {command = "exec flameshot";}
         {command = "exec mullvad-gui";}
       ];
+      fonts = {
+        names = ["Noto Sans" "Noto Color Emoji"];
+        style = "Bold Semi-Condensed";
+        size = 11.0;
+      };
       bars = [
         {
           position = "top";
-          statusCommand = "i3status -c i3status.conf";
+          statusCommand = "i3status -c ~/git/nixos/i3status.conf";
           # trayOutput = "DP-2"; # Make sure this matches your desired output
           # font = "pango:Cousine 11"; # Ensure this font is availabl
         }
@@ -153,7 +158,6 @@
       #   hideEdgeBorders = "both";
       #   workspaceLayout = "tabbed";
       # };
-
       # TODO
       # - [ ] modes
       # - [ ] bar
