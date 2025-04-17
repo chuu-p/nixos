@@ -128,7 +128,13 @@
       #     notification = false;
       #   }
       # ];
+      #
+      # TODO
+      # - [ ] modes
+      # - [ ] bar
+      # - [ ] initialization
       keybindings = import ./i3-keybindings.nix "Mod4";
+      # modes = import ./i3-modes.nix config.i3.config.modifier;
     };
   };
 

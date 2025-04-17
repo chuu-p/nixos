@@ -173,6 +173,7 @@
     tty-clock
     typst
     pandoc
+    polybar
 
     # Multimedia
     mpv
