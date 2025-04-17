@@ -144,9 +144,9 @@
           # trayOutput = "DP-2"; # Make sure this matches your desired output
           # font = "pango:Cousine 11"; # Ensure this font is availabl
           fonts = {
-            names = ["DejaVu Sans Mono"];
+            names = ["Space Mono"];
             style = "Regular";
-            size = 11.0;
+            size = 10.0;
           };
         }
       ];

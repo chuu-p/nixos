@@ -112,6 +112,11 @@
   nixpkgs.config.allowUnfree = true;
 
   fonts.packages = with pkgs; [
+    nerd-fonts.noto
+    nerd-fonts.dejavu-sans-mono
+    nerd-fonts.symbols-only
+    nerd-fonts.space-mono
+
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
@@ -179,9 +184,6 @@
     tty-clock
     typst
     pandoc
-    nerd-fonts.noto
-    nerd-fonts.dejavu-sans-mono
-    nerd-fonts.symbols-only
 
     # Multimedia
     mpv
