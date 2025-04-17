@@ -145,7 +145,7 @@
           # font = "pango:Cousine 11"; # Ensure this font is availabl
           fonts = {
             names = ["Noto Sans" "Noto Color Emoji"];
-            style = "Bold Semi-Condensed";
+            style = "Regular";
             size = 11.0;
           };
         }
