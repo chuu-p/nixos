@@ -167,6 +167,7 @@
     fish
     just
     sqlite
+    sqlite.dev
     pkg-config
     zellij
     yazi
