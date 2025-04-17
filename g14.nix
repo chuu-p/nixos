@@ -36,12 +36,17 @@
 
   services.xserver = {
     enable = true;
-    layout = "de";
+    xkb = {
+      layout = "de";
+      options = "caps:super";
+    };
     videoDrivers = ["nvidia"];
-    xkbOptions = "caps:super";
     displayManager.lightdm = {
       enable = true;
-      greeters.slick.enable = true;
+      greeters.slick = {
+        enable = true;
+        draw-user-backgrounds = true;
+      };
     };
     windowManager.i3 = {
       enable = true;
@@ -53,6 +58,11 @@
     };
   };
 
+  location = {
+    latitude = 50.9;
+    longitude = 6.9;
+  };
+
   services.redshift = {
     enable = true;
 
@@ -60,9 +70,6 @@
       day = 5700;
       night = 3000;
     };
-
-    latitude = "50.9";
-    longitude = "6.9";
 
     # brightness = {
     #   day = "1";
@@ -115,7 +122,7 @@
     vim
     helix
     obsidian
-    jetbrains.rust-rover
+    # jetbrains.rust-rover
     python314
 
     # Version Control
@@ -151,12 +158,9 @@
     kitty
     rio
     fish
-    gnome-tweaks
-    tmux
     just
     sqlite
     pkg-config
-    ranger
     zellij
     yazi
     appimage-run
@@ -193,9 +197,6 @@
 
     # Browsers
     chromium
-
-    # CAD
-    kicad
 
     (vscode-with-extensions.override {
       vscode = vscodium;

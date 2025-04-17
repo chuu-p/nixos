@@ -116,25 +116,62 @@
     };
   };
 
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+    ];
+  };
+
   xsession.windowManager.i3 = {
     enable = true;
     config = {
       modifier = "Mod4";
       # TODO
-      # startup = [
-      #   {
-      #     command = "systemctl --user restart polybar";
-      #     always = true;
-      #     notification = false;
-      #   }
-      # ];
-      #
+      startup = [
+        {command = "exec discord --start-minimized";}
+        {command = "exec keepassxc";}
+        {command = "exec flameshot";}
+        {command = "exec mullvad-gui";}
+      ];
+      bars = [
+        {
+          position = "top";
+          statusCommand = "i3status -c i3status.conf";
+          # trayOutput = "DP-2"; # Make sure this matches your desired output
+          # font = "pango:Cousine 11"; # Ensure this font is availabl
+        }
+      ];
+
+      # FIXME
+      # settings = {
+      #   # focusFollowsMouse = false;
+      #   defaultBorder = "normal 2";
+      #   defaultFloatingBorder = "normal 2";
+      #   hideEdgeBorders = "both";
+      #   workspaceLayout = "tabbed";
+      # };
+
       # TODO
       # - [ ] modes
       # - [ ] bar
       # - [ ] initialization
+      # - [ ] pavucontrol always floating
+      # - [ ] default app -> pdf chromium
+      # - [ ] default app -> feh image viewer
+      # - [ ] lol cursor set
       keybindings = import ./i3-keybindings.nix "Mod4";
-      # modes = import ./i3-modes.nix config.i3.config.modifier;
+      # modes = import ./i3-modes.nix "Mod4";
+
+      # FIXME this does not work
+      # forWindow = [
+      #   {
+      #     title = "^Volume Control$";
+      #     floating = true;
+      #   }
+      # ];
     };
   };
 
