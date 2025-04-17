@@ -144,7 +144,7 @@
           # trayOutput = "DP-2"; # Make sure this matches your desired output
           # font = "pango:Cousine 11"; # Ensure this font is availabl
           fonts = {
-            names = ["Noto Sans" "Noto Color Emoji"];
+            names = ["pango:DejaVu Sans Mono" "DejaVu Sans Mono"];
             style = "Regular";
             size = 11.0;
           };

@@ -180,6 +180,7 @@
     typst
     pandoc
     nerd-fonts.noto
+    nerd-fonts.dejavu-sans-mono
 
     # Multimedia
     mpv
