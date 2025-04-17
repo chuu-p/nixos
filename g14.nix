@@ -181,6 +181,7 @@
     pandoc
     nerd-fonts.noto
     nerd-fonts.dejavu-sans-mono
+    nerd-fonts.symbols-only
 
     # Multimedia
     mpv
