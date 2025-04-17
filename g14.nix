@@ -204,6 +204,9 @@
     # Browsers
     chromium
 
+    # Emulation
+    bottles
+
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
