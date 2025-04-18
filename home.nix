@@ -201,8 +201,13 @@
     settings = {
       theme = "term16_dark";
       # globally enable inlay-hints for all languages
-      editor.lsp.display-messages = true;
-      editor.lsp.display-inlay-hints = true;
+      editor = {
+        line-number = "relative";
+        lsp = {
+          display-inlay-hints = true;
+          display-messages = true;
+        };
+      };
     };
     languages.language = [
       {
