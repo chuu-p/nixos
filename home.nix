@@ -103,16 +103,35 @@
 
   programs.kitty = {
     enable = true;
-    # extraConfig = builtins.readFile ./themes/miku.conf;
     extraConfig = builtins.readFile ./themes/ene.conf;
   };
-
-  # home.file.".config/zellij/themes/miku.kdl".source = ./themes/miku.kdl;
 
   programs.zellij = {
     enable = true;
     settings = {
-      theme = "ayu_dark";
+      theme = "ene";
+      themes.ene = {
+        fg = "#e5e1cf";
+        bg = "#0e1419";
+        black = "#000000";
+        red = "#ff3333";
+        green = "#b8cc52";
+        yellow = "#e6c446";
+        blue = "#36a3d9";
+        magenta = "#f07078";
+        cyan = "#95e5cb";
+        white = "#ffffff";
+        orange = "#f19618"; # Using cursor color as there's no dedicated orange in ene.conf
+        light_black = "#323232";
+        light_red = "#ff6565";
+        light_green = "#e9fe83";
+        light_yellow = "#fff778";
+        light_blue = "#68d4ff";
+        light_magenta = "#ffa3aa";
+        light_cyan = "#c7fffc";
+        light_white = "#ffffff";
+      };
+      pane_frames = false;
     };
   };
 
@@ -180,35 +199,10 @@
     };
   };
 
-  # programs.yazi.enable = true;
-
-  # programs.yazi.flavors = {
-  #   catppuccin-mocha = pkgs.fetchFromGitHub {
-  #     owner = "yazi-rs";
-  #     repo = "flavors";
-  #     rev = "main";
-  #     sha256 = "nhIhCMBqr4VSzesplQRF6Ik55b3Ljae0dN+TYbzQb5s=";
-  #   };
-  # };
-
-  # programs.yazi.settings = {
-  #   theme = "catppuccin-mocha";
-  # };
-
-  # xdg.desktopEntries."kitty" = {
-  #   name = "Kitty Terminal";
-  #   description = "Fast, feature-rich, GPU based terminal emulator";
-  #   exec = "${pkgs.kitty}/bin/kitty";
-  #   icon = "utilities-terminal"; # You can change this icon
-  #   terminal = false;
-  #   categories = ["TerminalEmulator"];
-  # };
-
-  # dconf.settings = {
-  #   "/org/gnome/desktop/wm/keybindings/custom-list" = [
-  #     "<Super>t ['${pkgs.kitty}/bin/kitty']"
-  #   ];
-  # };
+  programs.yazi = {
+    enable = true;
+    theme = builtins.fromTOML (builtins.readFile ./themes/yazi-catppuccin-mocha.toml);
+  };
 
   programs.helix = {
     enable = true;
@@ -228,21 +222,6 @@
   };
 
   services.dunst.enable = true;
-
-  # TODO
-  # programs.dconf.settings = {
-  #   "org/gnome/settings-daemon/plugins/media-keys" = {
-  #     custom-keybindings = [
-  #       "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-  #     ];
-  #   };
-  # };
-
-  # "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-  #   binding = "<Super>t";
-  #   command = "hyper";
-  #   name = "open-terminal";
-  # };
 
   # programs.dconf.enable = true;
 
