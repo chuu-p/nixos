@@ -125,89 +125,66 @@
   # fonts.fontDir = ["/home/chuu/.local/share/fonts"];
 
   environment.systemPackages = with pkgs; [
-    # Editors/IDEs
-    vim
-    helix
-    obsidian
-    # jetbrains.rust-rover
-    python314
-
-    # Version Control
-    git
-    delta
-    gh
-
-    # Rust Development
-    rustc
-    rust-analyzer
-    rustfmt
+    alacritty
+    alejandra
+    appimage-run
+    bottles
+    brightnessctl
+    calibre
     cargo
+    chromium
+    clang
     clippy
+    cryptsetup
+    delta
     diesel-cli
+    discord
+    fish
+    flameshot
+    gh
+    git
+    helix
+    home-manager
+    inkscape
+    just
+    keepassxc
+    kitty
     koto
     koto-ls
-
-    # C/C++ Development
-    clang
-    protobuf
-
-    # Web Development
-    wasm-bindgen-cli
-    nodejs
-    pnpm
-    nodePackages.live-server
-
-    # System/Utilities
-    libxkbcommon
-    alejandra
-    neofetch
-    alacritty
-    kitty
-    rio
-    fish
-    just
-    sqlite
-    sqlite.dev
-    pkg-config
-    zellij
-    yazi
-    appimage-run
-    home-manager
-    mullvad-vpn
-    xsel
-    brightnessctl
-    cryptsetup
-    xorg.xev
     libnotify
-    unzip
-    calibre
-    flameshot
+    libxkbcommon
+    mkvtoolnix-cli
+    mpv
+    mullvad-vpn
+    neofetch
+    nodejs
+    nodePackages.live-server
+    obsidian
+    pandoc
+    pavucontrol
+    pkg-config
+    playerctl
+    pnpm
+    protobuf
+    pulseaudio
+    python314
+    rio
+    rust-analyzer
+    rustc
+    rustfmt
+    signal-desktop
+    sqlite
+    tokei
+    transmission_4-qt
     tty-clock
     typst
-    pandoc
-
-    # Multimedia
-    mpv
-    pavucontrol
-    transmission_4-qt
-    mkvtoolnix-cli
-    pulseaudio
-    playerctl
-    inkscape
-
-    # Communication
-    discord
-    signal-desktop
-
-    # Security
-    keepassxc
-
-    # Browsers
-    chromium
-
-    # Emulation
-    bottles
-
+    unzip
+    vim
+    wasm-bindgen-cli
+    xorg.xev
+    xsel
+    yazi
+    zellij
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
