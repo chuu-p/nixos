@@ -7,12 +7,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-yazi-plugins = {
+      url = "github:lordkekz/nix-yazi-plugins?ref=yazi-v0.2.5";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    nix-yazi-plugins,
   }: {
     nixosConfigurations.g14 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";

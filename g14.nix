@@ -152,6 +152,7 @@
     flameshot
     gh
     git
+    glow
     helix
     home-manager
     inkscape

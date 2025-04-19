@@ -196,6 +196,26 @@
     theme = builtins.fromTOML (builtins.readFile ./themes/yazi-catppuccin-mocha.toml);
   };
 
+  # programs.yazi.yaziPlugins = {
+  #   enable = true;
+  #   plugins = {
+  #     bookmarks.enable = true;
+  #     git.enable = true;
+  #     glow.enable = true;
+  #     smart-enter.enable = true;
+  #     smart-filter.enable = true;
+  #     jump-to-char = {
+  #       enable = true;
+  #       keys.toggle.on = ["F"];
+  #     };
+  #     relative-motions = {
+  #       enable = true;
+  #       show_numbers = "relative_absolute";
+  #       show_motion = true;
+  #     };
+  #   };
+  # };
+
   programs.helix = {
     enable = true;
     settings = {
