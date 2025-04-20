@@ -235,6 +235,11 @@
         auto-format = true;
         formatter.command = "${pkgs.alejandra}/bin/alejandra";
       }
+      {
+        name = "typ";
+        auto-format = true;
+        formatter.command = "${pkgs.typstyle}/bin/typstyle";
+      }
     ];
   };
 

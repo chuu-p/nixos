@@ -192,6 +192,7 @@
     transmission_4-qt
     tty-clock
     typst
+    typstyle
     unzip
     vim
     wasm-bindgen-cli
