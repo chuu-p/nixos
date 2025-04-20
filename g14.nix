@@ -88,6 +88,10 @@
 
   console.keyMap = "de";
 
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  services.flatpak.enable = true;
+
   services.blueman.enable = true;
 
   services.picom.enable = true;
