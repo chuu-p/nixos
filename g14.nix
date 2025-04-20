@@ -152,6 +152,7 @@
     discord
     evince
     fish
+    firejail
     flameshot
     font-awesome
     gh
