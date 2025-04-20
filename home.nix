@@ -238,7 +238,7 @@
       {
         name = "typ";
         auto-format = true;
-        formatter.command = "${pkgs.typstyle}/bin/typstyle";
+        formatter.command = "${pkgs.typstyle}/bin/typstyle format-all";
       }
     ];
   };
