@@ -130,6 +130,8 @@
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     noto-fonts-emoji
+
+    font-awesome
   ];
   # fonts.fontDir = ["/home/chuu/.local/share/fonts"];
 
@@ -151,7 +153,6 @@
     evince
     fish
     flameshot
-    font-awesome
     gh
     git
     glow
