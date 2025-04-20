@@ -148,8 +148,10 @@
     delta
     diesel-cli
     discord
+    evince
     fish
     flameshot
+    font-awesome
     gh
     git
     glow
