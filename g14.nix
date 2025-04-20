@@ -199,6 +199,7 @@
     xorg.xev
     xsel
     yazi
+    yt-dlp
     zellij
     (vscode-with-extensions.override {
       vscode = vscodium;
