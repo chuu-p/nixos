@@ -153,6 +153,7 @@
     evince
     fish
     flameshot
+    font-awesome
     gh
     git
     glow
