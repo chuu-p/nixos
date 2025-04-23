@@ -137,7 +137,6 @@
 
     font-awesome
   ];
-  # fonts.fontDir = ["/home/chuu/.local/share/fonts"];
 
   environment.systemPackages = with pkgs; [
     alacritty
@@ -181,6 +180,7 @@
     obsidian
     pandoc
     pavucontrol
+    pdftk
     pkg-config
     playerctl
     pnpm

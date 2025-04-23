@@ -1,0 +1,1 @@
+sudo mkdir -p /run/media/windows && sudo mount /dev/nvme0n1p4 /run/media/windows/

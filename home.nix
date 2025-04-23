@@ -228,6 +228,10 @@
           display-messages = true;
         };
       };
+      keys.normal = {
+        # space.space = "file_picker";
+        # "C-y" = ":sh zellij run --floating -n 'yazi picker' -- /home/chuu/git/nixos/helix/open_in_helix_from_yazi.fish";
+      };
     };
     languages.language = [
       {
