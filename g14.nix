@@ -169,6 +169,7 @@
     kitty
     koto
     koto-ls
+    libreoffice
     libnotify
     libxkbcommon
     mkvtoolnix-cli
@@ -196,6 +197,7 @@
     tokei
     transmission_4-qt
     tty-clock
+    tinymist
     typst
     typstyle
     unzip

@@ -240,7 +240,7 @@
         formatter.command = "${pkgs.alejandra}/bin/alejandra";
       }
       # {
-      #   name = "typ";
+      #   name = "typst";
       #   auto-format = true;
       #   formatter.command = "${lib.getExe pkgs.typstyle} format-all";
       # }
