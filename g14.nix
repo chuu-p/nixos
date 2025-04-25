@@ -180,6 +180,7 @@
     nodejs
     nodePackages.live-server
     obsidian
+    openssl
     pandoc
     pavucontrol
     pdftk
