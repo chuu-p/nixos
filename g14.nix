@@ -187,6 +187,7 @@
     playerctl
     pnpm
     protobuf
+    progress
     pulseaudio
     python314
     rio
