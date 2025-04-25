@@ -207,6 +207,7 @@
     unzip
     vim
     wasm-bindgen-cli
+    xdragon
     xorg.xev
     xsel
     yazi
