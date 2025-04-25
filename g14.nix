@@ -141,6 +141,7 @@
   environment.systemPackages = with pkgs; [
     alacritty
     alejandra
+    android-tools
     appimage-run
     bottles
     brightnessctl
@@ -154,8 +155,8 @@
     diesel-cli
     discord
     evince
-    fish
     firejail
+    fish
     flameshot
     font-awesome
     gh
@@ -169,8 +170,8 @@
     kitty
     koto
     koto-ls
-    libreoffice
     libnotify
+    libreoffice
     libxkbcommon
     mkvtoolnix-cli
     mpv
@@ -194,10 +195,10 @@
     rustfmt
     signal-desktop
     sqlite
+    tinymist
     tokei
     transmission_4-qt
     tty-clock
-    tinymist
     typst
     typstyle
     unzip
