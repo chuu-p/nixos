@@ -160,6 +160,7 @@
     flameshot
     font-awesome
     gh
+    gimp
     git
     glow
     helix
