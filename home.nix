@@ -223,6 +223,7 @@
       # globally enable inlay-hints for all languages
       editor = {
         line-number = "relative";
+        soft-wrap.enable = "true";
         lsp = {
           display-inlay-hints = true;
           display-messages = true;
