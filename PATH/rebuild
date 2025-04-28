@@ -13,9 +13,7 @@
 set -e
 
 # Edit your config
-# $EDITOR ~/git/nixos/chuu-thinkpad.nix
-# vim ~/git/nixos/flake.nix
-$EDITOR ~/git/nixos/g14.nix
+$EDITOR ~/git/nixos/packages.nix
 
 # cd to your config dir
 pushd ~/git/nixos/
@@ -51,6 +49,3 @@ popd
 # Notify all OK!
 echo "NixOS Rebuilt OK!"
 
-# FIXME Fix synchting permissions!!!
-# echo "FIXME: fixing syncthing permissions"
-# sudo chmod -R g+rwx /var/lib/syncthing

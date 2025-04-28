@@ -3,8 +3,6 @@
 # This is the polymorphic executable.
 # It checks how it was called and executes different code based on that.
 
-set script_path (status filename)
-set script_name (basename (readlink -f $script_path))
 set invoked_name (basename (status current-filename))
 
 function check_status

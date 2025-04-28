@@ -5,6 +5,7 @@
   ...
 }: {
   imports = [
+    ./packages.nix
   ];
 
   hardware.nvidia.dynamicBoost.enable = false;
@@ -136,108 +137,6 @@
     noto-fonts-emoji
 
     font-awesome
-  ];
-
-  environment.systemPackages = with pkgs; [
-    alacritty
-    alejandra
-    android-tools
-    appimage-run
-    bottles
-    brightnessctl
-    calibre
-    cargo
-    chromium
-    clang
-    clippy
-    cryptsetup
-    delta
-    diesel-cli
-    discord
-    evince
-    firejail
-    fish
-    flameshot
-    font-awesome
-    gh
-    gimp
-    git
-    glow
-    helix
-    home-manager
-    inkscape
-    just
-    keepassxc
-    kitty
-    koto
-    koto-ls
-    libnotify
-    libreoffice
-    libxkbcommon
-    mkvtoolnix-cli
-    mpv
-    mullvad-vpn
-    neofetch
-    nodejs
-    nodePackages.live-server
-    obsidian
-    openssl
-    pandoc
-    pavucontrol
-    pdftk
-    pkg-config
-    playerctl
-    pnpm
-    protobuf
-    progress
-    pulseaudio
-    python314
-    rio
-    rust-analyzer
-    rustc
-    rustfmt
-    signal-desktop
-    sqlite
-    tinymist
-    tokei
-    transmission_4-qt
-    tty-clock
-    typst
-    typstyle
-    unzip
-    vim
-    wasm-bindgen-cli
-    xdragon
-    xorg.xev
-    xsel
-    yazi
-    yt-dlp
-    zellij
-    (vscode-with-extensions.override {
-      vscode = vscodium;
-      vscodeExtensions = with vscode-extensions;
-        [
-          jnoortheen.nix-ide
-          rust-lang.rust-analyzer
-          foam.foam-vscode
-          bierner.emojisense
-          ms-python.python
-          tamasfe.even-better-toml
-          zxh404.vscode-proto3
-          bradlc.vscode-tailwindcss
-          tomoki1207.pdf
-        ]
-        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-          {
-            name = "doki-theme";
-            publisher = "unthrottled";
-            version = "88.1.15";
-            sha256 = "ys3D84zg7mGGTG5Ey65gqgujbUJBsg27MC3qUnbluoM=";
-          }
-        ];
-    })
-
-    gnomeExtensions.unite
   ];
 
   programs.git = {
