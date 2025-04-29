@@ -28,6 +28,7 @@
     gimp
     git
     glow
+    google-chrome
     helix
     home-manager
     htop
