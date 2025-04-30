@@ -20,6 +20,7 @@
     diesel-cli
     discord
     evince
+    feh
     firejail
     fish
     flameshot

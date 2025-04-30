@@ -1,5 +1,6 @@
 mod: {
   "${mod}+t" = "exec kitty";
+  "${mod}+b" = "exec chromium";
   "${mod}+Return" = "exec kitty";
   "${mod}+Shift+Return" = "exec kitty yazi";
 
@@ -41,18 +42,32 @@ mod: {
 
   "Print" = "exec flameshot launcher";
 
+  "${mod}+p" = "exec c-display-mirror";
+  "${mod}+Shift+p" = "exec c-display-extend";
+  "${mod}+Control+p" = "exec c-display-second";
+
   "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +10%";
   "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -10%";
-  # TODO mute mic button
+  "Shift+XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+  "Shift+XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+  "XF86AudioMute" = "exec pactl set-sink-volume @DEFAULT_SINK@ 0%";
+  "XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+
+  "XF86AudioPause" = "exec playerctl play-pause";
 
   "XF86MonBrightnessUp" = "exec brightnessctl set +10%";
   "XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
 
-  # TODO FIXME XF86PowerOff
-  "XF86Launch1" = "exec systemctl suspend-then-hibernate";
-  "Mod1+XF86Launch1" = "exec systemctl hibernate";
-  "Shift+XF86Launch1" = "exec systemctl poweroff";
-  "Control+XF86Launch1" = "exec systemctl reboot";
+  "XF86Launch1" = "exec gsudo systemctl suspend-then-hibernate"; # ROG
+  "Mod1+XF86Launch1" = "exec gsudo systemctl hibernate"; # Alt + ROG
+  "Shift+XF86Launch1" = "exec gsudo systemctl poweroff"; # Shift + ROG
+  "Control+XF86Launch1" = "exec gsudo systemctl reboot"; # Control + ROG
+
+  "XF86KbdBrightnessUp" = "exec asusctl -n";
+  "XF86KbdBrightnessDown" = "exec asusctl -p";
+
+  # asus rog fan curve profiles
+  "XF86Launch4" = "exec sh -c 'asusctl profile -n && notify-send \"$(asusctl profile -p)\"'";
 
   "${mod}+1" = "workspace 1";
   "${mod}+2" = "workspace 2";

@@ -2,7 +2,65 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  browser = [
+    "chromium-browser.desktop"
+  ];
+  image-viewer = [
+    "feh.desktop"
+  ];
+  media-player = [
+    "mpv.desktop"
+  ];
+  ebook-viewer = [
+    "calibre-ebook-viewer.desktop"
+  ];
+  text-editor = [
+    "Helix.desktop"
+  ];
+  associations = {
+    "application/epub+zip" = ebook-viewer;
+    "application/json" = text-editor;
+    "application/pdf" = ["evince"];
+    "application/vnd.amazon.ebook" = ebook-viewer;
+    "application/x-extension-htm" = browser;
+    "application/x-extension-html" = browser;
+    "application/x-extension-shtml" = browser;
+    "application/x-extension-xht" = browser;
+    "application/x-extension-xhtml" = browser;
+    "application/xhtml+xml" = browser;
+    # "application/x-ms-dos-executable" = ["wine.desktop"];
+    "audio/aac" = media-player;
+    "audio/flac" = media-player;
+    "audio/mpeg" = media-player;
+    "audio/ogg" = media-player;
+    "audio/wav" = media-player;
+    "audio/webm" = media-player;
+    "image/avif" = image-viewer;
+    "image/bmp" = image-viewer;
+    "image/gif" = image-viewer;
+    "image/jpeg" = image-viewer;
+    "image/png" = image-viewer;
+    "image/tiff" = image-viewer;
+    "image/vnd.microsoft.icon" = image-viewer;
+    "image/webp" = image-viewer;
+    "text/css" = text-editor;
+    "text/html" = browser;
+    "text/javascript" = text-editor;
+    "video/mp4" = media-player;
+    "video/mpeg" = media-player;
+    "video/ogg" = media-player;
+    "video/webm" = media-player;
+    "video/x-msvideo" = media-player;
+    "x-scheme-handler/about" = browser;
+    "x-scheme-handler/chrome" = browser;
+    "x-scheme-handler/ftp" = browser;
+    "x-scheme-handler/http" = browser;
+    "x-scheme-handler/https" = browser;
+    "x-scheme-handler/unknown" = browser;
+    # "text/csv" = ?;
+  };
+in {
   home.username = "chuu"; # Replace with your username
   home.homeDirectory = "/home/chuu"; # Replace with your home directory
   home.stateVersion = "24.05"; # Please read the comment before changing.
@@ -157,7 +215,7 @@
           fonts = {
             names = ["Space Mono"];
             style = "Regular";
-            size = 10.0;
+            size = 11.0;
           };
         }
       ];
@@ -264,4 +322,10 @@
   #   theme.name = "Adwaita-dark"; # Or any dark theme you prefer
   #   theme.package = pkgs.gnome-themes-extra;
   # };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = associations;
+    associations.added = associations;
+  };
 }
