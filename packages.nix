@@ -61,7 +61,6 @@
     protobuf
     pulseaudio
     python314
-    qsudo
     rio
     rust-analyzer
     rustc
@@ -80,6 +79,7 @@
     xdragon
     xorg.xev
     xsel
+    yad
     yazi
     yt-dlp
     zellij
