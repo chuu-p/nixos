@@ -61,6 +61,7 @@
     protobuf
     pulseaudio
     python314
+    qsudo
     rio
     rust-analyzer
     rustc
