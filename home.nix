@@ -250,6 +250,13 @@
 
   services.dunst.enable = true;
 
+  # https://github.com/Nimor111/home.nix/blob/master/home.nix
+  # https://github.com/jonringer/nixpkgs-config/blob/master/home.nix
+  home.file.".config/redshift/hooks/brightness.sh" = {
+    text = builtins.readFile ./.config/brightness.sh;
+    executable = true;
+  };
+
   # programs.dconf.enable = true;
 
   # gtk = {
