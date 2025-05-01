@@ -170,30 +170,30 @@ in {
       fonts = {
         size = 13;
         family = "Space Mono";
-        regular = {
-          family = "Space Mono";
-          style = "Normal";
-          width = "Normal";
-          weight = 400;
-        };
-        bold = {
-          family = "Space Mono";
-          style = "Normal";
-          width = "Normal";
-          weight = 800;
-        };
-        italic = {
-          family = "Space Mono";
-          style = "Italic";
-          width = "Normal";
-          weight = 400;
-        };
-        bold-italic = {
-          family = "Space Mono";
-          style = "Italic";
-          width = "Normal";
-          weight = 800;
-        };
+        # regular = {
+        #   family = "Space Mono";
+        #   style = "Normal";
+        #   width = "Normal";
+        #   weight = 400;
+        # };
+        # bold = {
+        #   family = "Space Mono";
+        #   style = "Normal";
+        #   width = "Normal";
+        #   weight = 800;
+        # };
+        # italic = {
+        #   family = "Space Mono";
+        #   style = "Italic";
+        #   width = "Normal";
+        #   weight = 400;
+        # };
+        # bold-italic = {
+        #   family = "Space Mono";
+        #   style = "Italic";
+        #   width = "Normal";
+        #   weight = 800;
+        # };
         # [fonts.emoji]
         # family = "Noto Color Emoji"
         # [renderer]
@@ -208,6 +208,9 @@ in {
         opacity = 0.05;
         x = 0;
         y = 0;
+        # 1920x1080
+        width = 1920;
+        height = 1080;
       };
     };
   };
