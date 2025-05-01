@@ -164,6 +164,58 @@ in {
     extraConfig = builtins.readFile ./themes/ene.conf;
   };
 
+  programs.rio = {
+    enable = true;
+    settings = {
+      fonts = {
+        size = 13;
+        family = "Space Mono";
+        regular = {
+          family = "Space Mono";
+          style = "Normal";
+          width = "Normal";
+          weight = 400;
+        };
+        bold = {
+          family = "Space Mono";
+          style = "Normal";
+          width = "Normal";
+          weight = 800;
+        };
+        italic = {
+          family = "Space Mono";
+          style = "Italic";
+          width = "Normal";
+          weight = 400;
+        };
+        bold-italic = {
+          family = "Space Mono";
+          style = "Italic";
+          width = "Normal";
+          weight = 800;
+        };
+        # [fonts.emoji]
+        # family = "Noto Color Emoji"
+        # [renderer]
+        # filters = [
+        #   # Loads built-in crt
+        #   "NewPixieCrt",
+        #   "fubax_vr"
+        # ]
+      };
+      window.background-image = {
+        path = "/home/chuu/git/nixos/themes/ene.png";
+        opacity = 0.05;
+        x = 0;
+        y = 0;
+      };
+    };
+  };
+
+  home.file.".config/rio/themes/dracula.toml" = {
+    text = builtins.readFile ./.config/brightness.sh;
+  };
+
   programs.zellij = {
     enable = true;
     settings = {
