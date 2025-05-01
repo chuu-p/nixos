@@ -208,15 +208,14 @@ in {
         opacity = 0.05;
         x = 0;
         y = 0;
-        # 1920x1080
-        width = 1920;
-        height = 1080;
+        width = 2560;
+        height = 1440;
       };
     };
   };
 
   home.file.".config/rio/themes/dracula.toml" = {
-    text = builtins.readFile ./.config/brightness.sh;
+    text = builtins.readFile ./themes/ayu.toml;
   };
 
   programs.zellij = {
