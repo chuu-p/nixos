@@ -42,6 +42,7 @@
     libnotify
     libreoffice
     libxkbcommon
+    lldb
     mkvtoolnix-cli
     monitor
     mpv
@@ -88,6 +89,7 @@
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
         [
+          vadimcn.vscode-lldb
           jnoortheen.nix-ide
           rust-lang.rust-analyzer
           foam.foam-vscode

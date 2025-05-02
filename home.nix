@@ -21,7 +21,7 @@
   associations = {
     "application/epub+zip" = ebook-viewer;
     "application/json" = text-editor;
-    "application/pdf" = ["evince"];
+    "application/pdf" = ["org.gnome.Evince.desktop"];
     "application/vnd.amazon.ebook" = ebook-viewer;
     "application/x-extension-htm" = browser;
     "application/x-extension-html" = browser;
@@ -344,6 +344,9 @@ in {
       keys.normal = {
         # space.space = "file_picker";
         # "C-y" = ":sh zellij run --floating -n 'yazi picker' -- /home/chuu/git/nixos/helix/open_in_helix_from_yazi.fish";
+      };
+      keys.insert = {
+        j = {k = "normal_mode";};
       };
     };
     languages.language = [

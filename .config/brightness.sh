@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # https://wiki.archlinux.org/title/Redshift
 
