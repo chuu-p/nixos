@@ -35,6 +35,7 @@
     htop
     inkscape
     just
+    kdePackages.kcalc
     keepassxc
     kitty
     koto
