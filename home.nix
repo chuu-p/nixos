@@ -132,6 +132,9 @@ in {
     userName = "chuu-p";
     userEmail = "chuu801@pm.me";
     extraConfig = {
+      init = {
+        defautBranch = "macho";
+      };
       alias = {
         a = "add";
         b = "branch";
