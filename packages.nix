@@ -52,7 +52,7 @@
     neofetch
     nodejs
     nodePackages.live-server
-    nvtop
+    nvtopPackages.full
     obsidian
     openssl
     pandoc

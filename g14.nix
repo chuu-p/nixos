@@ -71,20 +71,15 @@
   location = {
     latitude = 50.9;
     longitude = 6.9;
+    provider = "manual";
   };
 
   services.redshift = {
     enable = true;
-
     temperature = {
       day = 5700;
       night = 3000;
     };
-
-    # brightness = {
-    #   day = "1";
-    #   night = "0.5";
-    # };
   };
 
   console.keyMap = "de";

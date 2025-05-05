@@ -32,6 +32,7 @@ mod: {
   # TODO "floating modifier $mod"
 
   "${mod}+Shift+space" = "floating toggle";
+  "${mod}+space" = "focus mode_toggle";
   # "${mod}+Shift+a" = "mode_toggle";
 
   "${mod}+a" = "focus parent";
