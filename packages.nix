@@ -55,6 +55,7 @@
     nvtopPackages.full
     obsidian
     openssl
+    openrazer-daemon
     pandoc
     pavucontrol
     pdftk

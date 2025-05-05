@@ -15,13 +15,13 @@ function check_status
 end
 
 switch $invoked_name
-    case c-dec
+    case c-mount-backup
         sudo cryptsetup luksOpen /dev/sda1 backup
         and sudo mkdir -p /run/media/Backup
         and sudo mount /dev/mapper/backup /run/media/Backup/
         check_status decrypt
 
-    case c-enc
+    case c-umount-backup
         sudo umount /run/media/Backup
         and sudo cryptsetup luksClose backup
         check_status encrypt
