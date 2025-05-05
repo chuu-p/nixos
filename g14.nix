@@ -47,7 +47,7 @@
   services.xserver = {
     enable = true;
     xkb = {
-      layout = "de";
+      layout = "us";
       options = "caps:super";
     };
     videoDrivers = ["nvidia"];
@@ -82,7 +82,7 @@
     };
   };
 
-  console.keyMap = "de";
+  console.keyMap = "us";
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];

@@ -1,23 +1,15 @@
-#!/bin/sh
+#!/run/current-system/sw/bin/bash
 
-exclude=/home/chuu/Documents/git/nixos/backup/borg_exclude.txt
-export BORG_REPO=ssh://chuu@192.168.178.33:22/run/media/chuu/Archive/backup
-export BORG_PASSPHRASE='password'
+exclude=/home/chuu/git/nixos/backup/borg_exclude.txt
+export BORG_REPO=ssh://chuu@q:22/run/media/chuu/Archive/borg/g14
+export BORG_PASSPHRASE='chuu'
 
 cd /
 if borg --verbose --progress create --list --filter AME? --stats \
    --compression auto,zstd,19 \
    --exclude-caches --patterns-from $exclude \
    ::'{hostname}-{now}' \
-   "/home/chuu/Desktop" \
-   "/home/chuu/Documents" \
-   "/home/chuu/Downloads" \
-   "/home/chuu/Music" \
-   "/home/chuu/notes" \
-   "/home/chuu/Pictures" \
-   "/home/chuu/syncthing" \
-   "/home/chuu/Templates" \
-   "/home/chuu/Videos"; then
+   "/home/chuu/"; then
     echo back up successful
 else
     echo error or warning during back up

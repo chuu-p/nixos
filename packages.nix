@@ -10,6 +10,7 @@
     appimage-run
     bottles
     brightnessctl
+    borgbackup
     calibre
     cargo
     chromium

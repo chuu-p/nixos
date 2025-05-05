@@ -358,6 +358,11 @@ in {
         auto-format = true;
         formatter.command = "${pkgs.alejandra}/bin/alejandra";
       }
+      {
+        name = "json5";
+        auto-format = true;
+        formatter.command = "/run/current-system/sw/bin/npx prettier --write";
+      }
       # {
       #   name = "typst";
       #   auto-format = true;
