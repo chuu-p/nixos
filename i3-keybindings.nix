@@ -1,6 +1,6 @@
 mod: {
   "${mod}+t" = "exec kitty";
-  "${mod}+b" = "exec chromium";
+  "${mod}+b" = "exec chromium --enable-blink-features=MiddleClickAutoscroll";
   "${mod}+Return" = "exec kitty";
   "${mod}+Shift+Return" = "exec kitty yazi";
 
@@ -46,6 +46,7 @@ mod: {
   "${mod}+p" = "exec c-display-mirror";
   "${mod}+Shift+p" = "exec c-display-extend";
   "${mod}+Control+p" = "exec c-display-second";
+  "$Shift+Control+F9" = "exec /home/chuu/git/nixos/PATH/c-display-first";
 
   "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +10%";
   "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -10%";

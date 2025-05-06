@@ -27,4 +27,8 @@ R /
 - var/local
 - var/opt
 - var/tmp
+! /home/chuu/.local/share/Trash
+! /home/chuu/.local/share/JetBrains
+! /home/chuu/.local/share/Steam
+! /home/chuu/.local/share/bottles
 ! win
