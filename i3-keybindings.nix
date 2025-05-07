@@ -46,7 +46,11 @@ mod: {
   "${mod}+p" = "exec c-display-mirror";
   "${mod}+Shift+p" = "exec c-display-extend";
   "${mod}+Control+p" = "exec c-display-second";
-  "$Shift+Control+F9" = "exec /home/chuu/git/nixos/PATH/c-display-first";
+  # "$Shift+Control+F9" = "exec c-display-first";
+  "$Shift+Control+F9" = "exec c-display-first";
+  "$Shift+Control+F8" = "exec c-debug-notification";
+
+  # TODO: display-first and notification!!! sh -c 'asusctl profile -n && '
 
   "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +10%";
   "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -10%";
