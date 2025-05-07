@@ -43,12 +43,13 @@ mod: {
 
   "Print" = "exec flameshot launcher";
 
-  "${mod}+p" = "exec c-display-mirror";
-  "${mod}+Shift+p" = "exec c-display-extend";
-  "${mod}+Control+p" = "exec c-display-second";
+  "${mod}+p" = "exec sh -c 'c-display-first'";
+  "${mod}+Control+p" = "exec sh -c 'c-display-mirror'";
+  "${mod}+Shift+p" = "exec sh -c 'c-display-extend'";
+  "${mod}+Shift+Control+p" = "exec sh -c 'c-display-second'";
   # "$Shift+Control+F9" = "exec c-display-first";
-  "$Shift+Control+F9" = "exec c-display-first";
-  "$Shift+Control+F8" = "exec c-debug-notification";
+  "$Shift+Control+F9" = "exec sh -c 'c-display-first'";
+  "$Shift+Control+F8" = "exec sh -c 'c-debug-notification'";
 
   # TODO: display-first and notification!!! sh -c 'asusctl profile -n && '
 
@@ -60,6 +61,7 @@ mod: {
   "XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
 
   "XF86AudioPause" = "exec playerctl play-pause";
+  # TODO AudioPlay, etc.
 
   "XF86MonBrightnessUp" = "exec brightnessctl set +10%";
   "XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
