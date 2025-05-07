@@ -221,6 +221,10 @@ in {
     text = builtins.readFile ./themes/ayu.toml;
   };
 
+  home.file.".config/bato/bato.yaml" = {
+    text = builtins.readFile ./.config/bato.yaml;
+  };
+
   programs.zellij = {
     enable = true;
     settings = {
@@ -261,6 +265,7 @@ in {
         {command = "exec keepassxc";}
         {command = "exec flameshot";}
         {command = "exec mullvad-gui";}
+        {command = "exec /home/chuu/git/nixos/.config/bato.sh";}
       ];
 
       bars = [
