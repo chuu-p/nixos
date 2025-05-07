@@ -43,15 +43,10 @@ mod: {
 
   "Print" = "exec flameshot launcher";
 
-  "${mod}+p" = "exec sh -c 'c-display-first'";
-  "${mod}+Control+p" = "exec sh -c 'c-display-mirror'";
-  "${mod}+Shift+p" = "exec sh -c 'c-display-extend'";
-  "${mod}+Shift+Control+p" = "exec sh -c 'c-display-second'";
-  # "$Shift+Control+F9" = "exec c-display-first";
-  "$Shift+Control+F9" = "exec sh -c 'c-display-first'";
-  "$Shift+Control+F8" = "exec sh -c 'c-debug-notification'";
-
-  # TODO: display-first and notification!!! sh -c 'asusctl profile -n && '
+  "${mod}+p" = "exec sh -c '/home/chuu/git/nixos/PATH/c-display-first'";
+  "${mod}+Control+p" = "exec sh -c '/home/chuu/git/nixos/PATH/c-display-mirror'";
+  "${mod}+Shift+p" = "exec sh -c '/home/chuu/git/nixos/PATH/c-display-extend'";
+  "${mod}+Shift+Control+p" = "exec sh -c '/home/chuu/git/nixos/PATH/c-display-second'";
 
   "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +10%";
   "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -10%";

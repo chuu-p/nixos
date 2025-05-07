@@ -8,6 +8,7 @@
     alejandra
     android-tools
     appimage-run
+    bato
     bottles
     brightnessctl
     borgbackup
