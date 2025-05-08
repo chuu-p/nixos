@@ -32,6 +32,7 @@
     git
     glow
     google-chrome
+    gparted
     helix
     home-manager
     htop
