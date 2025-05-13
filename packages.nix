@@ -9,19 +9,21 @@
     android-tools
     appimage-run
     bato
+    borgbackup
     bottles
     brightnessctl
-    borgbackup
     calibre
     cargo
     chromium
     clang
     clippy
+    conda
     cryptsetup
     delta
     diesel-cli
     discord
     evince
+    exiftool
     feh
     firejail
     fish
@@ -58,8 +60,8 @@
     nodePackages.live-server
     nvtopPackages.full
     obsidian
-    openssl
     openrazer-daemon
+    openssl
     pandoc
     pavucontrol
     pdftk
@@ -83,6 +85,7 @@
     typst
     typstyle
     unzip
+    upscayl
     vim
     wasm-bindgen-cli
     xdragon

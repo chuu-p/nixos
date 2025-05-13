@@ -8,7 +8,18 @@
     ./packages.nix
   ];
 
-  hardware.nvidia.dynamicBoost.enable = false;
+  hardware.nvidia = {
+    dynamicBoost.enable = false;
+    modesetting.enable = true;
+    powerManagement.enable = false; # optional: enable if needed
+    open = false; # use proprietary driver
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
+  hardware.opengl = {
+    enable = true;
+  };
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
