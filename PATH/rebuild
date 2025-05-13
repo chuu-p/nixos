@@ -32,8 +32,14 @@ alejandra . &>/dev/null \
 # Shows your changes
 git diff -U0 '*.nix'
 
+echo "NixOS update..."
+nix flake update --commit-lock-file
+
 echo "NixOS Cleaning old (>14d) generations..."
 sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 14d &>nixos-wipe.log
+
+echo "NixOS collect garbage..."
+sudo nix-collect-garbage -d
 
 echo "NixOS Rebuilding..."
 

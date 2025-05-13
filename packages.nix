@@ -52,6 +52,7 @@
     mpv
     mscp
     mullvad-vpn
+    nautilus
     neofetch
     nodejs
     nodePackages.live-server
@@ -105,6 +106,8 @@
           zxh404.vscode-proto3
           bradlc.vscode-tailwindcss
           tomoki1207.pdf
+          streetsidesoftware.code-spell-checker
+          streetsidesoftware.code-spell-checker-german
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {

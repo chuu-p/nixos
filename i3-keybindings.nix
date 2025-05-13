@@ -1,5 +1,5 @@
 mod: {
-  "${mod}+t" = "exec kitty";
+  "${mod}+t" = "exec GLFW_IM_MODULE=ibus kitty";
   "${mod}+b" = "exec chromium --enable-blink-features=MiddleClickAutoscroll";
   "${mod}+Return" = "exec kitty";
   "${mod}+Shift+Return" = "exec kitty yazi";
@@ -56,6 +56,7 @@ mod: {
   "XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
 
   "XF86AudioPause" = "exec playerctl play-pause";
+
   # TODO AudioPlay, etc.
 
   "XF86MonBrightnessUp" = "exec brightnessctl set +10%";

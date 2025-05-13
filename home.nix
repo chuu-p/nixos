@@ -265,6 +265,7 @@ in {
         {command = "exec keepassxc";}
         {command = "exec flameshot";}
         {command = "exec mullvad-gui";}
+        {command = "exec fcitx5";}
         {command = "exec /home/chuu/git/nixos/.config/bato.sh";}
       ];
 
