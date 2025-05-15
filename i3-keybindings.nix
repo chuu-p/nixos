@@ -21,6 +21,15 @@ mod: {
   "${mod}+Shift+Up" = "move up";
   "${mod}+Shift+Right" = "move right";
 
+  "${mod}+Control+Left" = "resize shrink width 10 px";
+  "${mod}+Control+Down" = "resize grow height 10 px";
+  "${mod}+Control+Up" = "resize shrink height 10 px ";
+  "${mod}+Control+Right" = "resize grow width 10 px";
+  "${mod}+Control+h" = "resize shrink width 10 px";
+  "${mod}+Control+j" = "resize grow height 10 px";
+  "${mod}+Control+k" = "resize shrink height 10 px ";
+  "${mod}+Control+l" = "resize grow width 10 px";
+
   "${mod}+h" = "split h";
   "${mod}+v" = "split v";
   "${mod}+f" = "fullscreen toggle";
