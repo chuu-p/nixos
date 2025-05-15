@@ -154,7 +154,7 @@
     enable = true;
     config = {
       init = {
-        defautBranch = "macho";
+        defaultBranch = "macho";
       };
       alias = {
         a = "add";
