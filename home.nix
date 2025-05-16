@@ -174,7 +174,7 @@ in {
 
   programs.kitty = {
     enable = true;
-    extraConfig = builtins.readFile ./themes/ene.conf;
+    extraConfig = builtins.readFile ./kitty-themes/themes/misa.conf;
   };
 
   programs.rio = {

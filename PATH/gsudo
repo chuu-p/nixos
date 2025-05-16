@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+command=("$@")
+
+password=$(yad --title="Sudo Authentication" --form --field="Password:" --hide-text --entry)
+
+if [ -n "$password" ]; then
+  printf "%s\n" "$password" | sudo -S "${command[@]}"
+fi
