@@ -127,6 +127,10 @@ in {
     ];
   };
 
+  home.file.".config/git/allowed-signers" = {
+    text = builtins.readFile ./.config/allowed-signers;
+  };
+
   programs.git = {
     enable = true;
     userName = "chuu-p";
@@ -134,6 +138,9 @@ in {
     extraConfig = {
       init = {
         defaultBranch = "macho";
+      };
+      commit = {
+        gpgsign = true;
       };
       alias = {
         a = "add";
@@ -159,6 +166,9 @@ in {
         wd = "diff --word-diff=color";
         sw = "switch";
       };
+      gpg.format = "ssh";
+      user.signingkey = "/home/chuu/.ssh/id_ed25519.pub";
+      gpg.ssh.allowedSignersFile = "~/.config/git/allowed-signers";
     };
   };
 

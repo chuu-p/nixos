@@ -9,6 +9,7 @@
     android-tools
     appimage-run
     bato
+    black
     borgbackup
     bottles
     brightnessctl
