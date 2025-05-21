@@ -82,8 +82,10 @@
     sqlite
     tinymist
     tokei
+    toot
     transmission_4-qt
     tty-clock
+    trashy
     typst
     typstyle
     unzip
