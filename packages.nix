@@ -13,6 +13,7 @@
     borgbackup
     bottles
     brightnessctl
+    bun
     calibre
     cargo
     chromium
