@@ -8,6 +8,8 @@
     alejandra
     android-tools
     appimage-run
+    bacon
+    bat
     bato
     black
     borgbackup
@@ -24,6 +26,7 @@
     delta
     diesel-cli
     discord
+    # evil-helix
     evince
     exiftool
     feh
@@ -40,6 +43,7 @@
     helix
     home-manager
     htop
+    hyperfine
     inkscape
     just
     kdePackages.kcalc
@@ -51,8 +55,10 @@
     libreoffice
     libxkbcommon
     lldb
+    mask
     mkvtoolnix-cli
     monitor
+    mprocs
     mpv
     mscp
     mullvad-vpn
@@ -70,6 +76,7 @@
     pkg-config
     playerctl
     pnpm
+    presenterm
     progress
     protobuf
     pulseaudio
@@ -84,12 +91,13 @@
     tokei
     toot
     transmission_4-qt
-    tty-clock
     trashy
+    tty-clock
     typst
     typstyle
     unzip
     upscayl
+    uutils-coreutils-noprefix
     vim
     wasm-bindgen-cli
     xdragon
@@ -99,6 +107,7 @@
     yazi
     yt-dlp
     zellij
+    zoxide
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
