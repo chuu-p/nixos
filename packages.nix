@@ -38,6 +38,7 @@
     gimp
     git
     glow
+    gum
     google-chrome
     gparted
     helix
