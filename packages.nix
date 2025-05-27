@@ -7,6 +7,7 @@
     alacritty
     alejandra
     android-tools
+    android-studio
     appimage-run
     bacon
     bat
@@ -57,6 +58,7 @@
     libxkbcommon
     lldb
     mask
+    meld
     mkvtoolnix-cli
     monitor
     mprocs
