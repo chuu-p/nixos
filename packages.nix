@@ -58,6 +58,7 @@
     libxkbcommon
     lldb
     mask
+    mcomix
     meld
     mkvtoolnix-cli
     monitor
