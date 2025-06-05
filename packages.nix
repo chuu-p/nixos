@@ -11,7 +11,6 @@
     appimage-run
     bacon
     bat
-    bato
     black
     borgbackup
     bottles
@@ -85,6 +84,7 @@
     protobuf
     pulseaudio
     python314
+    qjackctl
     rio
     rust-analyzer
     rustc

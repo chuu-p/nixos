@@ -174,7 +174,7 @@ in {
 
   programs.kitty = {
     enable = true;
-    extraConfig = builtins.readFile ./kitty-themes/themes/misa.conf;
+    extraConfig = builtins.readFile ./kitty-themes/themes/ene.conf;
   };
 
   programs.rio = {
@@ -229,10 +229,6 @@ in {
 
   home.file.".config/rio/themes/dracula.toml" = {
     text = builtins.readFile ./themes/ayu.toml;
-  };
-
-  home.file.".config/bato/bato.yaml" = {
-    text = builtins.readFile ./.config/bato.yaml;
   };
 
   programs.zellij = {

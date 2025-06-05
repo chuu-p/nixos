@@ -5,8 +5,11 @@
   ...
 }: {
   imports = [
+    <musnix>
     ./packages.nix
   ];
+
+  musnix.enable = true;
 
   hardware.nvidia = {
     dynamicBoost.enable = false;
@@ -109,18 +112,34 @@
   services.avahi.enable = true;
 
   services.pulseaudio.enable = false;
+
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+
+  # services.pipewire = {
+  #   enable = true;
+  #   alsa.enable = true;
+  #   alsa.support32Bit = true;
+  #   pulse.enable = true;
+  # };
+
+  services.jack = {
+    jackd.enable = true;
+    # support ALSA only programs via ALSA JACK PCM plugin
+    alsa.enable = false;
+    # support ALSA only programs via loopback device (supports programs like Steam)
+    loopback = {
+      enable = true;
+      # buffering parameters for dmix device to work with ALSA only semi-professional sound programs
+      #dmixConfig = ''
+      #  period_size 2048
+      #'';
+    };
   };
 
   users.users.chuu = {
     isNormalUser = true;
     description = "chuu";
-    extraGroups = ["networkmanager" "wheel" "syncthing"];
+    extraGroups = ["networkmanager" "wheel" "syncthing" "audio" "jackaudio"];
     shell = pkgs.fish;
     packages = with pkgs; [
     ];
