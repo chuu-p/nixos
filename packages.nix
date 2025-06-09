@@ -4,10 +4,9 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    alacritty
     alejandra
-    android-tools
     android-studio
+    android-tools
     appimage-run
     bacon
     bat
@@ -26,10 +25,11 @@
     delta
     diesel-cli
     discord
-    # evil-helix
     evince
+    # evil-helix
     exiftool
     feh
+    ffmpeg
     firejail
     fish
     flameshot
@@ -38,9 +38,9 @@
     gimp
     git
     glow
-    gum
     google-chrome
     gparted
+    gum
     helix
     home-manager
     htop
@@ -67,8 +67,8 @@
     mullvad-vpn
     nautilus
     neofetch
-    nodejs
     nodePackages.live-server
+    nodejs
     nvtopPackages.full
     obsidian
     openrazer-daemon
@@ -83,6 +83,7 @@
     progress
     protobuf
     pulseaudio
+    python312Packages.conda
     python314
     qjackctl
     rio
@@ -112,6 +113,7 @@
     yt-dlp
     zellij
     zoxide
+    alacritty
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
