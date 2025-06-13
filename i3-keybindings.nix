@@ -65,8 +65,7 @@ mod: {
   "XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
 
   "XF86AudioPause" = "exec playerctl play-pause";
-
-  # TODO AudioPlay, etc.
+  "XF86AudioPlay" = "exec playerctl play-pause";
 
   "XF86MonBrightnessUp" = "exec brightnessctl set +10%";
   "XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
