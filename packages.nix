@@ -64,7 +64,6 @@
     mprocs
     mpv
     mscp
-    mullvad-vpn
     nautilus
     neofetch
     nodePackages.live-server

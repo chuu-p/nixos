@@ -97,6 +97,11 @@
     };
   };
 
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
+
   console.keyMap = "us";
 
   xdg.portal.enable = true;
@@ -245,9 +250,6 @@
     overrideDevices = true; # overrides any devices added or deleted through the WebUI
     overrideFolders = true; # overrides any folders added or deleted through the WebUI
   };
-
-  services.mullvad-vpn.enable = true;
-  services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
   system.autoUpgrade = {
     enable = true;
