@@ -120,6 +120,8 @@
 
   security.rtkit.enable = true;
 
+  # services.atuin.enable = true;
+
   # services.pipewire = {
   #   enable = true;
   #   alsa.enable = true;

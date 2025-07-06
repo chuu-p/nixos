@@ -4,13 +4,16 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    alacritty
     alejandra
     android-studio
     android-tools
     appimage-run
+    anki
     bacon
     bat
     black
+    blender
     borgbackup
     bottles
     brightnessctl
@@ -34,6 +37,7 @@
     fish
     flameshot
     font-awesome
+    # gemini-cli
     gh
     gimp
     git
@@ -112,7 +116,6 @@
     yt-dlp
     zellij
     zoxide
-    alacritty
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
