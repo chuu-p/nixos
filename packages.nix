@@ -107,6 +107,7 @@
     upscayl
     uutils-coreutils-noprefix
     vim
+    vdhcoapp
     wasm-bindgen-cli
     xdragon
     xorg.xev
