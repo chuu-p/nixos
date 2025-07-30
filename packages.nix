@@ -8,7 +8,7 @@
     alejandra
     android-studio
     android-tools
-    appimage-run
+    # appimage-run
     anki
     bacon
     bat

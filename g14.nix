@@ -9,6 +9,23 @@
     ./packages.nix
   ];
 
+  # This enables AppImage support.
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
+
+  # This is needed for Slippi to run.
+  programs.appimage.package = pkgs.appimage-run.override {
+    extraPkgs = pkgs: [
+      pkgs.curl
+      pkgs.libmpg123
+    ];
+  };
+
+  services.udev.extraRules = ''
+    # Your rule goes here
+    SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="0666"
+  '';
+
   musnix.enable = true;
 
   hardware.nvidia = {
