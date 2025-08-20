@@ -14,6 +14,7 @@
     bat
     black
     blender
+    blockbench
     borgbackup
     bottles
     brightnessctl
@@ -25,20 +26,24 @@
     clippy
     conda
     cryptsetup
+    devenv
     delta
     diesel-cli
     discord
     evince
     # evil-helix
     exiftool
+    f3d
     feh
     ffmpeg
     firejail
     fish
+    figma-linux
     flameshot
     font-awesome
     # gemini-cli
     gh
+    ghostscript
     gimp
     git
     glow
@@ -63,6 +68,7 @@
     mask
     mcomix
     meld
+    mkchromecast
     mkvtoolnix-cli
     monitor
     mprocs
@@ -140,6 +146,12 @@
             publisher = "unthrottled";
             version = "88.1.15";
             sha256 = "ys3D84zg7mGGTG5Ey65gqgujbUJBsg27MC3qUnbluoM=";
+          }
+          {
+            name = "geminicodeassist";
+            publisher = "Google";
+            version = "2.43.0";
+            sha256 = "jenr96MLxZE352f0WyUsFkRajP7L/4893RTtuKirEvs=";
           }
         ];
     })

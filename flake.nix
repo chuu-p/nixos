@@ -42,7 +42,7 @@
               };
             };
             imports = [
-              ./home.nix # We'll create this file later
+              ./home.nix
             ];
           };
         }

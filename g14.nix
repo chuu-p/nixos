@@ -13,6 +13,14 @@
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
 
+  powerManagement.powertop.enable = true;
+
+  programs.direnv.enable = true;
+  nix.extraOptions = ''
+    extra-substituters = https://devenv.cachix.org
+    extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
+  '';
+
   # This is needed for Slippi to run.
   programs.appimage.package = pkgs.appimage-run.override {
     extraPkgs = pkgs: [
@@ -177,7 +185,13 @@
 
   programs.firefox.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "mkchromecast"
+      "python3.12-youtube-dl-2021.12.17"
+    ];
+  };
 
   fonts.packages = with pkgs; [
     nerd-fonts.noto
