@@ -1,6 +1,6 @@
 mod: {
   "${mod}+t" = "exec GLFW_IM_MODULE=ibus kitty";
-  "${mod}+b" = "exec chromium --enable-blink-features=MiddleClickAutoscroll";
+  "${mod}+b" = "exec firefox";
   "${mod}+Return" = "exec kitty";
   "${mod}+Shift+Return" = "exec kitty yazi";
 

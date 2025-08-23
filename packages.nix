@@ -2,14 +2,17 @@
   config,
   pkgs,
   ...
-}: {
-  environment.systemPackages = with pkgs; [
+}: let
+  unstable = import <nixos-unstable> {config = {allowUnfree = true;};};
+in {
+  environment.systemPackages = with pkgs;
+  with unstable; [
     alacritty
     alejandra
     android-studio
     android-tools
-    # appimage-run
     anki
+    # appimage-run
     bacon
     bat
     black
@@ -26,22 +29,23 @@
     clippy
     conda
     cryptsetup
-    devenv
     delta
+    devenv
     diesel-cli
     discord
-    evince
     # evil-helix
+    evince
     exiftool
     f3d
     feh
     ffmpeg
+    figma-linux
+    firefox
     firejail
     fish
-    figma-linux
     flameshot
     font-awesome
-    # gemini-cli
+    gemini-cli
     gh
     ghostscript
     gimp
@@ -68,7 +72,7 @@
     mask
     mcomix
     meld
-    mkchromecast
+    # mkchromecast
     mkvtoolnix-cli
     monitor
     mprocs
@@ -76,8 +80,8 @@
     mscp
     nautilus
     neofetch
-    nodePackages.live-server
     nodejs
+    nodePackages.live-server
     nvtopPackages.full
     obsidian
     openrazer-daemon
@@ -112,8 +116,8 @@
     unzip
     upscayl
     uutils-coreutils-noprefix
-    vim
     vdhcoapp
+    vim
     wasm-bindgen-cli
     xdragon
     xorg.xev

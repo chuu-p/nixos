@@ -34,19 +34,25 @@
     SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="0666"
   '';
 
+  services.acpid = {
+    enable = true;
+    handlers = {
+      button-prog1 = {
+        event = "button/prog1 PROG1";
+        action = "/home/chuu/git/nixos/PATH/c-debug-notification";
+      };
+    };
+  };
+
   musnix.enable = true;
 
   hardware.nvidia = {
     dynamicBoost.enable = false;
     modesetting.enable = true;
-    powerManagement.enable = false; # optional: enable if needed
-    open = false; # use proprietary driver
+    powerManagement.enable = false;
+    open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.production;
-  };
-
-  hardware.opengl = {
-    enable = true;
   };
 
   hardware.bluetooth.enable = true;
@@ -129,7 +135,17 @@
 
   console.keyMap = "us";
 
-  xdg.portal.enable = true;
+  xdg.portal = {
+    enable = true;
+    config = {
+      common = {
+        default = [
+          "gtk"
+        ];
+      };
+    };
+  };
+
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
   services.flatpak.enable = true;
 
@@ -145,7 +161,7 @@
 
   security.rtkit.enable = true;
 
-  # services.atuin.enable = true;
+  services.atuin.enable = true;
 
   # services.pipewire = {
   #   enable = true;
@@ -186,12 +202,14 @@
   programs.firefox.enable = true;
 
   nixpkgs.config = {
-    allowUnfree = true;
+    # allowUnfree = true;
     permittedInsecurePackages = [
       "mkchromecast"
       "python3.12-youtube-dl-2021.12.17"
     ];
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.noto

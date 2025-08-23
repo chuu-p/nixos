@@ -4,7 +4,7 @@
   ...
 }: let
   browser = [
-    "chromium-browser.desktop"
+    "firefox.desktop"
   ];
   image-viewer = [
     "feh.desktop"
@@ -174,7 +174,7 @@ in {
 
   programs.kitty = {
     enable = true;
-    extraConfig = builtins.readFile ./kitty-themes/themes/ene.conf;
+    extraConfig = builtins.readFile ./kitty-themes/themes/misa.conf;
   };
 
   programs.rio = {
@@ -275,12 +275,21 @@ in {
         {command = "exec /home/chuu/git/nixos/.config/bato.sh";}
       ];
 
+      floating = {
+        criteria = [
+          {
+            title = "Volume Control";
+          }
+          # {
+          #   class = "Pavucontrol";
+          # }
+        ];
+      };
+
       bars = [
         {
           position = "top";
           statusCommand = "i3status -c ~/git/nixos/i3status.conf";
-          # trayOutput = "DP-2"; # Make sure this matches your desired output
-          # font = "pango:Cousine 11"; # Ensure this font is availabl
           fonts = {
             names = ["Space Mono"];
             style = "Regular";
@@ -299,14 +308,23 @@ in {
       # };
       # TODO
       # - [ ] modes
-      # - [ ] bar
-      # - [ ] initialization
       # - [ ] pavucontrol always floating
-      # - [ ] default app -> pdf chromium
-      # - [ ] default app -> feh image viewer
-      # - [ ] lol cursor set
       keybindings = import ./i3-keybindings.nix "Mod4";
       # modes = import ./i3-modes.nix "Mod4";
+
+      window = {
+        # border = 0;
+        hideEdgeBorders = "both";
+        titlebar = false;
+        commands = [
+          {
+            command = "border pixel 2";
+            criteria = {
+              class = "InputOutput";
+            };
+          }
+        ];
+      };
 
       # FIXME this does not work
       # forWindow = [
