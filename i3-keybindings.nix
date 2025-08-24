@@ -64,6 +64,13 @@ mod: {
   "XF86AudioMute" = "exec pactl set-sink-volume @DEFAULT_SINK@ 0%";
   "XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
 
+  "${mod}+XF86AudioMicMute" = "exec i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png";
+  "${mod}+XF86AudioRaiseVolume" = "exec pavucontrol";
+
+  "Shift+XF86AudioMicMute" = "exec sh -c '/home/chuu/git/nixos/PATH/c-bt-connect-headphones'";
+  "Control+XF86AudioMicMute" = "exec sh -c '/home/chuu/git/nixos/PATH/c-bt-connect-pixelbuds'";
+  "Shift+Control+XF86AudioMicMute" = "exec sh -c '/home/chuu/git/nixos/PATH/c-bt-connect-soundbar'";
+
   "XF86AudioPause" = "exec playerctl play-pause";
   "XF86AudioPlay" = "exec playerctl play-pause";
 

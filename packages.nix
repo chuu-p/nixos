@@ -121,6 +121,7 @@ in {
     wasm-bindgen-cli
     xdragon
     xorg.xev
+    xautolock
     xsel
     yad
     yazi

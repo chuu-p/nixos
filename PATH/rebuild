@@ -41,6 +41,9 @@ git diff -U0 '*.nix'
 # echo "NixOS collect garbage..."
 # sudo nix-collect-garbage -d
 
+echo "Nix Channel update..."
+sudo nix-channel --update
+
 echo "NixOS Rebuilding..."
 
 # Rebuild, output simplified errors, log trackebacks

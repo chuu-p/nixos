@@ -174,7 +174,7 @@ in {
 
   programs.kitty = {
     enable = true;
-    extraConfig = builtins.readFile ./kitty-themes/themes/misa.conf;
+    extraConfig = builtins.readFile ./kitty-themes/themes/miku.conf;
   };
 
   programs.rio = {
@@ -402,6 +402,11 @@ in {
   };
 
   services.dunst.enable = true;
+
+  services.screen-locker = {
+    enable = true;
+    lockCmd = "${pkgs.i3lock}/bin/i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png";
+  };
 
   # https://github.com/Nimor111/home.nix/blob/master/home.nix
   # https://github.com/jonringer/nixpkgs-config/blob/master/home.nix
