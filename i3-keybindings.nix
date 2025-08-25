@@ -66,6 +66,8 @@ mod: {
 
   "${mod}+XF86AudioMicMute" = "exec i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png";
   "${mod}+XF86AudioRaiseVolume" = "exec pavucontrol";
+  "${mod}+XF86AudioLowerVolume" = "exec sh -c '/home/chuu/git/nixos/PATH/gsudo systemctl suspend'";
+  "${mod}+Shift+XF86AudioLowerVolume" = "exec sh -c '/home/chuu/git/nixos/PATH/gsudo systemctl hibernate'";
 
   "Shift+XF86AudioMicMute" = "exec sh -c '/home/chuu/git/nixos/PATH/c-bt-connect-headphones'";
   "Control+XF86AudioMicMute" = "exec sh -c '/home/chuu/git/nixos/PATH/c-bt-connect-pixelbuds'";
