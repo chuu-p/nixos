@@ -62,6 +62,7 @@ in {
     just
     kdePackages.kcalc
     keepassxc
+    krita
     kitty
     koto
     koto-ls
