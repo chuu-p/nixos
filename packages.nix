@@ -132,31 +132,38 @@ in {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
         [
-          vadimcn.vscode-lldb
-          jnoortheen.nix-ide
-          rust-lang.rust-analyzer
-          foam.foam-vscode
           bierner.emojisense
-          ms-python.python
-          tamasfe.even-better-toml
-          zxh404.vscode-proto3
           bradlc.vscode-tailwindcss
-          tomoki1207.pdf
+          foam.foam-vscode
+          jnoortheen.nix-ide
+          ms-python.python
+          rust-lang.rust-analyzer
           streetsidesoftware.code-spell-checker
           streetsidesoftware.code-spell-checker-german
+          tamasfe.even-better-toml
+          tomoki1207.pdf
+          vadimcn.vscode-lldb
+          vscodevim.vim
+          zxh404.vscode-proto3
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-          {
-            name = "doki-theme";
-            publisher = "unthrottled";
-            version = "88.1.15";
-            sha256 = "ys3D84zg7mGGTG5Ey65gqgujbUJBsg27MC3qUnbluoM=";
-          }
+          # {
+          #   name = "doki-theme";
+          #   publisher = "unthrottled";
+          #   version = "88.1.15";
+          #   sha256 = "ys3D84zg7mGGTG5Ey65gqgujbUJBsg27MC3qUnbluoM=";
+          # }
           {
             name = "geminicodeassist";
             publisher = "Google";
             version = "2.43.0";
             sha256 = "jenr96MLxZE352f0WyUsFkRajP7L/4893RTtuKirEvs=";
+          }
+          {
+            name = "github-vscode-theme";
+            publisher = "GitHub";
+            version = "6.3.5";
+            sha256 = "dOadoYBPcYrpzmqOpJwG+/nPwTfJtlsOFDU3FctdR0o=";
           }
         ];
     })
