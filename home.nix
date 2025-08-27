@@ -127,6 +127,14 @@ in {
     ];
   };
 
+  programs.mpv = {
+    enable = true;
+
+    config = {
+      gpu-api = "opengl";
+    };
+  };
+
   home.file.".config/git/allowed-signers" = {
     text = builtins.readFile ./.config/allowed-signers;
   };
