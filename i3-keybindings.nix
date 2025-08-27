@@ -8,8 +8,6 @@ mod: {
   "${mod}+Shift+d" = "exec i3-dmenu-desktop";
   "${mod}+d" = "exec dmenu_run";
 
-  # TODO "${mod}+l" = "exec xautolock -locknow";
-
   "${mod}+Left" = "focus left";
   "${mod}+Down" = "focus down";
   "${mod}+Up" = "focus up";
@@ -64,7 +62,7 @@ mod: {
   "XF86AudioMute" = "exec pactl set-sink-volume @DEFAULT_SINK@ 0%";
   "XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
 
-  "${mod}+XF86AudioMicMute" = "exec i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png";
+  "${mod}+l" = "exec i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png";
   "${mod}+XF86AudioRaiseVolume" = "exec pavucontrol";
   "${mod}+XF86AudioLowerVolume" = "exec sh -c '/home/chuu/git/nixos/PATH/gsudo systemctl suspend'";
   "${mod}+Shift+XF86AudioLowerVolume" = "exec sh -c '/home/chuu/git/nixos/PATH/gsudo systemctl hibernate'";

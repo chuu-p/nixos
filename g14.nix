@@ -36,7 +36,7 @@
 
   services.xserver.xautolock = {
     enable = true;
-    locker = "${pkgs.i3lock}/bin/i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png";
+    locker = "/home/chuu/git/nixos/PATH/lock.fish";
     # Wait 10 minutes before locking
     time = 10;
     # This command prevents locking when a media player is active
