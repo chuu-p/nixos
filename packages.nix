@@ -11,7 +11,7 @@ in {
     alejandra
     android-studio
     android-tools
-    anki
+    # anki
     # appimage-run
     bacon
     bat
@@ -27,7 +27,7 @@ in {
     chromium
     clang
     clippy
-    conda
+    # conda
     cryptsetup
     delta
     devenv
@@ -97,7 +97,7 @@ in {
     progress
     protobuf
     pulseaudio
-    python312Packages.conda
+    # python312Packages.conda
     python314
     qjackctl
     rio
@@ -108,7 +108,7 @@ in {
     sqlite
     tinymist
     tokei
-    toot
+    # toot
     transmission_4-qt
     trashy
     tty-clock
@@ -129,45 +129,45 @@ in {
     yt-dlp
     zellij
     zoxide
-    (vscode-with-extensions.override {
-      vscode = vscodium;
-      vscodeExtensions = with vscode-extensions;
-        [
-          bierner.emojisense
-          bradlc.vscode-tailwindcss
-          foam.foam-vscode
-          jnoortheen.nix-ide
-          ms-python.python
-          rust-lang.rust-analyzer
-          streetsidesoftware.code-spell-checker
-          streetsidesoftware.code-spell-checker-german
-          tamasfe.even-better-toml
-          tomoki1207.pdf
-          vadimcn.vscode-lldb
-          vscodevim.vim
-          zxh404.vscode-proto3
-        ]
-        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-          # {
-          #   name = "doki-theme";
-          #   publisher = "unthrottled";
-          #   version = "88.1.15";
-          #   sha256 = "ys3D84zg7mGGTG5Ey65gqgujbUJBsg27MC3qUnbluoM=";
-          # }
-          {
-            name = "geminicodeassist";
-            publisher = "Google";
-            version = "2.43.0";
-            sha256 = "jenr96MLxZE352f0WyUsFkRajP7L/4893RTtuKirEvs=";
-          }
-          {
-            name = "github-vscode-theme";
-            publisher = "GitHub";
-            version = "6.3.5";
-            sha256 = "dOadoYBPcYrpzmqOpJwG+/nPwTfJtlsOFDU3FctdR0o=";
-          }
-        ];
-    })
+    # (vscode-with-extensions.override {
+    #   vscode = vscodium;
+    #   vscodeExtensions = with vscode-extensions;
+    #     [
+    #       bierner.emojisense
+    #       bradlc.vscode-tailwindcss
+    #       foam.foam-vscode
+    #       jnoortheen.nix-ide
+    #       ms-python.python
+    #       rust-lang.rust-analyzer
+    #       streetsidesoftware.code-spell-checker
+    #       streetsidesoftware.code-spell-checker-german
+    #       tamasfe.even-better-toml
+    #       tomoki1207.pdf
+    #       vadimcn.vscode-lldb
+    #       vscodevim.vim
+    #       zxh404.vscode-proto3
+    #     ]
+    #     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    #       # {
+    #       #   name = "doki-theme";
+    #       #   publisher = "unthrottled";
+    #       #   version = "88.1.15";
+    #       #   sha256 = "ys3D84zg7mGGTG5Ey65gqgujbUJBsg27MC3qUnbluoM=";
+    #       # }
+    #       {
+    #         name = "geminicodeassist";
+    #         publisher = "Google";
+    #         version = "2.43.0";
+    #         sha256 = "jenr96MLxZE352f0WyUsFkRajP7L/4893RTtuKirEvs=";
+    #       }
+    #       {
+    #         name = "github-vscode-theme";
+    #         publisher = "GitHub";
+    #         version = "6.3.5";
+    #         sha256 = "dOadoYBPcYrpzmqOpJwG+/nPwTfJtlsOFDU3FctdR0o=";
+    #       }
+    #     ];
+    # })
     gnomeExtensions.unite
   ];
 }
