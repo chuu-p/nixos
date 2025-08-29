@@ -45,6 +45,7 @@ in {
     fish
     flameshot
     font-awesome
+    fx-cast-bridge
     gemini-cli
     gh
     ghostscript
