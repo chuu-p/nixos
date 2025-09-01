@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: let
   browser = [
@@ -97,8 +98,27 @@ in {
 
   home.sessionVariables = {
     EDITOR = "hx";
+    ATUIN_NOBIND = "true";
   };
   home.sessionPath = ["${config.home.homeDirectory}/git/nixos/PATH"];
+
+  programs.atuin = {
+    enable = true;
+    settings = {
+      auto_sync = false;
+      # sync_frequency = "5m";
+      # sync_address = "https://api.atuin.sh";
+      search_mode = "fuzzy";
+    };
+  };
+
+  # programs.neovim = {
+  #   enable = true;
+  #   package = pkgs.neovim-nightly;
+  #   vimAlias = true;
+  #   vimdiffAlias = true;
+  #   withNodeJs = true;
+  # };
 
   programs.fish = {
     enable = true;
@@ -184,81 +204,6 @@ in {
     extraConfig = builtins.readFile ./kitty-themes/themes/miku.conf;
   };
 
-  programs.rio = {
-    enable = true;
-    settings = {
-      fonts = {
-        size = 13;
-        family = "Space Mono";
-        # regular = {
-        #   family = "Space Mono";
-        #   style = "Normal";
-        #   width = "Normal";
-        #   weight = 400;
-        # };
-        # bold = {
-        #   family = "Space Mono";
-        #   style = "Normal";
-        #   width = "Normal";
-        #   weight = 800;
-        # };
-        # italic = {
-        #   family = "Space Mono";
-        #   style = "Italic";
-        #   width = "Normal";
-        #   weight = 400;
-        # };
-        # bold-italic = {
-        #   family = "Space Mono";
-        #   style = "Italic";
-        #   width = "Normal";
-        #   weight = 800;
-        # };
-        # [fonts.emoji]
-        # family = "Noto Color Emoji"
-        # [renderer]
-        # filters = [
-        #   # Loads built-in crt
-        #   "NewPixieCrt",
-        #   "fubax_vr"
-        # ]
-      };
-      window.background-image = {
-        path = "/home/chuu/git/nixos/themes/ene.png";
-        opacity = 0.05;
-        x = 0;
-        y = 0;
-        width = 2560;
-        height = 1440;
-      };
-    };
-  };
-
-  home.file.".config/rio/themes/dracula.toml" = {
-    text = builtins.readFile ./themes/ayu.toml;
-  };
-
-  programs.zellij = {
-    enable = true;
-    settings = {
-      theme = "gruvbox-dark";
-      themes.gruvbox-dark = {
-        fg = "#d5c4a1";
-        bg = "#282828";
-        black = "#3C3836";
-        red = "#CC241D";
-        green = "#98971A";
-        yellow = "#D79921";
-        blue = "#3C8588";
-        magenta = "#B16286";
-        cyan = "#689D6A";
-        white = "#ebdbb2";
-        orange = "#D65D0E";
-      };
-      pane_frames = false;
-    };
-  };
-
   programs.obs-studio = {
     enable = true;
     plugins = with pkgs.obs-studio-plugins; [
@@ -325,26 +270,6 @@ in {
     enable = true;
     theme = builtins.fromTOML (builtins.readFile ./themes/yazi-catppuccin-mocha.toml);
   };
-
-  # programs.yazi.yaziPlugins = {
-  #   enable = true;
-  #   plugins = {
-  #     bookmarks.enable = true;
-  #     git.enable = true;
-  #     glow.enable = true;
-  #     smart-enter.enable = true;
-  #     smart-filter.enable = true;
-  #     jump-to-char = {
-  #       enable = true;
-  #       keys.toggle.on = ["F"];
-  #     };
-  #     relative-motions = {
-  #       enable = true;
-  #       show_numbers = "relative_absolute";
-  #       show_motion = true;
-  #     };
-  #   };
-  # };
 
   programs.helix = {
     enable = true;
