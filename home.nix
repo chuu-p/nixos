@@ -272,14 +272,13 @@ in {
     enable = true;
     config = {
       modifier = "Mod4";
-      # TODO
       startup = [
         {command = "exec discord --start-minimized";}
         {command = "exec keepassxc";}
         {command = "exec flameshot";}
         {command = "exec mullvad-gui";}
         {command = "exec fcitx5";}
-        {command = "exec /home/chuu/git/nixos/.config/bato.sh";}
+        {command = "exec_always --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 600 'i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png' '' --detect-sleep";}
       ];
 
       floating = {
@@ -287,9 +286,6 @@ in {
           {
             title = "Volume Control";
           }
-          # {
-          #   class = "Pavucontrol";
-          # }
         ];
       };
 
@@ -305,22 +301,12 @@ in {
         }
       ];
 
-      # FIXME
-      # settings = {
-      #   # focusFollowsMouse = false;
-      #   defaultBorder = "normal 2";
-      #   defaultFloatingBorder = "normal 2";
-      #   hideEdgeBorders = "both";
-      #   workspaceLayout = "tabbed";
-      # };
       # TODO
       # - [ ] modes
-      # - [ ] pavucontrol always floating
       keybindings = import ./i3-keybindings.nix "Mod4";
       # modes = import ./i3-modes.nix "Mod4";
 
       window = {
-        # border = 0;
         hideEdgeBorders = "both";
         titlebar = false;
         commands = [
@@ -332,14 +318,6 @@ in {
           }
         ];
       };
-
-      # FIXME this does not work
-      # forWindow = [
-      #   {
-      #     title = "^Volume Control$";
-      #     floating = true;
-      #   }
-      # ];
     };
   };
 

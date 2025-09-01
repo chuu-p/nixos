@@ -7,12 +7,17 @@
 in {
   environment.systemPackages = with pkgs;
   with unstable; [
+    # anki
+    # appimage-run
+    # conda
+    # evil-helix
+    # mkchromecast
+    # python312Packages.conda
+    # toot
     alacritty
     alejandra
     android-studio
     android-tools
-    # anki
-    # appimage-run
     bacon
     bat
     black
@@ -27,13 +32,11 @@ in {
     chromium
     clang
     clippy
-    # conda
     cryptsetup
     delta
     devenv
     diesel-cli
     discord
-    # evil-helix
     evince
     exiftool
     f3d
@@ -62,10 +65,10 @@ in {
     just
     kdePackages.kcalc
     keepassxc
-    krita
     kitty
     koto
     koto-ls
+    krita
     libnotify
     libreoffice
     libxkbcommon
@@ -73,7 +76,6 @@ in {
     mask
     mcomix
     meld
-    # mkchromecast
     mkvtoolnix-cli
     monitor
     mprocs
@@ -81,8 +83,8 @@ in {
     mscp
     nautilus
     neofetch
-    nodejs
     nodePackages.live-server
+    nodejs
     nvtopPackages.full
     obsidian
     openrazer-daemon
@@ -97,7 +99,6 @@ in {
     progress
     protobuf
     pulseaudio
-    # python312Packages.conda
     python314
     qjackctl
     rio
@@ -108,7 +109,6 @@ in {
     sqlite
     tinymist
     tokei
-    # toot
     transmission_4-qt
     trashy
     tty-clock
@@ -120,9 +120,10 @@ in {
     vdhcoapp
     vim
     wasm-bindgen-cli
-    xdragon
-    xorg.xev
     xautolock
+    xdragon
+    xidlehook
+    xorg.xev
     xsel
     yad
     yazi

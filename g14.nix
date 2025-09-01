@@ -34,28 +34,6 @@
     SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="0666"
   '';
 
-  services.xserver.xautolock = {
-    enable = true;
-    locker = "/home/chuu/git/nixos/PATH/lock.fish";
-    # Wait 10 minutes before locking
-    time = 10;
-    # This command prevents locking when a media player is active
-    # It looks for players using a tool called playerctl
-    # detectPlayers = "playerctl -a status 2>&1 | grep -q 'Playing'";
-    # This option forces unlocking if the player stops or the screen is already unlocked
-    # lockOnPlayerStop = true;
-  };
-
-  # services.acpid = {
-  #   enable = true;
-  #   handlers = {
-  #     button-prog1 = {
-  #       event = "button/prog1 PROG1";
-  #       action = "/home/chuu/git/nixos/PATH/c-debug-notification";
-  #     };
-  #   };
-  # };
-
   musnix.enable = true;
 
   hardware.nvidia = {
