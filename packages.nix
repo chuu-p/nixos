@@ -62,6 +62,8 @@ in {
     htop
     hyperfine
     inkscape
+    jetbrains.rust-rover
+    jetbrains-toolbox
     just
     kdePackages.kcalc
     keepassxc
