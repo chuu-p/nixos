@@ -241,7 +241,7 @@ in {
           fonts = {
             names = ["Space Mono"];
             style = "Regular";
-            size = 11.0;
+            size = 12.0;
           };
         }
       ];
