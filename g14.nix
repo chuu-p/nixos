@@ -177,7 +177,7 @@
   users.users.chuu = {
     isNormalUser = true;
     description = "chuu";
-    extraGroups = ["networkmanager" "wheel" "syncthing" "audio" "jackaudio"];
+    extraGroups = ["networkmanager" "wheel" "syncthing" "audio" "jackaudio" "openrazer"];
     shell = pkgs.fish;
     packages = with pkgs; [
     ];

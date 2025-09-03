@@ -100,6 +100,7 @@ in {
     presenterm
     progress
     protobuf
+    polychromatic
     pulseaudio
     python314
     qjackctl
