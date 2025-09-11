@@ -12,12 +12,21 @@ mod: {
   "${mod}+Down" = "focus down";
   "${mod}+Up" = "focus up";
   "${mod}+Right" = "focus right";
+  "${mod}+h" = "focus left";
+  "${mod}+j" = "focus down";
+  "${mod}+k" = "focus up";
+  "${mod}+l" = "focus right";
+
   "${mod}+Shift+f" = "[urgent=latest] focus";
 
   "${mod}+Shift+Left" = "move left";
   "${mod}+Shift+Down" = "move down";
   "${mod}+Shift+Up" = "move up";
   "${mod}+Shift+Right" = "move right";
+  "${mod}+Shift+h" = "move left";
+  "${mod}+Shift+j" = "move down";
+  "${mod}+Shift+k" = "move up";
+  "${mod}+Shift+l" = "move right";
 
   "${mod}+Control+Left" = "resize shrink width 10 px";
   "${mod}+Control+Down" = "resize grow height 10 px";
@@ -28,7 +37,7 @@ mod: {
   "${mod}+Control+k" = "resize shrink height 10 px ";
   "${mod}+Control+l" = "resize grow width 10 px";
 
-  "${mod}+h" = "split h";
+  "${mod}+c" = "split h";
   "${mod}+v" = "split v";
   "${mod}+f" = "fullscreen toggle";
 
@@ -62,7 +71,7 @@ mod: {
   "XF86AudioMute" = "exec pactl set-sink-volume @DEFAULT_SINK@ 0%";
   "XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
 
-  "${mod}+l" = "exec i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png";
+  "${mod}+o" = "exec i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png";
   "${mod}+XF86AudioRaiseVolume" = "exec pavucontrol";
   "${mod}+XF86AudioLowerVolume" = "exec sh -c '/home/chuu/git/nixos/PATH/gsudo systemctl suspend'";
   "${mod}+Shift+XF86AudioLowerVolume" = "exec sh -c '/home/chuu/git/nixos/PATH/gsudo systemctl hibernate'";

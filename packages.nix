@@ -133,6 +133,46 @@ in {
     yt-dlp
     zellij
     zoxide
+    (vscode-with-extensions.override {
+      vscode = vscodium;
+      vscodeExtensions = with vscode-extensions;
+        [
+          bierner.emojisense
+          bradlc.vscode-tailwindcss
+          foam.foam-vscode
+          jnoortheen.nix-ide
+          ms-python.python
+          rust-lang.rust-analyzer
+          streetsidesoftware.code-spell-checker
+          streetsidesoftware.code-spell-checker-german
+          tamasfe.even-better-toml
+          tomoki1207.pdf
+          vadimcn.vscode-lldb
+          zxh404.vscode-proto3
+          jebbs.plantuml
+        ]
+        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          {
+            name = "geminicodeassist";
+            publisher = "Google";
+            version = "2.43.0";
+            sha256 = "jenr96MLxZE352f0WyUsFkRajP7L/4893RTtuKirEvs=";
+          }
+          {
+            name = "github-vscode-theme";
+            publisher = "GitHub";
+            version = "6.3.5";
+            sha256 = "dOadoYBPcYrpzmqOpJwG+/nPwTfJtlsOFDU3FctdR0o=";
+          }
+          {
+            name = "vscode-helix-emulation";
+            publisher = "jasew";
+            version = "0.6.2";
+            sha256 = "V/7Tu1Ze/CYRmtxwU2+cQLOxLwH7YRYYeHSUGbGTb5I=";
+          }
+        ];
+    })
+
     # (vscode-with-extensions.override {
     #   vscode = vscodium;
     #   vscodeExtensions = with vscode-extensions;

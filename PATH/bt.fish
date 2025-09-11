@@ -15,12 +15,16 @@ switch $invoked_name
     case c-bt-connect-pixelbuds
         bluetoothctl connect 24:29:34:B3:1A:9D
 
+    case c-bt-connect-shokz
+        bluetoothctl connect C0:86:B3:8F:1E:82
+
     case bt.fish
         switch $argv[1]
             case --install
                 ln -s "bt.fish" c-bt-connect-headphones
                 ln -s "bt.fish" c-bt-connect-soundbar
                 ln -s "bt.fish" c-bt-connect-pixelbuds
+                ln -s "bt.fish" c-bt-connect-shokz
                 echo install OK
 
             case --help

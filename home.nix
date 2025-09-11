@@ -204,15 +204,6 @@ in {
     extraConfig = builtins.readFile ./kitty-themes/themes/ene_ghd.conf;
   };
 
-  programs.obs-studio = {
-    enable = true;
-    plugins = with pkgs.obs-studio-plugins; [
-      wlrobs
-      obs-backgroundremoval
-      obs-pipewire-audio-capture
-    ];
-  };
-
   xsession.windowManager.i3 = {
     enable = true;
     config = {
@@ -313,10 +304,10 @@ in {
 
   services.dunst.enable = true;
 
-  services.screen-locker = {
-    enable = true;
-    lockCmd = "${pkgs.i3lock}/bin/i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png";
-  };
+  # services.screen-locker = {
+  #   enable = true;
+  #   lockCmd = "i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png";
+  # };
 
   # https://github.com/Nimor111/home.nix/blob/master/home.nix
   # https://github.com/jonringer/nixpkgs-config/blob/master/home.nix
