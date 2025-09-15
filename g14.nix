@@ -195,11 +195,15 @@
     enable = true;
     enableVirtualCamera = true;
     plugins = with pkgs.obs-studio-plugins; [
+      droidcam-obs
+      waveform
+      waveform
       obs-backgroundremoval
       obs-pipewire-audio-capture
       obs-vaapi #optional AMD hardware acceleration
       obs-webkitgtk
       input-overlay
+      obs-gstreamer
       obs-tuna
     ];
   };

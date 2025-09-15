@@ -110,6 +110,7 @@ in {
     rustfmt
     signal-desktop
     sqlite
+    teams-for-linux
     tinymist
     tokei
     transmission_4-qt
