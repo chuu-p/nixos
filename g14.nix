@@ -123,6 +123,8 @@
     package = pkgs.mullvad-vpn;
   };
 
+  services.tailscale.enable = true;
+
   console.keyMap = "us";
 
   xdg.portal = {
