@@ -311,15 +311,18 @@
     overrideFolders = true; # overrides any folders added or deleted through the WebUI
   };
 
-  system.autoUpgrade = {
-    enable = true;
-    randomizedDelaySec = "30min"; # Adds a random delay to prevent simultaneous updates
-    dates = "daily"; # or "weekly", "monthly", etc.
-    flags = ["--impure" "--flake" "/etc/nixos"];
-    allowReboot = true; # Allow the system to reboot if necessary
-    # email = "your-email@example.com"; # Uncomment to receive email notifications
-    # emailOnFailure = true;
-  };
+  # auto upgrading is a bad pattern due to supply chain attacks.
+  # you should lock your versions
+  # https://youtu.be/69F9IuBWb-E?t=119
+  # system.autoUpgrade = {
+  #   enable = true;
+  #   randomizedDelaySec = "30min"; # Adds a random delay to prevent simultaneous updates
+  #   dates = "daily"; # or "weekly", "monthly", etc.
+  #   flags = ["--impure" "--flake" "/etc/nixos"];
+  #   allowReboot = true; # Allow the system to reboot if necessary
+  #   # email = "your-email@example.com"; # Uncomment to receive email notifications
+  #   # emailOnFailure = true;
+  # };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
