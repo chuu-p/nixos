@@ -108,6 +108,7 @@ in {
     rust-analyzer
     rustc
     rustfmt
+    rpcs3
     signal-desktop
     sqlite
     teams-for-linux

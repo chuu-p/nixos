@@ -214,6 +214,7 @@ in {
         {command = "exec flameshot";}
         {command = "exec mullvad-gui";}
         {command = "exec fcitx5";}
+        {command = "exec obsidian";}
         # {command = "exec_always --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 600 'i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png' '' --detect-sleep";}
       ];
 
