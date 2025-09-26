@@ -83,6 +83,7 @@ in {
     mprocs
     mpv
     mscp
+    mixxx
     nautilus
     neofetch
     nodePackages.live-server
@@ -121,6 +122,7 @@ in {
     typstyle
     unzip
     upscayl
+    usbutils
     uutils-coreutils-noprefix
     vdhcoapp
     vim
