@@ -7,13 +7,6 @@
 in {
   environment.systemPackages = with pkgs;
   with unstable; [
-    # anki
-    # appimage-run
-    # conda
-    # evil-helix
-    # mkchromecast
-    # python312Packages.conda
-    # toot
     alacritty
     alejandra
     android-studio
@@ -32,11 +25,13 @@ in {
     chromium
     clang
     clippy
+    colmena
     cryptsetup
     delta
     devenv
     diesel-cli
     discord
+    evil-helix
     evince
     exiftool
     f3d
@@ -47,6 +42,7 @@ in {
     firejail
     fish
     flameshot
+    fluxcd
     font-awesome
     gemini-cli
     gh
@@ -57,16 +53,17 @@ in {
     google-chrome
     gparted
     gum
-    helix
     home-manager
     htop
     hyperfine
     inkscape
-    jetbrains.rust-rover
     jetbrains-toolbox
+    jetbrains.rust-rover
     just
+    k3s
     kdePackages.kcalc
     keepassxc
+    kubernetes-helm
     kitty
     koto
     koto-ls
@@ -78,12 +75,12 @@ in {
     mask
     mcomix
     meld
+    mixxx
     mkvtoolnix-cli
     monitor
     mprocs
     mpv
     mscp
-    mixxx
     nautilus
     neofetch
     nodePackages.live-server
@@ -98,18 +95,18 @@ in {
     pkg-config
     playerctl
     pnpm
+    polychromatic
     presenterm
     progress
     protobuf
-    polychromatic
     pulseaudio
     python314
     qjackctl
     rio
+    rpcs3
     rust-analyzer
     rustc
     rustfmt
-    rpcs3
     signal-desktop
     sqlite
     teams-for-linux
@@ -144,7 +141,9 @@ in {
           bierner.emojisense
           bradlc.vscode-tailwindcss
           foam.foam-vscode
+          jebbs.plantuml
           jnoortheen.nix-ide
+          ms-kubernetes-tools.vscode-kubernetes-tools
           ms-python.python
           rust-lang.rust-analyzer
           streetsidesoftware.code-spell-checker
@@ -152,8 +151,9 @@ in {
           tamasfe.even-better-toml
           tomoki1207.pdf
           vadimcn.vscode-lldb
+          vscodevim.vim
           zxh404.vscode-proto3
-          jebbs.plantuml
+          redhat.vscode-yaml
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
@@ -169,10 +169,10 @@ in {
             sha256 = "dOadoYBPcYrpzmqOpJwG+/nPwTfJtlsOFDU3FctdR0o=";
           }
           {
-            name = "vscode-helix-emulation";
-            publisher = "jasew";
-            version = "0.6.2";
-            sha256 = "V/7Tu1Ze/CYRmtxwU2+cQLOxLwH7YRYYeHSUGbGTb5I=";
+            name = "vscode-gitops-tools";
+            publisher = "Weaveworks";
+            version = "0.27.0";
+            sha256 = "7MCKDnHCot/CL/SqZ2WuTxbqFdF75EC5WC+OxW0dcaE=";
           }
         ];
     })

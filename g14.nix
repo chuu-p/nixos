@@ -1,3 +1,5 @@
+# █▀▀ ▄█ █░█
+# █▄█ ░█ ▀▀█
 {
   config,
   pkgs,
@@ -15,11 +17,60 @@
 
   powerManagement.powertop.enable = true;
 
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+
+  nix.settings.trusted-users = ["root" "@wheel" "chuu"];
+
   programs.direnv.enable = true;
   nix.extraOptions = ''
     extra-substituters = https://devenv.cachix.org
     extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
   '';
+
+  nix.buildMachines = [
+    {
+      hostName = "jinora";
+      sshUser = "chuu";
+      system = "aarch64-linux";
+      protocol = "ssh-ng";
+      maxJobs = 1;
+      speedFactor = 2;
+      supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+      mandatoryFeatures = [];
+    }
+    {
+      hostName = "iroh";
+      sshUser = "chuu";
+      system = "aarch64-linux";
+      protocol = "ssh-ng";
+      maxJobs = 1;
+      speedFactor = 3;
+      supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+      mandatoryFeatures = [];
+    }
+    {
+      hostName = "opal";
+      sshUser = "chuu";
+      system = "aarch64-linux";
+      protocol = "ssh-ng";
+      maxJobs = 1;
+      speedFactor = 2;
+      supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+      mandatoryFeatures = [];
+    }
+    # {
+    #   hostName = "nixos";
+    #   sshUser = "nixos";
+    #   system = "x86_64-linux";
+    #   # systems = ["x86_64-linux" "aarch64-linux"];
+    #   protocol = "ssh";
+    #   maxJobs = 4;
+    #   speedFactor = 10;
+    #   supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+    #   mandatoryFeatures = [];
+    # }
+  ];
+  nix.distributedBuilds = true;
 
   # This is needed for Slippi to run.
   programs.appimage.package = pkgs.appimage-run.override {
@@ -289,11 +340,7 @@
   services.logind = {
     lidSwitch = "suspend-then-hibernate";
     lidSwitchExternalPower = "ignore";
-
-    extraConfig = ''
-      # don’t shutdown when power button is short-pressed
-      HandlePowerKey=ignore
-    '';
+    powerKey = "ignore";
   };
 
   systemd.sleep.extraConfig = ''
@@ -328,6 +375,23 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false; # Disable password-based SSH login for security
+    settings.PermitRootLogin = "prohibit-password"; # Allow root login only with a key
+    banner = ''
+      █▀▀ ▄█ █░█
+      █▄█ ░█ ▀▀█
+    '';
+  };
+
+  users.users.chuu.openssh.authorizedKeys.keys = [
+    (builtins.readFile /home/chuu/.ssh/id_ed25519.pub)
+  ];
+
+  users.users.root.openssh.authorizedKeys.keys = [
+    (builtins.readFile /home/chuu/.ssh/id_ed25519.pub)
+  ];
 
   system.stateVersion = "24.11";
 }

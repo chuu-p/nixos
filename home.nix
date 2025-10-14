@@ -99,6 +99,7 @@ in {
   home.sessionVariables = {
     EDITOR = "hx";
     ATUIN_NOBIND = "true";
+    KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
   };
   home.sessionPath = ["${config.home.homeDirectory}/git/nixos/PATH"];
 
@@ -124,7 +125,12 @@ in {
     enable = true;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
-      fish_vi_key_bindings
+
+      function fish_hybrid_key_bindings
+        fish_default_key_bindings -M insert
+        fish_vi_key_bindings --no-erase
+      end
+      set -g fish_key_bindings fish_hybrid_key_bindings
     '';
     functions = {
       y = ''
@@ -266,6 +272,7 @@ in {
 
   programs.helix = {
     enable = true;
+    package = pkgs.evil-helix;
     settings = {
       theme = "term16_dark";
       # globally enable inlay-hints for all languages

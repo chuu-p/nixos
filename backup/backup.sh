@@ -1,7 +1,7 @@
 #!/run/current-system/sw/bin/bash
 
 exclude=/home/chuu/git/nixos/backup/borg_exclude.txt
-export BORG_REPO=ssh://chuu@q:22/run/media/chuu/Archive/borg/g14
+export BORG_REPO=ssh://chuu@jinora:22/home/chuu/mnt/borg/g14
 export BORG_PASSPHRASE='chuu'
 
 cd /

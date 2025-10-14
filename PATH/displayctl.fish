@@ -26,7 +26,8 @@ switch $invoked_name
         check_status c-display-extend
 
     case c-display-second
-        xrandr --output eDP --off --output HDMI-A-0 --mode 1920x1080 --scale 1.333x1.333 --rate 180.00
+        xrandr --output eDP --off --output HDMI-A-0 --auto
+        # xrandr --output eDP --off --output HDMI-A-0 --mode 1920x1080 --scale 1.333x1.333 --rate 180.00
         check_status c-display-second
 
     case c-display-first

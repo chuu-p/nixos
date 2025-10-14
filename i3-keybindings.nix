@@ -86,10 +86,10 @@ mod: {
   "XF86MonBrightnessUp" = "exec brightnessctl set +10%";
   "XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
 
-  "XF86Launch1" = "exec gsudo systemctl suspend-then-hibernate"; # ROG
-  "Mod1+XF86Launch1" = "exec gsudo systemctl hibernate"; # Alt + ROG
-  "Shift+XF86Launch1" = "exec gsudo systemctl poweroff"; # Shift + ROG
-  "Control+XF86Launch1" = "exec gsudo systemctl reboot"; # Control + ROG
+  "XF86Launch1" = "exec sh -c '/home/chuu/git/nixos/PATH/gsudo systemctl suspend'"; # ROG
+  "Mod1+XF86Launch1" = "exec gsudo systemctl exec sh -c '/home/chuu/git/nixos/PATH/gsudo systemctl hibernate'"; # Alt + ROG
+  "Shift+XF86Launch1" = "exec gsudo systemctl exec sh -c '/home/chuu/git/nixos/PATH/gsudo systemctl poweroff'"; # Shift + ROG
+  "Control+XF86Launch1" = "exec gsudo systemctl exec sh -c '/home/chuu/git/nixos/PATH/gsudo systemctl reboot'"; # Control + ROG
 
   "XF86KbdBrightnessUp" = "exec asusctl -n";
   "XF86KbdBrightnessDown" = "exec asusctl -p";
@@ -117,6 +117,11 @@ mod: {
   "${mod}+Shift+8" = "move container to workspace 8";
   "${mod}+Shift+9" = "move container to workspace 9";
   "${mod}+Shift+0" = "move container to workspace 10";
+
+  "${mod}+Shift+Mod1+Left" = "workspace prev_on_output";
+  "${mod}+Shift+Mod1+h" = "workspace prev_on_output";
+  "${mod}+Shift+Mod1+Right" = "workspace next_on_output";
+  "${mod}+Shift+Mod1+l" = "workspace next_on_output";
 
   # TODO
   # - [ ] modes
