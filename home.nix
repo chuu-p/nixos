@@ -125,12 +125,12 @@ in {
     enable = true;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
-
       function fish_hybrid_key_bindings
         fish_default_key_bindings -M insert
         fish_vi_key_bindings --no-erase
       end
       set -g fish_key_bindings fish_hybrid_key_bindings
+      fish_user_key_bindings
     '';
     functions = {
       y = ''

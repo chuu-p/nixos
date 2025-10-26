@@ -7,25 +7,14 @@
   ...
 }: {
   imports = [
-    <musnix>
     ./packages.nix
   ];
-
-  # This enables AppImage support.
-  programs.appimage.enable = true;
-  programs.appimage.binfmt = true;
 
   powerManagement.powertop.enable = true;
 
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   nix.settings.trusted-users = ["root" "@wheel" "chuu"];
-
-  programs.direnv.enable = true;
-  nix.extraOptions = ''
-    extra-substituters = https://devenv.cachix.org
-    extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
-  '';
 
   nix.buildMachines = [
     {
@@ -58,53 +47,33 @@
       supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
       mandatoryFeatures = [];
     }
-    {
-      hostName = "nixos";
-      sshUser = "nixos";
-      system = "x86_64-linux";
-      # systems = ["x86_64-linux" "aarch64-linux"];
-      protocol = "ssh-ng";
-      maxJobs = 4;
-      speedFactor = 10;
-      supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-      mandatoryFeatures = [];
-    }
+    # {
+    #   hostName = "nixos";
+    #   sshUser = "nixos";
+    #   system = "x86_64-linux";
+    #   # systems = ["x86_64-linux" "aarch64-linux"];
+    #   protocol = "ssh";
+    #   maxJobs = 4;
+    #   speedFactor = 10;
+    #   supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+    #   mandatoryFeatures = [];
+    # }
   ];
   nix.distributedBuilds = true;
 
-  # This is needed for Slippi to run.
-  programs.appimage.package = pkgs.appimage-run.override {
-    extraPkgs = pkgs: [
-      pkgs.curl
-      pkgs.libmpg123
-    ];
-  };
-
-  services.udev.extraRules = ''
-    # Your rule goes here
-    SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="0666"
-  '';
-
-  musnix.enable = true;
-
-  hardware.nvidia = {
-    dynamicBoost.enable = false;
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
-  };
-
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-  hardware.openrazer.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "g14"; # Define your hostname.
+  networking.hostName = "varrick"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = true;
+  networking.wireless.interfaces = ["wlp2s0"];
+  networking.wireless.networks."FRITZ!Box 7583 UJ" = {
+    psk = "41808552962347953265";
+  };
 
   networking.networkmanager.enable = true;
 
@@ -137,7 +106,7 @@
       layout = "us";
       options = "caps:super";
     };
-    videoDrivers = ["nvidia"];
+    # videoDrivers = ["nvidia"];
     displayManager.lightdm = {
       enable = true;
       greeters.slick = {
@@ -206,39 +175,37 @@
 
   services.atuin.enable = true;
 
-  # services.pipewire = {
-  #   enable = true;
-  #   alsa.enable = true;
-  #   alsa.support32Bit = true;
-  #   pulse.enable = true;
-  # };
+  # # services.pipewire = {
+  # #   enable = true;
+  # #   alsa.enable = true;
+  # #   alsa.support32Bit = true;
+  # #   pulse.enable = true;
+  # # };
 
-  services.jack = {
-    jackd.enable = true;
-    # support ALSA only programs via ALSA JACK PCM plugin
-    alsa.enable = false;
-    # support ALSA only programs via loopback device (supports programs like Steam)
-    loopback = {
-      enable = true;
-      # buffering parameters for dmix device to work with ALSA only semi-professional sound programs
-      #dmixConfig = ''
-      #  period_size 2048
-      #'';
-    };
-  };
+  # services.jack = {
+  #   jackd.enable = true;
+  #   # support ALSA only programs via ALSA JACK PCM plugin
+  #   alsa.enable = false;
+  #   # support ALSA only programs via loopback device (supports programs like Steam)
+  #   loopback = {
+  #     enable = true;
+  #     # buffering parameters for dmix device to work with ALSA only semi-professional sound programs
+  #     #dmixConfig = ''
+  #     #  period_size 2048
+  #     #'';
+  #   };
+  # };
 
   users.users.chuu = {
     isNormalUser = true;
     description = "chuu";
-    extraGroups = ["networkmanager" "wheel" "syncthing" "audio" "jackaudio" "openrazer"];
+    extraGroups = ["networkmanager" "wheel" "syncthing" "audio"];
     shell = pkgs.fish;
     packages = with pkgs; [
     ];
   };
 
   programs.fish.enable = true;
-
-  programs.steam.enable = true;
 
   programs.nix-ld.enable = true;
 
@@ -258,14 +225,6 @@
       input-overlay
       obs-gstreamer
       obs-tuna
-    ];
-  };
-
-  nixpkgs.config = {
-    # allowUnfree = true;
-    permittedInsecurePackages = [
-      "mkchromecast"
-      "python3.12-youtube-dl-2021.12.17"
     ];
   };
 
@@ -380,17 +339,17 @@
     settings.PasswordAuthentication = false; # Disable password-based SSH login for security
     settings.PermitRootLogin = "prohibit-password"; # Allow root login only with a key
     banner = ''
-      █▀▀ ▄█ █░█
-      █▄█ ░█ ▀▀█
+      █░█ ▄▀█ █▀█ █▀█ █ █▀▀ █▄▀
+      ▀▄▀ █▀█ █▀▄ █▀▄ █ █▄▄ █░█
     '';
   };
 
   users.users.chuu.openssh.authorizedKeys.keys = [
-    (builtins.readFile /home/chuu/.ssh/id_ed25519.pub)
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQHb+VwHnS97Wmu4xpUDlLhzB+Ip11BINatUivsr6+a"
   ];
 
   users.users.root.openssh.authorizedKeys.keys = [
-    (builtins.readFile /home/chuu/.ssh/id_ed25519.pub)
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQHb+VwHnS97Wmu4xpUDlLhzB+Ip11BINatUivsr6+a"
   ];
 
   system.stateVersion = "24.11";

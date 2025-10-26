@@ -75,6 +75,7 @@ in {
     mask
     mcomix
     meld
+    prismlauncher
     mixxx
     mkvtoolnix-cli
     monitor
