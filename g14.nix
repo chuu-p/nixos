@@ -61,8 +61,8 @@
     # {
     #   hostName = "nixos";
     #   sshUser = "nixos";
-    #   # system = "x86_64-linux";
-    #   systems = ["x86_64-linux" "aarch64-linux"];
+    #   system = "x86_64-linux";
+    #   # systems = ["x86_64-linux" "aarch64-linux"];
     #   protocol = "ssh";
     #   maxJobs = 4;
     #   speedFactor = 10;
