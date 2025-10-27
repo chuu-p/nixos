@@ -63,7 +63,7 @@
       sshUser = "nixos";
       system = "x86_64-linux";
       # systems = ["x86_64-linux" "aarch64-linux"];
-      protocol = "ssh-ng";
+      protocol = "ssh";
       maxJobs = 4;
       speedFactor = 10;
       supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
@@ -172,6 +172,12 @@
   services.mullvad-vpn = {
     enable = true;
     package = pkgs.mullvad-vpn;
+  };
+
+  services.ollama = {
+    enable = true;
+    # Optional: preload models, see https://ollama.com/library
+    loadModels = ["qwen2.5-coder:3b"];
   };
 
   services.tailscale.enable = true;

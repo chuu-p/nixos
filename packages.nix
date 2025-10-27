@@ -11,6 +11,7 @@ in {
     alejandra
     android-studio
     android-tools
+    aider-chat
     bacon
     bat
     black
@@ -104,7 +105,7 @@ in {
     python314
     qjackctl
     rio
-    rpcs3
+    # rpcs3
     rust-analyzer
     rustc
     rustfmt
