@@ -58,17 +58,17 @@
       supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
       mandatoryFeatures = [];
     }
-    {
-      hostName = "nixos";
-      sshUser = "nixos";
-      system = "x86_64-linux";
-      # systems = ["x86_64-linux" "aarch64-linux"];
-      protocol = "ssh";
-      maxJobs = 4;
-      speedFactor = 10;
-      supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-      mandatoryFeatures = [];
-    }
+    # {
+    #   hostName = "nixos";
+    #   sshUser = "nixos";
+    #   # system = "x86_64-linux";
+    #   systems = ["x86_64-linux" "aarch64-linux"];
+    #   protocol = "ssh";
+    #   maxJobs = 4;
+    #   speedFactor = 10;
+    #   supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+    #   mandatoryFeatures = [];
+    # }
   ];
   nix.distributedBuilds = true;
 
@@ -93,7 +93,7 @@
     powerManagement.enable = false;
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    # package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
   hardware.bluetooth.enable = true;
@@ -268,14 +268,13 @@
   };
 
   nixpkgs.config = {
-    # allowUnfree = true;
-    permittedInsecurePackages = [
-      "mkchromecast"
-      "python3.12-youtube-dl-2021.12.17"
-    ];
+    allowUnfree = true;
+    allowBroken = true;
+    # permittedInsecurePackages = [
+    # "mkchromecast"
+    # "python3.12-youtube-dl-2021.12.17"
+    # ];
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.noto

@@ -12,6 +12,7 @@ in {
     android-studio
     android-tools
     aider-chat
+    asciinema
     bacon
     bat
     black
@@ -22,6 +23,7 @@ in {
     brightnessctl
     bun
     calibre
+    caligula
     cargo
     chromium
     clang
@@ -32,6 +34,7 @@ in {
     devenv
     diesel-cli
     discord
+    dragon-drop
     evil-helix
     evince
     exiftool
@@ -109,6 +112,7 @@ in {
     rust-analyzer
     rustc
     rustfmt
+    # rpi-imager
     signal-desktop
     sqlite
     teams-for-linux
@@ -127,7 +131,6 @@ in {
     vim
     wasm-bindgen-cli
     xautolock
-    xdragon
     xidlehook
     xorg.xev
     xsel

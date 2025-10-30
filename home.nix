@@ -208,7 +208,7 @@ in {
 
   programs.kitty = {
     enable = true;
-    extraConfig = builtins.readFile ./kitty-themes/themes/ene_ghd.conf;
+    extraConfig = builtins.readFile ./kitty-themes/themes/miku_gh.conf;
   };
 
   xsession.windowManager.i3 = {
