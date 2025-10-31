@@ -93,6 +93,7 @@
     powerManagement.enable = false;
     open = false;
     nvidiaSettings = true;
+    cudaSupport = false;
     package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
