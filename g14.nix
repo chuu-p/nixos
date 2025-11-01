@@ -93,8 +93,7 @@
     powerManagement.enable = false;
     open = false;
     nvidiaSettings = true;
-    cudaSupport = false;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   hardware.bluetooth.enable = true;
@@ -399,5 +398,5 @@
     (builtins.readFile /home/chuu/.ssh/id_ed25519.pub)
   ];
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 }
