@@ -20,6 +20,9 @@
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
+          nixpkgs.config.allowBroken = true;
+        }
+        {
           home-manager.backupFileExtension = "hm-backup";
           home-manager.users.chuu = {
             home = {
