@@ -13,6 +13,7 @@ in {
     android-tools
     aider-chat
     asciinema
+    ardour
     bacon
     bat
     black
@@ -20,6 +21,7 @@ in {
     blockbench
     borgbackup
     bottles
+    bottom
     brightnessctl
     bun
     calibre
@@ -48,6 +50,9 @@ in {
     flameshot
     fluxcd
     font-awesome
+    fontconfig
+    freetype
+    alsa-lib
     gemini-cli
     gh
     ghostscript
@@ -94,6 +99,7 @@ in {
     obsidian
     openrazer-daemon
     openssl
+    opencommit
     pandoc
     pavucontrol
     pdftk
@@ -117,6 +123,7 @@ in {
     sqlite
     teams-for-linux
     tinymist
+    tigervnc
     tokei
     transmission_4-qt
     trashy

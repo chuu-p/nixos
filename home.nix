@@ -99,7 +99,10 @@ in {
   home.sessionVariables = {
     EDITOR = "hx";
     ATUIN_NOBIND = "true";
-    KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
+    KUBECONFIG = "/home/chuu/.kube/k3s-jinora.yaml";
+    OCO_AI_PROVIDER = "gemini";
+    OCO_API_KEY = "AIzaSyAis5drXmbHiv2-NcQaN5pKHPyeXYiDK40";
+    OCO_EMOJI = "true";
   };
   home.sessionPath = ["${config.home.homeDirectory}/git/nixos/PATH"];
 

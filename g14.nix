@@ -27,50 +27,50 @@
     extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
   '';
 
-  nix.buildMachines = [
-    {
-      hostName = "jinora";
-      sshUser = "chuu";
-      system = "aarch64-linux";
-      protocol = "ssh-ng";
-      maxJobs = 1;
-      speedFactor = 2;
-      supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-      mandatoryFeatures = [];
-    }
-    {
-      hostName = "iroh";
-      sshUser = "chuu";
-      system = "aarch64-linux";
-      protocol = "ssh-ng";
-      maxJobs = 1;
-      speedFactor = 3;
-      supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-      mandatoryFeatures = [];
-    }
-    {
-      hostName = "opal";
-      sshUser = "chuu";
-      system = "aarch64-linux";
-      protocol = "ssh-ng";
-      maxJobs = 1;
-      speedFactor = 2;
-      supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-      mandatoryFeatures = [];
-    }
-    # {
-    #   hostName = "nixos";
-    #   sshUser = "nixos";
-    #   system = "x86_64-linux";
-    #   # systems = ["x86_64-linux" "aarch64-linux"];
-    #   protocol = "ssh";
-    #   maxJobs = 4;
-    #   speedFactor = 10;
-    #   supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-    #   mandatoryFeatures = [];
-    # }
-  ];
-  nix.distributedBuilds = true;
+  # nix.buildMachines = [
+  #   {
+  #     hostName = "jinora";
+  #     sshUser = "chuu";
+  #     system = "aarch64-linux";
+  #     protocol = "ssh-ng";
+  #     maxJobs = 1;
+  #     speedFactor = 2;
+  #     supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+  #     mandatoryFeatures = [];
+  #   }
+  #   {
+  #     hostName = "iroh";
+  #     sshUser = "chuu";
+  #     system = "aarch64-linux";
+  #     protocol = "ssh-ng";
+  #     maxJobs = 1;
+  #     speedFactor = 3;
+  #     supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+  #     mandatoryFeatures = [];
+  #   }
+  #   {
+  #     hostName = "opal";
+  #     sshUser = "chuu";
+  #     system = "aarch64-linux";
+  #     protocol = "ssh-ng";
+  #     maxJobs = 1;
+  #     speedFactor = 2;
+  #     supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+  #     mandatoryFeatures = [];
+  #   }
+  #   # {
+  #   #   hostName = "nixos";
+  #   #   sshUser = "nixos";
+  #   #   system = "x86_64-linux";
+  #   #   # systems = ["x86_64-linux" "aarch64-linux"];
+  #   #   protocol = "ssh";
+  #   #   maxJobs = 4;
+  #   #   speedFactor = 10;
+  #   #   supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+  #   #   mandatoryFeatures = [];
+  #   # }
+  # ];
+  # nix.distributedBuilds = true;
 
   # This is needed for Slippi to run.
   programs.appimage.package = pkgs.appimage-run.override {
@@ -113,13 +113,7 @@
 
   boot.plymouth = {
     enable = true;
-    theme = "rings";
-    themePackages = with pkgs; [
-      # By default we would install all themes
-      (adi1090x-plymouth-themes.override {
-        selected_themes = ["rings"];
-      })
-    ];
+    theme = "details";
   };
 
   networking.hostName = "g14"; # Define your hostname.
