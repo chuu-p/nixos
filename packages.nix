@@ -96,6 +96,7 @@ in {
     nodePackages.live-server
     nodejs
     nvtopPackages.full
+    nvchad
     obsidian
     openrazer-daemon
     openssl
@@ -146,6 +147,7 @@ in {
     yt-dlp
     zellij
     zoxide
+    zed
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;

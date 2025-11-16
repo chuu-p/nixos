@@ -1,6 +1,7 @@
 # █▀▀ ▄█ █░█
 # █▄█ ░█ ▀▀█
 {
+  inputs,
   config,
   pkgs,
   callPackage,
@@ -286,6 +287,13 @@
     # "mkchromecast"
     # "python3.12-youtube-dl-2021.12.17"
     # ];
+  };
+  nixpkgs = {
+    overlays = [
+      (final: prev: {
+        nvchad = inputs.nix4nvchad.packages."${pkgs.system}".nvchad;
+      })
+    ];
   };
 
   fonts.packages = with pkgs; [

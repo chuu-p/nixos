@@ -7,19 +7,35 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix4nvchad = {
+      url = "github:nix-community/nix4nvchad";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-  }: {
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    lib = nixpkgs.lib;
+  in {
     nixosConfigurations.g14 = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit system inputs;
+      };
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
+          home-manager = {
+            extraSpecialArgs = {
+              inherit system inputs;
+            };
+          };
           nixpkgs.config.allowBroken = true;
         }
         {

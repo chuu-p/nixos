@@ -17,7 +17,7 @@
     "calibre-ebook-viewer.desktop"
   ];
   text-editor = [
-    "Helix.desktop"
+    "nvim.desktop"
   ];
   associations = {
     "application/epub+zip" = ebook-viewer;
@@ -97,12 +97,9 @@ in {
   };
 
   home.sessionVariables = {
-    EDITOR = "hx";
+    EDITOR = "nvim";
     ATUIN_NOBIND = "true";
     KUBECONFIG = "/home/chuu/.kube/k3s-jinora.yaml";
-    OCO_AI_PROVIDER = "gemini";
-    OCO_API_KEY = "AIzaSyAis5drXmbHiv2-NcQaN5pKHPyeXYiDK40";
-    OCO_EMOJI = "true";
   };
   home.sessionPath = ["${config.home.homeDirectory}/git/nixos/PATH"];
 
@@ -110,19 +107,9 @@ in {
     enable = true;
     settings = {
       auto_sync = false;
-      # sync_frequency = "5m";
-      # sync_address = "https://api.atuin.sh";
       search_mode = "fuzzy";
     };
   };
-
-  # programs.neovim = {
-  #   enable = true;
-  #   package = pkgs.neovim-nightly;
-  #   vimAlias = true;
-  #   vimdiffAlias = true;
-  #   withNodeJs = true;
-  # };
 
   programs.fish = {
     enable = true;
