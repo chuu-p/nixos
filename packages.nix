@@ -147,7 +147,7 @@ in {
     yt-dlp
     zellij
     zoxide
-    zed
+    zed-editor
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
