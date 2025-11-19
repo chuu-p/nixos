@@ -7,13 +7,16 @@
 in {
   environment.systemPackages = with pkgs;
   with unstable; [
+    # rpcs3
+    # rpi-imager
+    aider-chat
     alacritty
     alejandra
+    alsa-lib
     android-studio
     android-tools
-    aider-chat
-    asciinema
     ardour
+    asciinema
     bacon
     bat
     black
@@ -52,7 +55,6 @@ in {
     font-awesome
     fontconfig
     freetype
-    alsa-lib
     gemini-cli
     gh
     ghostscript
@@ -72,11 +74,11 @@ in {
     k3s
     kdePackages.kcalc
     keepassxc
-    kubernetes-helm
     kitty
     koto
     koto-ls
     krita
+    kubernetes-helm
     libnotify
     libreoffice
     libxkbcommon
@@ -84,7 +86,6 @@ in {
     mask
     mcomix
     meld
-    prismlauncher
     mixxx
     mkvtoolnix-cli
     monitor
@@ -95,12 +96,12 @@ in {
     neofetch
     nodePackages.live-server
     nodejs
-    nvtopPackages.full
     nvchad
+    nvtopPackages.full
     obsidian
+    opencommit
     openrazer-daemon
     openssl
-    opencommit
     pandoc
     pavucontrol
     pdftk
@@ -109,22 +110,22 @@ in {
     pnpm
     polychromatic
     presenterm
+    prismlauncher
     progress
     protobuf
     pulseaudio
     python314
     qjackctl
     rio
-    # rpcs3
     rust-analyzer
     rustc
     rustfmt
-    # rpi-imager
     signal-desktop
     sqlite
+    sshfs
     teams-for-linux
-    tinymist
     tigervnc
+    tinymist
     tokei
     transmission_4-qt
     trashy
@@ -145,9 +146,9 @@ in {
     yad
     yazi
     yt-dlp
+    zed-editor
     zellij
     zoxide
-    zed-editor
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
