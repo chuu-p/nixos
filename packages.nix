@@ -15,6 +15,7 @@ in {
     alsa-lib
     android-studio
     android-tools
+    anki
     ardour
     asciinema
     bacon
