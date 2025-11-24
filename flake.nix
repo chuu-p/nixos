@@ -11,10 +11,6 @@
       url = "github:nix-community/nix4nvchad";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixowos = {
-      url = "github:yunfachi/nixowos";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -33,29 +29,19 @@
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
-
-        # Add nixowos system module
-        inputs.nixowos.nixosModules.default
-
         home-manager.nixosModules.home-manager
-
         {
           home-manager = {
             extraSpecialArgs = {
               inherit system inputs;
             };
           };
-
           nixpkgs.config.allowBroken = true;
         }
-
         {
           home-manager.backupFileExtension = "hm-backup";
-
           home-manager.users.chuu = {
             imports = [
-              # Add nixowos home module if you want it available in user configs
-              inputs.nixowos.homeModules.default
               ./home.nix
             ];
           };

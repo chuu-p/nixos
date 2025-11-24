@@ -12,8 +12,6 @@
     ./packages.nix
   ];
 
-  nixowos.enable = true;
-
   # This enables AppImage support.
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
