@@ -41,6 +41,20 @@
         {
           home-manager.backupFileExtension = "hm-backup";
           home-manager.users.chuu = {
+            home = {
+              shellAliases = {
+                l = "ls -alh";
+                ll = "ls -l";
+                ls = "ls --color=tty";
+                kubectl = "sudo k3s kubectl";
+                sudo = "sudo ";
+                prettier = "npx prettier --write";
+                g = "git";
+                cg = "cargo";
+                j = "just";
+                zj = "zellij";
+              };
+            };
             imports = [
               ./home.nix
             ];
