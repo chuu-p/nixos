@@ -12,6 +12,8 @@
     ./packages.nix
   ];
 
+  nixowos.enable = true;
+
   # This enables AppImage support.
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
@@ -28,7 +30,6 @@
     extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
   '';
   documentation.man.generateCaches = false;
-
 
   # nix.buildMachines = [
   #   {
