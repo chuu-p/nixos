@@ -18,6 +18,12 @@
 
   powerManagement.powertop.enable = true;
 
+  environment.variables = {
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+  };
+
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   nix.settings.trusted-users = ["root" "@wheel" "chuu"];
@@ -292,7 +298,7 @@
   nixpkgs = {
     overlays = [
       (final: prev: {
-        nvchad = inputs.nix4nvchad.packages."${pkgs.system}".nvchad;
+        nvchad = inputs.nix4nvchad.packages."${pkgs.stdenv.hostPlatform.system}".nvchad;
       })
     ];
   };

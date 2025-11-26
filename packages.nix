@@ -65,6 +65,8 @@ in {
     google-chrome
     gparted
     gum
+    gtk3-x11
+    gtk4
     home-manager
     htop
     hyperfine
@@ -83,6 +85,7 @@ in {
     libnotify
     libreoffice
     libxkbcommon
+    libuv
     lldb
     mask
     mcomix
@@ -95,7 +98,6 @@ in {
     mscp
     nautilus
     neofetch
-    nodePackages.live-server
     nodejs
     nvchad
     nvtopPackages.full

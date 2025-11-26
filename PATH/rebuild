@@ -36,10 +36,10 @@ echo "NixOS update..."
 nix flake update --commit-lock-file
 
 echo "NixOS Cleaning old (>14d) generations..."
-sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 14d &>nixos-wipe.log
+# sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 14d &>nixos-wipe.log
 
 echo "NixOS collect garbage..."
-sudo nix-collect-garbage -d
+# sudo nix-collect-garbage -d
 
 echo "Nix Channel update..."
 sudo nix-channel --update
@@ -47,7 +47,8 @@ sudo nix-channel --update
 echo "NixOS Rebuilding..."
 
 # Rebuild, output simplified errors, log trackebacks
-sudo nixos-rebuild switch --option builders '' --impure --flake /etc/nixos &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)
+# sudo nixos-rebuild switch --flake /home/chuu/git/nixos --impure &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)
+sudo nixos-rebuild switch --flake /home/chuu/git/nixos --impure
 
 # Get current generation metadata
 current=$(nixos-rebuild list-generations | grep current)

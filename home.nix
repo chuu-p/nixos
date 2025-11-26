@@ -157,9 +157,12 @@ in {
 
   programs.git = {
     enable = true;
-    userName = "chuu-p";
-    userEmail = "chuu801@pm.me";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "chuu-p";
+        email = "chuu801@pm.me";
+        signingkey = "/home/chuu/.ssh/id_ed25519.pub";
+      };
       init = {
         defaultBranch = "macho";
       };
@@ -190,9 +193,10 @@ in {
         wd = "diff --word-diff=color";
         sw = "switch";
       };
-      gpg.format = "ssh";
-      user.signingkey = "/home/chuu/.ssh/id_ed25519.pub";
-      gpg.ssh.allowedSignersFile = "~/.config/git/allowed-signers";
+      gpg = {
+        format = "ssh";
+        ssh.allowedSignersFile = "~/.config/git/allowed-signers";
+      };
     };
   };
 
