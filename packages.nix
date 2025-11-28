@@ -104,6 +104,7 @@ in {
     obsidian
     opencommit
     openrazer-daemon
+    openutau
     openssl
     pandoc
     pavucontrol
