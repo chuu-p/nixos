@@ -90,6 +90,7 @@ in {
     mask
     mcomix
     meld
+    meowpdf
     mixxx
     mkvtoolnix-cli
     monitor
