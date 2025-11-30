@@ -66,6 +66,29 @@ in {
   home.homeDirectory = "/home/chuu"; # Replace with your home directory
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
+  imports = [
+    inputs.nix4nvchad.homeManagerModule
+  ];
+
+  programs.nvchad = {
+    enable = true;
+    extraPackages = with pkgs; [
+      vimPlugins.kitty-scrollback-nvim
+      vimPlugins.coc-rust-analyzer
+      yaml-language-server
+      vue-language-server
+      typescript-language-server
+      tailwindcss-language-server
+      protobuf-language-server
+      lua-language-server
+      emmet-language-server
+      dockerfile-language-server
+      # copilot-language-server
+      nixd
+      rust-analyzer
+    ];
+  };
+
   home.packages = with pkgs; [
     kitty
     dconf

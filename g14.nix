@@ -317,25 +317,6 @@
     font-awesome
   ];
 
-  programs.nvchad {
-    enable = true;
-    extraPackages = with pkgs; [
-      vimPlugins.kitty-scrollback-nvim
-      vimPlugins.coc-rust-analyzer
-      yaml-language-server
-      vue-language-server
-      typescript-language-server
-      tailwindcss-language-server
-      protobuf-language-server
-      lua-language-server
-      emmet-language-server
-      dockerfile-language-server
-      copilot-language-server
-      nixd
-      rust-analyzer
-    ]; 
-  };
-
   programs.git = {
     enable = true;
     config = {
