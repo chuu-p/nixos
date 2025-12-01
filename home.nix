@@ -170,7 +170,8 @@ in {
   programs.mpv = {
     enable = true;
     config = {
-      hwdec = "no";
+      # hwdec = "no";
+      gpu-api = "opengl";
     };
   };
 
