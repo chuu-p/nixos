@@ -129,6 +129,7 @@ in {
     sqlite
     sshfs
     teams-for-linux
+    tic-80
     tigervnc
     tinymist
     tokei
