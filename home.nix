@@ -75,6 +75,7 @@ in {
     extraPackages = with pkgs; [
       vimPlugins.kitty-scrollback-nvim
       vimPlugins.coc-rust-analyzer
+      vimPlugins.moonscript-vim
       yaml-language-server
       vue-language-server
       typescript-language-server
@@ -330,6 +331,8 @@ in {
   };
 
   services.dunst.enable = true;
+
+  services.batsignal.enable = true;
 
   # services.screen-locker = {
   #   enable = true;
