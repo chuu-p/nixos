@@ -371,7 +371,7 @@
 
   services.logind.settings = {
     Login = {
-      HandleLidSwitch = "suspend-then-hibernate";
+      HandleLidSwitch = "suspend";
       HandleLidSwitchExternalPower = "ignore";
       HandlePowerKey = "ignore";
     };
