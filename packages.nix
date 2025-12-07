@@ -64,9 +64,9 @@ in {
     glow
     google-chrome
     gparted
-    gum
     gtk3-x11
     gtk4
+    gum
     home-manager
     htop
     hyperfine
@@ -84,8 +84,8 @@ in {
     kubernetes-helm
     libnotify
     libreoffice
-    libxkbcommon
     libuv
+    libxkbcommon
     lldb
     mask
     mcomix
@@ -105,8 +105,8 @@ in {
     obsidian
     opencommit
     openrazer-daemon
-    openutau
     openssl
+    openutau
     pandoc
     pavucontrol
     pdftk
@@ -121,6 +121,7 @@ in {
     pulseaudio
     python314
     qjackctl
+    reaper
     rio
     rust-analyzer
     rustc
