@@ -1,0 +1,3 @@
+git add .
+oco --yes
+git push
