@@ -27,6 +27,9 @@ in {
     bottles
     bottom
     brightnessctl
+    btop
+    btop-cuda
+    btop-rocm
     bun
     calibre
     caligula
@@ -36,6 +39,7 @@ in {
     clippy
     colmena
     cryptsetup
+    davinci-resolve
     delta
     devenv
     diesel-cli
@@ -76,12 +80,10 @@ in {
     just
     k3s
     kdePackages.kcalc
+    kdePackages.kdenlive
     keepassxc
     kitty
-    koto
-    koto-ls
     krita
-    kubernetes-helm
     libnotify
     libreoffice
     libuv
@@ -98,6 +100,7 @@ in {
     mpv
     mscp
     nautilus
+    nautilus-open-any-terminal
     neofetch
     nodejs
     nvchad
@@ -126,6 +129,7 @@ in {
     rust-analyzer
     rustc
     rustfmt
+    shotcut
     signal-desktop
     sqlite
     sshfs

@@ -7,6 +7,7 @@ mod: {
   "${mod}+Shift+q" = "kill";
   "${mod}+Shift+d" = "exec i3-dmenu-desktop";
   "${mod}+d" = "exec dmenu_run";
+  "${mod}+n" = "exec nautilus";
 
   "${mod}+Left" = "focus left";
   "${mod}+Down" = "focus down";
