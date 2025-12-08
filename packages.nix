@@ -24,7 +24,6 @@ in {
     blender
     blockbench
     borgbackup
-    bottles
     bottom
     brightnessctl
     btop
@@ -71,6 +70,7 @@ in {
     gtk3-x11
     gtk4
     gum
+    harvid
     home-manager
     htop
     hyperfine
@@ -154,6 +154,7 @@ in {
     xidlehook
     xorg.xev
     xsel
+    xjadeo 
     yad
     yazi
     yt-dlp
