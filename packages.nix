@@ -126,6 +126,7 @@ in {
     qjackctl
     reaper
     rio
+    rustdesk
     rust-analyzer
     rustc
     rustfmt
