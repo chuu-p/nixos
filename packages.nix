@@ -7,8 +7,6 @@
 in {
   environment.systemPackages = with pkgs;
   with unstable; [
-    # rpcs3
-    # rpi-imager
     aider-chat
     alacritty
     alejandra
@@ -38,7 +36,6 @@ in {
     clippy
     colmena
     cryptsetup
-    davinci-resolve
     delta
     devenv
     diesel-cli
@@ -155,7 +152,7 @@ in {
     xidlehook
     xorg.xev
     xsel
-    xjadeo 
+    xjadeo
     yad
     yazi
     yt-dlp
