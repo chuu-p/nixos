@@ -123,9 +123,9 @@ in {
     qjackctl
     reaper
     rio
-    rustdesk
     rust-analyzer
     rustc
+    rustdesk
     rustfmt
     shotcut
     signal-desktop
@@ -150,9 +150,9 @@ in {
     wasm-bindgen-cli
     xautolock
     xidlehook
+    xjadeo
     xorg.xev
     xsel
-    xjadeo
     yad
     yazi
     yt-dlp
