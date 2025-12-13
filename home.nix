@@ -170,6 +170,16 @@ in {
 
   programs.mpv = {
     enable = true;
+    package = (
+      pkgs.mpv-unwrapped.wrapper {
+        scripts = with pkgs.mpvScripts; [
+          vr-reversal
+        ];
+        mpv = pkgs.mpv-unwrapped.override {
+          waylandSupport = false;
+        };
+      }
+    );
     config = {
       # hwdec = "no";
       gpu-api = "opengl";

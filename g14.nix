@@ -233,12 +233,6 @@
 
   services.atuin.enable = true;
 
-  # DEV
-  services.mongodb = {
-    enable = true;
-    package = pkgs.mongodb-ce;
-  };
-
   # services.pipewire = {
   #   enable = true;
   #   alsa.enable = true;
