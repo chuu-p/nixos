@@ -96,7 +96,6 @@ in {
     mprocs
     mpv
     mscp
-    natron
     nautilus
     nautilus-open-any-terminal
     neofetch
