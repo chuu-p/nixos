@@ -124,6 +124,7 @@ in {
     EDITOR = "nvim";
     ATUIN_NOBIND = "true";
     KUBECONFIG = "/home/chuu/.kube/k3s-jinora.yaml";
+    RUST_LOG = "asusctl=error,zbus=error,tracing=error"; # Fix asusctl
   };
   home.sessionPath = ["${config.home.homeDirectory}/git/nixos/PATH"];
 
