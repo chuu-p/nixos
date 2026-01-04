@@ -56,12 +56,13 @@ in {
     font-awesome
     fontconfig
     freetype
-    gemini-cli
+    # gemini-cli
     gh
     ghostscript
     gimp
     git
     glow
+    godot
     google-chrome
     gparted
     gtk3-x11
@@ -73,7 +74,7 @@ in {
     hyperfine
     inkscape
     jetbrains-toolbox
-    jetbrains.rust-rover
+    # jetbrains.rust-rover
     just
     k3s
     kdePackages.kcalc
@@ -125,7 +126,7 @@ in {
     rio
     rust-analyzer
     rustc
-    rustdesk
+    # rustdesk
     rustfmt
     shotcut
     signal-desktop

@@ -96,6 +96,7 @@ mod: {
   "XF86KbdBrightnessDown" = "exec asusctl -p";
 
   # asus rog fan curve profiles
+  # asusctl profile -n && notify-send "$(asusctl profile -p)"
   "XF86Launch4" = "exec sh -c 'asusctl profile -n && notify-send \"$(asusctl profile -p)\"'";
 
   "${mod}+1" = "workspace 1";
