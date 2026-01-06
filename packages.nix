@@ -147,6 +147,7 @@ in {
     usbutils
     uutils-coreutils-noprefix
     vdhcoapp
+    vial
     vim
     wasm-bindgen-cli
     xautolock
