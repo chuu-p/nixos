@@ -97,7 +97,7 @@ mod: {
 
   # asus rog fan curve profiles
   # asusctl profile -n && notify-send "$(asusctl profile -p)"
-  "XF86Launch4" = "exec sh -c 'asusctl profile -n && notify-send \"$(asusctl profile -p)\"'";
+  "XF86Launch4" = "exec sh -c 'export RUST_LOG=asusctl=error,zbus=error,tracing=error && asusctl profile -n && notify-send \"$(asusctl profile -p)\"'";
 
   "${mod}+1" = "workspace 1";
   "${mod}+2" = "workspace 2";
