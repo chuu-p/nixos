@@ -95,9 +95,7 @@ mod: {
   "XF86KbdBrightnessUp" = "exec asusctl -n";
   "XF86KbdBrightnessDown" = "exec asusctl -p";
 
-  # asus rog fan curve profiles
-  # asusctl profile -n && notify-send "$(asusctl profile -p)"
-  "XF86Launch4" = "exec sh -c 'export RUST_LOG=asusctl=error,zbus=error,tracing=error && asusctl profile -n && notify-send \"$(asusctl profile -p)\"'";
+  "XF86Launch4" = "exec sh -c '/home/chuu/git/nixos/PATH/c-asus-next-profile'";
 
   "${mod}+1" = "workspace 1";
   "${mod}+2" = "workspace 2";

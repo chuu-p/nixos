@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+# asus rog fan curve profiles
+export RUST_LOG=asusctl=error,zbus=error,tracing=error
+asusctl profile -n
+notify-send "$(asusctl profile -p)"
