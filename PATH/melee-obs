@@ -1,0 +1,3 @@
+appimage-run Documents/melee/clippi/Project-Clippi-1.6.0.AppImage &
+appimage-run /home/chuu/Documents/melee/launcher/*.AppImage &
+obs &
