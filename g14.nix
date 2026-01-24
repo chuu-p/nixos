@@ -124,6 +124,8 @@
     theme = "details";
   };
 
+  boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/f91f391f-67ab-4099-9ed3-b783d39900e2";
+
   networking.hostName = "g14"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

@@ -1,3 +1,9 @@
-appimage-run /home/chuu/Documents/melee/launcher/*.AppImage &
-obs &
-appimage-run /home/chuu/Documents/melee/clippi/*.AppImage &
+#!/usr/bin/env fish
+
+i3-msg "append_layout /home/chuu/workspace-1.json"
+sleep 1
+appimage-run /home/chuu/Documents/melee/launcher/*.AppImage & disown
+# sleep 5
+# obs --startreplaybuffer & disown
+sleep 1
+appimage-run /home/chuu/Documents/melee/clippi/*.AppImage & disown

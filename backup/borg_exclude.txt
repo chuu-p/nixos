@@ -4,4 +4,8 @@
 - build
 - .local/share/Trash
 - .local/share/JetBrains/system
+- .local/share/Steam
+! /home/chuu/.local
+! /home/chuu/mnt
+! /home/chuu/.cache
 - .cache
