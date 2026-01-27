@@ -7,162 +7,96 @@
 in {
   environment.systemPackages = with pkgs;
   with unstable; [
-    # gemini-cli
-    # jetbrains.rust-rover
-    # rustdesk
-    aider-chat
-    alacritty
-    alejandra
-    alsa-lib
-    android-studio
-    android-tools
-    anki
-    ardour
-    asciinema
-    bacon
-    bat
-    black
-    blender
-    blockbench
-    borgbackup
-    bottom
-    brightnessctl
-    btop
-    btop-cuda
-    btop-rocm
-    bun
-    busybox
-    calibre
-    caligula
-    cargo
-    chromium
-    clang
-    clippy
-    colmena
-    cryptsetup
-    delta
-    devenv
-    diesel-cli
-    discord
-    dragon-drop
-    evil-helix
-    evince
-    exiftool
-    f3d
-    feh
-    ffmpeg
-    figma-linux
-    firefox
-    firejail
-    fish
-    flameshot
-    fluxcd
-    font-awesome
-    fontconfig
-    freetype
-    gh
-    ghostscript
-    gimp
-    git
-    glow
-    godot
-    google-chrome
-    gparted
-    gtk3-x11
-    gtk4
-    gum
-    harvid
-    home-manager
-    htop
-    hyperfine
-    inkscape
-    jetbrains-toolbox
-    just
-    k3s
-    kdePackages.kcalc
-    # kdePackages.kdenlive
-    keepassxc
-    kitty
-    krita
-    libnotify
-    libreoffice
-    libuv
-    libxkbcommon
-    lldb
-    mask
-    mcomix
-    meld
-    meowpdf
-    mixxx
-    mkvtoolnix-cli
-    monitor
-    mprocs
-    mpv
-    mscp
-    nautilus
-    nautilus-open-any-terminal
-    neofetch
-    nodejs
-    ntfs3g
-    nvchad
-    nvtopPackages.full
-    obsidian
-    opencommit
-    openrazer-daemon
-    openssl
-    openutau
-    pandoc
-    pavucontrol
-    pdftk
-    pkg-config
-    playerctl
-    pnpm
-    polychromatic
-    presenterm
-    prismlauncher
-    progress
-    protobuf
-    pulseaudio
-    python314
-    qjackctl
-    reaper
-    rio
-    rust-analyzer
-    rustc
-    rustfmt
-    shotcut
-    signal-desktop
-    sqlite
-    sshfs
-    teams-for-linux
-    tic-80
-    tigervnc
-    tinymist
-    tokei
-    transmission_4-qt
-    trashy
-    tty-clock
-    typst
-    typstyle
-    unzip
-    upscayl
-    usbutils
-    uutils-coreutils-noprefix
-    vdhcoapp
-    vial
-    vim
-    wasm-bindgen-cli
-    xautolock
-    xidlehook
-    xjadeo
-    xorg.xev
-    xsel
-    yad
-    yazi
-    yt-dlp
-    zed-editor
-    zellij
-    zoxide
+    alejandra # formatter for .nix files
+    android-studio # dev
+    android-tools # dev
+    ardour # linux daw
+    blender # 3d modeling
+    borgbackup # backups
+    brightnessctl # monitor brightness
+    btop # sysmon
+    busybox # linux tools
+    calibre # epub viewer
+    caligula # burn iso to usb
+    cargo # dev rust, not in dev flake for convinience
+    cryptsetup # linux cryptography tools
+    delta # cli diff viewer, git diff uses this
+    devenv # nix based dev envs
+    discord # communication
+    dragon-drop # drag and drop files from the terminal
+    evince # pdf viewer
+    feh # image viewer
+    ffmpeg # multimedia toolkit
+    firefox # browser
+    fish # shell
+    flameshot # screenshots
+    font-awesome # fonts
+    fontconfig # fonts
+    freetype # fonts
+    gemini-cli # ai
+    gh # github cli
+    ghostscript # for imagemagick pdf processing
+    gimp # image manipulation
+    git # holy grail of software
+    google-chrome # for drm media
+    gparted # disk partition editor
+    home-manager # nixos user env manager
+    htop # process monitor
+    inkscape # vector image manipulation
+    just # command runner
+    kdePackages.kcalc # calculator
+    keepassxc # password manager
+    kitty # the best terminal emulator imo :3
+    libnotify # notifications
+    libreoffice # nice to have office suite
+    lldb # debugger
+    mcomix # manga viewer
+    meld # diff viewer
+    mixxx # dj software
+    mpv # video player
+    mscp # multi threaded scp
+    nautilus # graphical file explorer
+    nautilus-open-any-terminal # open in terminal option for nautilus
+    neofetch # show distro
+    nodejs # js runtime
+    ntfs3g # tools for ntfs drives
+    nvchad # neovim distro
+    nvtopPackages.full # gpu monitor
+    obsidian # note-taking 
+    opencommit # generate commit messages with ai
+    openrazer-daemon # for razer hardware
+    openssl # ssl
+    pavucontrol # volume control
+    pkg-config # important for libraries
+    playerctl # control media from command line
+    presenterm # cli presentations
+    prismlauncher # minecraft launcher
+    progress # progress monitor for mv, dd, scp, etc.
+    pulseaudio # audio system
+    # rustdesk # rdp
+    shotcut # video editor
+    signal-desktop # communication
+    sshfs # mount via ssh
+    tigervnc # vnc
+    tokei # count lines of code
+    trashy # cli trash
+    tty-clock # terminal clock
+    typst # typst compiler
+    typstyle # typst formatter
+    unzip # unzip
+    p7zip # 7zip
+    usbutils # lsusb and other tools
+    uutils-coreutils-noprefix # use uutils by default
+    vdhcoapp # videodownloadhelper companion application
+    vial # keyboard config
+    vim # fallback vim
+    xidlehook # TODO
+    xorg.xev # x event tester
+    xsel # clipboard tool
+    yazi # terminal file manager
+    yt-dlp # media download tool
+    zed-editor # rust based ide
+    zellij # termux alternative
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions;
@@ -205,46 +139,5 @@ in {
           }
         ];
     })
-
-    # (vscode-with-extensions.override {
-    #   vscode = vscodium;
-    #   vscodeExtensions = with vscode-extensions;
-    #     [
-    #       bierner.emojisense
-    #       bradlc.vscode-tailwindcss
-    #       foam.foam-vscode
-    #       jnoortheen.nix-ide
-    #       ms-python.python
-    #       rust-lang.rust-analyzer
-    #       streetsidesoftware.code-spell-checker
-    #       streetsidesoftware.code-spell-checker-german
-    #       tamasfe.even-better-toml
-    #       tomoki1207.pdf
-    #       vadimcn.vscode-lldb
-    #       vscodevim.vim
-    #       zxh404.vscode-proto3
-    #     ]
-    #     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-    #       # {
-    #       #   name = "doki-theme";
-    #       #   publisher = "unthrottled";
-    #       #   version = "88.1.15";
-    #       #   sha256 = "ys3D84zg7mGGTG5Ey65gqgujbUJBsg27MC3qUnbluoM=";
-    #       # }
-    #       {
-    #         name = "geminicodeassist";
-    #         publisher = "Google";
-    #         version = "2.43.0";
-    #         sha256 = "jenr96MLxZE352f0WyUsFkRajP7L/4893RTtuKirEvs=";
-    #       }
-    #       {
-    #         name = "github-vscode-theme";
-    #         publisher = "GitHub";
-    #         version = "6.3.5";
-    #         sha256 = "dOadoYBPcYrpzmqOpJwG+/nPwTfJtlsOFDU3FctdR0o=";
-    #       }
-    #     ];
-    # })
-    gnomeExtensions.unite
   ];
 }

@@ -46,11 +46,8 @@ mod: {
   "${mod}+w" = "layout tabbed";
   "${mod}+e" = "layout toggle split";
 
-  # TODO "floating modifier $mod"
-
   "${mod}+Shift+space" = "floating toggle";
   "${mod}+space" = "focus mode_toggle";
-  # "${mod}+Shift+a" = "mode_toggle";
 
   "${mod}+a" = "focus parent";
   "${mod}+Shift+a" = "focus child";
@@ -58,7 +55,7 @@ mod: {
   "${mod}+Shift+c" = "reload";
   "${mod}+Shift+r" = "restart";
 
-  "Print" = "exec flameshot launcher";
+  "Print" = "exec flameshot gui /home/chuu/Pictures";
 
   "${mod}+p" = "exec sh -c '/home/chuu/git/nixos/PATH/c-display-first'";
   "${mod}+Control+p" = "exec sh -c '/home/chuu/git/nixos/PATH/c-display-mirror'";
@@ -87,10 +84,10 @@ mod: {
   "XF86MonBrightnessUp" = "exec brightnessctl set +10%";
   "XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
 
-  "XF86Launch1" = "exec sh -c '/home/chuu/git/nixos/PATH/gsudo systemctl suspend'"; # ROG
-  "Mod1+XF86Launch1" = "exec gsudo systemctl exec sh -c '/home/chuu/git/nixos/PATH/gsudo systemctl hibernate'"; # Alt + ROG
-  "Shift+XF86Launch1" = "exec gsudo systemctl exec sh -c '/home/chuu/git/nixos/PATH/gsudo systemctl poweroff'"; # Shift + ROG
-  "Control+XF86Launch1" = "exec gsudo systemctl exec sh -c '/home/chuu/git/nixos/PATH/gsudo systemctl reboot'"; # Control + ROG
+  "XF86Launch1" = "exec systemctl suspend"; # ROG
+  "Mod1+XF86Launch1" = "exec systemctl hibernate"; # Alt + ROG
+  "Shift+XF86Launch1" = "exec systemctl poweroff"; # Shift + ROG
+  "Control+XF86Launch1" = "exec systemctl reboot"; # Control + ROG
 
   "XF86KbdBrightnessUp" = "exec asusctl -n";
   "XF86KbdBrightnessDown" = "exec asusctl -p";
@@ -122,9 +119,4 @@ mod: {
   "${mod}+Shift+Mod1+h" = "workspace prev_on_output";
   "${mod}+Shift+Mod1+Right" = "workspace next_on_output";
   "${mod}+Shift+Mod1+l" = "workspace next_on_output";
-
-  # TODO
-  # - [ ] modes
-  # - [ ] bar
-  # - [ ] initialization
 }
