@@ -88,6 +88,8 @@ in {
     ];
   };
 
+  stylix.autoEnable = true;
+
   home.sessionVariables = {
     EDITOR = "nvim";
     ATUIN_NOBIND = "true";

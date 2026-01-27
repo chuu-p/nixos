@@ -35,50 +35,28 @@
   '';
   documentation.man.generateCaches = false;
 
-  # nix.buildMachines = [
-  #   {
-  #     hostName = "jinora";
-  #     sshUser = "chuu";
-  #     system = "aarch64-linux";
-  #     protocol = "ssh-ng";
-  #     maxJobs = 1;
-  #     speedFactor = 2;
-  #     supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-  #     mandatoryFeatures = [];
-  #   }
-  #   {
-  #     hostName = "iroh";
-  #     sshUser = "chuu";
-  #     system = "aarch64-linux";
-  #     protocol = "ssh-ng";
-  #     maxJobs = 1;
-  #     speedFactor = 3;
-  #     supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-  #     mandatoryFeatures = [];
-  #   }
-  #   {
-  #     hostName = "opal";
-  #     sshUser = "chuu";
-  #     system = "aarch64-linux";
-  #     protocol = "ssh-ng";
-  #     maxJobs = 1;
-  #     speedFactor = 2;
-  #     supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-  #     mandatoryFeatures = [];
-  #   }
-  #   # {
-  #   #   hostName = "nixos";
-  #   #   sshUser = "nixos";
-  #   #   system = "x86_64-linux";
-  #   #   # systems = ["x86_64-linux" "aarch64-linux"];
-  #   #   protocol = "ssh";
-  #   #   maxJobs = 4;
-  #   #   speedFactor = 10;
-  #   #   supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-  #   #   mandatoryFeatures = [];
-  #   # }
-  # ];
-  # nix.distributedBuilds = true;
+  stylix.enable = true;
+  stylix.autoEnable = true;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/evenok-dark.yaml";
+  stylix.image = ./wallpapers/nix_ene_1.png;
+  stylix.fonts = {
+    serif = {
+      package = pkgs.dejavu_fonts;
+      name = "DejaVu Serif";
+    };
+    sansSerif = {
+      package = pkgs.dejavu_fonts;
+      name = "DejaVu Sans";
+    };
+    monospace = {
+      package = pkgs.nerd-fonts.space-mono;
+      name = "Space Mono";
+    };
+    emoji = {
+      package = pkgs.noto-fonts-monochrome-emoji;
+      name = "Noto Monochrome Emoji";
+    };
+  };
 
   # This is needed for Slippi to run.
   programs.appimage.package = pkgs.appimage-run.override {
@@ -119,16 +97,9 @@
     "rd.systemd.show_status=auto"
   ];
 
-  boot.plymouth = {
-    enable = true;
-    theme = "details";
-  };
-
   boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/f91f391f-67ab-4099-9ed3-b783d39900e2";
 
   networking.hostName = "g14"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Berlin";
@@ -235,27 +206,6 @@
 
   services.atuin.enable = true;
 
-  # services.pipewire = {
-  #   enable = true;
-  #   alsa.enable = true;
-  #   alsa.support32Bit = true;
-  #   pulse.enable = true;
-  # };
-
-  # services.jack = {
-  #   jackd.enable = true;
-  #   # support ALSA only programs via ALSA JACK PCM plugin
-  #   alsa.enable = false;
-  #   # support ALSA only programs via loopback device (supports programs like Steam)
-  #   loopback = {
-  #     enable = true;
-  #     # buffering parameters for dmix device to work with ALSA only semi-professional sound programs
-  #     #dmixConfig = ''
-  #     #  period_size 2048
-  #     #'';
-  #   };
-  # };
-
   users.users.chuu = {
     isNormalUser = true;
     description = "chuu";
@@ -281,7 +231,6 @@
         stdenv.cc.cc.lib # Provides libstdc++.so.6
         libkrb5
         keyutils
-        # Add other libraries as needed
       ];
   };
 
@@ -311,11 +260,8 @@
   nixpkgs.config = {
     allowUnfree = true;
     allowBroken = true;
-    # permittedInsecurePackages = [
-    # "mkchromecast"
-    # "python3.12-youtube-dl-2021.12.17"
-    # ];
   };
+
   nixpkgs = {
     overlays = [
       (final: prev: {
@@ -413,23 +359,9 @@
     overrideFolders = true; # overrides any folders added or deleted through the WebUI
   };
 
-  # auto upgrading is a bad pattern due to supply chain attacks.
-  # you should lock your versions
-  # https://youtu.be/69F9IuBWb-E?t=119
-  # system.autoUpgrade = {
-  #   enable = true;
-  #   randomizedDelaySec = "30min"; # Adds a random delay to prevent simultaneous updates
-  #   dates = "daily"; # or "weekly", "monthly", etc.
-  #   flags = ["--impure" "--flake" "/etc/nixos"];
-  #   allowReboot = true; # Allow the system to reboot if necessary
-  #   # email = "your-email@example.com"; # Uncomment to receive email notifications
-  #   # emailOnFailure = true;
-  # };
-
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false; # Disable password-based SSH login for security

@@ -11,12 +11,17 @@
       url = "github:nix-community/nix4nvchad";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:nix-community/stylix/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    stylix,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -28,6 +33,7 @@
       };
       system = "x86_64-linux";
       modules = [
+        stylix.nixosModules.stylix
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
