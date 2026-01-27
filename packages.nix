@@ -62,7 +62,7 @@ in {
     ntfs3g # tools for ntfs drives
     nvchad # neovim distro
     nvtopPackages.full # gpu monitor
-    obsidian # note-taking 
+    obsidian # note-taking
     opencommit # generate commit messages with ai
     openrazer-daemon # for razer hardware
     openssl # ssl

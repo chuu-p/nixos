@@ -30,7 +30,6 @@
     "application/x-extension-xht" = browser;
     "application/x-extension-xhtml" = browser;
     "application/xhtml+xml" = browser;
-    # "application/x-ms-dos-executable" = ["wine.desktop"];
     "audio/aac" = media-player;
     "audio/flac" = media-player;
     "audio/mpeg" = media-player;
@@ -59,7 +58,6 @@
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
     "x-scheme-handler/unknown" = browser;
-    # "text/csv" = ?;
   };
 in {
   home.username = "chuu"; # Replace with your username
@@ -88,36 +86,6 @@ in {
       nixd
       rust-analyzer
     ];
-  };
-
-  home.packages = with pkgs; [
-    kitty
-    dconf
-  ];
-
-  dconf = {
-    enable = true;
-    settings = {
-      "org/gnome/desktop/interface" = {
-        color-scheme = "prefer-dark";
-      };
-    };
-  };
-
-  gtk = {
-    enable = true;
-    theme = {
-      name = "orchis-theme";
-      package = pkgs.orchis-theme;
-    };
-    iconTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
-    };
-    cursorTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
-    };
   };
 
   home.sessionVariables = {
@@ -171,18 +139,7 @@ in {
 
   programs.mpv = {
     enable = true;
-    package = (
-      pkgs.mpv-unwrapped.wrapper {
-        scripts = with pkgs.mpvScripts; [
-          vr-reversal
-        ];
-        mpv = pkgs.mpv-unwrapped.override {
-          waylandSupport = false;
-        };
-      }
-    );
     config = {
-      # hwdec = "no";
       gpu-api = "opengl";
     };
   };
@@ -252,7 +209,7 @@ in {
         {command = "exec mullvad-gui";}
         {command = "exec fcitx5";}
         {command = "exec obsidian";}
-        # {command = "exec_always --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 600 'i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png' '' --detect-sleep";}
+        {command = "exec_always --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 600 'i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png' '' --detect-sleep";}
       ];
 
       floating = {
@@ -275,10 +232,7 @@ in {
         }
       ];
 
-      # TODO
-      # - [ ] modes
       keybindings = import ./i3-keybindings.nix "Mod4";
-      # modes = import ./i3-modes.nix "Mod4";
 
       window = {
         hideEdgeBorders = "both";
@@ -297,48 +251,14 @@ in {
 
   programs.yazi = {
     enable = true;
-    theme = builtins.fromTOML (builtins.readFile ./themes/yazi-catppuccin-mocha.toml);
-  };
-
-  programs.helix = {
-    enable = true;
-    package = pkgs.evil-helix;
-    settings = {
-      theme = "term16_dark";
-      # globally enable inlay-hints for all languages
-      editor = {
-        line-number = "relative";
-        soft-wrap.enable = true;
-        lsp = {
-          display-inlay-hints = true;
-          display-messages = true;
-        };
-      };
-      keys.normal = {
-        # space.space = "file_picker";
-        # "C-y" = ":sh zellij run --floating -n 'yazi picker' -- /home/chuu/git/nixos/helix/open_in_helix_from_yazi.fish";
-      };
-      keys.insert = {
-        j = {k = "normal_mode";};
-      };
-    };
-    languages.language = [
-      {
-        name = "nix";
-        auto-format = true;
-        formatter.command = "${pkgs.alejandra}/bin/alejandra";
-      }
-      {
-        name = "json5";
-        auto-format = true;
-        formatter.command = "/run/current-system/sw/bin/npx prettier --write";
-      }
-      # {
-      #   name = "typst";
-      #   auto-format = true;
-      #   formatter.command = "${lib.getExe pkgs.typstyle} format-all";
-      # }
-    ];
+    initLua = ''
+      -- show disk in status bar
+      Status:children_add(function()
+          local command = "df -kh .|awk '!/^Filesystem/{printf \" %s FREE \", $(NF-2)}'"
+          local info = ui.Span(io.popen(command):read('*a')):fg("green")
+          return info
+      end, 1500, Header.RIGHT)
+    '';
   };
 
   services.dunst.enable = true;
@@ -356,14 +276,6 @@ in {
     text = builtins.readFile ./.config/brightness.sh;
     executable = true;
   };
-
-  # programs.dconf.enable = true;
-
-  # gtk = {
-  #   enable = true;
-  #   theme.name = "Adwaita-dark"; # Or any dark theme you prefer
-  #   theme.package = pkgs.gnome-themes-extra;
-  # };
 
   xdg.mimeApps = {
     enable = true;
