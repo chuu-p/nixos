@@ -38,6 +38,7 @@
   stylix.enable = true;
   stylix.autoEnable = true;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/evenok-dark.yaml";
+  stylix.polarity = "dark";
   stylix.image = ./wallpapers/nix_ene_1.png;
   stylix.fonts = {
     serif = {
@@ -269,20 +270,6 @@
       })
     ];
   };
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.noto
-    nerd-fonts.dejavu-sans-mono
-    nerd-fonts.symbols-only
-    nerd-fonts.space-mono
-
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    noto-fonts-color-emoji
-
-    font-awesome
-  ];
 
   programs.git = {
     enable = true;

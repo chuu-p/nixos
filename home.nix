@@ -89,6 +89,7 @@ in {
   };
 
   stylix.autoEnable = true;
+  stylix.targets.obsidian.enable = true;
 
   home.sessionVariables = {
     EDITOR = "nvim";
