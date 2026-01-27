@@ -7,6 +7,9 @@
 in {
   environment.systemPackages = with pkgs;
   with unstable; [
+    # gemini-cli
+    # jetbrains.rust-rover
+    # rustdesk
     aider-chat
     alacritty
     alejandra
@@ -28,6 +31,7 @@ in {
     btop-cuda
     btop-rocm
     bun
+    busybox
     calibre
     caligula
     cargo
@@ -56,7 +60,6 @@ in {
     font-awesome
     fontconfig
     freetype
-    # gemini-cli
     gh
     ghostscript
     gimp
@@ -74,11 +77,10 @@ in {
     hyperfine
     inkscape
     jetbrains-toolbox
-    # jetbrains.rust-rover
     just
     k3s
     kdePackages.kcalc
-    kdePackages.kdenlive
+    # kdePackages.kdenlive
     keepassxc
     kitty
     krita
@@ -101,6 +103,7 @@ in {
     nautilus-open-any-terminal
     neofetch
     nodejs
+    ntfs3g
     nvchad
     nvtopPackages.full
     obsidian
@@ -126,7 +129,6 @@ in {
     rio
     rust-analyzer
     rustc
-    # rustdesk
     rustfmt
     shotcut
     signal-desktop

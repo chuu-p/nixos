@@ -1,0 +1,5 @@
+
+- wsl
+- wsl zellij yazi
+- wsl sway
+- refactor nixos config to simpler, and better, and modularized
