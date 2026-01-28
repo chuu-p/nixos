@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 
 exclude=/home/chuu/git/nixos/backup/borg_exclude.txt
 export BORG_REPO=/home/chuu/mnt/borg/g14

@@ -71,27 +71,36 @@ in {
   programs.nvchad = {
     enable = true;
     extraPackages = with pkgs; [
-      vimPlugins.kitty-scrollback-nvim
-      vimPlugins.coc-rust-analyzer
-      vimPlugins.moonscript-vim
-      yaml-language-server
-      vue-language-server
-      typescript-language-server
-      tailwindcss-language-server
-      protobuf-language-server
-      lua-language-server
-      emmet-language-server
+      # LSP servers
+      nodePackages.bash-language-server
+      blueprint-compiler
+      docker-compose-language-service
       dockerfile-language-server
-      # copilot-language-server
-      nixd
+      emmet-language-server
+      vscode-langservers-extracted
       rust-analyzer
+      typescript-language-server
+      vue-language-server
+      vala-language-server
+      nixd
+      (python3.withPackages(ps: with ps; [
+        python-lsp-server
+        python-lsp-ruff
+        flake8
+      ]))
+      # formatters
+      nodePackages.prettier
+      nixfmt
+      rustfmt
+      shfmt
     ];
+    hm-activation = true;
+    backup = false;
   };
 
   home.sessionVariables = {
     EDITOR = "nvim";
     ATUIN_NOBIND = "true";
-    KUBECONFIG = "/home/chuu/.kube/k3s-jinora.yaml";
     RUST_LOG = "asusctl=error,zbus=error,tracing=error"; # Fix asusctl
   };
   home.sessionPath = ["${config.home.homeDirectory}/git/nixos/PATH"];
@@ -145,7 +154,7 @@ in {
   };
 
   home.file.".config/git/allowed-signers" = {
-    text = builtins.readFile ./.config/allowed-signers;
+    text = builtins.readFile ../../.config/allowed-signers;
   };
 
   programs.git = {
@@ -195,7 +204,7 @@ in {
 
   programs.kitty = {
     enable = true;
-    extraConfig = builtins.readFile /home/chuu/git/kitty-themes/themes/ene_gh.conf;
+    extraConfig = builtins.readFile ../../aesthetics/ene_gh.conf;
   };
 
   xsession.windowManager.i3 = {
@@ -223,16 +232,16 @@ in {
       bars = [
         {
           position = "top";
-          statusCommand = "i3status -c ~/git/nixos/i3status.conf";
+          statusCommand = "i3status -c ~/git/nixos/homes/_shared/i3/i3status.conf";
           fonts = {
             names = ["Space Mono"];
-            style = "Regular";
+            style = "Bold";
             size = 12.0;
           };
         }
       ];
 
-      keybindings = import ./i3-keybindings.nix "Mod4";
+      keybindings = import ../_shared/i3/i3-keybindings.nix "Mod4";
 
       window = {
         hideEdgeBorders = "both";
