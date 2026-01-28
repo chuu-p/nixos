@@ -68,7 +68,6 @@ in {
     inputs.nix4nvchad.homeManagerModule
   ];
 
-  programs.sway.enable = true;
   programs.swaylock.enable = true;
   services.swayidle.enable = true;
 
