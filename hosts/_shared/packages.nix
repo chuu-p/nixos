@@ -40,6 +40,7 @@
     home-manager # nixos user env manager
     htop # process monitor
     inkscape # vector image manipulation
+    i3status # status bar
     just # command runner
     kdePackages.kcalc # calculator
     kitty # the best terminal emulator imo :3

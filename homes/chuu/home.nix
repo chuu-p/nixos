@@ -246,11 +246,11 @@ in {
       };
 
       output = {
-          eDP-1 = {
-            # Set HIDP scale (pixel integer scaling)
-            scale = "1.33";
-	      };
-	    };
+        eDP-1 = {
+          # Set HIDP scale (pixel integer scaling)
+          scale = "1.33";
+        };
+      };
 
       # Use kitty as default terminal
       terminal = "kitty";
@@ -277,7 +277,12 @@ in {
       bars = [
         {
           position = "top";
-          # command = "${pkgs.waybar}/bin/waybar";
+          statusCommand = "${pkgs.i3status}/bin/i3status -c ~/git/nixos/homes/_shared/sway/i3status.conf";
+          fonts = {
+            # names = ["Space Mono"];
+            # style = "Regular";
+            size = 10.0;
+          };
         }
       ];
 
