@@ -1,0 +1,122 @@
+mod: {
+  "${mod}+t" = "exec GLFW_IM_MODULE=ibus kitty";
+  "${mod}+b" = "exec firefox";
+  "${mod}+Return" = "exec kitty";
+  "${mod}+Shift+Return" = "exec kitty yazi";
+
+  "${mod}+Shift+q" = "kill";
+  "${mod}+d" = "exec wmenu-run";
+  "${mod}+n" = "exec nautilus";
+
+  "${mod}+Left" = "focus left";
+  "${mod}+Down" = "focus down";
+  "${mod}+Up" = "focus up";
+  "${mod}+Right" = "focus right";
+  "${mod}+h" = "focus left";
+  "${mod}+j" = "focus down";
+  "${mod}+k" = "focus up";
+  "${mod}+l" = "focus right";
+
+  "${mod}+Shift+f" = "[urgent=latest] focus";
+
+  "${mod}+Shift+Left" = "move left";
+  "${mod}+Shift+Down" = "move down";
+  "${mod}+Shift+Up" = "move up";
+  "${mod}+Shift+Right" = "move right";
+  "${mod}+Shift+h" = "move left";
+  "${mod}+Shift+j" = "move down";
+  "${mod}+Shift+k" = "move up";
+  "${mod}+Shift+l" = "move right";
+
+  "${mod}+Control+Left" = "resize shrink width 10 px";
+  "${mod}+Control+Down" = "resize grow height 10 px";
+  "${mod}+Control+Up" = "resize shrink height 10 px ";
+  "${mod}+Control+Right" = "resize grow width 10 px";
+  "${mod}+Control+h" = "resize shrink width 10 px";
+  "${mod}+Control+j" = "resize grow height 10 px";
+  "${mod}+Control+k" = "resize shrink height 10 px ";
+  "${mod}+Control+l" = "resize grow width 10 px";
+
+  "${mod}+c" = "split h";
+  "${mod}+v" = "split v";
+  "${mod}+f" = "fullscreen toggle";
+
+  "${mod}+s" = "layout stacking";
+  "${mod}+w" = "layout tabbed";
+  "${mod}+e" = "layout toggle split";
+  "${mod}+Shift+e" = "exec swaymsg exit";
+
+  "${mod}+Shift+space" = "floating toggle";
+  "${mod}+space" = "focus mode_toggle";
+
+  "${mod}+a" = "focus parent";
+  "${mod}+Shift+a" = "focus child";
+
+  "${mod}+Shift+c" = "reload";
+  "${mod}+Shift+r" = "restart";
+
+  "Print" = "exec flameshot gui /home/chuu/Pictures";
+
+  "${mod}+p" = "exec sh -c '/home/chuu/git/nixos/PATH/c-display-first'";
+  "${mod}+Control+p" = "exec sh -c '/home/chuu/git/nixos/PATH/c-display-mirror'";
+  "${mod}+Shift+p" = "exec sh -c '/home/chuu/git/nixos/PATH/c-display-extend'";
+  "${mod}+Shift+Control+p" = "exec sh -c '/home/chuu/git/nixos/PATH/c-display-second'";
+
+  "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +10%";
+  "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -10%";
+  "Shift+XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+  "Shift+XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+  "XF86AudioMute" = "exec pactl set-sink-volume @DEFAULT_SINK@ 0%";
+  "XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+
+  "${mod}+o" = "exec swaylock";
+  "${mod}+XF86AudioRaiseVolume" = "exec pavucontrol";
+  "${mod}+XF86AudioLowerVolume" = "exec sh -c '/home/chuu/git/nixos/PATH/gsudo systemctl suspend'";
+  "${mod}+Shift+XF86AudioLowerVolume" = "exec sh -c '/home/chuu/git/nixos/PATH/gsudo systemctl hibernate'";
+
+  "Shift+XF86AudioMicMute" = "exec sh -c '/home/chuu/git/nixos/PATH/c-bt-connect-headphones'";
+  "Control+XF86AudioMicMute" = "exec sh -c '/home/chuu/git/nixos/PATH/c-bt-connect-pixelbuds'";
+  "Shift+Control+XF86AudioMicMute" = "exec sh -c '/home/chuu/git/nixos/PATH/c-bt-connect-soundbar'";
+
+  "XF86AudioPause" = "exec playerctl play-pause";
+  "XF86AudioPlay" = "exec playerctl play-pause";
+
+  "XF86MonBrightnessUp" = "exec brightnessctl set +10%";
+  "XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
+
+  "XF86Launch1" = "exec systemctl suspend"; # ROG
+  "Mod1+XF86Launch1" = "exec systemctl hibernate"; # Alt + ROG
+  "Shift+XF86Launch1" = "exec systemctl poweroff"; # Shift + ROG
+  "Control+XF86Launch1" = "exec systemctl reboot"; # Control + ROG
+
+  "XF86KbdBrightnessUp" = "exec asusctl -n";
+  "XF86KbdBrightnessDown" = "exec asusctl -p";
+
+  "XF86Launch4" = "exec sh -c '/home/chuu/git/nixos/PATH/c-asus-next-profile'";
+
+  "${mod}+1" = "workspace 1";
+  "${mod}+2" = "workspace 2";
+  "${mod}+3" = "workspace 3";
+  "${mod}+4" = "workspace 4";
+  "${mod}+5" = "workspace 5";
+  "${mod}+6" = "workspace 6";
+  "${mod}+7" = "workspace 7";
+  "${mod}+8" = "workspace 8";
+  "${mod}+9" = "workspace 9";
+  "${mod}+0" = "workspace 10";
+  "${mod}+Shift+1" = "move container to workspace 1";
+  "${mod}+Shift+2" = "move container to workspace 2";
+  "${mod}+Shift+3" = "move container to workspace 3";
+  "${mod}+Shift+4" = "move container to workspace 4";
+  "${mod}+Shift+5" = "move container to workspace 5";
+  "${mod}+Shift+6" = "move container to workspace 6";
+  "${mod}+Shift+7" = "move container to workspace 7";
+  "${mod}+Shift+8" = "move container to workspace 8";
+  "${mod}+Shift+9" = "move container to workspace 9";
+  "${mod}+Shift+0" = "move container to workspace 10";
+
+  "${mod}+Shift+Mod1+Left" = "workspace prev_on_output";
+  "${mod}+Shift+Mod1+h" = "workspace prev_on_output";
+  "${mod}+Shift+Mod1+Right" = "workspace next_on_output";
+  "${mod}+Shift+Mod1+l" = "workspace next_on_output";
+}

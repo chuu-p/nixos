@@ -255,10 +255,9 @@ in {
         {command = "exec mullvad-gui";}
         {command = "exec fcitx5";}
         {command = "exec obsidian";}
-        # {command = "exec_always --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 600 'i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png' '' --detect-sleep";}
       ];
 
-      keybindings = import ../_shared/i3/i3-keybindings.nix "Mod4";
+      keybindings = import ../_shared/sway/sway-keybindings.nix "Mod4";
 
       floating = {
         criteria = [
@@ -272,12 +271,6 @@ in {
         {
           position = "top";
           command = "${pkgs.waybar}/bin/waybar";
-          # statusCommand = "i3status -c ~/git/nixos/homes/_shared/i3/i3status.conf";
-          fonts = {
-            names = ["Space Mono"];
-            style = "Regular";
-            size = 13.0;
-          };
         }
       ];
 
