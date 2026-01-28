@@ -54,8 +54,8 @@
         name = "Space Mono";
       };
       emoji = {
-        package = pkgs.noto-fonts-monochrome-emoji;
-        name = "Noto Monochrome Emoji";
+        package = pkgs.noto-fonts-color-emoji;
+        name = "Noto Color Emoji";
       };
     };
   };
@@ -154,7 +154,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway --unsupported-gpu";
         user = "chuu";
       };
     };
@@ -208,6 +208,7 @@
   services.pulseaudio.enable = false;
 
   security.rtkit.enable = true;
+  security.polkit.enable = true;
 
   services.atuin.enable = true;
 

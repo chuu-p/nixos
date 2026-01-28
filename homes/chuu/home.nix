@@ -68,6 +68,10 @@ in {
     inputs.nix4nvchad.homeManagerModule
   ];
 
+  programs.sway.enable = true;
+  programs.swaylock.enable = true;
+  services.swayidle.enable = true;
+
   programs.nvchad = {
     enable = true;
     extraPackages = with pkgs; [
@@ -219,12 +223,29 @@ in {
 
   xdg.autostart.enable = true; # Enable creation of XDG autostart entries.
 
-  security.polkit.enable = true;
-
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
     config = rec {
+      input = {
+        "type:touchpad" = {
+          # Enables or disables tap for specified input device.
+          tap = "enabled";
+          # disable-while-typing
+          dwt = "enabled";
+          # Enables or disables natural (inverted) scrolling for the specified input device.
+          natural_scroll = "enabled";
+          middle_emulation = "enabled";
+        };
+
+        # Provide all keyboards connected the following configuration
+        "type:keyboard" = {
+          xkb_layout = "us,us";
+          xkb_variant = "altgr-intl,intl";
+          xkb_options = "caps:super,grp:win_space_toggle,shift:both_capslock";
+        };
+      };
+
       # Use kitty as default terminal
       terminal = "kitty";
       modifier = "Mod4";
@@ -239,6 +260,40 @@ in {
       ];
 
       keybindings = import ../_shared/i3/i3-keybindings.nix "Mod4";
+
+      floating = {
+        criteria = [
+          {
+            title = "Volume Control";
+          }
+        ];
+      };
+
+      bars = [
+        {
+          position = "top";
+          command = "${pkgs.waybar}/bin/waybar";
+          # statusCommand = "i3status -c ~/git/nixos/homes/_shared/i3/i3status.conf";
+          fonts = {
+            names = ["Space Mono"];
+            style = "Regular";
+            size = 13.0;
+          };
+        }
+      ];
+
+      window = {
+        hideEdgeBorders = "both";
+        titlebar = false;
+        commands = [
+          {
+            command = "border pixel 2";
+            criteria = {
+              class = "InputOutput";
+            };
+          }
+        ];
+      };
     };
   };
 
