@@ -245,6 +245,13 @@ in {
         };
       };
 
+      output = {
+          eDP-1 = {
+            # Set HIDP scale (pixel integer scaling)
+            scale = "1.33";
+	      };
+	    };
+
       # Use kitty as default terminal
       terminal = "kitty";
       modifier = "Mod4";
@@ -270,7 +277,7 @@ in {
       bars = [
         {
           position = "top";
-          command = "${pkgs.waybar}/bin/waybar";
+          # command = "${pkgs.waybar}/bin/waybar";
         }
       ];
 
