@@ -219,9 +219,14 @@ in {
 
   xdg.autostart.enable = true; # Enable creation of XDG autostart entries.
 
-  xsession.windowManager.i3 = {
+  security.polkit.enable = true;
+
+  wayland.windowManager.sway = {
     enable = true;
-    config = {
+    wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
+    config = rec {
+      # Use kitty as default terminal
+      terminal = "kitty";
       modifier = "Mod4";
       startup = [
         {command = "exec discord --start-minimized";}
@@ -230,45 +235,63 @@ in {
         {command = "exec mullvad-gui";}
         {command = "exec fcitx5";}
         {command = "exec obsidian";}
-        {command = "exec_always --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 600 'i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png' '' --detect-sleep";}
-      ];
-
-      floating = {
-        criteria = [
-          {
-            title = "Volume Control";
-          }
-        ];
-      };
-
-      bars = [
-        {
-          position = "top";
-          statusCommand = "i3status -c ~/git/nixos/homes/_shared/i3/i3status.conf";
-          fonts = {
-            names = ["Space Mono"];
-            style = "Regular";
-            size = 13.0;
-          };
-        }
+        # {command = "exec_always --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 600 'i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png' '' --detect-sleep";}
       ];
 
       keybindings = import ../_shared/i3/i3-keybindings.nix "Mod4";
-
-      window = {
-        hideEdgeBorders = "both";
-        titlebar = false;
-        commands = [
-          {
-            command = "border pixel 2";
-            criteria = {
-              class = "InputOutput";
-            };
-          }
-        ];
-      };
     };
   };
+
+  # xsession.windowManager.i3 = {
+  #   enable = true;
+  #   config = {
+  #     modifier = "Mod4";
+  #     startup = [
+  #       {command = "exec discord --start-minimized";}
+  #       {command = "exec keepassxc";}
+  #       {command = "exec flameshot";}
+  #       {command = "exec mullvad-gui";}
+  #       {command = "exec fcitx5";}
+  #       {command = "exec obsidian";}
+  #       {command = "exec_always --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 600 'i3lock -i /home/chuu/git/nixos/wallpapers/cirno_nix.png' '' --detect-sleep";}
+  #     ];
+  #
+  #     floating = {
+  #       criteria = [
+  #         {
+  #           title = "Volume Control";
+  #         }
+  #       ];
+  #     };
+  #
+  #     bars = [
+  #       {
+  #         position = "top";
+  #         statusCommand = "i3status -c ~/git/nixos/homes/_shared/i3/i3status.conf";
+  #         fonts = {
+  #           names = ["Space Mono"];
+  #           style = "Regular";
+  #           size = 13.0;
+  #         };
+  #       }
+  #     ];
+  #
+  #     keybindings = import ../_shared/i3/i3-keybindings.nix "Mod4";
+  #
+  #     window = {
+  #       hideEdgeBorders = "both";
+  #       titlebar = false;
+  #       commands = [
+  #         {
+  #           command = "border pixel 2";
+  #           criteria = {
+  #             class = "InputOutput";
+  #           };
+  #         }
+  #       ];
+  #     };
+  #   };
+  # };:
 
   programs.yazi = {
     enable = true;

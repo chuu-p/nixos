@@ -126,27 +126,37 @@
     ];
   };
 
-  services.xserver = {
+  # services.xserver = {
+  #   enable = true;
+  #   xkb = {
+  #     layout = "us";
+  #     options = "caps:super";
+  #   };
+  #   videoDrivers = ["nvidia"];
+  #   displayManager.lightdm = {
+  #     enable = true;
+  #     greeters.slick = {
+  #       enable = true;
+  #       draw-user-backgrounds = true;
+  #     };
+  #   };
+  #   windowManager.i3 = {
+  #     enable = true;
+  #     extraPackages = with pkgs; [
+  #       dmenu
+  #       i3status
+  #       i3lock
+  #     ];
+  #   };
+  # };
+
+  services.greetd = {
     enable = true;
-    xkb = {
-      layout = "us";
-      options = "caps:super";
-    };
-    videoDrivers = ["nvidia"];
-    displayManager.lightdm = {
-      enable = true;
-      greeters.slick = {
-        enable = true;
-        draw-user-backgrounds = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway";
+        user = "chuu";
       };
-    };
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu
-        i3status
-        i3lock
-      ];
     };
   };
 
