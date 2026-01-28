@@ -164,7 +164,7 @@ in {
       user = {
         name = "chuu-p";
         email = "chuu801@pm.me";
-        signingkey = "${config.home.homeDirectory}.ssh/id_ed25519.pub";
+        signingkey = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
       };
       init = {
         defaultBranch = "macho";
@@ -208,6 +208,17 @@ in {
     extraConfig = builtins.readFile ../../aesthetics/ene_gh.conf;
   };
 
+  programs.keepassxc = {
+    autostart = true;
+    enable = true;
+    settings = {
+      # For available settings, see https://github.com/keepassxreboot/keepassxc/blob/develop/src/core/Config.cpp
+      FdoSecrets.Enabled = true; # Enable Secret Service Integration
+    };
+  };
+
+  xdg.autostart.enable = true; # Enable creation of XDG autostart entries.
+
   xsession.windowManager.i3 = {
     enable = true;
     config = {
@@ -236,8 +247,8 @@ in {
           statusCommand = "i3status -c ~/git/nixos/homes/_shared/i3/i3status.conf";
           fonts = {
             names = ["Space Mono"];
-            style = "Bold";
-            size = 12.0;
+            style = "Regular";
+            size = 13.0;
           };
         }
       ];

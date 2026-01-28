@@ -42,7 +42,6 @@
     inkscape # vector image manipulation
     just # command runner
     kdePackages.kcalc # calculator
-    keepassxc # password manager
     kitty # the best terminal emulator imo :3
     libnotify # notifications
     libreoffice # nice to have office suite
