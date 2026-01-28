@@ -164,7 +164,7 @@ in {
       user = {
         name = "chuu-p";
         email = "chuu801@pm.me";
-        signingkey = "/home/chuu/.ssh/id_ed25519.pub";
+        signingkey = "${config.home.homeDirectory}.ssh/id_ed25519.pub";
       };
       init = {
         defaultBranch = "macho";
