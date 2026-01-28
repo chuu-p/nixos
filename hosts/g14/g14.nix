@@ -354,11 +354,11 @@
   };
 
   users.users.chuu.openssh.authorizedKeys.keys = [
-    (builtins.readFile /home/chuu/.ssh/id_ed25519.pub)
+    (builtins.readFile ../../homes/chuu/chuu.pub)
   ];
 
   users.users.root.openssh.authorizedKeys.keys = [
-    (builtins.readFile /home/chuu/.ssh/id_ed25519.pub)
+    (builtins.readFile ../../homes/chuu/chuu.pub)
   ];
 
   system.stateVersion = "25.05";
