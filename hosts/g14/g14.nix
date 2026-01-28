@@ -35,29 +35,29 @@
   documentation.man.generateCaches = false;
 
   stylix = {
-  enable = true;
-  autoEnable = true;
-  base16Scheme = "${pkgs.base16-schemes}/share/themes/evenok-dark.yaml";
-  polarity = "dark";
-  image = ./wallpapers/nix_ene_1.png;
-  fonts = {
-    serif = {
-      package = pkgs.dejavu_fonts;
-      name = "DejaVu Serif";
+    enable = true;
+    autoEnable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/evenok-dark.yaml";
+    polarity = "dark";
+    image = ../../aesthetics/nix_ene_1.png;
+    fonts = {
+      serif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
+      };
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
+      };
+      monospace = {
+        package = pkgs.nerd-fonts.space-mono;
+        name = "Space Mono";
+      };
+      emoji = {
+        package = pkgs.noto-fonts-monochrome-emoji;
+        name = "Noto Monochrome Emoji";
+      };
     };
-    sansSerif = {
-      package = pkgs.dejavu_fonts;
-      name = "DejaVu Sans";
-    };
-    monospace = {
-      package = pkgs.nerd-fonts.space-mono;
-      name = "Space Mono";
-    };
-    emoji = {
-      package = pkgs.noto-fonts-monochrome-emoji;
-      name = "Noto Monochrome Emoji";
-    };
-  };
   };
 
   # This is needed for Slippi to run.

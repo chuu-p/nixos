@@ -83,11 +83,12 @@ in {
       vue-language-server
       vala-language-server
       nixd
-      (python3.withPackages(ps: with ps; [
-        python-lsp-server
-        python-lsp-ruff
-        flake8
-      ]))
+      (python3.withPackages (ps:
+        with ps; [
+          python-lsp-server
+          python-lsp-ruff
+          flake8
+        ]))
       # formatters
       nodePackages.prettier
       nixfmt
