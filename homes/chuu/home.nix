@@ -109,6 +109,19 @@ in {
   };
   home.sessionPath = ["${config.home.homeDirectory}/git/nixos/PATH"];
 
+  home.shellAliases = {
+    l = "ls -alh";
+    ll = "ls -l";
+    ls = "ls --color=tty";
+    kubectl = "sudo k3s kubectl";
+    sudo = "sudo ";
+    prettier = "npx prettier --write";
+    g = "git";
+    cg = "cargo";
+    j = "just";
+    zj = "zellij";
+  };
+
   programs.atuin = {
     enable = true;
     settings = {
