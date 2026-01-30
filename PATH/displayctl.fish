@@ -18,20 +18,20 @@ end
 
 switch $invoked_name
     case c-display-mirror
-        xrandr --output HDMI-A-0 --mode 1920x1080 --scale 1.333x1.333 --same-as eDP
+        wlr-xrandr --output DP-1 --auto --same-as eDP-1
         check_status c-display-mirror
 
     case c-display-extend
-        xrandr --output eDP --auto --output HDMI-A-0 --auto --right-of eDP
+        wlr-xrandr --output eDP-1 --auto --output DP-1 --auto --right-of eDP-1
         check_status c-display-extend
 
     case c-display-second
-        xrandr --output eDP --off --output HDMI-A-0 --auto
-        # xrandr --output eDP --off --output HDMI-A-0 --mode 1920x1080 --scale 1.333x1.333 --rate 180.00
+        wlr-xrandr --output eDP-1 --off --output DP-1 --auto
+        # xrandr --output eDP-1 --off --output DP-1 --mode 1920x1080 --scale 1.333x1.333 --rate 180.00
         check_status c-display-second
 
     case c-display-first
-        xrandr --output eDP --auto --output HDMI-A-0 --off
+        wlr-xrandr --output eDP-1 --auto --output DP-1 --off
         check_status c-display-first
 
     case displayctl.fish

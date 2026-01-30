@@ -87,6 +87,7 @@
     vdhcoapp # videodownloadhelper companion application
     vial # keyboard config
     vim # fallback vim
+    wlr-randr # xrandr for wayland
     xidlehook # TODO
     xorg.xev # x event tester
     xsel # clipboard tool
