@@ -18,20 +18,20 @@ end
 
 switch $invoked_name
     case c-display-mirror
-        wlr-xrandr --output DP-1 --auto --same-as eDP-1
+        wlr-randr --output DP-1 --on --same-as eDP-1
         check_status c-display-mirror
 
     case c-display-extend
-        wlr-xrandr --output eDP-1 --auto --output DP-1 --auto --right-of eDP-1
+        wlr-randr --output eDP-1 --on --output DP-1 --on --right-of eDP-1
         check_status c-display-extend
 
     case c-display-second
-        wlr-xrandr --output eDP-1 --off --output DP-1 --auto
-        # xrandr --output eDP-1 --off --output DP-1 --mode 1920x1080 --scale 1.333x1.333 --rate 180.00
+        wlr-randr --output eDP-1 --off --output DP-1 --on
+        # randr --output eDP-1 --off --output DP-1 --mode 1920x1080 --scale 1.333x1.333 --rate 180.00
         check_status c-display-second
 
     case c-display-first
-        wlr-xrandr --output eDP-1 --auto --output DP-1 --off
+        wlr-randr --output eDP-1 --on --output DP-1 --off
         check_status c-display-first
 
     case displayctl.fish
