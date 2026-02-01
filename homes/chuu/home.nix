@@ -252,9 +252,8 @@ in {
 
         # Provide all keyboards connected the following configuration
         "type:keyboard" = {
-          xkb_layout = "us,us";
-          xkb_variant = "altgr-intl,intl";
-          xkb_options = "caps:super,grp:win_space_toggle,shift:both_capslock";
+          xkb_layout = "us";
+          xkb_options = "caps:super";
         };
       };
 

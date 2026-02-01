@@ -126,30 +126,6 @@
     ];
   };
 
-  # services.xserver = {
-  #   enable = true;
-  #   xkb = {
-  #     layout = "us";
-  #     options = "caps:super";
-  #   };
-  #   videoDrivers = ["nvidia"];
-  #   displayManager.lightdm = {
-  #     enable = true;
-  #     greeters.slick = {
-  #       enable = true;
-  #       draw-user-backgrounds = true;
-  #     };
-  #   };
-  #   windowManager.i3 = {
-  #     enable = true;
-  #     extraPackages = with pkgs; [
-  #       dmenu
-  #       i3status
-  #       i3lock
-  #     ];
-  #   };
-  # };
-
   programs.sway.enable = true;
   services.greetd = {
     enable = true;

@@ -57,7 +57,6 @@
                 inherit system inputs;
               };
             };
-            nixpkgs.config.allowBroken = true;
           }
           {
             home-manager.backupFileExtension = "hm-backup";
