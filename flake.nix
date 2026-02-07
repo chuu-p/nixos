@@ -94,7 +94,7 @@
             home-manager.backupFileExtension = "hm-backup";
             home-manager.users.chuu = {
               imports = [
-                ./home.nix
+                ./homes/chuu/home.nix
               ];
             };
           }
