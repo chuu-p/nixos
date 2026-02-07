@@ -78,8 +78,8 @@
           stylix.nixosModules.stylix
 
           nixos-hardware.nixosModules.asus-zephyrus-ga401
-          ./varrick.nix
-          ./varrick-hardware.nix
+          ./hosts/varrick/varrick.nix
+          ./hosts/varrick/varrick-hardware.nix
 
           home-manager.nixosModules.home-manager
           {
