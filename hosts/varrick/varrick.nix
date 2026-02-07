@@ -174,8 +174,6 @@
 
   services.blueman.enable = true;
 
-  services.picom.enable = true;
-
   services.printing.enable = true;
 
   services.avahi.enable = true;
