@@ -77,7 +77,6 @@
           musnix.nixosModules.musnix
           stylix.nixosModules.stylix
 
-          nixos-hardware.nixosModules.asus-zephyrus-ga401
           ./hosts/varrick/varrick.nix
           ./hosts/varrick/varrick-hardware.nix
 
