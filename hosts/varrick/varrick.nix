@@ -74,14 +74,6 @@
   '';
 
   hardware = {
-    nvidia = {
-      dynamicBoost.enable = false;
-      modesetting.enable = true;
-      powerManagement.enable = false;
-      open = false;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-    };
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
     openrazer.enable = true;
