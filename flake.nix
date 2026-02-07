@@ -68,38 +68,38 @@
           }
         ];
       };
-      # varrick = nixpkgs.lib.nixosSystem {
-      #   specialArgs = {
-      #     inherit system inputs;
-      #   };
-      #   system = "x86_64-linux";
-      #   modules = [
-      #     musnix.nixosModules.musnix
-      #     stylix.nixosModules.stylix
-      #
-      #     nixos-hardware.nixosModules.asus-zephyrus-ga401
-      #     ./varrick.nix
-      #     ./varrick-hardware.nix
-      #
-      #     home-manager.nixosModules.home-manager
-      #     {
-      #       home-manager = {
-      #         extraSpecialArgs = {
-      #           inherit system inputs;
-      #         };
-      #       };
-      #       nixpkgs.config.allowBroken = true;
-      #     }
-      #     {
-      #       home-manager.backupFileExtension = "hm-backup";
-      #       home-manager.users.chuu = {
-      #         imports = [
-      #           ./home.nix
-      #         ];
-      #       };
-      #     }
-      #   ];
-      # };
+      varrick = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit system inputs;
+        };
+        system = "x86_64-linux";
+        modules = [
+          musnix.nixosModules.musnix
+          stylix.nixosModules.stylix
+
+          nixos-hardware.nixosModules.asus-zephyrus-ga401
+          ./varrick.nix
+          ./varrick-hardware.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              extraSpecialArgs = {
+                inherit system inputs;
+              };
+            };
+            nixpkgs.config.allowBroken = true;
+          }
+          {
+            home-manager.backupFileExtension = "hm-backup";
+            home-manager.users.chuu = {
+              imports = [
+                ./home.nix
+              ];
+            };
+          }
+        ];
+      };
     };
   };
 }

@@ -1,79 +1,106 @@
 # █▀▀ ▄█ █░█
 # █▄█ ░█ ▀▀█
 {
+  inputs,
   config,
   pkgs,
   callPackage,
   ...
 }: {
   imports = [
-    ./packages.nix
+    ../_shared/packages.nix
   ];
 
+  # This enables AppImage support.
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
+
   powerManagement.powertop.enable = true;
+
+  environment.variables = {
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+  };
 
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   nix.settings.trusted-users = ["root" "@wheel" "chuu"];
 
-  nix.buildMachines = [
-    {
-      hostName = "jinora";
-      sshUser = "chuu";
-      system = "aarch64-linux";
-      protocol = "ssh-ng";
-      maxJobs = 1;
-      speedFactor = 2;
-      supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-      mandatoryFeatures = [];
-    }
-    {
-      hostName = "iroh";
-      sshUser = "chuu";
-      system = "aarch64-linux";
-      protocol = "ssh-ng";
-      maxJobs = 1;
-      speedFactor = 3;
-      supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-      mandatoryFeatures = [];
-    }
-    {
-      hostName = "opal";
-      sshUser = "chuu";
-      system = "aarch64-linux";
-      protocol = "ssh-ng";
-      maxJobs = 1;
-      speedFactor = 2;
-      supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-      mandatoryFeatures = [];
-    }
-    # {
-    #   hostName = "nixos";
-    #   sshUser = "nixos";
-    #   system = "x86_64-linux";
-    #   # systems = ["x86_64-linux" "aarch64-linux"];
-    #   protocol = "ssh";
-    #   maxJobs = 4;
-    #   speedFactor = 10;
-    #   supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-    #   mandatoryFeatures = [];
-    # }
-  ];
-  nix.distributedBuilds = true;
+  programs.direnv.enable = true;
+  nix.extraOptions = ''
+    extra-substituters = https://devenv.cachix.org
+    extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
+  '';
+  documentation.man.generateCaches = false;
 
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
+  stylix = {
+    enable = true;
+    autoEnable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/evenok-dark.yaml";
+    polarity = "dark";
+    image = ../../aesthetics/nix_ene_1.png;
+    fonts = {
+      serif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
+      };
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
+      };
+      monospace = {
+        package = pkgs.nerd-fonts.space-mono;
+        name = "Space Mono";
+      };
+      emoji = {
+        package = pkgs.noto-fonts-color-emoji;
+        name = "Noto Color Emoji";
+      };
+    };
+  };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # This is needed for Slippi to run.
+  programs.appimage.package = pkgs.appimage-run.override {
+    extraPkgs = pkgs: [
+      pkgs.curl
+      pkgs.libmpg123
+    ];
+  };
+
+  services.udev.extraRules = ''
+    # Your rule goes here
+    SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="0666"
+  '';
+
+  hardware = {
+    nvidia = {
+      dynamicBoost.enable = false;
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+    bluetooth.enable = true;
+    bluetooth.powerOnBoot = true;
+    openrazer.enable = true;
+  };
+
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+    ];
+  };
 
   networking.hostName = "varrick"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.wireless.enable = true;
-  networking.wireless.interfaces = ["wlp3s0"];
-  networking.wireless.networks."FRITZ!Box 7583 UJ" = {
-    psk = "41808552962347953265";
-  };
+  networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -98,29 +125,16 @@
     ];
   };
 
-  # services.xserver = {
-  #   enable = true;
-  #   xkb = {
-  #     layout = "us";
-  #     options = "caps:super";
-  #   };
-  #   # videoDrivers = ["nvidia"];
-  #   displayManager.lightdm = {
-  #     enable = true;
-  #     greeters.slick = {
-  #       enable = true;
-  #       draw-user-backgrounds = true;
-  #     };
-  #   };
-  #   windowManager.i3 = {
-  #     enable = true;
-  #     extraPackages = with pkgs; [
-  #       dmenu
-  #       i3status
-  #       i3lock
-  #     ];
-  #   };
-  # };
+  programs.sway.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway";
+        user = "chuu";
+      };
+    };
+  };
 
   location = {
     latitude = 50.9;
@@ -170,59 +184,14 @@
   services.pulseaudio.enable = false;
 
   security.rtkit.enable = true;
+  security.polkit.enable = true;
 
   services.atuin.enable = true;
-
-  # # services.pipewire = {
-  # #   enable = true;
-  # #   alsa.enable = true;
-  # #   alsa.support32Bit = true;
-  # #   pulse.enable = true;
-  # # };
-
-  # services.jack = {
-  #   jackd.enable = true;
-  #   # support ALSA only programs via ALSA JACK PCM plugin
-  #   alsa.enable = false;
-  #   # support ALSA only programs via loopback device (supports programs like Steam)
-  #   loopback = {
-  #     enable = true;
-  #     # buffering parameters for dmix device to work with ALSA only semi-professional sound programs
-  #     #dmixConfig = ''
-  #     #  period_size 2048
-  #     #'';
-  #   };
-  # };
-
-  programs.light.enable = true;
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.sway}/bin/sway";
-        user = "chuu";
-      };
-      default_session = initial_session;
-    };
-  };
-
-  services.dbus.enable = true;
-
-  # xdg.portal = {
-  #   enable = true;
-  #   wlr.enable = true;
-  #   extraPortals = [pkgs.xdg-desktop-portal-gtk];
-  # };
-
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
 
   users.users.chuu = {
     isNormalUser = true;
     description = "chuu";
-    extraGroups = ["networkmanager" "wheel" "syncthing" "audio" "video"];
+    extraGroups = ["networkmanager" "wheel" "syncthing" "audio" "jackaudio" "openrazer"];
     shell = pkgs.fish;
     packages = with pkgs; [
     ];
@@ -230,7 +199,27 @@
 
   programs.fish.enable = true;
 
+  programs.steam.enable = true;
+  programs.steam.package = pkgs.steam.override {
+    extraPkgs = pkgs':
+      with pkgs'; [
+        xorg.libXcursor
+        xorg.libXi
+        xorg.libXinerama
+        xorg.libXScrnSaver
+        libpng
+        libpulseaudio
+        libvorbis
+        stdenv.cc.cc.lib # Provides libstdc++.so.6
+        libkrb5
+        keyutils
+      ];
+  };
+
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    glib
+  ];
 
   programs.firefox.enable = true;
 
@@ -239,8 +228,9 @@
     enableVirtualCamera = true;
     plugins = with pkgs.obs-studio-plugins; [
       droidcam-obs
+      wlrobs
       waveform
-      waveform
+      obs-websocket
       obs-backgroundremoval
       obs-pipewire-audio-capture
       obs-vaapi #optional AMD hardware acceleration
@@ -250,21 +240,18 @@
     ];
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowBroken = true;
+  };
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.noto
-    nerd-fonts.dejavu-sans-mono
-    nerd-fonts.symbols-only
-    nerd-fonts.space-mono
-
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    noto-fonts-emoji
-
-    font-awesome
-  ];
+  nixpkgs = {
+    overlays = [
+      (final: prev: {
+        nvchad = inputs.nix4nvchad.packages."${pkgs.stdenv.hostPlatform.system}".nvchad;
+      })
+    ];
+  };
 
   programs.git = {
     enable = true;
@@ -318,10 +305,12 @@
     };
   };
 
-  services.logind = {
-    lidSwitch = "suspend-then-hibernate";
-    lidSwitchExternalPower = "ignore";
-    powerKey = "ignore";
+  services.logind.settings = {
+    Login = {
+      HandleLidSwitch = "suspend";
+      HandleLidSwitchExternalPower = "ignore";
+      HandlePowerKey = "ignore";
+    };
   };
 
   systemd.sleep.extraConfig = ''
@@ -339,23 +328,9 @@
     overrideFolders = true; # overrides any folders added or deleted through the WebUI
   };
 
-  # auto upgrading is a bad pattern due to supply chain attacks.
-  # you should lock your versions
-  # https://youtu.be/69F9IuBWb-E?t=119
-  # system.autoUpgrade = {
-  #   enable = true;
-  #   randomizedDelaySec = "30min"; # Adds a random delay to prevent simultaneous updates
-  #   dates = "daily"; # or "weekly", "monthly", etc.
-  #   flags = ["--impure" "--flake" "/etc/nixos"];
-  #   allowReboot = true; # Allow the system to reboot if necessary
-  #   # email = "your-email@example.com"; # Uncomment to receive email notifications
-  #   # emailOnFailure = true;
-  # };
-
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false; # Disable password-based SSH login for security
@@ -367,11 +342,11 @@
   };
 
   users.users.chuu.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQHb+VwHnS97Wmu4xpUDlLhzB+Ip11BINatUivsr6+a"
+    (builtins.readFile ../../homes/chuu/chuu.pub)
   ];
 
   users.users.root.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQHb+VwHnS97Wmu4xpUDlLhzB+Ip11BINatUivsr6+a"
+    (builtins.readFile ../../homes/chuu/chuu.pub)
   ];
 
   system.stateVersion = "24.11";
