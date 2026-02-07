@@ -34,6 +34,13 @@
   '';
   documentation.man.generateCaches = false;
 
+  systemd.services.myservice = {
+  enable = true;
+  serviceConfig = {
+     ExecStart = "${pkgs.nix}/bin/nix run git+https://mygitrepo/server";
+   }
+}
+
   stylix = {
     enable = true;
     autoEnable = true;
