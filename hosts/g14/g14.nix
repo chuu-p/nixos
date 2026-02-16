@@ -77,10 +77,15 @@
     nvidia = {
       dynamicBoost.enable = false;
       modesetting.enable = true;
-      powerManagement.enable = false;
-      open = false;
+      powerManagement.enable = true;
+      open = true;
       nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      # package = config.boot.kernelPackages.nvidiaPackages.stable;
+      prime = {
+        # intelBusId = "PCI:0@0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
+        amdgpuBusId = "PCI:4:0:0"; # If you have an AMD iGPU
+      };
     };
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
@@ -131,7 +136,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'sway --unsupported-gpu'";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway";
         user = "chuu";
       };
     };
