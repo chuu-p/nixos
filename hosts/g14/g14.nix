@@ -37,7 +37,8 @@
   stylix = {
     enable = true;
     autoEnable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/evenok-dark.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/evenok-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tarot.yaml";
     polarity = "dark";
     image = ../../aesthetics/nix_ene_1.png;
     fonts = {
@@ -58,14 +59,6 @@
         name = "Noto Color Emoji";
       };
     };
-  };
-
-  # This is needed for Slippi to run.
-  programs.appimage.package = pkgs.appimage-run.override {
-    extraPkgs = pkgs: [
-      pkgs.curl
-      pkgs.libmpg123
-    ];
   };
 
   services.udev.extraRules = ''
@@ -136,7 +129,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'sway --unsupported-gpu'";
         user = "chuu";
       };
     };
@@ -162,6 +155,8 @@
   };
 
   services.tailscale.enable = true;
+
+  services.gnome.gnome-keyring.enable = true;
 
   console.keyMap = "us";
 

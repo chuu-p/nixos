@@ -4,6 +4,8 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    # nvtopPackages.full # gpu monitor
+    # rustdesk # rdp
     alejandra # formatter for .nix files
     android-studio # dev
     android-tools # dev
@@ -39,9 +41,10 @@
     gparted # disk partition editor
     home-manager # nixos user env manager
     htop # process monitor
-    inkscape # vector image manipulation
     i3status # status bar
+    inkscape # vector image manipulation
     just # command runner
+    keepassxc # password manager
     kdePackages.kcalc # calculator
     kitty # the best terminal emulator imo :3
     libnotify # notifications
@@ -58,22 +61,23 @@
     nodejs # js runtime
     ntfs3g # tools for ntfs drives
     nvchad # neovim distro
-    # nvtopPackages.full # gpu monitor
     obsidian # note-taking
     opencommit # generate commit messages with ai
     openrazer-daemon # for razer hardware
     openssl # ssl
+    p7zip # 7zip
     pavucontrol # volume control
     pkg-config # important for libraries
     playerctl # control media from command line
     presenterm # cli presentations
     prismlauncher # minecraft launcher
     progress # progress monitor for mv, dd, scp, etc.
+    protonmail-bridge-gui # emails
     pulseaudio # audio system
-    # rustdesk # rdp
     shotcut # video editor
     signal-desktop # communication
     sshfs # mount via ssh
+    thunderbird # emails
     tigervnc # vnc
     tokei # count lines of code
     trashy # cli trash
@@ -81,61 +85,57 @@
     typst # typst compiler
     typstyle # typst formatter
     unzip # unzip
-    p7zip # 7zip
     usbutils # lsusb and other tools
     uutils-coreutils-noprefix # use uutils by default
     vdhcoapp # videodownloadhelper companion application
     vial # keyboard config
     vim # fallback vim
     wlr-randr # xrandr for wayland
-    xidlehook # TODO
-    xorg.xev # x event tester
-    xsel # clipboard tool
     yazi # terminal file manager
     yt-dlp # media download tool
     zed-editor # rust based ide
     zellij # termux alternative
-    (vscode-with-extensions.override {
-      vscode = vscodium;
-      vscodeExtensions = with vscode-extensions;
-        [
-          bierner.emojisense
-          bradlc.vscode-tailwindcss
-          foam.foam-vscode
-          jebbs.plantuml
-          jnoortheen.nix-ide
-          ms-kubernetes-tools.vscode-kubernetes-tools
-          ms-python.python
-          rust-lang.rust-analyzer
-          streetsidesoftware.code-spell-checker
-          streetsidesoftware.code-spell-checker-german
-          tamasfe.even-better-toml
-          tomoki1207.pdf
-          vadimcn.vscode-lldb
-          vscodevim.vim
-          zxh404.vscode-proto3
-          redhat.vscode-yaml
-        ]
-        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-          {
-            name = "geminicodeassist";
-            publisher = "Google";
-            version = "2.43.0";
-            sha256 = "jenr96MLxZE352f0WyUsFkRajP7L/4893RTtuKirEvs=";
-          }
-          {
-            name = "github-vscode-theme";
-            publisher = "GitHub";
-            version = "6.3.5";
-            sha256 = "dOadoYBPcYrpzmqOpJwG+/nPwTfJtlsOFDU3FctdR0o=";
-          }
-          {
-            name = "vscode-gitops-tools";
-            publisher = "Weaveworks";
-            version = "0.27.0";
-            sha256 = "7MCKDnHCot/CL/SqZ2WuTxbqFdF75EC5WC+OxW0dcaE=";
-          }
-        ];
-    })
+    # (vscode-with-extensions.override {
+    #   vscode = vscodium;
+    #   vscodeExtensions = with vscode-extensions;
+    #     [
+    #       bierner.emojisense
+    #       bradlc.vscode-tailwindcss
+    #       foam.foam-vscode
+    #       jebbs.plantuml
+    #       jnoortheen.nix-ide
+    #       ms-kubernetes-tools.vscode-kubernetes-tools
+    #       ms-python.python
+    #       rust-lang.rust-analyzer
+    #       streetsidesoftware.code-spell-checker
+    #       streetsidesoftware.code-spell-checker-german
+    #       tamasfe.even-better-toml
+    #       tomoki1207.pdf
+    #       vadimcn.vscode-lldb
+    #       vscodevim.vim
+    #       zxh404.vscode-proto3
+    #       redhat.vscode-yaml
+    #     ]
+    #     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    #       {
+    #         name = "geminicodeassist";
+    #         publisher = "Google";
+    #         version = "2.43.0";
+    #         sha256 = "jenr96MLxZE352f0WyUsFkRajP7L/4893RTtuKirEvs=";
+    #       }
+    #       {
+    #         name = "github-vscode-theme";
+    #         publisher = "GitHub";
+    #         version = "6.3.5";
+    #         sha256 = "dOadoYBPcYrpzmqOpJwG+/nPwTfJtlsOFDU3FctdR0o=";
+    #       }
+    #       {
+    #         name = "vscode-gitops-tools";
+    #         publisher = "Weaveworks";
+    #         version = "0.27.0";
+    #         sha256 = "7MCKDnHCot/CL/SqZ2WuTxbqFdF75EC5WC+OxW0dcaE=";
+    #       }
+    #     ];
+    # })
   ];
 }

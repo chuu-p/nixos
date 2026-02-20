@@ -227,16 +227,16 @@ in {
     extraConfig = builtins.readFile ../../aesthetics/ene_gh.conf;
   };
 
-  programs.keepassxc = {
-    autostart = true;
-    enable = true;
-    settings = {
-      # For available settings, see https://github.com/keepassxreboot/keepassxc/blob/develop/src/core/Config.cpp
-      FdoSecrets.Enabled = true; # Enable Secret Service Integration
-    };
-  };
-
-  xdg.autostart.enable = true; # Enable creation of XDG autostart entries.
+  # programs.keepassxc = {
+  #   autostart = true;
+  #   enable = true;
+  #   settings = {
+  #     # For available settings, see https://github.com/keepassxreboot/keepassxc/blob/develop/src/core/Config.cpp
+  #     FdoSecrets.Enabled = true; # Enable Secret Service Integration
+  #   };
+  # };
+  #
+  # xdg.autostart.enable = true; # Enable creation of XDG autostart entries.
 
   wayland.windowManager.sway = {
     enable = true;
@@ -277,6 +277,7 @@ in {
         {command = "exec mullvad-gui";}
         {command = "exec fcitx5";}
         {command = "exec obsidian";}
+        {command = "exec protonmail-bridge-gui";}
       ];
 
       keybindings = import ../_shared/sway/sway-keybindings.nix "Mod4";
