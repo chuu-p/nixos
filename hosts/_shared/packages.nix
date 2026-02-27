@@ -31,6 +31,7 @@
     flameshot # screenshots
     font-awesome # fonts
     fontconfig # fonts
+    fractal # matrix chat client
     freetype # fonts
     gemini-cli # ai
     gh # github cli
