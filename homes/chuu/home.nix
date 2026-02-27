@@ -272,7 +272,7 @@ in {
       modifier = "Mod4";
       startup = [
         {command = "exec discord --start-minimized";}
-        {command = "exec keepassxc";}
+        {command = "exec keepassxc --minimized";}
         {command = "exec flameshot";}
         {command = "exec mullvad-gui";}
         {command = "exec fcitx5";}

@@ -45,9 +45,9 @@
   stylix = {
     enable = true;
     autoEnable = true;
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/evenok-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/evenok-dark.yaml";
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/tarot.yaml";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/chalk.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/chalk.yaml";
     polarity = "dark";
     image = ../../aesthetics/nix_ene_1.png;
     fonts = {
