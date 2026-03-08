@@ -44,6 +44,7 @@
     htop # process monitor
     i3status # status bar
     inkscape # vector image manipulation
+    insomnia # rest client
     just # command runner
     keepassxc # password manager
     kdePackages.kcalc # calculator
@@ -96,47 +97,6 @@
     yt-dlp # media download tool
     zed-editor # rust based ide
     zellij # termux alternative
-    # (vscode-with-extensions.override {
-    #   vscode = vscodium;
-    #   vscodeExtensions = with vscode-extensions;
-    #     [
-    #       bierner.emojisense
-    #       bradlc.vscode-tailwindcss
-    #       foam.foam-vscode
-    #       jebbs.plantuml
-    #       jnoortheen.nix-ide
-    #       ms-kubernetes-tools.vscode-kubernetes-tools
-    #       ms-python.python
-    #       rust-lang.rust-analyzer
-    #       streetsidesoftware.code-spell-checker
-    #       streetsidesoftware.code-spell-checker-german
-    #       tamasfe.even-better-toml
-    #       tomoki1207.pdf
-    #       vadimcn.vscode-lldb
-    #       vscodevim.vim
-    #       zxh404.vscode-proto3
-    #       redhat.vscode-yaml
-    #     ]
-    #     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-    #       {
-    #         name = "geminicodeassist";
-    #         publisher = "Google";
-    #         version = "2.43.0";
-    #         sha256 = "jenr96MLxZE352f0WyUsFkRajP7L/4893RTtuKirEvs=";
-    #       }
-    #       {
-    #         name = "github-vscode-theme";
-    #         publisher = "GitHub";
-    #         version = "6.3.5";
-    #         sha256 = "dOadoYBPcYrpzmqOpJwG+/nPwTfJtlsOFDU3FctdR0o=";
-    #       }
-    #       {
-    #         name = "vscode-gitops-tools";
-    #         publisher = "Weaveworks";
-    #         version = "0.27.0";
-    #         sha256 = "7MCKDnHCot/CL/SqZ2WuTxbqFdF75EC5WC+OxW0dcaE=";
-    #       }
-    #     ];
-    # })
+    unstable.zmk-studio # split keyboard software
   ];
 }

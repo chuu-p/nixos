@@ -277,7 +277,8 @@ in {
         {command = "exec mullvad-gui";}
         {command = "exec fcitx5";}
         {command = "exec obsidian";}
-        {command = "exec protonmail-bridge-gui";}
+        {command = "exec protonmail-bridge-gui --no-window";}
+        {command = "exec thunderbird";}
       ];
 
       keybindings = import ../_shared/sway/sway-keybindings.nix "Mod4";
