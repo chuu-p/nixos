@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+echo "NixOS update..."
+nix flake update --commit-lock-file
+
+echo "NixOS Cleaning old (>14d) generations..."
+sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 14d &>nixos-wipe.log
+
+echo "NixOS collect garbage..."
+sudo nix-collect-garbage -d
+
+echo "Nix Channel update..."
+sudo nix-channel --update
+
+echo "NixOS Rebuilding $(hostname)..."
+sudo nixos-rebuild switch --flake .#(hostname)

@@ -73,16 +73,22 @@ update_rate() {
 }
 
 update_bt() {
+  bt_block=""
   local bt_output
-  # Hide stderr to avoid polluting the JSON stream if the device is disconnected
-  bt_output=$(~/git/nixos/homes/_shared/sway/bt-battery-dbus.sh DB:0E:33:43:5D:BD 2>/dev/null)
   
-  # Only format the JSON block if the script actually outputs data
-  if [ -n "$bt_output" ]; then
-    bt_block="{\"full_text\":\"${bt_output}\"},"
-  else
-    bt_block=""
-  fi
+  # Fetch MAC addresses of all currently connected Bluetooth devices
+  local connected_macs=$(bluetoothctl devices Connected | awk '{print $2}')
+
+  # Loop through each connected MAC address
+  for mac in $connected_macs; do
+    # Pass the MAC address to your D-Bus script
+    bt_output=$(~/git/nixos/homes/_shared/sway/bt-battery-dbus.sh "$mac" 2>/dev/null)
+    
+    # If the script returns data, append it to the bt_block string
+    if [ -n "$bt_output" ]; then
+      bt_block="${bt_block}{\"full_text\":\"${bt_output}\"},"
+    fi
+  done
 }
 
 i3status -c ~/git/nixos/homes/_shared/sway/i3status.conf | (read line && echo "$line" && read line && echo "$line" && read line && echo "$line" && update_rate && update_bt && while :
@@ -90,6 +96,6 @@ do
   read line
   update_rate
   update_bt
-  # Inject both the bluetooth block and the rate block into the front of the JSON array
+  # Inject the aggregated bluetooth blocks and the rate block into the JSON array
   echo ",[${bt_block}{\"full_text\":\"${rate}\" },${line#,\[}" || exit 1
 done)
