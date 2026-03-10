@@ -294,7 +294,9 @@ in {
       bars = [
         {
           position = "top";
-          statusCommand = "${pkgs.i3status}/bin/i3status -c ~/git/nixos/homes/_shared/sway/i3status.conf";
+          # statusCommand = "${pkgs.i3status}/bin/i3status -c ~/git/nixos/homes/_shared/sway/i3status.conf";
+          statusCommand = "~/git/nixos/homes/_shared/sway/i3status.sh";
+          # statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/git/nixos/homes/_shared/sway/config.toml";
           fonts = {
             # names = ["Space Mono"];
             # style = "Regular";

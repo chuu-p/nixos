@@ -43,6 +43,7 @@
     home-manager # nixos user env manager
     htop # process monitor
     i3status # status bar
+    i3status-rust # status bar
     inkscape # vector image manipulation
     insomnia # rest client
     just # command runner
@@ -97,6 +98,7 @@
     yt-dlp # media download tool
     zed-editor # rust based ide
     zellij # termux alternative
+    zmkBATx
     unstable.zmk-studio # split keyboard software
   ];
 }
