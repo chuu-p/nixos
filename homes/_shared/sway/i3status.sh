@@ -75,18 +75,26 @@ update_rate() {
 update_bt() {
   bt_block=""
   local bt_output
+  local name
+  local short_name
   
   # Fetch MAC addresses of all currently connected Bluetooth devices
   local connected_macs=$(bluetoothctl devices Connected | awk '{print $2}')
 
   # Loop through each connected MAC address
   for mac in $connected_macs; do
+    # Get device name
+    name=$(bluetoothctl info "$mac" | awk -F': ' '/Name:/ {print $2; exit}')
+    
+    # First 2 characters
+    short_name=$(printf "%.2s" "$name")
+
     # Pass the MAC address to your D-Bus script
     bt_output=$(~/git/nixos/homes/_shared/sway/bt-battery-dbus.sh "$mac" 2>/dev/null)
     
     # If the script returns data, append it to the bt_block string
     if [ -n "$bt_output" ]; then
-      bt_block="${bt_block}{\"full_text\":\"${bt_output}\"},"
+      bt_block="${bt_block}{\"full_text\":\"${short_name} ${bt_output}\"},"
     fi
   done
 }
