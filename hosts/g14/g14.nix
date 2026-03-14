@@ -32,6 +32,61 @@
     extra-substituters = https://devenv.cachix.org
     extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
   '';
+  nix = {
+    buildMachines = [
+      {
+        hostName = "jinora";
+        sshUser = "chuu";
+        system = "aarch64-linux";
+        protocol = "ssh-ng";
+        maxJobs = 1;
+        speedFactor = 2;
+        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+        mandatoryFeatures = [];
+      }
+      {
+        hostName = "iroh";
+        sshUser = "chuu";
+        system = "aarch64-linux";
+        protocol = "ssh-ng";
+        maxJobs = 1;
+        speedFactor = 2;
+        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+        mandatoryFeatures = [];
+      }
+      {
+        hostName = "opal";
+        sshUser = "chuu";
+        system = "aarch64-linux";
+        protocol = "ssh-ng";
+        maxJobs = 1;
+        speedFactor = 4;
+        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+        mandatoryFeatures = [];
+      }
+      {
+        hostName = "toph";
+        sshUser = "chuu";
+        system = "aarch64-linux";
+        protocol = "ssh-ng";
+        maxJobs = 1;
+        speedFactor = 4;
+        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+        mandatoryFeatures = [];
+      }
+      {
+        hostName = "g14 ";
+        sshUser = "chuu";
+        systems = ["x86_64-linux" "aarch64-linux"];
+        protocol = "ssh-ng";
+        maxJobs = 16;
+        speedFactor = 8;
+        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+        mandatoryFeatures = [];
+      }
+    ];
+    distributedBuilds = true;
+  };
   documentation.man.generateCaches = false;
 
   # This is needed for Slippi to run.
