@@ -38,6 +38,7 @@
     ghostscript # for imagemagick pdf processing
     gimp # image manipulation
     git # holy grail of software
+    unstable.github-copilot-cli # evil tool
     google-chrome # for drm media
     gparted # disk partition editor
     home-manager # nixos user env manager
@@ -94,6 +95,7 @@
     vial # keyboard config
     vim # fallback vim
     wlr-randr # xrandr for wayland
+    wiremix # pipewire tui
     yazi # terminal file manager
     yt-dlp # media download tool
     zed-editor # rust based ide

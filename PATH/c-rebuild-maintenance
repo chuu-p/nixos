@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env fish
 
 echo "NixOS update..."
 nix flake update --commit-lock-file
@@ -12,5 +12,5 @@ sudo nix-collect-garbage -d
 echo "Nix Channel update..."
 sudo nix-channel --update
 
-echo "NixOS Rebuilding $(hostname)..."
+echo "NixOS Rebuilding (hostname)..."
 sudo nixos-rebuild switch --flake .#(hostname)

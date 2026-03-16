@@ -74,16 +74,6 @@
         supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
         mandatoryFeatures = [];
       }
-      {
-        hostName = "g14 ";
-        sshUser = "chuu";
-        systems = ["x86_64-linux" "aarch64-linux"];
-        protocol = "ssh-ng";
-        maxJobs = 16;
-        speedFactor = 8;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
     ];
     distributedBuilds = true;
   };
