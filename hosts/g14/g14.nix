@@ -26,6 +26,7 @@
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   nix.settings.trusted-users = ["root" "@wheel" "chuu"];
+  nix.settings.extra-platforms = ["aarch64-linux"];
 
   programs.direnv.enable = true;
   nix.extraOptions = ''
@@ -74,6 +75,16 @@
         supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
         mandatoryFeatures = [];
       }
+      #  {
+      #   hostName = "bolin";
+      #   sshUser = "chuu";
+      #   systems = ["x86_64-linux" "aarch64-linux"];
+      #   protocol = "ssh";
+      #   maxJobs = 6;
+      #   speedFactor = 10;
+      #   supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+      #   mandatoryFeatures = [];
+      # }
     ];
     distributedBuilds = true;
   };
