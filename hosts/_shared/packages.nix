@@ -9,6 +9,7 @@
     alejandra # formatter for .nix files
     android-studio # dev
     android-tools # dev
+    anki-bin # flashcard learning
     ardour # linux daw
     blender # 3d modeling
     borgbackup # backups
