@@ -23,6 +23,9 @@
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
     };
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+    };
   };
 
   outputs = {
@@ -33,12 +36,66 @@
     stylix,
     musnix,
     nixos-hardware,
+    nixos-wsl,
     ...
   } @ inputs: let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
   in {
     nixosConfigurations = {
+      wsl = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          nixos-wsl.nixosModules.wsl
+          ({ config, pkgs, ... }: {
+            wsl.enable = true;
+            wsl.defaultUser = "chuu";
+
+            networking.hostName = "nixos-wsl";
+
+            # SSH configuration - key-based auth only
+            services.openssh = {
+              enable = true;
+              settings.PasswordAuthentication = false;
+              settings.PermitRootLogin = "prohibit-password";
+            };
+
+            # Users
+            users.users.chuu = {
+              isNormalUser = true;
+              extraGroups = [ "wheel" ];
+              shell = pkgs.fish;
+              openssh.authorizedKeys.keys = [
+                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQHb+VwHnS97Wmu4xpUDlLhzB+Ip11BINatUivsr6+a"
+              ];
+            };
+
+            users.users.root = {
+              openssh.authorizedKeys.keys = [
+                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQHb+VwHnS97Wmu4xpUDlLhzB+Ip11BINatUivsr6+a"
+              ];
+            };
+
+            # Allow sudo without password
+            security.sudo.wheelNeedsPassword = false;
+
+            # Nix distributed builds
+            nix.settings.trusted-users = ["root" "@wheel" "chuu"];
+            nix.settings.experimental-features = ["nix-command" "flakes"];
+
+            # Basic packages
+            environment.systemPackages = with pkgs; [
+              vim
+              git
+              fish
+              htop
+            ];
+
+            system.stateVersion = "24.11";
+          })
+        ];
+      };
+
       g14 = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit system inputs;
