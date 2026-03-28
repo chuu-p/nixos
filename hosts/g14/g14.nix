@@ -75,16 +75,16 @@
         supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
         mandatoryFeatures = [];
       }
-      #  {
-      #   hostName = "bolin";
-      #   sshUser = "chuu";
-      #   systems = ["x86_64-linux" "aarch64-linux"];
-      #   protocol = "ssh";
-      #   maxJobs = 6;
-      #   speedFactor = 10;
-      #   supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-      #   mandatoryFeatures = [];
-      # }
+      {
+        hostName = "MellikapertPC";
+        sshUser = "chuu";
+        systems = ["x86_64-linux" "aarch64-linux"];
+        protocol = "ssh-ng";
+        maxJobs = 6;
+        speedFactor = 10;
+        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+        mandatoryFeatures = [];
+      }
     ];
     distributedBuilds = true;
   };
