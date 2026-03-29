@@ -1,9 +1,14 @@
 {
-  description = "g14";
+  description = "cluster laghima + workstations";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager?ref=release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,10 +25,6 @@
       url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-hardware = {
-      url = "github:NixOS/nixos-hardware/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,7 +38,7 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-unstable,
+    deploy-rs,
     home-manager,
     stylix,
     musnix,
@@ -46,23 +47,45 @@
     sops-nix,
     ...
   } @ inputs: let
-    system = "x86_64-linux";
     lib = nixpkgs.lib;
-  in {
-    nixosConfigurations = {
-      baumeyster = nixpkgs.lib.nixosSystem {
-        inherit system;
+    hosts = {
+      jinora = {
+        system = "aarch64-linux";
+        hostname = "jinora";
+        user = "root";
+        modules = [./hosts/jinora.nix];
+      };
+      toph = {
+        system = "aarch64-linux";
+        hostname = "toph";
+        user = "root";
+        modules = [./hosts/toph.nix];
+      };
+      iroh = {
+        system = "aarch64-linux";
+        hostname = "iroh";
+        user = "root";
+        modules = [./hosts/iroh.nix];
+      };
+      opal = {
+        system = "aarch64-linux";
+        hostname = "opal";
+        user = "root";
+        modules = [./hosts/opal.nix];
+      };
+      baumeyster = {
+        system = "x86_64-linux";
+        hostname = "MellikapertPC";
+        user = "chuu";
         modules = [
           nixos-wsl.nixosModules.wsl
           ./hosts/baumeyster.nix
         ];
       };
-
-      g14 = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit system inputs;
-        };
+      g14 = {
         system = "x86_64-linux";
+        hostname = "g14";
+        user = "root";
         modules = [
           musnix.nixosModules.musnix
           stylix.nixosModules.stylix
@@ -75,26 +98,22 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {
-                inherit system inputs;
-              };
+              extraSpecialArgs = {inherit inputs;};
             };
           }
           {
             home-manager.backupFileExtension = "hm-backup";
-            home-manager.users.chuu = {
-              imports = [
-                ./homes/chuu/home.nix
-              ];
-            };
+            home-manager.users.chuu.imports = [
+              ./homes/chuu/home.nix
+            ];
           }
         ];
       };
-      varrick = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit system inputs;
-        };
+      varrick = {
         system = "x86_64-linux";
+        hostname = "varrick";
+        user = "root";
+
         modules = [
           musnix.nixosModules.musnix
           stylix.nixosModules.stylix
@@ -105,22 +124,60 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {
-                inherit system inputs;
-              };
+              extraSpecialArgs = {inherit inputs;};
             };
             nixpkgs.config.allowBroken = true;
           }
+
           {
             home-manager.backupFileExtension = "hm-backup";
-            home-manager.users.chuu = {
-              imports = [
-                ./homes/chuu/home.nix
-              ];
-            };
+            home-manager.users.chuu.imports = [
+              ./homes/chuu/home.nix
+            ];
           }
         ];
       };
     };
+  in {
+    nixosConfigurations =
+      lib.mapAttrs
+      (name: cfg:
+        lib.nixosSystem {
+          system = cfg.system;
+          specialArgs = inputs // {inherit inputs;};
+          modules =
+            cfg.modules
+            ++ [
+              {
+                nixpkgs.overlays = [
+                  (final: prev: {
+                    unstable = import inputs.nixpkgs-unstable {
+                      system = prev.system;
+                      config.allowUnfree = true;
+                    };
+                  })
+                ];
+              }
+            ];
+        })
+      hosts;
+    deploy.nodes =
+      lib.mapAttrs
+      (name: cfg: {
+        hostname = cfg.hostname;
+
+        profiles.system = {
+          user = cfg.user;
+
+          path =
+            deploy-rs.lib.${cfg.system}.activate.nixos
+            self.nixosConfigurations.${name};
+        };
+      })
+      hosts;
+    checks =
+      builtins.mapAttrs
+      (system: deployLib: deployLib.deployChecks self.deploy)
+      deploy-rs.lib;
   };
 }

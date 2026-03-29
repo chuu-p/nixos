@@ -97,7 +97,6 @@ in {
   services.home-assistant = {
     enable = true;
     extraComponents = [
-      # "anthropic"
       "cast"
       "dlna_dmr"
       "esphome"
@@ -107,23 +106,25 @@ in {
       "homekit_controller"
       "ibeacon"
       "isal"
-      # "kef"
-      "rpi_power"
       "kegtron"
       "matter"
       "met"
+      # "music_assistant"
       "opensky"
       "otbr"
       "piper"
       "radio_browser"
       "roomba"
+      "rpi_power"
       "samsungtv"
+      "shopping_list"
       "thread"
       "wake_word"
-      "shopping_list"
       "webostv"
       "whisper"
       "wyoming"
+      # "anthropic"
+      # "kef"
       # "yale"
     ];
     # extraPackages = python3Packages:
