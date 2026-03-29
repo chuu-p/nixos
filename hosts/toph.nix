@@ -11,6 +11,9 @@
 
   networking.hostName = "toph";
 
+  # Use RPi4 optimized kernel for faster compilation and boot
+  boot.kernelPackages = pkgs.unstable.linuxPackages_rpi4;
+
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false; # Disable password-based SSH login for security

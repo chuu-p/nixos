@@ -45,6 +45,9 @@ in {
   networking.hostName = "opal";
   networking.firewall.enable = false;
 
+  # Use RPi4 optimized kernel for faster compilation and boot
+  boot.kernelPackages = pkgs.linuxPackages_rpi4;
+
   programs.ssh.startAgent = lib.mkForce false;
 
   services.xserver.enable = true;
@@ -77,20 +80,15 @@ in {
   services.music-assistant = {
     enable = true;
     providers = [
-      "airplay"
-      "airplay_receiver"
-      "ard_audiothek"
       # "audiobookshelf",
       "builtin"
       "chromecast"
       "dlna"
       "filesystem_local"
       "filesystem_smb"
-      "genius_lyrics"
       "gpodder"
       "jellyfin"
       "radiobrowser"
-      "radioparadise"
       "ytmusic"
     ];
   };
