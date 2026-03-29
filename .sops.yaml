@@ -1,0 +1,18 @@
+keys:
+  - &opal age1jr860j3796kmy64s5rs46m8xphlyu7s372lwhnyyzq8tq7s7hqzqpfdlag
+  - &jinora age1ktq6aes4fsdz2zurg4plaaf7nmdqhvd0kt99ycxjmcmslemyps2qvse8wf
+  - &toph age1ulz7l02jrdx6c2j7vvapv8e2qsmh79tahkrvhx5643tcqree6u3sv3paur
+  - &iroh age1pkextta5lduhk5dqmcl0szutjm0jdazh7lfr69dxnaep6dhvzdas29m2t0
+  - &g14 age1850vn5g6wsrr2c4pmplegxjqgasgep6a9cz0u6cfp0apdkxjvgvsjvhjrq
+  - &admin_chuu age1lmss55qkertv0ljdlukf6qey00y5qpqgmy28faj2ghxav3ur853qp8nnd4
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *admin_chuu
+      - *jinora
+      - *opal
+      - *toph
+      - *iroh
+      - *g14
+

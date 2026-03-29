@@ -22,9 +22,15 @@
     };
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -37,62 +43,18 @@
     musnix,
     nixos-hardware,
     nixos-wsl,
+    sops-nix,
     ...
   } @ inputs: let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
   in {
     nixosConfigurations = {
-      wsl = nixpkgs.lib.nixosSystem {
+      baumeyster = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           nixos-wsl.nixosModules.wsl
-          ({ config, pkgs, ... }: {
-            wsl.enable = true;
-            wsl.defaultUser = "chuu";
-
-            networking.hostName = "nixos-wsl";
-
-            # SSH configuration - key-based auth only
-            services.openssh = {
-              enable = true;
-              settings.PasswordAuthentication = false;
-              settings.PermitRootLogin = "prohibit-password";
-            };
-
-            # Users
-            users.users.chuu = {
-              isNormalUser = true;
-              extraGroups = [ "wheel" ];
-              shell = pkgs.fish;
-              openssh.authorizedKeys.keys = [
-                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQHb+VwHnS97Wmu4xpUDlLhzB+Ip11BINatUivsr6+a"
-              ];
-            };
-
-            users.users.root = {
-              openssh.authorizedKeys.keys = [
-                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQHb+VwHnS97Wmu4xpUDlLhzB+Ip11BINatUivsr6+a"
-              ];
-            };
-
-            # Allow sudo without password
-            security.sudo.wheelNeedsPassword = false;
-
-            # Nix distributed builds
-            nix.settings.trusted-users = ["root" "@wheel" "chuu"];
-            nix.settings.experimental-features = ["nix-command" "flakes"];
-
-            # Basic packages
-            environment.systemPackages = with pkgs; [
-              vim
-              git
-              fish
-              htop
-            ];
-
-            system.stateVersion = "24.11";
-          })
+          ./hosts/baumeyster.nix
         ];
       };
 
@@ -104,6 +66,7 @@
         modules = [
           musnix.nixosModules.musnix
           stylix.nixosModules.stylix
+          sops-nix.nixosModules.sops
 
           nixos-hardware.nixosModules.asus-zephyrus-ga401
           ./hosts/g14/g14.nix

@@ -11,6 +11,10 @@
     ../_shared/packages.nix
   ];
 
+  sops.age.sshKeyPaths = ["/home/chuu/.ssh/id_ed25519"];
+  sops.defaultSopsFile = ../../secrets/example.yaml;
+  sops.secrets."api-key" = {};
+
   # This enables AppImage support.
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;

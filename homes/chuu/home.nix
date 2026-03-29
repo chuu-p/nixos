@@ -332,10 +332,10 @@ in {
       require("git"):setup()
     '';
     plugins = {
-       mount = pkgs.yaziPlugins.mount;
-       lazygit = pkgs.yaziPlugins.lazygit;
-       git = pkgs.yaziPlugins.git;
-       bypass = pkgs.yaziPlugins.bypass;
+      mount = pkgs.yaziPlugins.mount;
+      lazygit = pkgs.yaziPlugins.lazygit;
+      git = pkgs.yaziPlugins.git;
+      bypass = pkgs.yaziPlugins.bypass;
     };
   };
 
