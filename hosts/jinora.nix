@@ -68,12 +68,12 @@
     options = ["noatime"];
   };
 
-  # fileSystems."/run/media/at-1" = {
-  #   device = "/dev/disk/by-label/at-1";
-  #   fsType = "btrfs";
-  #   options = [
-  #     "users"
-  #     "nofail"
-  #   ];
-  # };
+  fileSystems."/run/media/at-1" = {
+    device = "/dev/disk/by-label/at-1";
+    fsType = "btrfs";
+    options = [
+      "users"
+      "nofail"
+    ];
+  };
 }
