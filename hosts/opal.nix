@@ -78,6 +78,8 @@ in {
       "dlna"
       "filesystem_local"
       "filesystem_smb"
+      "hass",
+      "hass_players",
       "gpodder"
       "jellyfin"
       "radiobrowser"
@@ -86,7 +88,6 @@ in {
   };
   services.home-assistant = {
     enable = true;
-    package = pkgs.unstable.home-assistant;
     extraComponents = [
       "cast"
       "dlna_dmr"
