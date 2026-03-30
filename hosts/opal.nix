@@ -251,7 +251,7 @@ in {
     options = ["noatime"];
   };
 
-KQ  fileSystems."/run/media/at-2" = {
+  fileSystems."/run/media/at-2" = {
     device = "/dev/disk/by-uuid/998a6328-3ac2-4288-a8e2-ff828cfe3939";
     fsType = "btrfs";
     options = [
