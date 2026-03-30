@@ -9,15 +9,11 @@
 }: {
   imports = [
     ../_shared/packages.nix
+    ../../modules/nix.nix
+    ../../modules/nixpkgs.nix
+    ../../modules/stylix.nix
+    ../../modules/sops.nix
   ];
-
-  sops.age.sshKeyPaths = ["/home/chuu/.ssh/id_ed25519"];
-  sops.defaultSopsFile = ../../secrets/example.yaml;
-  sops.secrets."api-key" = {};
-
-  # This enables AppImage support.
-  programs.appimage.enable = true;
-  programs.appimage.binfmt = true;
 
   powerManagement.powertop.enable = true;
 
@@ -29,119 +25,22 @@
 
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
-  nix.settings.trusted-users = ["root" "@wheel" "chuu"];
-  nix.settings.extra-platforms = ["aarch64-linux"];
-
-  programs.direnv.enable = true;
-  nix.extraOptions = ''
-    extra-substituters = https://devenv.cachix.org
-    extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=30min
   '';
-  nix = {
-    buildMachines = [
-      {
-        hostName = "jinora";
-        sshUser = "chuu";
-        system = "aarch64-linux";
-        protocol = "ssh-ng";
-        maxJobs = 1;
-        speedFactor = 2;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
-      {
-        hostName = "iroh";
-        sshUser = "chuu";
-        system = "aarch64-linux";
-        protocol = "ssh-ng";
-        maxJobs = 1;
-        speedFactor = 2;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
-      {
-        hostName = "opal";
-        sshUser = "chuu";
-        system = "aarch64-linux";
-        protocol = "ssh-ng";
-        maxJobs = 1;
-        speedFactor = 4;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
-      {
-        hostName = "toph";
-        sshUser = "chuu";
-        system = "aarch64-linux";
-        protocol = "ssh-ng";
-        maxJobs = 1;
-        speedFactor = 4;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
-      {
-        hostName = "MellikapertPC";
-        sshUser = "chuu";
-        systems = ["x86_64-linux" "aarch64-linux"];
-        protocol = "ssh-ng";
-        maxJobs = 6;
-        speedFactor = 10;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
+
+  users.users = {
+    chuu.openssh.authorizedKeys.keys = [
+      (builtins.readFile ../../homes/chuu/chuu.pub)
     ];
-    distributedBuilds = true;
+    root.openssh.authorizedKeys.keys = [
+      (builtins.readFile ../../homes/chuu/chuu.pub)
+    ];
   };
 
-  # collect garbage automatically, every week
-  nix.gc.automatic = true;
-  nix.gc.dates = "weekly";
-
-  # deduplicate store files
-  nix.settings.auto-optimise-store = true;
-
-  # keep store blobs for old generations up to 30 days
-  nix.gc.options = "--delete-older-than 30d";
 
   # only keep the last five generations (otherwise boot partition can fill up too much)
-  boot.loader.systemd-boot.configurationLimit = 5;
   documentation.man.generateCaches = false;
-
-  # This is needed for Slippi to run.
-  programs.appimage.package = pkgs.appimage-run.override {
-    extraPkgs = pkgs: [
-      pkgs.curl
-      pkgs.libmpg123
-    ];
-  };
-
-  stylix = {
-    enable = true;
-    autoEnable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/evenok-dark.yaml";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/tarot.yaml";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/chalk.yaml";
-    polarity = "dark";
-    image = ../../aesthetics/nix_ene_1.png;
-    fonts = {
-      serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
-      };
-      sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
-      };
-      monospace = {
-        package = pkgs.nerd-fonts.space-mono;
-        name = "Space Mono";
-      };
-      emoji = {
-        package = pkgs.noto-fonts-color-emoji;
-        name = "Noto Color Emoji";
-      };
-    };
-  };
 
   services.udev.extraRules = ''
     # Your rule goes here
@@ -168,8 +67,11 @@
   };
 
   boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    loader = {
+      systemd-boot.enable = true;
+      systemd-boot.configurationLimit = 5;
+      efi.canTouchEfiVariables = true;
+    };
     kernelParams = [
       "quiet"
       "splash"
@@ -180,42 +82,93 @@
     initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/f91f391f-67ab-4099-9ed3-b783d39900e2";
   };
 
-  networking.hostName = "g14"; # Define your hostname.
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "g14"; # Define your hostname.
+    networkmanager.enable = true;
+  };
 
   time.timeZone = "Europe/Berlin";
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.UTF-8";
-    LC_IDENTIFICATION = "de_DE.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_MONETARY = "de_DE.UTF-8";
-    LC_NAME = "de_DE.UTF-8";
-    LC_NUMERIC = "de_DE.UTF-8";
-    LC_PAPER = "de_DE.UTF-8";
-    LC_TELEPHONE = "de_DE.UTF-8";
-    LC_TIME = "de_DE.UTF-8";
-  };
 
-  i18n.inputMethod = {
-    type = "fcitx5";
-    enable = true;
-    fcitx5.addons = with pkgs; [
-      fcitx5-mozc
-      fcitx5-gtk
-    ];
-  };
-
-  programs.sway.enable = true;
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'sway --unsupported-gpu'";
-        user = "chuu";
-      };
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "de_DE.UTF-8";
+      LC_IDENTIFICATION = "de_DE.UTF-8";
+      LC_MEASUREMENT = "de_DE.UTF-8";
+      LC_MONETARY = "de_DE.UTF-8";
+      LC_NAME = "de_DE.UTF-8";
+      LC_NUMERIC = "de_DE.UTF-8";
+      LC_PAPER = "de_DE.UTF-8";
+      LC_TELEPHONE = "de_DE.UTF-8";
+      LC_TIME = "de_DE.UTF-8";
+    };
+    inputMethod = {
+      type = "fcitx5";
+      enable = true;
+      fcitx5.addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-gtk
+      ];
     };
   };
+
+  services = {
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'sway --unsupported-gpu'";
+          user = "chuu";
+        };
+      };
+    };
+    redshift = {
+      enable = true;
+      temperature = {
+        day = 5700;
+        night = 3000;
+      };
+    };
+    mullvad-vpn = {
+      enable = true;
+    };
+    tailscale.enable = true;
+    gnome.gnome-keyring.enable = true;
+    blueman.enable = true;
+    printing.enable = true;
+    avahi.enable = true;
+    pulseaudio.enable = false;
+    atuin.enable = true;
+    flatpak.enable = true;
+    logind.settings = {
+      Login = {
+        HandleLidSwitch = "suspend";
+        HandleLidSwitchExternalPower = "ignore";
+        HandlePowerKey = "ignore";
+      };
+    };
+    syncthing = {
+      enable = true;
+      openDefaultPorts = true;
+      group = "users";
+      user = "chuu";
+      dataDir = "/home/chuu/sync"; # Default folder for new synced folders
+      configDir = "/home/chuu/sync/.config/syncthing";
+      overrideDevices = true; # overrides any devices added or deleted through the WebUI
+      overrideFolders = true; # overrides any folders added or deleted through the WebUI
+    };
+    openssh = {
+      enable = true;
+      settings.PasswordAuthentication = false; # Disable password-based SSH login for security
+      settings.PermitRootLogin = "prohibit-password"; # Allow root login only with a key
+      banner = ''
+        █▀▀ ▄█ █░█
+        █▄█ ░█ ▀▀█
+      '';
+    };
+  };
+
+  console.keyMap = "us";
 
   location = {
     latitude = 50.9;
@@ -223,27 +176,9 @@
     provider = "manual";
   };
 
-  services.redshift = {
-    enable = true;
-    temperature = {
-      day = 5700;
-      night = 3000;
-    };
-  };
-
-  services.mullvad-vpn = {
-    enable = true;
-    package = pkgs.mullvad-vpn;
-  };
-
-  services.tailscale.enable = true;
-
-  services.gnome.gnome-keyring.enable = true;
-
-  console.keyMap = "us";
-
   xdg.portal = {
     enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
     config = {
       common = {
         default = [
@@ -253,21 +188,10 @@
     };
   };
 
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
-  services.flatpak.enable = true;
-
-  services.blueman.enable = true;
-
-  services.printing.enable = true;
-
-  services.avahi.enable = true;
-
-  services.pulseaudio.enable = false;
-
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
-
-  services.atuin.enable = true;
+  security = {
+    rtkit.enable = true;
+    polkit.enable = true;
+  };
 
   users.users.chuu = {
     isNormalUser = true;
@@ -278,47 +202,112 @@
     ];
   };
 
-  programs.fish.enable = true;
-
-  programs.steam.enable = true;
-  programs.steam.package = pkgs.steam.override {
-    extraPkgs = pkgs':
-      with pkgs'; [
-        xorg.libXcursor
-        xorg.libXi
-        xorg.libXinerama
-        xorg.libXScrnSaver
-        libpng
-        libpulseaudio
-        libvorbis
-        stdenv.cc.cc.lib # Provides libstdc++.so.6
-        libkrb5
-        keyutils
+  programs = {
+    direnv.enable = true;
+    # This enables AppImage support.
+    appimage = {
+      enable = true;
+      binfmt = true;
+      package = pkgs.appimage-run.override {
+        extraPkgs = pkgs: [
+          pkgs.curl
+          pkgs.libmpg123
+        ];
+      };
+    };
+    fish.enable = true;
+    steam = {
+      enable = true;
+      package = pkgs.steam.override {
+        extraPkgs = pkgs':
+          with pkgs'; [
+            xorg.libXcursor
+            xorg.libXi
+            xorg.libXinerama
+            xorg.libXScrnSaver
+            libpng
+            libpulseaudio
+            libvorbis
+            stdenv.cc.cc.lib # Provides libstdc++.so.6
+            libkrb5
+            keyutils
+          ];
+      };
+    };
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        glib
       ];
-  };
-
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    glib
-  ];
-
-  programs.firefox.enable = true;
-
-  programs.obs-studio = {
-    enable = true;
-    enableVirtualCamera = true;
-    plugins = with pkgs.obs-studio-plugins; [
-      droidcam-obs
-      wlrobs
-      waveform
-      obs-websocket
-      obs-backgroundremoval
-      obs-pipewire-audio-capture
-      obs-vaapi #optional AMD hardware acceleration
-      input-overlay
-      obs-gstreamer
-      obs-tuna
-    ];
+    };
+    firefox.enable = true;
+    obs-studio = {
+      enable = true;
+      enableVirtualCamera = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        droidcam-obs
+        wlrobs
+        waveform
+        obs-websocket
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
+        obs-vaapi #optional AMD hardware acceleration
+        input-overlay
+        obs-gstreamer
+        obs-tuna
+      ];
+    };
+    git = {
+      enable = true;
+      config = {
+        init = {
+          defaultBranch = "macho";
+        };
+        alias = {
+          a = "add";
+          b = "branch";
+          c = "commit";
+          cfg = "config";
+          chp = "cherry-pick";
+          co = "checkout";
+          cl = "clone";
+          d = "diff";
+          f = "fetch";
+          graph = "log --graph";
+          i = "init --template=";
+          l = "log";
+          last = "log -1";
+          m = "merge";
+          pl = "pull";
+          ps = "push";
+          r = "reset";
+          rb = "rebase";
+          re = "remote";
+          rm = "remote";
+          s = "status";
+          wd = "diff --word-diff=color";
+          dni = "diff --no-index";
+          sw = "switch";
+        };
+        core = {
+          pager = "delta";
+        };
+        interactive = {
+          diffFilter = "delta --color-only";
+        };
+        delta = {
+          navigate = "true";
+          dark = "true";
+          line-numbers = "true";
+          options = {
+            syntax-theme = "ansi"; # Replace with your chosen theme
+          };
+        };
+        merge = {
+          conflictstyle = "zdiff3";
+        };
+      };
+    };
   };
 
   fonts.packages = with pkgs; [
@@ -327,118 +316,7 @@
     noto-fonts-cjk-serif
   ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowBroken = true;
-  };
 
-  nixpkgs = {
-    overlays = [
-      (final: prev: {
-        nvchad = inputs.nix4nvchad.packages."${pkgs.stdenv.hostPlatform.system}".nvchad;
-        unstable = import inputs.nixpkgs-unstable {
-          inherit (final.stdenv.hostPlatform) system;
-          inherit (final) config;
-        };
-      })
-    ];
-  };
-
-  programs.git = {
-    enable = true;
-    config = {
-      init = {
-        defaultBranch = "macho";
-      };
-      alias = {
-        a = "add";
-        b = "branch";
-        c = "commit";
-        cfg = "config";
-        chp = "cherry-pick";
-        co = "checkout";
-        cl = "clone";
-        d = "diff";
-        f = "fetch";
-        graph = "log --graph";
-        i = "init --template=";
-        l = "log";
-        last = "log -1";
-        m = "merge";
-        pl = "pull";
-        ps = "push";
-        r = "reset";
-        rb = "rebase";
-        re = "remote";
-        rm = "remote";
-        s = "status";
-        wd = "diff --word-diff=color";
-        dni = "diff --no-index";
-        sw = "switch";
-      };
-      core = {
-        pager = "delta";
-      };
-      interactive = {
-        diffFilter = "delta --color-only";
-      };
-      delta = {
-        navigate = "true";
-        dark = "true";
-        line-numbers = "true";
-        options = {
-          syntax-theme = "ansi"; # Replace with your chosen theme
-        };
-      };
-      merge = {
-        conflictstyle = "zdiff3";
-      };
-    };
-  };
-
-  services.logind.settings = {
-    Login = {
-      HandleLidSwitch = "suspend";
-      HandleLidSwitchExternalPower = "ignore";
-      HandlePowerKey = "ignore";
-    };
-  };
-
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=30min
-  '';
-
-  services.syncthing = {
-    enable = true;
-    openDefaultPorts = true;
-    group = "users";
-    user = "chuu";
-    dataDir = "/home/chuu/sync"; # Default folder for new synced folders
-    configDir = "/home/chuu/sync/.config/syncthing";
-    overrideDevices = true; # overrides any devices added or deleted through the WebUI
-    overrideFolders = true; # overrides any folders added or deleted through the WebUI
-  };
-
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  # Enable the OpenSSH daemon.
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = false; # Disable password-based SSH login for security
-    settings.PermitRootLogin = "prohibit-password"; # Allow root login only with a key
-    banner = ''
-      █▀▀ ▄█ █░█
-      █▄█ ░█ ▀▀█
-    '';
-  };
-
-  users.users.chuu.openssh.authorizedKeys.keys = [
-    (builtins.readFile ../../homes/chuu/chuu.pub)
-  ];
-
-  users.users.root.openssh.authorizedKeys.keys = [
-    (builtins.readFile ../../homes/chuu/chuu.pub)
-  ];
 
   system.stateVersion = "25.05";
 }
