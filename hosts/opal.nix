@@ -86,6 +86,7 @@ in {
   };
   services.home-assistant = {
     enable = true;
+    package = pkgs.unstable.home-assistant;
     extraComponents = [
       "cast"
       "dlna_dmr"
@@ -99,7 +100,7 @@ in {
       "kegtron"
       "matter"
       "met"
-      # "music_assistant"
+      "music_assistant"
       "opensky"
       "otbr"
       "piper"

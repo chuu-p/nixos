@@ -39,18 +39,18 @@
     ghostscript # for imagemagick pdf processing
     gimp # image manipulation
     git # holy grail of software
-    (unstable.github-copilot-cli.overrideAttrs (oldAttrs: {
-      postInstall = ''
-        # Workaround for https://github.com/github/copilot-cli/issues/1446
-        # wrapProgram renames the binary, but it checks its own name and breaks.
-        # Use makeWrapper (no rename) instead, preserving the filename "copilot".
-        mkdir -p $out/libexec
-        mv $out/bin/copilot $out/libexec/copilot
-        makeWrapper $out/libexec/copilot $out/bin/copilot \
-          --argv0 copilot \
-          --add-flags "--no-auto-update"
-      '';
-    })) # evil tool
+    # (unstable.github-copilot-cli.overrideAttrs (oldAttrs: {
+    #   postInstall = ''
+    #     # Workaround for https://github.com/github/copilot-cli/issues/1446
+    #     # wrapProgram renames the binary, but it checks its own name and breaks.
+    #     # Use makeWrapper (no rename) instead, preserving the filename "copilot".
+    #     mkdir -p $out/libexec
+    #     mv $out/bin/copilot $out/libexec/copilot
+    #     makeWrapper $out/libexec/copilot $out/bin/copilot \
+    #       --argv0 copilot \
+    #       --add-flags "--no-auto-update"
+    #   '';
+    # })) # evil tool
     godot # make games
     google-chrome # for drm media
     gparted # disk partition editor
@@ -109,6 +109,7 @@
     vim # fallback vim
     wlr-randr # xrandr for wayland
     wiremix # pipewire tui
+    wmenu # launcher 
     yazi # terminal file manager
     yt-dlp # media download tool
     zed-editor # rust based ide
