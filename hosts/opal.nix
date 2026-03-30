@@ -78,8 +78,8 @@ in {
       "dlna"
       "filesystem_local"
       "filesystem_smb"
-      "hass",
-      "hass_players",
+      "hass"
+      "hass_players"
       "gpodder"
       "jellyfin"
       "radiobrowser"
