@@ -167,6 +167,7 @@ in {
   services.gitea = {
     enable = true;
     stateDir = "/run/media/at-2/gitea";
+    package = pkgs.unstable.gitea;
     settings = {
       packages = {
         ENABLED = true;
