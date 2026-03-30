@@ -75,7 +75,9 @@ in {
     role = "agent";
     serverAddr = "https://jinora:6443";
     token = "9895e202-59c7-48ad-b87a-01edf859c40b";
+    extraFlags = "--write-kubeconfig-mode 0644";
   };
+
   services.music-assistant = {
     enable = true;
     providers = [
@@ -224,6 +226,14 @@ in {
     };
   };
 
+  boot.kernelParams = [
+    "consoleblank=60"
+    "cgroup_enable=cpuset"
+    "cgroup_memory=1"
+    "cgroup_enable=memory"
+    "swapaccount=1"
+  ];
+
   fileSystems."/boot/firmware" = {
     device = "/dev/disk/by-uuid/2175-794E";
     fsType = "vfat";
@@ -241,7 +251,7 @@ in {
     options = ["noatime"];
   };
 
-  fileSystems."/run/media/at-2" = {
+KQ  fileSystems."/run/media/at-2" = {
     device = "/dev/disk/by-uuid/998a6328-3ac2-4288-a8e2-ff828cfe3939";
     fsType = "btrfs";
     options = [
