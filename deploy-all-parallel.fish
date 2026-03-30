@@ -2,7 +2,7 @@
 
 set hosts opal jinora toph iroh
 
-printf "%s\n" $hosts | parallel \
+printf "%s\n" $hosts | nix run nixpkgs#parallel -- \
   --jobs 4 \
   --lb \
   --tag \
