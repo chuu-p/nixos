@@ -27,14 +27,14 @@
     '';
   };
 
-  # services.k3s = {
-  #   enable = true;
-  #   package = pkgs.k3s;
-  #   role = "server";
-  #   serverAddr = "https://jinora:6443";
-  #   token = "9895e202-59c7-48ad-b87a-01edf859c40b";
-  #   extraFlags = "--write-kubeconfig-mode 0644";
-  # };
+  services.k3s = {
+    enable = true;
+    package = pkgs.k3s;
+    role = "server";
+    serverAddr = "https://jinora:6443";
+    token = "9895e202-59c7-48ad-b87a-01edf859c40b";
+    extraFlags = "--write-kubeconfig-mode 0644";
+  };
 
   boot.kernelParams = [
     "consoleblank=60"

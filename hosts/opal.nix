@@ -70,13 +70,13 @@ in {
     '';
   };
 
-  # services.k3s = {
-  #  enable = true;
-  #  package = pkgs.k3s;
-  # role = "agent";
-  # serverAddr = "https://jinora:6443";
-  # token = "9895e202-59c7-48ad-b87a-01edf859c40b";
-  # };
+  services.k3s = {
+    enable = true;
+    package = pkgs.k3s;
+    role = "agent";
+    serverAddr = "https://jinora:6443";
+    token = "9895e202-59c7-48ad-b87a-01edf859c40b";
+  };
   services.music-assistant = {
     enable = true;
     providers = [

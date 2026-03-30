@@ -38,7 +38,6 @@
     ];
   };
 
-
   # only keep the last five generations (otherwise boot partition can fill up too much)
   documentation.man.generateCaches = false;
 
@@ -315,8 +314,6 @@
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
   ];
-
-
 
   system.stateVersion = "25.05";
 }

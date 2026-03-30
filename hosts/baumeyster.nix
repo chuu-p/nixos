@@ -29,7 +29,7 @@
   # This enables native compilation instead of QEMU emulation for significantly faster builds
   boot.binfmt.emulatedSystems = [];
   boot.loader.generic-extlinux-compatible.enable = lib.mkForce false;
-  
+
   nix.settings = {
     extra-platforms = ["aarch64-linux"];
     # Enable extra-sandbox-paths to support cross-compilation
