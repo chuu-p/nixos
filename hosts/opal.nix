@@ -43,7 +43,6 @@ in {
   ];
 
   networking.hostName = "opal";
-  networking.firewall.enable = false;
 
   # Use RPi4 optimized kernel for faster compilation and boot
   boot.kernelPackages = pkgs.linuxPackages_rpi4;

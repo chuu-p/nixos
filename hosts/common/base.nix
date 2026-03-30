@@ -7,6 +7,8 @@
   # Shared boot setup
   documentation.man.generateCaches = false;
 
+  networking.firewall.enable = false;
+
   nix = {
     buildMachines = [
       {
