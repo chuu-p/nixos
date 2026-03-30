@@ -24,6 +24,7 @@
       influence
     '';
   };
+  services.tailscale.enable = true;
 
   # Cross-compilation setup for native aarch64-linux compilation from x86_64
   # This enables native compilation instead of QEMU emulation for significantly faster builds
