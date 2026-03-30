@@ -219,11 +219,10 @@ in {
 
   boot.kernelParams = [
     "consoleblank=60"
-    "systemd.unified_cgroup_hierarchy=1"
-    # "cgroup_enable=cpuset"
-    # "cgroup_memory=1"
-    # "cgroup_enable=memory"
-    # "swapaccount=1"
+    "cgroup_enable=cpuset"
+    "cgroup_memory=1"
+    "cgroup_enable=memory"
+    "swapaccount=1"
   ];
 
   fileSystems."/boot/firmware" = {
