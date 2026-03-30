@@ -60,16 +60,16 @@
         supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
         mandatoryFeatures = [];
       }
-      {
-        hostName = "nixos-wsl";
-        sshUser = "chuu";
-        systems = ["x86_64-linux" "aarch64-linux"];
-        protocol = "ssh-ng";
-        maxJobs = 6;
-        speedFactor = 10;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
+      # {
+      #   hostName = "nixos-wsl";
+      #   sshUser = "chuu";
+      #   systems = ["x86_64-linux" "aarch64-linux"];
+      #   protocol = "ssh-ng";
+      #   maxJobs = 6;
+      #   speedFactor = 10;
+      #   supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+      #   mandatoryFeatures = [];
+      # }
     ];
   };
 }
