@@ -4,76 +4,15 @@
   lib,
   ...
 }: {
+  imports = [
+    ../../modules/nix.nix
+  ];
+
   # Shared boot setup
   documentation.man.generateCaches = false;
 
   networking.firewall.enable = false;
 
-  nix = {
-    buildMachines = [
-      {
-        hostName = "jinora";
-        sshUser = "chuu";
-        system = "aarch64-linux";
-        protocol = "ssh-ng";
-        maxJobs = 1;
-        speedFactor = 2;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
-      {
-        hostName = "iroh";
-        sshUser = "chuu";
-        system = "aarch64-linux";
-        protocol = "ssh-ng";
-        maxJobs = 1;
-        speedFactor = 2;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
-      {
-        hostName = "opal";
-        sshUser = "chuu";
-        system = "aarch64-linux";
-        protocol = "ssh-ng";
-        maxJobs = 1;
-        speedFactor = 2;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
-      {
-        hostName = "toph";
-        sshUser = "chuu";
-        system = "aarch64-linux";
-        protocol = "ssh-ng";
-        maxJobs = 1;
-        speedFactor = 4;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
-      {
-        hostName = "g14 ";
-        sshUser = "chuu";
-        systems = ["x86_64-linux" "aarch64-linux"];
-        protocol = "ssh-ng";
-        maxJobs = 16;
-        speedFactor = 8;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
-      {
-        hostName = "MellikapertPC";
-        sshUser = "chuu";
-        systems = ["x86_64-linux" "aarch64-linux"];
-        protocol = "ssh-ng";
-        maxJobs = 6;
-        speedFactor = 16;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
-    ];
-    distributedBuilds = true;
-  };
   # boot.supportedFilesystems = ["nfs"];
 
   boot.loader.grub.enable = false;

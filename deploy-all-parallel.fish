@@ -6,4 +6,4 @@ printf "%s\n" $hosts | nix run nixpkgs#parallel -- \
   --jobs 4 \
   --lb \
   --tag \
-  'ssh {} "sudo nixos-rebuild switch --flake github:chuu-p/nixos#{}"'
+  'ssh {} "sudo nixos-rebuild switch --flake github:chuu-p/nixos#{} --refresh --builders \'\'"'

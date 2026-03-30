@@ -61,7 +61,7 @@
         mandatoryFeatures = [];
       }
       {
-        hostName = "MellikapertPC";
+        hostName = "nixos-wsl";
         sshUser = "chuu";
         systems = ["x86_64-linux" "aarch64-linux"];
         protocol = "ssh-ng";

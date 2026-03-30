@@ -75,7 +75,7 @@
       };
       baumeyster = {
         system = "x86_64-linux";
-        hostname = "MellikapertPC";
+        hostname = "nixos-wsl";
         user = "chuu";
         modules = [
           nixos-wsl.nixosModules.wsl
