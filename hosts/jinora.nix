@@ -13,8 +13,8 @@
 
   services.openssh = {
     enable = true;
-    settings.PasswordAuthentication = false; # Disable password-based SSH login for security
-    settings.PermitRootLogin = "prohibit-password"; # Allow root login only with a key
+    settings.PasswordAuthentication = false;
+    settings.PermitRootLogin = "prohibit-password";
     banner = ''
       ░░█ █ █▄░█ █▀█ █▀█ ▄▀█
       █▄█ █ █░▀█ █▄█ █▀▄ █▀█

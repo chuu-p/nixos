@@ -44,18 +44,6 @@ in {
 
   networking.hostName = "opal";
 
-  # Use RPi4 optimized kernel for faster compilation and boot
-  boot.kernelPackages = pkgs.linuxPackages_rpi4;
-
-  programs.ssh.startAgent = lib.mkForce false;
-
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "chuu";
-
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
@@ -68,6 +56,9 @@ in {
       Choose happiness and love.
     '';
   };
+
+  # Use RPi4 optimized kernel for faster compilation and boot
+  boot.kernelPackages = pkgs.linuxPackages_rpi4;
 
   services.k3s = {
     enable = true;
@@ -228,10 +219,11 @@ in {
 
   boot.kernelParams = [
     "consoleblank=60"
-    "cgroup_enable=cpuset"
-    "cgroup_memory=1"
-    "cgroup_enable=memory"
-    "swapaccount=1"
+    "systemd.unified_cgroup_hierarchy=1"
+    # "cgroup_enable=cpuset"
+    # "cgroup_memory=1"
+    # "cgroup_enable=memory"
+    # "swapaccount=1"
   ];
 
   fileSystems."/boot/firmware" = {
