@@ -61,7 +61,7 @@ in {
   boot.kernelPackages = pkgs.linuxPackages_rpi4;
 
   services.k3s = {
-    enable = true;
+    enable = false;
     package = pkgs.k3s;
     role = "server";
     serverAddr = "https://jinora:6443";
