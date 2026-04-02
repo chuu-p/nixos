@@ -134,7 +134,7 @@
   services.tailscale = {
     enable = true;
     port = 41641;
-    package = pgks.unstable.tailscale;
+    package = pkgs.unstable.tailscale;
   };
 
   services.openiscsi = {

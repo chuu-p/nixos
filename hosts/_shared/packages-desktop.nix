@@ -14,6 +14,7 @@
     feh # image viewer
     firefox # browser
     flameshot # screenshots
+    fontconfig # important!
     fractal # matrix chat client
     google-chrome # for drm media
     i3status # status bar
