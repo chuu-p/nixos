@@ -125,7 +125,7 @@
       ncurses
       nodejs
       ranger
-      tailscale
+      unstable.tailscale
       wget
       yazi
     ];
@@ -134,6 +134,7 @@
   services.tailscale = {
     enable = true;
     port = 41641;
+    package = pgks.unstable.tailscale;
   };
 
   services.openiscsi = {
