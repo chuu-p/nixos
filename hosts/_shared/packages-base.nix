@@ -11,18 +11,27 @@
     cryptsetup # linux cryptography tools
     delta # cli diff viewer, git diff uses this
     devenv # nix based dev envs
+    fastfetch # show distro
     fish # shell
     gemini-cli # ai
     git # holy grail of software
+    gparted # disk partition editor
     home-manager # nixos user env manager
     htop # process monitor
-    kitty # the best terminal emulator imo :3
+    keepassxc # password manager
+    mscp # multi threaded scp
+    ntfs3g # tools for ntfs drives
     nvchad # neovim distro
-    opencommit # generate commit messages with ai
-    playerctl # control media from command line
-    presenterm # cli presentations
+    opencommit
+    openssl # ssl
+    p7zip # 7zip
+    pkg-config # important for libraries
+    progress # progress monitor for mv, dd, scp, etc.
     sshfs # mount via ssh
-    tokei # count lines of code
+    trashy # cli trash
+    tty-clock # terminal clock
+    unzip # unzip
+    usbutils # lsusb and other tools
     uutils-coreutils-noprefix # use uutils by default
     vim # fallback vim
     yazi # terminal file manager

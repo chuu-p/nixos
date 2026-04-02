@@ -8,7 +8,10 @@
   ...
 }: {
   imports = [
-    ../_shared/packages.nix
+    ../_shared/packages-dev.nix
+    ../_shared/packages-base.nix
+    ../_shared/packages-media.nix
+    ../_shared/packages-desktop.nix
     ../../modules/nix.nix
     ../../modules/nixpkgs.nix
     ../../modules/stylix.nix

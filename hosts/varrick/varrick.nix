@@ -8,7 +8,14 @@
   ...
 }: {
   imports = [
-    ../_shared/packages.nix
+    ../_shared/packages-dev.nix
+    ../_shared/packages-base.nix
+    ../_shared/packages-media.nix
+    ../_shared/packages-desktop.nix
+    ../../modules/nix.nix
+    ../../modules/nixpkgs.nix
+    ../../modules/stylix.nix
+    ../../modules/sops.nix
   ];
 
   # This enables AppImage support.
@@ -25,40 +32,8 @@
 
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
-  nix.settings.trusted-users = ["root" "@wheel" "chuu"];
-
   programs.direnv.enable = true;
-  nix.extraOptions = ''
-    extra-substituters = https://devenv.cachix.org
-    extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
-  '';
   documentation.man.generateCaches = false;
-
-  stylix = {
-    enable = true;
-    autoEnable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/evenok-dark.yaml";
-    polarity = "dark";
-    image = ../../aesthetics/nix_ene_1.png;
-    fonts = {
-      serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
-      };
-      sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
-      };
-      monospace = {
-        package = pkgs.nerd-fonts.space-mono;
-        name = "Space Mono";
-      };
-      emoji = {
-        package = pkgs.noto-fonts-color-emoji;
-        name = "Noto Color Emoji";
-      };
-    };
-  };
 
   # This is needed for Slippi to run.
   programs.appimage.package = pkgs.appimage-run.override {
@@ -230,19 +205,6 @@
     ];
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowBroken = true;
-  };
-
-  nixpkgs = {
-    overlays = [
-      (final: prev: {
-        nvchad = inputs.nix4nvchad.packages."${pkgs.stdenv.hostPlatform.system}".nvchad;
-      })
-    ];
-  };
-
   programs.git = {
     enable = true;
     config = {
@@ -317,8 +279,6 @@
     overrideDevices = true; # overrides any devices added or deleted through the WebUI
     overrideFolders = true; # overrides any folders added or deleted through the WebUI
   };
-
-  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Enable the OpenSSH daemon.
   services.openssh = {

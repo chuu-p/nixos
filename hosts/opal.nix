@@ -93,6 +93,7 @@ in {
       "dlna_dmr"
       "esphome"
       "google_assistant"
+      "google_translate"
       "homeassistant_hardware"
       "homeassistant_sky_connect"
       "homekit_controller"
