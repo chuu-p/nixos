@@ -44,7 +44,7 @@
     vial # keyboard config
     wiremix # pipewire tui
     wlr-randr # xrandr for wayland
-    wmenu # launcher 
+    wmenu # launcher
     yt-dlp # media download tool
     zed-editor # rust based ide
     zmkBATx

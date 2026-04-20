@@ -8,6 +8,7 @@
   ...
 }: {
   imports = [
+    ../_shared/vscode.nix
     ../_shared/packages-dev.nix
     ../_shared/packages-base.nix
     ../_shared/packages-media.nix
@@ -180,6 +181,7 @@
 
   xdg.portal = {
     enable = true;
+    wlr.enable = true;
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
     config = {
       common = {
