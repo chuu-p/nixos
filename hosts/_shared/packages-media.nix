@@ -10,6 +10,7 @@
     ghostscript # for imagemagick pdf processing
     gimp # image manipulation
     godot # make games
+    imagemagick # image magick
     inkscape # vector image manipulation
     libreoffice # nice to have office suite
     shotcut # video editor

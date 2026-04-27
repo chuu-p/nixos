@@ -5,18 +5,20 @@
 }: {
   environment.systemPackages = with pkgs; [
     (vscode-with-extensions.override {
-      vscode = antigravity; # vscodium;
+      vscode = unstable.antigravity; # vscodium;
       vscodeExtensions = with vscode-extensions;
         [
+          # vscodevim.vim
+          asvetliakov.vscode-neovim
           bierner.emojisense
+          foam.foam-vscode
           jnoortheen.nix-ide
+          redhat.vscode-yaml
           rust-lang.rust-analyzer
           streetsidesoftware.code-spell-checker
           streetsidesoftware.code-spell-checker-german
           tamasfe.even-better-toml
           vadimcn.vscode-lldb
-          vscodevim.vim
-          redhat.vscode-yaml
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {

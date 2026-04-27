@@ -4,6 +4,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    # rustdesk # rdp
     android-studio # dev
     anki-bin # flashcard learning
     brightnessctl # monitor brightness
@@ -22,6 +23,7 @@
     kdePackages.kcalc # calculator
     kitty # the best terminal emulator imo :3
     libnotify # notifications
+    logseq # obsidian open source
     mcomix # manga viewer
     meld # diff viewer
     mixxx # dj software
@@ -35,7 +37,6 @@
     prismlauncher # minecraft launcher
     protonmail-bridge-gui # emails
     pulseaudio # audio system
-    # rustdesk # rdp
     signal-desktop # communication
     thunderbird # emails
     tigervnc # vnc
