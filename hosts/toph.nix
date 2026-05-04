@@ -70,6 +70,42 @@
     };
   };
 
+  services.home-assistant = {
+    enable = true;
+    extraComponents = [
+      "cast"
+      "dlna_dmr"
+      "esphome"
+      "google_assistant"
+      "google_translate"
+      "homeassistant_hardware"
+      "homeassistant_sky_connect"
+      "homekit_controller"
+      "ibeacon"
+      "isal"
+      "kegtron"
+      "matter"
+      "met"
+      "music_assistant"
+      "opensky"
+      "otbr"
+      "piper"
+      "radio_browser"
+      "roomba"
+      "rpi_power"
+      "samsungtv"
+      "shopping_list"
+      "thread"
+      "wake_word"
+      "webostv"
+      "whisper"
+      "wyoming"
+    ];
+    config = {
+      default_config = {};
+    };
+  };
+
   fileSystems."/boot/firmware" = {
     device = "/dev/disk/by-uuid/2175-794E";
     fsType = "vfat";
@@ -84,6 +120,15 @@
 
   fileSystems."/run/media/at-1" = {
     device = "/dev/disk/by-uuid/3c608d2e-3507-43a1-9dc2-332a95c3d2e2";
+    fsType = "btrfs";
+    options = [
+      "users"
+      "nofail"
+    ];
+  };
+
+  fileSystems."/run/media/at-2" = {
+    device = "/dev/disk/by-uuid/111b66d1-16ef-45b2-a7ef-6583c1d3817b";
     fsType = "btrfs";
     options = [
       "users"
