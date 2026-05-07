@@ -21,7 +21,7 @@
     i3status # status bar
     i3status-rust # status bar
     kdePackages.kcalc # calculator
-    kitty # the best terminal emulator imo :3
+    alacritty # terminal emulator
     libnotify # notifications
     logseq # obsidian open source
     mcomix # manga viewer

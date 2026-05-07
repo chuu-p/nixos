@@ -222,9 +222,8 @@ in {
     };
   };
 
-  programs.kitty = {
+  programs.alacritty = {
     enable = true;
-    extraConfig = builtins.readFile ../../aesthetics/ene_gh.conf;
   };
 
   # programs.keepassxc = {
@@ -267,8 +266,8 @@ in {
         };
       };
 
-      # Use kitty as default terminal
-      terminal = "kitty";
+      # Use alacritty as default terminal
+      terminal = "alacritty";
       modifier = "Mod4";
       startup = [
         {command = "exec discord --start-minimized";}

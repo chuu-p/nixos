@@ -1,8 +1,8 @@
 mod: {
-  "${mod}+t" = "exec GLFW_IM_MODULE=ibus kitty";
+  "${mod}+t" = "exec GLFW_IM_MODULE=ibus alacritty";
   "${mod}+b" = "exec firefox";
-  "${mod}+Return" = "exec kitty";
-  "${mod}+Shift+Return" = "exec kitty yazi";
+  "${mod}+Return" = "exec alacritty";
+  "${mod}+Shift+Return" = "exec alacritty -e yazi";
 
   "${mod}+Shift+q" = "kill";
   "${mod}+d" = "exec wmenu-run";
