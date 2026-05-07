@@ -99,6 +99,30 @@ in {
     ];
     hm-activation = true;
     backup = false;
+    extraConfig = ''
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "nix",
+        callback = function()
+          vim.schedule(function()
+            require("lspconfig").nixd.setup({
+              cmd = { "nixd" },
+              on_attach = require("nvchad.configs.lspconfig").on_attach,
+              capabilities = require("nvchad.configs.lspconfig").capabilities,
+              settings = {
+                nixd = {
+                  nixpkgs = {
+                    expr = "import <nixpkgs> { }",
+                  },
+                  formatting = {
+                    command = { "nixfmt" },
+                  },
+                },
+              },
+            })
+          end)
+        end,
+      })
+    '';
   };
 
   home.sessionVariables = {
