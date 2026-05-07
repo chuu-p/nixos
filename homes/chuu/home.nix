@@ -100,27 +100,54 @@ in {
     hm-activation = true;
     backup = false;
     extraConfig = ''
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "nix",
-        callback = function()
-          vim.schedule(function()
-            require("lspconfig").nixd.setup({
-              cmd = { "nixd" },
-              on_attach = require("nvchad.configs.lspconfig").on_attach,
-              capabilities = require("nvchad.configs.lspconfig").capabilities,
-              settings = {
-                nixd = {
-                  nixpkgs = {
-                    expr = "import <nixpkgs> { }",
-                  },
-                  formatting = {
-                    command = { "nixfmt" },
-                  },
-                },
-              },
-            })
-          end)
-        end,
+      local function setup_lsp(ft, server, opts)
+        opts = opts or {}
+        vim.api.nvim_create_autocmd("FileType", {
+          pattern = ft,
+          callback = function()
+            vim.schedule(function()
+              local ok, lspconfig = pcall(require, "lspconfig")
+              if ok then
+                local config = vim.tbl_deep_extend("keep", opts, {
+                  on_attach = require("nvchad.configs.lspconfig").on_attach,
+                  capabilities = require("nvchad.configs.lspconfig").capabilities,
+                })
+                lspconfig[server].setup(config)
+              end
+            end)
+          end,
+        })
+      end
+
+      setup_lsp("sh", "bashls")
+      setup_lsp("dockerfile", "dockerls")
+      setup_lsp("yaml", "docker_compose_language_service")
+      setup_lsp({ "html", "css", "scss", "less", "javascriptreact", "typescriptreact" }, "emmet_language_server")
+      setup_lsp("css", "cssls")
+      setup_lsp("html", "html")
+      setup_lsp("json", "jsonls")
+      setup_lsp({ "javascript", "typescript", "javascriptreact", "typescriptreact", "vue" }, "eslint")
+      setup_lsp("rust", "rust_analyzer")
+      setup_lsp({ "javascript", "typescript", "javascriptreact", "typescriptreact" }, "ts_ls")
+      setup_lsp("vue", "vue_ls")
+      setup_lsp("python", "pylsp", {
+        settings = {
+          pylsp = {
+            plugins = {
+              pycodestyle = { enabled = false },
+              flake8 = { enabled = true },
+              ruff = { enabled = true },
+            },
+          },
+        },
+      })
+      setup_lsp("nix", "nixd", {
+        settings = {
+          nixd = {
+            nixpkgs = { expr = "import <nixpkgs> { }" },
+            formatting = { command = { "nixfmt" } },
+          },
+        },
       })
     '';
   };
