@@ -16,7 +16,7 @@
     firefox # browser
     flameshot # screenshots
     fontconfig # important!
-    fractal # matrix chat client
+    element-desktop # matrix chat client (electron-based, faster to install)
     google-chrome # for drm media
     i3status # status bar
     i3status-rust # status bar
@@ -38,7 +38,7 @@
     protonmail-bridge-gui # emails
     pulseaudio # audio system
     signal-desktop # communication
-    thunderbird # emails
+    thunderbird-bin # emails (pre-built, avoids compiling from source)
     tigervnc # vnc
     unstable.zmk-studio # split keyboard software
     vdhcoapp # videodownloadhelper companion application

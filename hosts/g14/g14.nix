@@ -244,7 +244,10 @@
         glib
       ];
     };
-    firefox.enable = true;
+    firefox = {
+      enable = true;
+      package = pkgs.firefox-bin; # pre-built, avoids compiling from source
+    };
     obs-studio = {
       enable = true;
       enableVirtualCamera = true;

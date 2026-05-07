@@ -84,7 +84,6 @@ in {
       rust-analyzer
       typescript-language-server
       vue-language-server
-      vala-language-server
       nixd
       (python3.withPackages (ps:
         with ps; [
