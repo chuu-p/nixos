@@ -2,7 +2,14 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  fish = lib.getExe pkgs.fish;
+
+  entryShell = pkgs.writeShellScriptBin "op9pro-shell" ''
+    . /etc/profile
+    exec ${fish} "$@"
+  '';
+in {
   imports = [
     ./sshd.nix
   ];
@@ -28,7 +35,7 @@
     ];
   };
 
-  user.shell = "${lib.getExe pkgs.fish}";
+  user.shell = "${entryShell}/bin/op9pro-shell";
 
   time.timeZone = "Europe/Berlin";
 

@@ -176,19 +176,37 @@
       };
     };
     deploy.nodes =
-      lib.mapAttrs
-      (name: cfg: {
-        hostname = cfg.hostname;
+      (lib.mapAttrs
+        (name: cfg: {
+          hostname = cfg.hostname;
 
-        profiles.system = {
-          user = cfg.user;
+          profiles.system = {
+            user = cfg.user;
 
-          path =
-            deploy-rs.lib.${cfg.system}.activate.nixos
-            self.nixosConfigurations.${name};
+            path =
+              deploy-rs.lib.${cfg.system}.activate.nixos
+              self.nixosConfigurations.${name};
+          };
+        })
+        hosts)
+      // {
+        op9pro = {
+          hostname = "oneplus-9-pro";
+          sshPort = 8022;
+          fastConnection = true;
+          autoRollback = false;
+          magicRollback = false;
+          profiles.system = {
+            sshUser = "nix-on-droid";
+            user = "nix-on-droid";
+            path = deploy-rs.lib.x86_64-linux.activate.custom
+              (import nixpkgs { system = "x86_64-linux"; }).runCommand "op9pro" {} "mkdir \$out"
+              ''
+                nix-on-droid switch --flake github:chuu-p/nixos#op9pro
+              '';
+          };
         };
-      })
-      hosts;
+      };
     checks =
       builtins.mapAttrs
       (system: deployLib: deployLib.deployChecks self.deploy)
