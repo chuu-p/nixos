@@ -15,10 +15,15 @@ in {
   ];
 
   environment.packages = with pkgs; [
-    vim
-    git
-    fish
-    yazi
+    busybox # linux tools
+    fastfetch # show distro
+    fish # shell
+    git # holy grail of software
+    htop # process monitor
+    tty-clock # terminal clock
+    vim # fallback vim
+    yazi # terminal file manager
+    zellij # termux alternative
   ];
 
   environment.etcBackupExtension = ".bak";
