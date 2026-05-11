@@ -3,11 +3,11 @@
   lib,
   ...
 }: let
-  fish = lib.getExe pkgs.fish;
+  fishBin = lib.getExe pkgs.fish;
 
   entryShell = pkgs.writeShellScriptBin "op9pro-shell" ''
     . /etc/profile
-    exec ${fish} "$@"
+    exec ${fishBin} "$@"
   '';
 in {
   imports = [
