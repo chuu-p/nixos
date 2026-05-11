@@ -20,6 +20,7 @@ in {
     fish # shell
     git # holy grail of software
     htop # process monitor
+    sysbench # benchmark 
     tty-clock # terminal clock
     vim # fallback vim
     yazi # terminal file manager
