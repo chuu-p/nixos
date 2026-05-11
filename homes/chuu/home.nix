@@ -97,26 +97,40 @@ in {
       rustfmt
       shfmt
     ];
+    extraPlugins = ''
+      return {
+        {
+          "zbirenbaum/copilot.lua",
+          lazy = false,
+          priority = 100,
+          config = function()
+            require("copilot").setup({
+              suggestion = { enabled = false },
+              panel = { enabled = false },
+            })
+          end,
+        },
+        {
+          "zbirenbaum/copilot-cmp",
+          lazy = false,
+          config = function()
+            require("copilot_cmp").setup()
+          end,
+        },
+      }
+    '';
     hm-activation = true;
     backup = false;
     extraConfig = ''
       local function setup_lsp(ft, server, opts)
         opts = opts or {}
-        vim.api.nvim_create_autocmd("FileType", {
-          pattern = ft,
-          callback = function()
-            vim.schedule(function()
-              local ok, lspconfig = pcall(require, "lspconfig")
-              if ok then
-                local config = vim.tbl_deep_extend("keep", opts, {
-                  on_attach = require("nvchad.configs.lspconfig").on_attach,
-                  capabilities = require("nvchad.configs.lspconfig").capabilities,
-                })
-                lspconfig[server].setup(config)
-              end
-            end)
-          end,
+        local config = vim.tbl_deep_extend("keep", opts, {
+          on_attach = require("nvchad.configs.lspconfig").on_attach,
+          capabilities = require("nvchad.configs.lspconfig").capabilities,
+          filetypes = type(ft) == "table" and ft or { ft },
         })
+        vim.lsp.config(server, config)
+        vim.lsp.enable(server)
       end
 
       setup_lsp("sh", "bashls")
@@ -129,7 +143,7 @@ in {
       setup_lsp({ "javascript", "typescript", "javascriptreact", "typescriptreact", "vue" }, "eslint")
       setup_lsp("rust", "rust_analyzer")
       setup_lsp({ "javascript", "typescript", "javascriptreact", "typescriptreact" }, "ts_ls")
-      setup_lsp("vue", "vue_ls")
+      setup_lsp("vue", "volar")
       setup_lsp("python", "pylsp", {
         settings = {
           pylsp = {
