@@ -33,6 +33,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -45,6 +49,7 @@
     nixos-hardware,
     nixos-wsl,
     sops-nix,
+    nix-on-droid,
     ...
   } @ inputs: let
     lib = nixpkgs.lib;
@@ -161,6 +166,15 @@
             ];
         })
       hosts;
+    nixOnDroidConfigurations = {
+      op9pro = nix-on-droid.lib.nixOnDroidConfiguration {
+        pkgs = import nixpkgs {
+          system = "aarch64-linux";
+          config.allowUnfree = true;
+        };
+        modules = [./hosts/op9pro/default.nix];
+      };
+    };
     deploy.nodes =
       lib.mapAttrs
       (name: cfg: {
