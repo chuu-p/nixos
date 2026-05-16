@@ -14,5 +14,6 @@
     inkscape # vector image manipulation
     libreoffice # nice to have office suite
     shotcut # video editor
+    lsp-plugins # Collection of open-source audio plugins
   ];
 }
