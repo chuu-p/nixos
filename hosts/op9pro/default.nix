@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   fishBin = lib.getExe pkgs.fish;
@@ -25,6 +26,8 @@ in {
     vim # fallback vim
     yazi # terminal file manager
     zellij # termux alternative
+  ] ++ [
+    inputs.nix4nvchad.packages.${pkgs.system}.nvchad
   ];
 
   environment.etcBackupExtension = ".bak";

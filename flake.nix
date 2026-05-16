@@ -173,6 +173,7 @@
           config.allowUnfree = true;
         };
         modules = [./hosts/op9pro/default.nix];
+        extraSpecialArgs = { inherit inputs; };
       };
     };
     deploy.nodes =
