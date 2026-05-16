@@ -26,6 +26,17 @@ in {
     vim # fallback vim
     yazi # terminal file manager
     zellij # termux alternative
+    
+    # LSP servers for nvchad
+    nodePackages.bash-language-server
+    dockerfile-language-server
+    emmet-language-server
+    nodePackages.vscode-langservers-extracted
+    nixd
+    nodePackages.prettier
+    nixfmt
+    shfmt
+    typescript-language-server
   ] ++ [
     inputs.nix4nvchad.packages.${pkgs.system}.nvchad
   ];
