@@ -27,6 +27,10 @@
     '';
   };
 
+  services.ollama = {
+    enable = true;
+    acceleration = false; # RPi 5 has no CUDA
+  };
   # services.faasd.enable = true;
   # services.faasd.gateway = {
   #   writeTimeout = 30;
