@@ -55,6 +55,11 @@ in {
     ];
   };
 
+  services.ollama = {
+    enable = true;
+    acceleration = false; # RPi 5 has no CUDA
+  };
+
   user.shell = "${entryShell}/bin/op9pro-shell";
 
   time.timeZone = "Europe/Berlin";
