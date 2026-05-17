@@ -106,6 +106,11 @@
     };
   };
 
+  services.ollama = {
+    enable = true;
+    acceleration = false; # RPi 5 has no CUDA
+  };
+
   fileSystems."/boot/firmware" = {
     device = "/dev/disk/by-uuid/2175-794E";
     fsType = "vfat";

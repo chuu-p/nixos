@@ -17,6 +17,7 @@
     just # command runner
     lldb # debugger
     nodejs # js runtime
+    opencode # best ai 
     opencommit # generate commit messages with ai
     presenterm # cli presentations
     tokei # count lines of code
