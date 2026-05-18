@@ -6,7 +6,7 @@
 }: let
   fishBin = lib.getExe pkgs.fish;
 
-  entryShell = pkgs.writeShellScriptBin "op9pro-shell" ''
+  entryShell = pkgs.writeShellScriptBin "astryd-shell" ''
     . /etc/profile
     exec ${fishBin} "$@"
   '';
@@ -58,7 +58,7 @@ in {
   android-integration.termux-setup-storage.enable = true;
   android-integration.am.enable = true;
 
-  user.shell = "${entryShell}/bin/op9pro-shell";
+  user.shell = "${entryShell}/bin/astryd-shell";
 
   time.timeZone = "Europe/Berlin";
 

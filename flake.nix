@@ -175,6 +175,14 @@
         modules = [./hosts/op9pro/default.nix];
         extraSpecialArgs = { inherit inputs; };
       };
+      astryd = nix-on-droid.lib.nixOnDroidConfiguration {
+        pkgs = import nixpkgs {
+          system = "aarch64-linux";
+          config.allowUnfree = true;
+        };
+        modules = [./hosts/astryd/default.nix];
+        extraSpecialArgs = { inherit inputs; };
+      };
     };
     deploy.nodes =
       (lib.mapAttrs
@@ -204,6 +212,22 @@
               (import nixpkgs { system = "x86_64-linux"; }).runCommand "op9pro" {} "mkdir \$out"
               ''
                 nix-on-droid switch --flake github:chuu-p/nixos#op9pro
+              '';
+          };
+        };
+        astryd = {
+          hostname = "Pixel-10";
+          sshPort = 8022;
+          fastConnection = true;
+          autoRollback = false;
+          magicRollback = false;
+          profiles.system = {
+            sshUser = "nix-on-droid";
+            user = "nix-on-droid";
+            path = deploy-rs.lib.x86_64-linux.activate.custom
+              (import nixpkgs { system = "x86_64-linux"; }).runCommand "astryd" {} "mkdir \$out"
+              ''
+                nix-on-droid switch --flake github:chuu-p/nixos#astryd
               '';
           };
         };
