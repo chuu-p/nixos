@@ -111,6 +111,24 @@
     acceleration = false; # RPi 5 has no CUDA
   };
 
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_16;
+    enableTCPIP = false;
+    dataDir = "/run/media/at-1/shop-db";
+    ensureDatabases = ["toph"];
+    ensureUsers = [
+      {
+        name = "toph";
+        ensureDBOwnership = true;
+      }
+    ];
+    authentication = ''
+      local all all trust
+      host  all all 127.0.0.1/32 trust
+    '';
+  };
+
   fileSystems."/boot/firmware" = {
     device = "/dev/disk/by-uuid/2175-794E";
     fsType = "vfat";
