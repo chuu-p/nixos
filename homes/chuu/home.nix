@@ -343,6 +343,8 @@ in {
         {command = "exec obsidian";}
         {command = "exec protonmail-bridge-gui --no-window";}
         {command = "exec thunderbird";}
+        {command = "exec kdeconnect-indicator";}
+        {command = "exec kdeconnectd";}
       ];
 
       keybindings = import ../_shared/sway/sway-keybindings.nix "Mod4";

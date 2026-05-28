@@ -24,9 +24,6 @@
     '';
   };
 
-  # Use RPi4 optimized kernel for faster compilation and boot
-  boot.kernelPackages = pkgs.linuxPackages_rpi4;
-
   services.k3s = {
     enable = true;
     package = pkgs.k3s;

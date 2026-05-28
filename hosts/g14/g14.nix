@@ -19,6 +19,7 @@
     ../../modules/sops.nix
   ];
 
+
   powerManagement.powertop.enable = true;
 
   environment.variables = {
@@ -44,6 +45,36 @@
 
   # only keep the last five generations (otherwise boot partition can fill up too much)
   documentation.man.generateCaches = false;
+
+services.postgresql = {
+    enable = true;
+    ensureDatabases = [ "shop" ];
+    authentication = pkgs.lib.mkOverride 10 ''
+      #type database  DBuser  auth-method
+      local all       all     trust
+      host  all       all     127.0.0.1/32 trust
+    '';
+  };
+
+  services.postgrest = {
+    enable = true;
+    settings = {
+      db-uri = {
+        host = "127.0.0.1";
+        dbname = "shop";
+        user = "postgres";
+      };
+      db-anon-role = "postgres";
+      db-schema = "public";
+      server-port = 3000;
+      server-unix-socket = null;
+    };
+  };
+
+services.redis.servers."main" = {
+
+
+
 
   services.udev.extraRules = ''
     # Your rule goes here
@@ -207,6 +238,7 @@
   };
 
   programs = {
+    kdeconnect.enable = true;
     direnv.enable = true;
     # This enables AppImage support.
     appimage = {
