@@ -1,6 +1,15 @@
 {
   description = "cluster laghima + workstations";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://nixos-raspberrypi.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nixos-raspberrypi.cachix.org-1:4iMO9LXa8BqhU+Rpg6LQKiGa2lsNh/j2oiYLNOQ5sPI="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -200,16 +209,14 @@
               };
               hardware.bluetooth.enable = true;
             }
-            ({pkgs, ...}: {
-              boot.kernelPackages = pkgs.linuxPackages_rpi;
-
-              environment.systemPackages = with pkgs; [
-                vim
-                yazi
-                git
-                ydotool
-              ];
-            })
+            # ({pkgs, ...}: {
+            #   environment.systemPackages = with pkgs; [
+            #     vim
+            #     # yazi
+            #     git
+            #     ydotool
+            #   ];
+            # })
           ];
         };
       };
