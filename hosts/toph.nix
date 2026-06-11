@@ -9,6 +9,8 @@
     nixos-hardware.nixosModules.raspberry-pi-5
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_rpi;
+
   networking.hostName = "toph";
 
   services.openssh = {

@@ -37,6 +37,9 @@
       url = "github:nix-community/nix-on-droid/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-raspberrypi = {
+      url = "github:nvmd/nixos-raspberrypi";
+    };
   };
 
   outputs = {
@@ -50,6 +53,7 @@
     nixos-wsl,
     sops-nix,
     nix-on-droid,
+    nixos-raspberrypi,
     ...
   } @ inputs: let
     lib = nixpkgs.lib;
@@ -144,8 +148,7 @@
       };
     };
   in {
-    nixosConfigurations =
-      lib.mapAttrs
+    nixosConfigurations = (lib.mapAttrs
       (name: cfg:
         lib.nixosSystem {
           system = cfg.system;
@@ -165,7 +168,48 @@
               }
             ];
         })
-      hosts;
+      hosts)
+    // {
+      # Raspberry Pi Zero 2 W installer with pre-configured WiFi and SSH
+      rpi02-wifi = nixos-raspberrypi.lib.nixosInstaller {
+        specialArgs = inputs;
+        modules = [
+          {
+            imports = with nixos-raspberrypi.nixosModules; [
+              raspberry-pi-02.base
+              usb-gadget-ethernet
+            ];
+          }
+          {
+            services.openssh.settings.PermitRootLogin = "prohibit-password";
+            users.users.root.openssh.authorizedKeys.keys = [
+              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQHb+VwHnS97Wmu4xpUDlLhzB+Ip11BINatUivsr6+a"
+            ];
+            users.users.nixos.openssh.authorizedKeys.keys = [
+              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQHb+VwHnS97Wmu4xpUDlLhzB+Ip11BINatUivsr6+a"
+            ];
+          }
+          {
+            networking.networkmanager.enable = lib.mkForce false;
+            networking.wireless.enable = true;
+            networking.wireless.networks = {
+              "FRITZ!Box 7583 UJ" = {
+                psk = "41808552962347953265";
+              };
+            };
+            hardware.bluetooth.enable = true;
+          }
+          ({ pkgs, ... }: {
+            environment.systemPackages = with pkgs; [
+              vim
+              yazi
+              git
+              ydotool
+            ];
+          })
+        ];
+      };
+    };
     nixOnDroidConfigurations = {
       op9pro = nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import nixpkgs {
@@ -236,5 +280,8 @@
       builtins.mapAttrs
       (system: deployLib: deployLib.deployChecks self.deploy)
       deploy-rs.lib;
+
+    installerImages.rpi02-wifi =
+      self.nixosConfigurations.rpi02-wifi.config.system.build.sdImage;
   };
 }

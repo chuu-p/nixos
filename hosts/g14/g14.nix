@@ -19,6 +19,60 @@
     ../../modules/sops.nix
   ];
 
+  nix = {     distributedBuilds = true;
+    buildMachines = [
+      {
+        hostName = "jinora";
+        sshUser = "chuu";
+        system = "aarch64-linux";
+        protocol = "ssh-ng";
+        maxJobs = 1;
+        speedFactor = 2;
+        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+        mandatoryFeatures = [];
+      }
+      {
+        hostName = "iroh";
+        sshUser = "chuu";
+        system = "aarch64-linux";
+        protocol = "ssh-ng";
+        maxJobs = 1;
+        speedFactor = 2;
+        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+        mandatoryFeatures = [];
+      }
+      {
+        hostName = "opal";
+        sshUser = "chuu";
+        system = "aarch64-linux";
+        protocol = "ssh-ng";
+        maxJobs = 1;
+        speedFactor = 4;
+        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+        mandatoryFeatures = [];
+      }
+      {
+        hostName = "toph";
+        sshUser = "chuu";
+        system = "aarch64-linux";
+        protocol = "ssh-ng";
+        maxJobs = 1;
+        speedFactor = 4;
+        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+        mandatoryFeatures = [];
+      }
+      # {
+      #   hostName = "nixos-wsl";
+      #   sshUser = "chuu";
+      #   systems = ["x86_64-linux" "aarch64-linux"];
+      #   protocol = "ssh-ng";
+      #   maxJobs = 6;
+      #   speedFactor = 10;
+      #   supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+      #   mandatoryFeatures = [];
+      # }
+    ];
+  };
 
   powerManagement.powertop.enable = true;
 
@@ -70,11 +124,6 @@ services.postgresql = {
       server-unix-socket = null;
     };
   };
-
-services.redis.servers."main" = {
-
-
-
 
   services.udev.extraRules = ''
     # Your rule goes here
@@ -226,16 +275,36 @@ services.redis.servers."main" = {
   security = {
     rtkit.enable = true;
     polkit.enable = true;
+    sudo.extraRules = [
+      {
+        users = ["chuu"];
+        commands = [
+          {
+            command = "ALL";
+            options = ["NOPASSWD"];
+          }
+        ];
+      }
+    ];
   };
 
   users.users.chuu = {
     isNormalUser = true;
     description = "chuu";
-    extraGroups = ["networkmanager" "wheel" "syncthing" "audio" "jackaudio" "openrazer"];
+    extraGroups = ["podman" "networkmanager" "wheel" "syncthing" "audio" "jackaudio" "openrazer"];
     shell = pkgs.fish;
     packages = with pkgs; [
     ];
   };
+
+  virtualisation = {
+  containers.enable = true;
+  podman = {
+    enable = true;
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true; # Required for containers under podman-compose to be able to talk to each other.
+  };
+};
 
   programs = {
     kdeconnect.enable = true;
