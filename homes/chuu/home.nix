@@ -81,9 +81,9 @@ in {
       dockerfile-language-server
       emmet-language-server
       vscode-langservers-extracted
-       rust-analyzer
-       rustc
-       typescript-language-server
+      rust-analyzer
+      rustc
+      typescript-language-server
       vue-language-server
       nixd
       (python3.withPackages (ps:

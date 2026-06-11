@@ -148,68 +148,71 @@
       };
     };
   in {
-    nixosConfigurations = (lib.mapAttrs
-      (name: cfg:
-        lib.nixosSystem {
-          system = cfg.system;
-          specialArgs = inputs // {inherit inputs;};
-          modules =
-            cfg.modules
-            ++ [
-              {
-                nixpkgs.overlays = [
-                  (final: prev: {
-                    unstable = import inputs.nixpkgs-unstable {
-                      system = prev.system;
-                      config.allowUnfree = true;
-                    };
-                  })
-                ];
-              }
-            ];
-        })
-      hosts)
-    // {
-      # Raspberry Pi Zero 2 W installer with pre-configured WiFi and SSH
-      rpi02-wifi = nixos-raspberrypi.lib.nixosInstaller {
-        specialArgs = inputs;
-        modules = [
-          {
-            imports = with nixos-raspberrypi.nixosModules; [
-              raspberry-pi-02.base
-              usb-gadget-ethernet
-            ];
-          }
-          {
-            services.openssh.settings.PermitRootLogin = "prohibit-password";
-            users.users.root.openssh.authorizedKeys.keys = [
-              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQHb+VwHnS97Wmu4xpUDlLhzB+Ip11BINatUivsr6+a"
-            ];
-            users.users.nixos.openssh.authorizedKeys.keys = [
-              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQHb+VwHnS97Wmu4xpUDlLhzB+Ip11BINatUivsr6+a"
-            ];
-          }
-          {
-            networking.networkmanager.enable = lib.mkForce false;
-            networking.wireless.enable = true;
-            networking.wireless.networks = {
-              "FRITZ!Box 7583 UJ" = {
-                psk = "41808552962347953265";
-              };
-            };
-            hardware.bluetooth.enable = true;
-          }
-          ({ pkgs, ... }: {
-            environment.systemPackages = with pkgs; [
-              vim
-              yazi
-              git
-              ydotool
-            ];
+    nixosConfigurations =
+      (lib.mapAttrs
+        (name: cfg:
+          lib.nixosSystem {
+            system = cfg.system;
+            specialArgs = inputs // {inherit inputs;};
+            modules =
+              cfg.modules
+              ++ [
+                {
+                  nixpkgs.overlays = [
+                    (final: prev: {
+                      unstable = import inputs.nixpkgs-unstable {
+                        system = prev.system;
+                        config.allowUnfree = true;
+                      };
+                    })
+                  ];
+                }
+              ];
           })
-        ];
+        hosts)
+      // {
+        # Raspberry Pi Zero 2 W installer with pre-configured WiFi and SSH
+        rpi02-wifi = nixos-raspberrypi.lib.nixosInstaller {
+          specialArgs = inputs;
+          modules = [
+            {
+              imports = with nixos-raspberrypi.nixosModules; [
+                raspberry-pi-02.base
+                usb-gadget-ethernet
+              ];
+            }
+            {
+              services.openssh.settings.PermitRootLogin = "prohibit-password";
+              users.users.root.openssh.authorizedKeys.keys = [
+                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQHb+VwHnS97Wmu4xpUDlLhzB+Ip11BINatUivsr6+a"
+              ];
+              users.users.nixos.openssh.authorizedKeys.keys = [
+                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQHb+VwHnS97Wmu4xpUDlLhzB+Ip11BINatUivsr6+a"
+              ];
+            }
+            {
+              networking.networkmanager.enable = lib.mkForce false;
+              networking.wireless.enable = true;
+              networking.wireless.networks = {
+                "FRITZ!Box 7583 UJ" = {
+                  psk = "41808552962347953265";
+                };
+              };
+              hardware.bluetooth.enable = true;
+            }
+            ({pkgs, ...}: {
+              boot.kernelPackages = pkgs.linuxPackages_rpi;
+
+              environment.systemPackages = with pkgs; [
+                vim
+                yazi
+                git
+                ydotool
+              ];
+            })
+          ];
+        };
       };
-    };
     nixOnDroidConfigurations = {
       op9pro = nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import nixpkgs {
@@ -217,7 +220,7 @@
           config.allowUnfree = true;
         };
         modules = [./hosts/op9pro/default.nix];
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = {inherit inputs;};
       };
       astryd = nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import nixpkgs {
@@ -225,7 +228,7 @@
           config.allowUnfree = true;
         };
         modules = [./hosts/astryd/default.nix];
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = {inherit inputs;};
       };
     };
     deploy.nodes =
@@ -252,8 +255,9 @@
           profiles.system = {
             sshUser = "nix-on-droid";
             user = "nix-on-droid";
-            path = deploy-rs.lib.x86_64-linux.activate.custom
-              (import nixpkgs { system = "x86_64-linux"; }).runCommand "op9pro" {} "mkdir \$out"
+            path =
+              deploy-rs.lib.x86_64-linux.activate.custom
+              (import nixpkgs {system = "x86_64-linux";}).runCommand "op9pro" {} "mkdir \$out"
               ''
                 nix-on-droid switch --flake github:chuu-p/nixos#op9pro
               '';
@@ -268,8 +272,9 @@
           profiles.system = {
             sshUser = "nix-on-droid";
             user = "nix-on-droid";
-            path = deploy-rs.lib.x86_64-linux.activate.custom
-              (import nixpkgs { system = "x86_64-linux"; }).runCommand "astryd" {} "mkdir \$out"
+            path =
+              deploy-rs.lib.x86_64-linux.activate.custom
+              (import nixpkgs {system = "x86_64-linux";}).runCommand "astryd" {} "mkdir \$out"
               ''
                 nix-on-droid switch --flake github:chuu-p/nixos#astryd
               '';

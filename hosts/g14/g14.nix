@@ -19,7 +19,8 @@
     ../../modules/sops.nix
   ];
 
-  nix = {     distributedBuilds = true;
+  nix = {
+    distributedBuilds = true;
     buildMachines = [
       {
         hostName = "jinora";
@@ -100,9 +101,9 @@
   # only keep the last five generations (otherwise boot partition can fill up too much)
   documentation.man.generateCaches = false;
 
-services.postgresql = {
+  services.postgresql = {
     enable = true;
-    ensureDatabases = [ "shop" ];
+    ensureDatabases = ["shop"];
     authentication = pkgs.lib.mkOverride 10 ''
       #type database  DBuser  auth-method
       local all       all     trust
@@ -298,13 +299,13 @@ services.postgresql = {
   };
 
   virtualisation = {
-  containers.enable = true;
-  podman = {
-    enable = true;
-    dockerCompat = true;
-    defaultNetwork.settings.dns_enabled = true; # Required for containers under podman-compose to be able to talk to each other.
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true; # Required for containers under podman-compose to be able to talk to each other.
+    };
   };
-};
 
   programs = {
     kdeconnect.enable = true;
