@@ -19,68 +19,70 @@
     ../../modules/sops.nix
   ];
 
-  nix = {
-    distributedBuilds = true;
-    buildMachines = [
-      {
-        hostName = "jinora";
-        sshUser = "chuu";
-        system = "aarch64-linux";
-        protocol = "ssh-ng";
-        maxJobs = 1;
-        speedFactor = 2;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
-      {
-        hostName = "iroh";
-        sshUser = "chuu";
-        system = "aarch64-linux";
-        protocol = "ssh-ng";
-        maxJobs = 1;
-        speedFactor = 2;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
-      {
-        hostName = "opal";
-        sshUser = "chuu";
-        system = "aarch64-linux";
-        protocol = "ssh-ng";
-        maxJobs = 1;
-        speedFactor = 4;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
-      {
-        hostName = "toph";
-        sshUser = "chuu";
-        system = "aarch64-linux";
-        protocol = "ssh-ng";
-        maxJobs = 1;
-        speedFactor = 4;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        mandatoryFeatures = [];
-      }
-      # {
-      #   hostName = "nixos-wsl";
-      #   sshUser = "chuu";
-      #   systems = ["x86_64-linux" "aarch64-linux"];
-      #   protocol = "ssh-ng";
-      #   maxJobs = 6;
-      #   speedFactor = 10;
-      #   supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-      #   mandatoryFeatures = [];
-      # }
-    ];
-  };
-
+  # nix = {
+  #   distributedBuilds = true;
+  #   buildMachines = [
+  #     {
+  #       hostName = "jinora";
+  #       sshUser = "chuu";
+  #       system = "aarch64-linux";
+  #       protocol = "ssh-ng";
+  #       maxJobs = 1;
+  #       speedFactor = 2;
+  #       supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+  #       mandatoryFeatures = [];
+  #     }
+  #     {
+  #       hostName = "iroh";
+  #       sshUser = "chuu";
+  #       system = "aarch64-linux";
+  #       protocol = "ssh-ng";
+  #       maxJobs = 1;
+  #       speedFactor = 2;
+  #       supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+  #       mandatoryFeatures = [];
+  #     }
+  #     {
+  #       hostName = "opal";
+  #       sshUser = "chuu";
+  #       system = "aarch64-linux";
+  #       protocol = "ssh-ng";
+  #       maxJobs = 1;
+  #       speedFactor = 4;
+  #       supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+  #       mandatoryFeatures = [];
+  #     }
+  #     {
+  #       hostName = "toph";
+  #       sshUser = "chuu";
+  #       system = "aarch64-linux";
+  #       protocol = "ssh-ng";
+  #       maxJobs = 1;
+  #       speedFactor = 4;
+  #       supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+  #       mandatoryFeatures = [];
+  #     }
+  #     # {
+  #     #   hostName = "nixos-wsl";
+  #     #   sshUser = "chuu";
+  #     #   systems = ["x86_64-linux" "aarch64-linux"];
+  #     #   protocol = "ssh-ng";
+  #     #   maxJobs = 6;
+  #     #   speedFactor = 10;
+  #     #   supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+  #     #   mandatoryFeatures = [];
+  #     # }
+  #   ];
+  # };
+  #
   powerManagement.powertop.enable = true;
 
   environment.variables = {
     GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
+    MOZ_ENABLE_WAYLAND = "1";
+    NIXOS_OZONE_WL = "1";
   };
 
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
@@ -263,7 +265,7 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr];
     config = {
       common = {
         default = [

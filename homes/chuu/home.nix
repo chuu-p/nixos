@@ -20,6 +20,7 @@
     "nvim.desktop"
   ];
   associations = {
+    "x-scheme-handler/obsidian" = ["obsidian.desktop"];
     "application/epub+zip" = ebook-viewer;
     "application/json" = text-editor;
     "application/pdf" = ["org.gnome.Evince.desktop"];
