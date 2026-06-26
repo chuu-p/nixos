@@ -146,7 +146,7 @@
     BindPaths = "/run/current-system/sw/bin:/bin";
   };
 
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
 
   # environment.sessionVariables = {
   #   EDITOR = "hx";

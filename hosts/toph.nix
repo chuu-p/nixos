@@ -10,7 +10,7 @@
     nixos-hardware.nixosModules.raspberry-pi-5
   ];
 
-  # boot.kernelPackages = pkgs.linuxPackages_rpi;
+  boot.kernelPackages = pkgs.linuxPackages_rpi4;
 
   networking.hostName = "toph";
 
@@ -37,7 +37,7 @@
 
   services.postgresql = {
     enable = true;
-    package = pkgs.postgresql_16;
+    package = pkgs.postgresql_18;
     enableTCPIP = false;
     dataDir = "/run/media/at-1/tafl-db";
     ensureDatabases = ["toph"];
@@ -53,27 +53,6 @@
     '';
   };
 
-  # services.grafana = {
-  #   enable = true;
-  #   settings = {
-  #     server = {
-  #       http_addr = "0.0.0.0";
-  #       http_port = 7119;
-  #       # enforce_domain = true;
-  #       enable_gzip = true;
-  #       # domain = "grafana.your.domain";
-  #
-  #       # Alternatively, if you want to serve Grafana from a subpath:
-  #       # domain = "your.domain";
-  #       # root_url = "https://your.domain/grafana/";
-  #       # serve_from_sub_path = true;
-  #     };
-  #
-  #     # Prevents Grafana from phoning home
-  #     #analytics.reporting_enabled = false;
-  #   };
-  # };
-
   services.prometheus = {
     exporters = {
       node = {
@@ -81,8 +60,61 @@
         enabledCollectors = ["systemd"];
         port = 9002;
       };
+      blackbox = {
+        enable = true;
+        listenAddress = "127.0.0.1";
+        port = 9115;
+
+        # Configure probe modules (HTTP status checks, SSL validation, timeouts)
+        configFile = pkgs.writeText "blackbox-config.yaml" (builtins.toJSON {
+          modules = {
+            http_2xx = {
+              prober = "http";
+              timeout = "5s";
+              http = {
+                valid_status_codes = [200 201 202 204]; # Expect successful API returns
+                method = "GET";
+                fail_if_ssl = false;
+                fail_if_not_ssl = false; # Set to true if forcing HTTPS APIs
+              };
+            };
+          };
+        });
+      };
     };
     scrapeConfigs = [
+      {
+        job_name = "api_uptime_monitors";
+        metrics_path = "/probe";
+        params = {module = ["http_2xx"];}; # Target our defined HTTP module
+
+        # Define the arbitrary Web API endpoints you want to check
+        static_configs = [
+          {
+            targets = [
+              "https://api.github.com"
+              "https://httpbin.org"
+              "http://127.0.0.1:3000" # Local Grafana itself
+            ];
+          }
+        ];
+
+        # Magic relabel configs to pass targets cleanly through Blackbox Exporter
+        relabel_configs = [
+          {
+            source_labels = ["__address__"];
+            target_label = "__param_target";
+          }
+          {
+            source_labels = ["__param_target"];
+            target_label = "instance";
+          }
+          {
+            target_label = "__address__";
+            replacement = "127.0.0.1:9115";
+          } # Exporter Address
+        ];
+      }
       {
         job_name = "chrysalis";
         static_configs = [
@@ -114,16 +146,75 @@
 
   services.loki = {
     enable = true;
-    configFile = ./loki-local-config.yaml;
+    configFile = ./toph/loki-local-config.yaml;
+  };
+
+  services.tempo = {
+    enable = true;
+    settings = {
+      target = "all";
+
+      server = {
+        http_listen_port = 3200;
+        grpc_listen_port = 9095;
+      };
+
+      storage = {
+        trace = {
+          backend = "local";
+          local = {
+            path = "/var/lib/tempo/traces";
+          };
+          wal = {
+            path = "/var/lib/tempo/wal";
+          };
+        };
+      };
+
+      distributor = {
+        receivers = {
+          otlp = {
+            protocols = {
+              http = {endpoint = "0.0.0.0:4318";};
+              grpc = {endpoint = "0.0.0.0:4317";};
+            };
+          };
+          zipkin = {endpoint = "0.0.0.0:9411";};
+          jaeger = {
+            protocols = {
+              thrift_http = {endpoint = "0.0.0.0:14268";};
+            };
+          };
+        };
+      };
+    };
   };
 
   services.grafana = {
     enable = true;
-    # domain = "";
-    port = 2342;
-    addr = "0.0.0.0";
+    settings = {
+      server = {
+        http_addr = "0.0.0.0";
+        http_port = 3000;
+      };
+    };
+    provision = {
+      enable = true;
+      datasources.settings.datasources = [
+        {
+          name = "Tempo";
+          type = "tempo";
+          access = "proxy";
+          url = "http://127.0.0.1:3200";
+          jsonData = {
+            httpMethod = "GET";
+          };
+        }
+      ];
+    };
   };
 
+  systemd.services.tempo.serviceConfig.StateDirectory = "tempo";
 
   systemd.services.promtail = {
     description = "Promtail service for Loki";
@@ -131,9 +222,23 @@
 
     serviceConfig = {
       ExecStart = ''
-        ${pkgs.grafana-loki}/bin/promtail --config.file ${./promtail.yaml}
+        ${pkgs.grafana-loki}/bin/promtail --config.file ${./toph/promtail.yaml}
       '';
     };
+  };
+
+  # Enable the PostgreSQL automated backup service
+  services.postgresqlBackup = {
+    enable = true;
+
+    # Select which databases to back up. If left empty, it backs up everything.
+    databases = ["tafl"];
+
+    # Directory where backup files will be saved on your machine
+    location = "/run/media/at-1/postgres-backup";
+
+    # Systemd calendar event expression for scheduling (Daily at 1:15 AM)
+    startAt = "*-*-* 01:15:00";
   };
 
   fileSystems."/boot/firmware" = {
