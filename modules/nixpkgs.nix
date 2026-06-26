@@ -7,6 +7,9 @@
     config = {
       allowUnfree = true;
       allowBroken = true;
+      permittedInsecurePackages = [
+        "electron-39.8.10"
+      ];
     };
     overlays = [
       (final: prev: {
@@ -14,6 +17,11 @@
         unstable = import inputs.nixpkgs-unstable {
           inherit (final.stdenv.hostPlatform) system;
           inherit (final) config;
+        };
+      })
+      (final: prev: {
+        linuxPackages = prev.linuxPackages // {
+          openrazer = final.unstable.linuxPackages.openrazer;
         };
       })
     ];

@@ -149,7 +149,7 @@
     };
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
-    openrazer.enable = true;
+    # openrazer.enable = true;
   };
 
   boot = {

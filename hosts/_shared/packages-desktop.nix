@@ -16,14 +16,14 @@
     firefox # browser
     flameshot # screenshots
     fontconfig # important!
-    element-desktop # matrix chat client (electron-based, faster to install)
+    # element-desktop # matrix chat client (electron-based, faster to install)
     google-chrome # for drm media
     i3status # status bar
     i3status-rust # status bar
     kdePackages.kcalc # calculator
     alacritty # terminal emulator
     libnotify # notifications
-    logseq # obsidian open source
+    # logseq # obsidian open source
     mcomix # manga viewer
     meld # diff viewer
     mixxx # dj software
