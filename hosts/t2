@@ -130,7 +130,6 @@
 
   services.tailscale.enable = true;
 
-  services.maddy = {
     enable = true;
 
     hostname = "mail.chuu.dev";

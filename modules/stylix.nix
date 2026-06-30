@@ -6,7 +6,7 @@
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/tarot.yaml";
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/chalk.yaml";
     polarity = "dark";
-    image = ../aesthetics/nix_ene_1.png;
+    image = ../aesthetics/space_bg.png;
     fonts = {
       serif = {
         package = pkgs.dejavu_fonts;
