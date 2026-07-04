@@ -19,6 +19,8 @@
     ../../modules/sops.nix
   ];
 
+    cachix.pull = [ "chuu-p" ];
+
   # nix = {
   #   distributedBuilds = true;
   #   buildMachines = [
