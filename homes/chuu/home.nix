@@ -390,6 +390,11 @@ in {
 
   programs.yazi = {
     enable = true;
+    settings = {
+      opener = {
+        play = [{ run = ''mpv --force-window "$@"''; desc = "MPV"; }];
+      };
+    };
     initLua = ''
       -- show disk in status bar
       Status:children_add(function()
