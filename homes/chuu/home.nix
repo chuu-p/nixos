@@ -76,7 +76,7 @@ in {
     enable = true;
     extraPackages = with pkgs; [
       # LSP servers
-      nodePackages.bash-language-server
+      bash-language-server
       blueprint-compiler
       docker-compose-language-service
       dockerfile-language-server
@@ -94,7 +94,7 @@ in {
           flake8
         ]))
       # formatters
-      nodePackages.prettier
+      prettier
       nixfmt
       rustfmt
       shfmt
@@ -389,6 +389,7 @@ in {
 
   programs.yazi = {
     enable = true;
+    shellWrapperName = "y";
     initLua = ''
       -- show disk in status bar
       Status:children_add(function()

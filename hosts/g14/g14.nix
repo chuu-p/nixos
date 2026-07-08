@@ -19,7 +19,7 @@
     ../../modules/sops.nix
   ];
 
-    cachix.pull = [ "chuu-p" ];
+    # cachix.pull = [ "chuu-p" ];
 
   # nix = {
   #   distributedBuilds = true;
@@ -89,9 +89,11 @@
 
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=30min
-  '';
+  systemd.sleep.settings = {
+    Sleep = {
+      HibernateDelaySec = "30min";
+    };
+  };
 
   users.users = {
     chuu.openssh.authorizedKeys.keys = [
@@ -103,7 +105,7 @@
   };
 
   # only keep the last five generations (otherwise boot partition can fill up too much)
-  documentation.man.generateCaches = false;
+  documentation.man.cache.enable = false;
 
   services.postgresql = {
     enable = true;
@@ -249,10 +251,7 @@
       enable = true;
       settings.PasswordAuthentication = false; # Disable password-based SSH login for security
       settings.PermitRootLogin = "prohibit-password"; # Allow root login only with a key
-      banner = ''
-        █▀▀ ▄█ █░█
-        █▄█ ░█ ▀▀█
-      '';
+      settings.Banner = ./ssh-banner.txt;
     };
   };
 
@@ -331,10 +330,10 @@
       package = pkgs.steam.override {
         extraPkgs = pkgs':
           with pkgs'; [
-            xorg.libXcursor
-            xorg.libXi
-            xorg.libXinerama
-            xorg.libXScrnSaver
+            libxcursor
+            libxi
+            libxinerama
+            libxscrnsaver
             libpng
             libpulseaudio
             libvorbis

@@ -41,13 +41,13 @@
     thunderbird-bin # emails (pre-built, avoids compiling from source)
     tigervnc # vnc
     unstable.zmk-studio # split keyboard software
-    vdhcoapp # videodownloadhelper companion application
+    # vdhcoapp removed - no longer needed for VDH >= 10
     vial # keyboard config
     wiremix # pipewire tui
     wlr-randr # xrandr for wayland
     wmenu # launcher
     yt-dlp # media download tool
     zed-editor # rust based ide
-    zmkBATx
+    zmkbatx
   ];
 }
