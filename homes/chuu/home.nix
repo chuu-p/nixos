@@ -190,6 +190,7 @@ in {
 
   programs.atuin = {
     enable = true;
+    enableFishIntegration = false;
     settings = {
       auto_sync = false;
       search_mode = "fuzzy";
@@ -389,7 +390,6 @@ in {
 
   programs.yazi = {
     enable = true;
-    shellWrapperName = "y";
     initLua = ''
       -- show disk in status bar
       Status:children_add(function()
