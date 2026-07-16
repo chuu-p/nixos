@@ -9,6 +9,7 @@
       allowBroken = true;
       permittedInsecurePackages = [
         "electron-39.8.10"
+        "pnpm-9.15.9"
       ];
     };
     overlays = [

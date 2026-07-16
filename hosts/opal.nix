@@ -17,25 +17,25 @@
   # paperlessFixed = pkgs.paperless-ngx.override {
   #   python3 = pythonWithFixedPsycopg;
   # };
-  keybr = pkgs.buildNpmPackage {
-    pname = "keybr";
-    version = "0.0.0";
-
-    src = pkgs.fetchgit {
-      url = "http://opal:3000/artemis/keybr.com.git";
-      rev = "68a3b57b9da90cf47a54f9f8498ae6ea34ce2a6d";
-      sha256 = "sha256-Y54pxucGo4zm/zHq98Gpb8ohO7atgTZmx5NazamAuVg=";
-    };
-
-    npmDepsHash = "sha256-yc0qrkENKRWwMsa0d83BUCYM/WvUIdbZLf9iY3V4Z/o=";
-
-    npmBuildScript = "build";
-
-    installPhase = ''
-      mkdir -p $out
-      cp -r . $out/
-    '';
-  };
+  # keybr = pkgs.buildNpmPackage {
+  #   pname = "keybr";
+  #   version = "0.0.0";
+  #
+  #   src = pkgs.fetchgit {
+  #     url = "http://opal:3000/artemis/keybr.com.git";
+  #     rev = "68a3b57b9da90cf47a54f9f8498ae6ea34ce2a6d";
+  #     sha256 = "sha256-Y54pxucGo4zm/zHq98Gpb8ohO7atgTZmx5NazamAuVg=";
+  #   };
+  #
+  #   npmDepsHash = "sha256-yc0qrkENKRWwMsa0d83BUCYM/WvUIdbZLf9iY3V4Z/o=";
+  #
+  #   npmBuildScript = "build";
+  #
+  #   installPhase = ''
+  #     mkdir -p $out
+  #     cp -r . $out/
+  #   '';
+  # };
 in {
   imports = [
     ./common/base.nix
@@ -57,14 +57,34 @@ in {
     '';
   };
 
-  services.k3s = {
-    enable = false;
-    package = pkgs.k3s;
-    role = "server";
-    serverAddr = "https://jinora:6443";
-    token = "9895e202-59c7-48ad-b87a-01edf859c40b";
-    extraFlags = "--write-kubeconfig-mode 0644";
+  # TODO seafile and home cloud services
+   services.seafile = {
+    enable = true;
+
+    adminEmail = "admin@example.com";
+    initialAdminPassword = "change this later!";
+
+    ccnetSettings.General.SERVICE_URL = "https://seafile.example.com";
+    
+    dataDir = "/run/media/home-store/seafile";
+
+
+
+    seafileSettings = {
+      fileserver = {
+        host = "unix:/run/seafile/server.sock";
+      };
+    };
   };
+
+  # services.k3s = {
+  #   enable = false;
+  #   package = pkgs.k3s;
+  #   role = "server";
+  #   serverAddr = "https://jinora:6443";
+  #   token = "9895e202-59c7-48ad-b87a-01edf859c40b";
+  #   extraFlags = "--write-kubeconfig-mode 0644";
+  # };
 
   services.music-assistant = {
     enable = true;
@@ -204,19 +224,19 @@ in {
     };
   };
 
-  systemd.services.keybr = {
-    description = "Keybr Typing Trainer";
-    after = ["network.target"];
-
-    wantedBy = ["multi-user.target"];
-
-    serviceConfig = {
-      ExecStart = "${pkgs.nodejs}/bin/node ${keybr}/root/index.js";
-      WorkingDirectory = keybr;
-      Restart = "always";
-      Environment = "NODE_ENV=production";
-    };
-  };
+  # systemd.services.keybr = {
+  #   description = "Keybr Typing Trainer";
+  #   after = ["network.target"];
+  #
+  #   wantedBy = ["multi-user.target"];
+  #
+  #   serviceConfig = {
+  #     ExecStart = "${pkgs.nodejs}/bin/node ${keybr}/root/index.js";
+  #     WorkingDirectory = keybr;
+  #     Restart = "always";
+  #     Environment = "NODE_ENV=production";
+  #   };
+  # };
 
   boot.kernelParams = [
     "consoleblank=60"

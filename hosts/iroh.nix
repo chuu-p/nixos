@@ -24,51 +24,6 @@
     '';
   };
 
-  services.ollama = {
-    enable = true;
-    acceleration = false; # RPi 5 has no CUDA
-  };
-  # services.faasd.enable = true;
-  # services.faasd.gateway = {
-  #   writeTimeout = 30;
-  #   readTimeout = 30;
-  #   upstreamTimeout = 35;
-  # };
-
-  services.k3s = {
-    enable = true;
-    package = pkgs.k3s;
-    role = "server";
-    serverAddr = "https://jinora:6443";
-    token = "9895e202-59c7-48ad-b87a-01edf859c40b";
-    extraFlags = "--write-kubeconfig-mode 0644";
-  };
-
-  services.gitea-actions-runner = {
-    instances.default = {
-      enable = true;
-      name = "nixos-runner-iroh";
-      token = "lWDbIQ44dLffgyfYZSECg7defHUaH9sklSYo2lMY";
-      url = "http://opal:3000";
-      labels = [
-        "nixos-native:host"
-        "iroh"
-      ];
-      hostPackages = with pkgs; [
-        bash
-        busybox
-        curl
-        docker
-        gitMinimal
-        just
-        nix
-        nodejs
-        pnpm
-        rsync
-        wget
-      ];
-    };
-  };
 
   boot.kernelParams = [
     "consoleblank=60"
