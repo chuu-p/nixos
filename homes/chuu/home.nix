@@ -343,6 +343,8 @@ in {
         {command = "exec mullvad-gui";}
         {command = "exec fcitx5";}
         {command = "exec obsidian";}
+        {command = "exec nextcloud-talk-desktop";}
+        {command = "exec nextcloud";}
         {command = "exec protonmail-bridge-gui --no-window";}
         {command = "exec thunderbird";}
         {command = "exec kdeconnect-indicator";}

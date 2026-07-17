@@ -66,6 +66,15 @@ in {
     '');
   };
 
+  services.postgresql = {
+    enable = true;
+    ensureDatabases = ["nextcloud"];
+    ensureUsers = [{
+      name = "nextcloud";
+      ensureDBOwnership = true;
+    }];
+  };
+
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud33;
