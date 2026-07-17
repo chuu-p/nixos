@@ -73,7 +73,20 @@ in {
       adminuser = "admin";
       adminpassFile = toString (pkgs.writeText "nextcloud-admin-pass" "change this later!");
     };
-    settings.trusted_domains = [ "opal" "localhost" ];
+    settings = {
+      trusted_domains = [ "opal" "localhost" ];
+      enabledPreviewProviders = [
+        "OC\\Preview\\HEIC"
+        "OC\\Preview\\JPEG"
+        "OC\\Preview\\PNG"
+        "OC\\Preview\\GIF"
+        "OC\\Preview\\BMP"
+        "OC\\Preview\\MarkDown"
+        "OC\\Preview\\MP3"
+        "OC\\Preview\\TXT"
+      ];
+    };
+    phpExtraExtensions = all: [ all.imagick ];
   };
 
   # services.k3s = {
@@ -236,6 +249,11 @@ in {
   #     Environment = "NODE_ENV=production";
   #   };
   # };
+
+  swapDevices = [{
+    device = "/run/media/at-2/swapfile";
+    size = 8192;
+  }];
 
   boot.kernelParams = [
     "consoleblank=60"
