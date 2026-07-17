@@ -262,10 +262,10 @@ in {
   #   };
   # };
 
-  swapDevices = [{
-    device = "/run/media/at-2/swapfile";
-    size = 8192;
-  }];
+  # swapDevices = [{
+  #   device = "/run/media/at-2/swapfile";
+  #   size = 8192;
+  # }];
 
   boot.kernelParams = [
     "consoleblank=60"
