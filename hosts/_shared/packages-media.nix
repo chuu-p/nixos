@@ -16,5 +16,7 @@
     shotcut # video editor
     lsp-plugins # Collection of open-source audio plugins
     kdePackages.kdenlive
+    nextcloud-talk-desktop
+    nextcloud-client
   ];
 }

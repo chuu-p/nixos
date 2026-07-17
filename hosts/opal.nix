@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   nixos-hardware,
   nixos-raspberrypi,
   lib,
@@ -43,6 +44,7 @@ in {
     nixos-raspberrypi.nixosModules.trusted-nix-caches
     ./common/base.nix
     nixos-hardware.nixosModules.raspberry-pi-4
+    ../../modules/sops.nix
   ];
 
   networking.hostName = "opal";
@@ -71,7 +73,7 @@ in {
     config = {
       dbtype = "sqlite";
       adminuser = "admin";
-      adminpassFile = toString (pkgs.writeText "nextcloud-admin-pass" "change this later!");
+      adminpassFile = config.sops.secrets.nextcloud-admin.path;
     };
     settings = {
       trusted_domains = [
