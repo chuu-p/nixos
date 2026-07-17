@@ -83,8 +83,10 @@ in {
         "localhost"
         "192.168.*"
         "100.*"
-        # add your tailscale URL here later
+        "opal.tail241b81.ts.net"
       ];
+      overwriteprotocol = "https";
+      overwrite.cli.url = "https://opal.tail241b81.ts.net";
       enabledPreviewProviders = [
         "OC\\Preview\\HEIC"
         "OC\\Preview\\JPEG"
