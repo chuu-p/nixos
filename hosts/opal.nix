@@ -82,7 +82,7 @@ in {
     datadir = "/run/media/home-store/nextcloud";
     database.createLocally = true;
     config = {
-      dbtype = "sqlite";
+      dbtype = "pgsql";
       adminuser = "admin";
       adminpassFile = config.sops.secrets.nextcloud-admin.path;
     };
