@@ -4,9 +4,7 @@
     defaultSopsFile = ../secrets/example.yaml;
     secrets = {
       "api-key" = {};
-      "nextcloud-admin" = {
-        sopsFile = ../secrets/nextcloud-admin.yaml;
-      };
+      "nextcloud-admin" = {};
     };
   };
 }

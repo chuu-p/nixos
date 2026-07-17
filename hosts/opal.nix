@@ -44,7 +44,7 @@ in {
     nixos-raspberrypi.nixosModules.trusted-nix-caches
     ./common/base.nix
     nixos-hardware.nixosModules.raspberry-pi-4
-    ../../modules/sops.nix
+    ../modules/sops.nix
   ];
 
   networking.hostName = "opal";
