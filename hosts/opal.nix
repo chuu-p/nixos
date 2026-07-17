@@ -74,7 +74,13 @@ in {
       adminpassFile = toString (pkgs.writeText "nextcloud-admin-pass" "change this later!");
     };
     settings = {
-      trusted_domains = [ "opal" "localhost" ];
+      trusted_domains = [
+        "opal"
+        "localhost"
+        "192.168.*"
+        "100.*"
+        # add your tailscale URL here later
+      ];
       enabledPreviewProviders = [
         "OC\\Preview\\HEIC"
         "OC\\Preview\\JPEG"
