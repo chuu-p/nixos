@@ -3,6 +3,7 @@
   config,
   nixos-hardware,
   nixos-raspberrypi,
+  sops-nix,
   lib,
   ...
 }: let
@@ -42,6 +43,7 @@ in {
   imports = [
     nixos-raspberrypi.lib.inject-overlays
     nixos-raspberrypi.nixosModules.trusted-nix-caches
+    sops-nix.nixosModules.sops
     ./common/base.nix
     nixos-hardware.nixosModules.raspberry-pi-4
     ../modules/sops.nix
