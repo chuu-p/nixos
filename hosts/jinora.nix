@@ -2,9 +2,12 @@
   inputs,
   pkgs,
   nixos-hardware,
+  nixos-raspberrypi,
   ...
 }: {
   imports = [
+    nixos-raspberrypi.lib.inject-overlays
+    nixos-raspberrypi.nixosModules.trusted-nix-caches
     ./common/base.nix
     nixos-hardware.nixosModules.raspberry-pi-4
   ];
@@ -15,13 +18,13 @@
     enable = true;
     settings.PasswordAuthentication = false;
     settings.PermitRootLogin = "prohibit-password";
-    banner = ''
+    settings.Banner = toString (pkgs.writeText "ssh-banner" ''
       ░░█ █ █▄░█ █▀█ █▀█ ▄▀█
       █▄█ █ █░▀█ █▄█ █▀▄ █▀█
       I will make
       no such
       promises.
-    '';
+    '');
   };
 
   services.k3s = {

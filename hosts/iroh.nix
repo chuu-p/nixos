@@ -2,9 +2,12 @@
   inputs,
   pkgs,
   nixos-hardware,
+  nixos-raspberrypi,
   ...
 }: {
   imports = [
+    nixos-raspberrypi.lib.inject-overlays
+    nixos-raspberrypi.nixosModules.trusted-nix-caches
     ./common/base.nix
     nixos-hardware.nixosModules.raspberry-pi-5
   ];
@@ -15,13 +18,13 @@
     enable = true;
     settings.PasswordAuthentication = false; # Disable password-based SSH login for security
     settings.PermitRootLogin = "prohibit-password"; # Allow root login only with a key
-    banner = ''
+    settings.Banner = toString (pkgs.writeText "ssh-banner" ''
       █ █▀█ █▀█ █░█
       █ █▀▄ █▄█ █▀█
       If you look for the light
       you will often
       find it.
-    '';
+    '');
   };
 
 

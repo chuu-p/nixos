@@ -13,11 +13,17 @@
       experimental-features = ["nix-command" "flakes"];
       trusted-users = ["root" "@wheel" "chuu"];
       extra-platforms = ["aarch64-linux"];
+      extra-substituters = [
+        "https://devenv.cachix.org"
+        "https://nixos-raspberrypi.cachix.org"
+      ];
+      extra-trusted-public-keys = [
+        "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+        "nixos-raspberrypi.cachix.org-1:4iMO9LXa8BqhU+Rpg6LQKiGa2lsNh/j2oiYLNOQ5sPI="
+      ];
     };
-    extraOptions = ''
-      extra-substituters = https://devenv.cachix.org
-      extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
-    '';
+    # TODO: migrate extraOptions below into settings above
+    extraOptions = "";
     distributedBuilds = true;
     buildMachines = [
       {

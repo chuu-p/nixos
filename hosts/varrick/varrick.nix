@@ -285,10 +285,10 @@
     enable = true;
     settings.PasswordAuthentication = false; # Disable password-based SSH login for security
     settings.PermitRootLogin = "prohibit-password"; # Allow root login only with a key
-    banner = ''
+    settings.Banner = toString (pkgs.writeText "ssh-banner" ''
       █░█ ▄▀█ █▀█ █▀█ █ █▀▀ █▄▀
       ▀▄▀ █▀█ █▀▄ █▀▄ █ █▄▄ █░█
-    '';
+    '');
   };
 
   users.users.chuu.openssh.authorizedKeys.keys = [

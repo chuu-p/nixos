@@ -1,6 +1,7 @@
 {
   pkgs,
   nixos-hardware,
+  nixos-raspberrypi,
   lib,
   ...
 }: let
@@ -38,43 +39,41 @@
   # };
 in {
   imports = [
+    nixos-raspberrypi.lib.inject-overlays
+    nixos-raspberrypi.nixosModules.trusted-nix-caches
     ./common/base.nix
     nixos-hardware.nixosModules.raspberry-pi-4
   ];
 
   networking.hostName = "opal";
 
+  boot.kernelPackages = pkgs.linuxPackages_rpi4;
+
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
     settings.PermitRootLogin = "prohibit-password";
-    banner = ''
+    settings.Banner = toString (pkgs.writeText "ssh-banner" ''
       █▀█ █▀█ ▄▀█ █░░
       █▄█ █▀▀ █▀█ █▄▄
       Protection and power
       are overrated.
       Choose happiness and love.
-    '';
+    '');
   };
 
-  # TODO seafile and home cloud services
-   services.seafile = {
+  services.nextcloud = {
     enable = true;
-
-    adminEmail = "admin@example.com";
-    initialAdminPassword = "change this later!";
-
-    ccnetSettings.General.SERVICE_URL = "https://seafile.example.com";
-    
-    dataDir = "/run/media/home-store/seafile";
-
-
-
-    seafileSettings = {
-      fileserver = {
-        host = "unix:/run/seafile/server.sock";
-      };
+    package = pkgs.nextcloud33;
+    hostName = "opal";
+    datadir = "/run/media/home-store/nextcloud";
+    database.createLocally = true;
+    config = {
+      dbtype = "sqlite";
+      adminuser = "admin";
+      adminpassFile = toString (pkgs.writeText "nextcloud-admin-pass" "change this later!");
     };
+    settings.trusted_domains = [ "opal" "localhost" ];
   };
 
   # services.k3s = {
@@ -103,50 +102,50 @@ in {
       "ytmusic"
     ];
   };
-  services.home-assistant = {
-    enable = true;
-    extraComponents = [
-      "cast"
-      "dlna_dmr"
-      "esphome"
-      "google_assistant"
-      "google_translate"
-      "homeassistant_hardware"
-      "homeassistant_sky_connect"
-      "homekit_controller"
-      "ibeacon"
-      "isal"
-      "kegtron"
-      "matter"
-      "met"
-      "music_assistant"
-      "opensky"
-      "otbr"
-      "piper"
-      "radio_browser"
-      "roomba"
-      "rpi_power"
-      "samsungtv"
-      "shopping_list"
-      "thread"
-      "wake_word"
-      "webostv"
-      "whisper"
-      "wyoming"
-      # "anthropic"
-      # "kef"
-      # "yale"
-    ];
-    # extraPackages = python3Packages:
-    #   with python3Packages; [
-    #     numpy
-    #     python-matter-server
-    #     universal-silabs-flasher
-    #   ];
-    config = {
-      default_config = {};
-    };
-  };
+  # services.home-assistant = {
+  #   enable = true;
+  #   extraComponents = [
+  #     "cast"
+  #     "dlna_dmr"
+  #     "esphome"
+  #     "google_assistant"
+  #     "google_translate"
+  #     "homeassistant_hardware"
+  #     "homeassistant_sky_connect"
+  #     "homekit_controller"
+  #     "ibeacon"
+  #     "isal"
+  #     "kegtron"
+  #     "matter"
+  #     "met"
+  #     "music_assistant"
+  #     "opensky"
+  #     "otbr"
+  #     "piper"
+  #     "radio_browser"
+  #     "roomba"
+  #     "rpi_power"
+  #     "samsungtv"
+  #     "shopping_list"
+  #     "thread"
+  #     "wake_word"
+  #     "webostv"
+  #     "whisper"
+  #     "wyoming"
+  #     # "anthropic"
+  #     # "kef"
+  #     # "yale"
+  #   ];
+  #   # extraPackages = python3Packages:
+  #   #   with python3Packages; [
+  #   #     numpy
+  #   #     python-matter-server
+  #   #     universal-silabs-flasher
+  #   #   ];
+  #   config = {
+  #     default_config = {};
+  #   };
+  # };
 
   # Do not use this in production. This will make passwords world-readable in the Nix store
   services.maddy = {
@@ -265,6 +264,16 @@ in {
 
   fileSystems."/run/media/at-2" = {
     device = "/dev/disk/by-uuid/998a6328-3ac2-4288-a8e2-ff828cfe3939";
+    fsType = "btrfs";
+    options = [
+      "users"
+      "nofail"
+      "exec"
+    ];
+  };
+
+  fileSystems."/run/media/home-store" = {
+    device = "/dev/disk/by-uuid/3ead8603-cef3-4e6b-a323-f156a8909085";
     fsType = "btrfs";
     options = [
       "users"

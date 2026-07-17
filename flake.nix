@@ -11,7 +11,7 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
+    nixpkgs.follows = "nixos-raspberrypi/nixpkgs";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     deploy-rs = {
