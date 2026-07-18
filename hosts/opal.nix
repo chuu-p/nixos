@@ -219,7 +219,7 @@ in {
 
   services.gitea = {
     enable = true;
-    stateDir = "/run/media/at-2/gitea";
+    stateDir = "/run/media/home-store/gitea";
     package = pkgs.unstable.gitea;
     settings = {
       packages = {
