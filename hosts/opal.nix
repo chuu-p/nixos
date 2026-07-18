@@ -217,6 +217,21 @@ in {
   #   package = paperlessFixed;
   # };
 
+  systemd.services.tailscale-serve = {
+    description = "Tailscale Serve";
+    after = ["tailscaled.service"];
+    wants = ["tailscaled.service"];
+    wantedBy = ["multi-user.target"];
+    path = [pkgs.unstable.tailscale];
+    script = ''
+      tailscale serve --https 443 / http://localhost:80
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+  };
+
   services.gitea = {
     enable = true;
     stateDir = "/run/media/home-store/gitea";
