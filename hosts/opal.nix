@@ -217,20 +217,20 @@ in {
   #   package = paperlessFixed;
   # };
 
-  systemd.services.tailscale-serve = {
-    description = "Tailscale Serve";
-    after = ["tailscaled.service"];
-    wants = ["tailscaled.service"];
-    wantedBy = ["multi-user.target"];
-    path = [pkgs.unstable.tailscale];
-    script = ''
-      tailscale serve --https 443 / http://localhost:80
-    '';
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-    };
-  };
+  # systemd.services.tailscale-serve = {
+  #   description = "Tailscale Serve";
+  #   after = ["tailscaled.service"];
+  #   wants = ["tailscaled.service"];
+  #   wantedBy = ["multi-user.target"];
+  #   path = [pkgs.unstable.tailscale];
+  #   script = ''
+  #     tailscale serve --https 443 / http://localhost:80
+  #   '';
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     RemainAfterExit = true;
+  #   };
+  # };
 
   services.gitea = {
     enable = true;
@@ -251,10 +251,9 @@ in {
 
       service = {
         REGISTER_EMAIL_CONFIRM = false;
-        START_SSH_SERVER = true;
       };
-
       server = {
+        START_SSH_SERVER = true;
         DOMAIN = "opal";
         ROOT_URL = "http://opal:3000";
         HTTP_PORT = 3000;
