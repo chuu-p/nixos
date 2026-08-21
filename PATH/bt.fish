@@ -6,6 +6,29 @@
 set invoked_name (basename (status current-filename))
 
 switch $invoked_name
+    case c-bt-reset-headphones
+        sudo modprobe -r btusb
+        sleep 2
+        sudo modprobe btusb
+        sleep 3
+        bluetoothctl power off
+        sleep 2
+        bluetoothctl power on
+        sleep 2
+        bluetoothctl scan on
+        set mac 84:D3:52:E9:C3:49
+        echo "Scanning for $mac ..."
+        for i in (seq 1 30)
+            if bluetoothctl devices | grep -qi $mac
+                echo "Found! Connecting..."
+                bluetoothctl connect $mac
+                break
+            end
+            sleep 1
+        end
+        bluetoothctl scan off 2>/dev/null
+        echo "Done."
+
     case c-bt-connect-headphones
         bluetoothctl connect 84:D3:52:E9:C3:49
 
@@ -25,6 +48,7 @@ switch $invoked_name
                 ln -s "bt.fish" c-bt-connect-soundbar
                 ln -s "bt.fish" c-bt-connect-pixelbuds
                 ln -s "bt.fish" c-bt-connect-shokz
+                ln -s "bt.fish" c-bt-reset-headphones
                 echo install OK
 
             case --help
