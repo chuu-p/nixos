@@ -66,7 +66,7 @@ in {
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   imports = [
-    inputs.nix4nvchad.homeManagerModules
+    inputs.nix4nvchad.homeManagerModules.default
   ];
 
   programs.swaylock.enable = true;
