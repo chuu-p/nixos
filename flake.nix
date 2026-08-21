@@ -121,9 +121,11 @@
           }
           {
             home-manager.backupFileExtension = "hm-backup";
-            home-manager.users.chuu.imports = [
-              ./homes/chuu/home.nix
-            ];
+            home-manager.users.chuu = {
+              imports = [
+                ./homes/chuu/home.nix
+              ];
+            };
           }
         ];
       };
@@ -149,9 +151,11 @@
 
           {
             home-manager.backupFileExtension = "hm-backup";
-            home-manager.users.chuu.imports = [
-              ./homes/chuu/home.nix
-            ];
+            home-manager.users.chuu = {
+              imports = [
+                ./homes/chuu/home.nix
+              ];
+            };
           }
         ];
       };
