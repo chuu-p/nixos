@@ -84,10 +84,10 @@ mod: {
   "XF86MonBrightnessUp" = "exec brightnessctl set +10%";
   "XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
 
-  "XF86Launch1" = "exec systemctl suspend"; # ROG
-  "Mod1+XF86Launch1" = "exec systemctl hibernate"; # Alt + ROG
-  "Shift+XF86Launch1" = "exec systemctl poweroff"; # Shift + ROG
-  "Control+XF86Launch1" = "exec systemctl reboot"; # Control + ROG
+  "XF86Launch1" = "exec swaymsg reload"; # ROG
+  # "Mod1+XF86Launch1" = "exec systemctl hibernate"; # Alt + ROG
+  # "Shift+XF86Launch1" = "exec systemctl poweroff"; # Shift + ROG
+  # "Control+XF86Launch1" = "exec systemctl reboot"; # Control + ROG
 
   "XF86KbdBrightnessUp" = "exec asusctl -n";
   "XF86KbdBrightnessDown" = "exec asusctl -p";
