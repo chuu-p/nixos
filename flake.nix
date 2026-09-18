@@ -49,6 +49,9 @@
     nixos-raspberrypi = {
       url = "github:nvmd/nixos-raspberrypi";
     };
+    hermes-agent = {
+      url = "github:NousResearch/hermes-agent";
+    };
   };
 
   outputs = {
