@@ -23,6 +23,7 @@
     tokei # count lines of code
     typst # typst compiler
     typstyle # typst formatter
+    mullvad-vpn # stuff
     unstable.github-copilot-cli # evil tool
   ];
 }

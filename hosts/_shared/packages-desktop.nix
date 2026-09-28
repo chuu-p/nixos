@@ -43,6 +43,8 @@
     unstable.zmk-studio # split keyboard software
     # vdhcoapp removed - no longer needed for VDH >= 10
     vial # keyboard config
+    unstable.bun # javascript runtime
+    unstable.watchexec # file watcher
     wiremix # pipewire tui
     wlr-randr # xrandr for wayland
     wmenu # launcher

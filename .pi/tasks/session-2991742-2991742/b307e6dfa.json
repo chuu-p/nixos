@@ -1,0 +1,19 @@
+{
+  "id": "b307e6dfa",
+  "name": "nixos-rebuild g14",
+  "command": "cd ~/git/nixos && sudo nixos-rebuild switch --flake ~/git/nixos#g14 2>&1",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2991742-2991742/b307e6dfa.output",
+  "cwd": "/home/chuu/git/nixos",
+  "startTime": 1790583682501,
+  "endTime": 1790583844213,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 2995079,
+  "bytesWritten": 36875,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 600
+}

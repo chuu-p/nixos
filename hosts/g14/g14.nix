@@ -253,6 +253,13 @@
       settings.PermitRootLogin = "prohibit-password"; # Allow root login only with a key
       settings.Banner = ./ssh-banner.txt;
     };
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true; # Enables PipeWire's JACK support
+    };
   };
 
   console.keyMap = "us";

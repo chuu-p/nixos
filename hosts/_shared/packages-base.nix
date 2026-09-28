@@ -36,5 +36,9 @@
     vim # fallback vim
     yazi # terminal file manager
     zellij # termux alternative
+    unstable.cachix # nix binary cache
+    unstable.jq # json processor
+    unstable.sops # secrets management
+    unstable.statix # nix linter
   ];
 }

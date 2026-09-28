@@ -1,0 +1,19 @@
+{
+  "id": "bda617912",
+  "name": "nixos-rebuild g14 (pw-jack)",
+  "command": "cd ~/git/nixos && sudo nixos-rebuild switch --flake ~/git/nixos#g14 2>&1",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2991742-2991742/bda617912.output",
+  "cwd": "/home/chuu/git/nixos",
+  "startTime": 1790583916482,
+  "endTime": 1790583965888,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 3008785,
+  "bytesWritten": 5072,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 600
+}

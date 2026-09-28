@@ -11,11 +11,15 @@
     gimp # image manipulation
     godot # make games
     imagemagick # image magick
-    inkscape # vector image manipulation
+    # inkscape # vector image manipulation
     libreoffice # nice to have office suite
     shotcut # video editor
     lsp-plugins # Collection of open-source audio plugins
+    patchage # JACK/PipeWire patchbay
+    pipewire.jack # pw-jack wrapper for JACK clients
+    qjackctl # JACK control GUI
     kdePackages.kdenlive
+    unstable.dolphin-emu
     nextcloud-talk-desktop
     nextcloud-client
   ];
